@@ -1,5 +1,5 @@
 package com.test.registration;
-
+///
 public enum AccountingAndTaxesValueType {
     GET_TAXATION_ANALYSIS_ON_THE_COUNTRY_CHOSEN_FOR_COMPANY_REGISTRATION("Get taxation analysis on the country chosen for company registration"),
     OBTAIN_A_COMPANY_TAX_NUMBER("Obtain a company tax number"),
