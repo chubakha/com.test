@@ -76,6 +76,19 @@ public class FirstRegistrationPage {
         return this;
     }
 
+    /*public FirstRegistrationPage hoverAllInfoIcon() {
+        for (int i = 1; i <= 9; i++){
+            $x("(//div[contains(@class,'FirstStep_firstStepBlockTooltip')])[" + i + "]");
+            hoverInfoIcon(WhatDoYouNeedLegallySolvedSections.values()[1]);
+        }
+        return this;
+    }*/
+
+    public FirstRegistrationPage hoverInfoIcon(WhatDoYouNeedLegallySolvedSections value){
+        toolTipIcon.hover();
+        return this;
+    }
+
     public int choiceRandomOneCheckbox(int amount){
         return new Random().nextInt(amount);
     }
@@ -111,11 +124,6 @@ public class FirstRegistrationPage {
 
     public FirstRegistrationPage deleteNeedHelpWithSomethingElseButton() {
         addedHelpWithSomethingElseText.click();
-        return this;
-    }
-
-    public FirstRegistrationPage hoverInfoIcon(){
-        toolTipIcon.hover();
         return this;
     }
 
