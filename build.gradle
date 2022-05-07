@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group 'com.test(GroupId)'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junit5Ver = "5.8.2"
+}
+
+dependencies {
+    implementation("com.codeborne:selenide:5.10.0")
+    testImplementation("org.junit.jupiter:junit-jupiter:$junit5Ver","com.codeborne:selenide:6.4.0")
+    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Ver")
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,366 @@
+<html lang="en"><head><link rel="preconnect" href="https://fonts.gstatic.com"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet"><meta charset="utf-8"><link rel="icon" href="/favicon.ico"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#000000"><meta name="description" content="Web site created using create-react-app"><link rel="apple-touch-icon" href="/logo192.png"><link rel="manifest" href="/manifest.json"><title>Legal Nodes</title><link href="/static/css/2.ffc0fc8f.chunk.css" rel="stylesheet"><link href="/static/css/main.f03e5d14.chunk.css" rel="stylesheet"><style type="text/css">/*
+  code is extracted from Calendly's embed stylesheet: https://assets.calendly.com/assets/external/widget.css
+*/
+
+.calendly-inline-widget,
+.calendly-inline-widget *,
+.calendly-badge-widget,
+.calendly-badge-widget *,
+.calendly-overlay,
+.calendly-overlay * {
+    font-size:16px;
+    line-height:1.2em
+}
+
+.calendly-inline-widget iframe,
+.calendly-badge-widget iframe,
+.calendly-overlay iframe {
+    display:inline;
+    width:100%;
+    height:100%
+}
+
+.calendly-popup-content {
+    position:relative
+}
+
+.calendly-popup-content.calendly-mobile {
+    -webkit-overflow-scrolling:touch;
+    overflow-y:auto
+}
+
+.calendly-overlay {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    overflow:hidden;
+    z-index:9999;
+    background-color:#a5a5a5;
+    background-color:rgba(31,31,31,0.4)
+}
+
+.calendly-overlay .calendly-close-overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0
+}
+
+.calendly-overlay .calendly-popup {
+    box-sizing:border-box;
+    position:absolute;
+    top:50%;
+    left:50%;
+    -webkit-transform:translateY(-50%) translateX(-50%);
+    transform:translateY(-50%) translateX(-50%);
+    width:80%;
+    min-width:900px;
+    max-width:1000px;
+    height:90%;
+    max-height:680px
+}
+
+@media (max-width: 975px) {
+    .calendly-overlay .calendly-popup {
+        position:fixed;
+        top:50px;
+        left:0;
+        right:0;
+        bottom:0;
+        -webkit-transform:none;
+        transform:none;
+        width:100%;
+        height:auto;
+        min-width:0;
+        max-height:none
+    }
+}
+
+.calendly-overlay .calendly-popup .calendly-popup-content {
+    height:100%;
+}
+
+.calendly-overlay .calendly-popup-close {
+    position:absolute;
+    top:25px;
+    right:25px;
+    color:#fff;
+    width:19px;
+    height:19px;
+    cursor:pointer;
+    background:url(https://assets.calendly.com/assets/external/close-icon.svg) no-repeat;
+    background-size:contain
+}
+
+@media (max-width: 975px) {
+    .calendly-overlay .calendly-popup-close {
+        top:15px;
+        right:15px
+    }
+}
+
+.calendly-badge-widget {
+    position:fixed;
+    right:20px;
+    bottom:15px;
+    z-index:9998
+}
+
+.calendly-badge-widget .calendly-badge-content {
+    display:table-cell;
+    width:auto;
+    height:45px;
+    padding:0 30px;
+    border-radius:25px;
+    box-shadow:rgba(0,0,0,0.25) 0 2px 5px;
+    font-family:sans-serif;
+    text-align:center;
+    vertical-align:middle;
+    font-weight:bold;
+    font-size:14px;
+    color:#fff;
+    cursor:pointer
+}
+
+.calendly-badge-widget .calendly-badge-content.calendly-white {
+    color:#666a73
+}
+
+.calendly-badge-widget .calendly-badge-content span {
+    display:block;
+    font-size:12px
+}
+
+.calendly-spinner {
+    position:absolute;
+    top:50%;
+    left:0;
+    right:0;
+    -webkit-transform:translateY(-50%);
+    transform:translateY(-50%);
+    text-align:center;
+    z-index:-1
+}
+
+.calendly-spinner>div {
+    display:inline-block;
+    width:18px;
+    height:18px;
+    background-color:#e1e1e1;
+    border-radius:50%;
+    vertical-align:middle;
+    -webkit-animation:calendly-bouncedelay 1.4s infinite ease-in-out;
+    animation:calendly-bouncedelay 1.4s infinite ease-in-out;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+
+.calendly-spinner .calendly-bounce1 {
+    -webkit-animation-delay:-0.32s;
+    animation-delay:-0.32s
+}
+
+.calendly-spinner .calendly-bounce2 {
+    -webkit-animation-delay:-0.16s;
+    animation-delay:-0.16s
+}
+
+@-webkit-keyframes calendly-bouncedelay {
+    0%,80%,100% {
+        -webkit-transform:scale(0);
+        transform:scale(0)
+    } 
+    
+    40%{
+        -webkit-transform:scale(1);
+        transform:scale(1)
+    }
+}
+
+@keyframes calendly-bouncedelay{ 
+    0%,80%,100% {
+        -webkit-transform:scale(0);
+        transform:scale(0)
+    }
+    
+    40% {
+        -webkit-transform:scale(1);
+        transform:scale(1)
+    }
+}</style></head><body><script type="text/javascript" async="" src="https://widget.intercom.io/widget/cena1ruf"></script><script>!function(){var t=window,e=t.Intercom;if("function"==typeof e)e("reattach_activator"),e("update",t.intercomSettings);else{var n=document,a=function(){a.c(arguments)};a.q=[],a.c=function(t){a.q.push(t)},t.Intercom=a;var c=function(){var t=n.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://widget.intercom.io/widget/cena1ruf";var e=n.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)};t.attachEvent?t.attachEvent("onload",c):t.addEventListener("load",c,!1)}}()</script><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"><div class="client_layout"><div class="login-page"><div class="login-page__form"><div class="login-page__form-header"><img src="/static/media/logo.77e2fb2f.svg" alt=""></div><div class="login-page__form-container"><div class="login-page__heading"><h2>Sign In</h2></div><div class="input input__invalid login-page__input"><label class="input__label">Email</label><input placeholder="Email " value=""></div><div class="input input__invalid login-page__input"><label class="input__label">Password</label><input placeholder="Password" type="password" value=""></div><a class="login-page__forgot-link">Forgot Password?</a><button class="btn btn-black login-page__btn">SIGN IN</button></div><div class="login-page__form-footer"><span>© Legal Nodes 2022</span></div></div><div class="login-page__banner"><div><h1>Outsource legal works to Legal Nodes <b>once</b> and forget about ever doing it yourself</h1></div></div></div><div class="Toastify"></div></div></div><script>!function(e){function r(r){for(var n,a,i=r[0],c=r[1],l=r[2],s=0,p=[];s<i.length;s++)a=i[s],Object.prototype.hasOwnProperty.call(o,a)&&o[a]&&p.push(o[a][0]),o[a]=0;for(n in c)Object.prototype.hasOwnProperty.call(c,n)&&(e[n]=c[n]);for(f&&f(r);p.length;)p.shift()();return u.push.apply(u,l||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,i=1;i<t.length;i++){var c=t[i];0!==o[c]&&(n=!1)}n&&(u.splice(r--,1),e=a(a.s=t[0]))}return e}var n={},o={1:0},u=[];function a(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,a),t.l=!0,t.exports}a.e=function(e){var r=[],t=o[e];if(0!==t)if(t)r.push(t[2]);else{var n=new Promise((function(r,n){t=o[e]=[r,n]}));r.push(t[2]=n);var u,i=document.createElement("script");i.charset="utf-8",i.timeout=120,a.nc&&i.setAttribute("nonce",a.nc),i.src=function(e){return a.p+"static/js/"+({}[e]||e)+"."+{3:"da71a27c"}[e]+".chunk.js"}(e);var c=new Error;u=function(r){i.onerror=i.onload=null,clearTimeout(l);var t=o[e];if(0!==t){if(t){var n=r&&("load"===r.type?"missing":r.type),u=r&&r.target&&r.target.src;c.message="Loading chunk "+e+" failed.\n("+n+": "+u+")",c.name="ChunkLoadError",c.type=n,c.request=u,t[1](c)}o[e]=void 0}};var l=setTimeout((function(){u({type:"timeout",target:i})}),12e4);i.onerror=i.onload=u,document.head.appendChild(i)}return Promise.all(r)},a.m=e,a.c=n,a.d=function(e,r,t){a.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},a.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},a.t=function(e,r){if(1&r&&(e=a(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(a.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)a.d(t,n,function(r){return e[r]}.bind(null,n));return t},a.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return a.d(r,"a",r),r},a.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},a.p="/",a.oe=function(e){throw console.error(e),e};var i=this.webpackJsonplegalnodes=this.webpackJsonplegalnodes||[],c=i.push.bind(i);i.push=r,i=i.slice();for(var l=0;l<i.length;l++)r(i[l]);var f=c;t()}([])</script><script src="/static/js/2.42dfae61.chunk.js"></script><script src="/static/js/main.ff6909c8.chunk.js"></script><iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important; pointer-events: none;" aria-hidden="true" tabindex="-1" title="Intercom"></iframe><div class="intercom-lightweight-app"><style id="intercom-lightweight-app-style" type="text/css">
+  @keyframes intercom-lightweight-app-launcher {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes intercom-lightweight-app-gradient {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes intercom-lightweight-app-messenger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .intercom-lightweight-app {
+    position: fixed;
+    z-index: 2147483001;
+    width: 0;
+    height: 0;
+    font-family: intercom-font, "Helvetica Neue", "Apple Color Emoji", Helvetica, Arial, sans-serif;
+  }
+
+  .intercom-lightweight-app-gradient {
+    position: fixed;
+    z-index: 2147483002;
+    width: 500px;
+    height: 500px;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at bottom right,
+      rgba(29, 39, 54, 0.16) 0%,
+      rgba(29, 39, 54, 0) 72%);
+    animation: intercom-lightweight-app-gradient 200ms ease-out;
+  }
+
+  .intercom-lightweight-app-launcher {
+    position: fixed;
+    z-index: 2147483003;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #3761f0;
+    cursor: pointer;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.06), 0 2px 32px 0 rgba(0, 0, 0, 0.16);
+    animation: intercom-lightweight-app-launcher 250ms ease;
+  }
+
+  .intercom-lightweight-app-launcher:focus {
+    outline: none;
+    
+  }
+
+  .intercom-lightweight-app-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    transition: transform 100ms linear, opacity 80ms linear;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg {
+    width: 28px;
+    height: 32px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-open svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve {
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg {
+    height: 56px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-self-serve svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-launcher-custom-icon-open {
+    max-height: 36px;
+    max-width: 36px;
+    
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize {
+    
+        opacity: 0;
+        transform: rotate(-60deg) scale(0);
+      
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg {
+    width: 16px;
+  }
+
+  .intercom-lightweight-app-launcher-icon-minimize svg path {
+    fill: rgb(255, 255, 255);
+  }
+
+  .intercom-lightweight-app-messenger {
+    position: fixed;
+    z-index: 2147483003;
+    overflow: hidden;
+    background-color: white;
+    animation: intercom-lightweight-app-messenger 250ms ease-out;
+    
+        width: 376px;
+        height: calc(100% - 120px);
+        max-height: 704px;
+        min-height: 250px;
+        right: 20px;
+        bottom: 100px;
+        box-shadow: 0 5px 40px rgba(0,0,0,0.16);
+        border-radius: 8px;
+      
+  }
+
+  .intercom-lightweight-app-messenger-header {
+    height: 75px;
+    background: linear-gradient(
+      135deg,
+      rgb(232, 252, 249) 0%,
+      rgb(142, 240, 225) 100%
+    );
+  }
+
+  @media print {
+    .intercom-lightweight-app {
+      display: none;
+    }
+  }
+</style><div class="intercom-lightweight-app-launcher intercom-launcher" role="button" tabindex="0" aria-label="Open Intercom Messenger" aria-live="polite"><div class="intercom-lightweight-app-launcher-icon intercom-lightweight-app-launcher-icon-open"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 32"><path d="M28 32s-4.714-1.855-8.527-3.34H3.437C1.54 28.66 0 27.026 0 25.013V3.644C0 1.633 1.54 0 3.437 0h21.125c1.898 0 3.437 1.632 3.437 3.645v18.404H28V32zm-4.139-11.982a.88.88 0 00-1.292-.105c-.03.026-3.015 2.681-8.57 2.681-5.486 0-8.517-2.636-8.571-2.684a.88.88 0 00-1.29.107 1.01 1.01 0 00-.219.708.992.992 0 00.318.664c.142.128 3.537 3.15 9.762 3.15 6.226 0 9.621-3.022 9.763-3.15a.992.992 0 00.317-.664 1.01 1.01 0 00-.218-.707z"></path></svg></div><div class="intercom-lightweight-app-launcher-icon intercom-lightweight-app-launcher-icon-minimize"><svg viewBox="0 0 16 14" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M.116 4.884l1.768-1.768L8 9.232l6.116-6.116 1.768 1.768L8 12.768.116 4.884z"></path></svg></div></div></div></body></html>
