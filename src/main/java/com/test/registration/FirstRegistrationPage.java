@@ -1,16 +1,17 @@
 package com.test.registration;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import java.util.Random;
 
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class FirstRegistrationPage {
     private SelenideElement nextButton = $x("//*[text() = 'NEXT']");
     private SelenideElement needHelpWithSomethingElse = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]");
-    private SelenideElement toolTipIcon = $x("(//div[contains(@class,'FirstStep_firstStepBlockTooltip')])[1]");
-    private SelenideElement toolTipText = $x("(//div[contains(@class,'FirstStep_firstStepBlockTooltipDropDown')])[1]");
+    private ElementsCollection toolTipIcons = $$x("//div[contains(@class,'FirstStep_firstStepBlockHeading')]/div[contains(@class,'FirstStep_firstStepBlockTooltip')]");
+
     private SelenideElement whatDoYouNeedLegallySolved = $x("//*[text() = 'What do you need legally solved?']");
     private SelenideElement stepNumberTextLabel = $x("//div[@class='registration-quiz__header-container']/b");
     private SelenideElement needHelpWithSomethingElseSendButton = $x("//*[text() = 'SEND']");
@@ -76,16 +77,8 @@ public class FirstRegistrationPage {
         return this;
     }
 
-    /*public FirstRegistrationPage hoverAllInfoIcon() {
-        for (int i = 1; i <= 9; i++){
-            $x("(//div[contains(@class,'FirstStep_firstStepBlockTooltip')])[" + i + "]");
-            hoverInfoIcon(WhatDoYouNeedLegallySolvedSections.values()[1]);
-        }
-        return this;
-    }*/
-
-    public FirstRegistrationPage hoverInfoIcon(WhatDoYouNeedLegallySolvedSections value){
-        toolTipIcon.hover();
+    public FirstRegistrationPage hoverOneInfoIcon(SelenideElement selenideElement) {
+        selenideElement.hover();
         return this;
     }
 
@@ -125,10 +118,6 @@ public class FirstRegistrationPage {
     public FirstRegistrationPage deleteNeedHelpWithSomethingElseButton() {
         addedHelpWithSomethingElseText.click();
         return this;
-    }
-
-    public String getToolTipText(){
-        return toolTipText.getText();
     }
 
     public String getWhatDoYouNeedLegallySolved(){
