@@ -1,6 +1,7 @@
 package com.test.registration;
 
 import com.codeborne.selenide.SelenideElement;
+import com.test.registration.first_registration_page.FirstRegistrationPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 

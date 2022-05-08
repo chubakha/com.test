@@ -1,17 +1,18 @@
 package com.test.first_registration_page;
 
-import com.test.registration.FirstRegistrationPage;
+import com.test.registration.first_registration_page.CreateCustomRequestOverlay;
+import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyAddTextToNeedHelpWithSomethingElseTest extends PrepareFirstRegistrationPageTestData {
-    //public String needhelpwithsomethingelseText = "my custom need";
     @Test
     void verifyAddedTextNeedHelpWithSomethingElse() {
-        FirstRegistrationPage firstRegistrationPage =
-                new FirstRegistrationPage();// добавить 3 методов ниже в одну строку нельзя?
-        firstRegistrationPage.clickNeedHelpWithSomethingElseButton();
-        firstRegistrationPage.setNeedHelpWithSomethingElseText();
-        Assertions.assertEquals(firstRegistrationPage.needhelpwithsomethingelseText, firstRegistrationPage.getNeedHelpWithSomethingElseText(), "Added text should be equal to displayed");
+        String needHelpWithSomethingText = "my custom need";
+        CreateCustomRequestOverlay createCustomRequestOverlay =
+                new FirstRegistrationPage()
+                        .clickNeedHelpWithSomethingElseButton()
+                        .setNeedHelpWithSomethingElseText(needHelpWithSomethingText);
+        Assertions.assertEquals(needHelpWithSomethingText, createCustomRequestOverlay.getNeedHelpWithSomethingElseText(), "Added text should be equal to displayed");
     }
 }

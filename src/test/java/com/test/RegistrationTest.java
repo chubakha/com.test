@@ -1,6 +1,6 @@
 package com.test;
 
-import com.test.registration.*;
+import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

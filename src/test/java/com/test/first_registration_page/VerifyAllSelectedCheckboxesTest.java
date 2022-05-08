@@ -1,6 +1,6 @@
 package com.test.first_registration_page;
 
-import com.test.registration.FirstRegistrationPage;
+import com.test.registration.first_registration_page.FirstRegistrationPage;
 import com.test.registration.SecondRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
