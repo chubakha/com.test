@@ -6,6 +6,7 @@ import com.test.registration.first_registration_page.FirstRegistrationPage;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.sleep;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyDeleteNeedHelpWithSomethingElseTest extends PrepareFirstRegistrationPageTestData {
@@ -15,8 +16,8 @@ public class VerifyDeleteNeedHelpWithSomethingElseTest extends PrepareFirstRegis
         firstRegistrationPage.clickNeedHelpWithSomethingElseButton();
         CreateCustomRequestOverlay createCustomRequestOverlay = new CreateCustomRequestOverlay().setNeedHelpWithSomethingElseText("my custom need");
         createCustomRequestOverlay.setNeedHelpWithSomethingElseText("my custom need");
-        firstRegistrationPage.clickNeedHelpWithSomethingElseSendButton();
+        createCustomRequestOverlay.clickNeedHelpWithSomethingElseSendButton();
         firstRegistrationPage.deleteNeedHelpWithSomethingElseButton();
-        $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[1]").shouldBe(Condition.text("NEED HELP WITH SOMETHING ELSE?"));
+        Assertions.assertEquals(firstRegistrationPage.getNeedHelpWithSomethingElseText(), "NEED HELP WITH SOMETHING ELSE?", "'NEED HELP WITH SOMETHING ELSE?' should be shown");
     }
 }

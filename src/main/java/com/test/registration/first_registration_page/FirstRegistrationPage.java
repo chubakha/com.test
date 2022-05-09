@@ -12,8 +12,8 @@ public class FirstRegistrationPage {
     private SelenideElement needHelpWithSomethingElse = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]");
     private SelenideElement whatDoYouNeedLegallySolved = $x("//*[text() = 'What do you need legally solved?']");
     private SelenideElement stepNumberTextLabel = $x("//div[@class='registration-quiz__header-container']/b");
-    private SelenideElement needHelpWithSomethingElseSendButton = $x("//*[text() = 'SEND']");
     private SelenideElement addedHelpWithSomethingElseText = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[2]/div[contains(@class, 'checkbox_checkbox')]");
+    private SelenideElement needHelpWithSomethingElseText = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[1]");
 
     public SecondRegistrationPage clickOneCheckboxInEverySection(){
         clickRandomIncorporationCheckBox();
@@ -82,11 +82,6 @@ public class FirstRegistrationPage {
         return new Random().nextInt(amount);
     }
 
-    public CreateCustomRequestOverlay clickNeedHelpWithSomethingElseSendButton(){
-        needHelpWithSomethingElseSendButton.click();
-        return new CreateCustomRequestOverlay();
-    }
-
     public FirstRegistrationPage clickCheckbox(String value){
         String xpath = String.format("//*[text() = '%s']", value);
         $x(xpath).click();
@@ -115,5 +110,7 @@ public class FirstRegistrationPage {
         return stepNumberTextLabel.getText();
     }
 
-
+    public String getNeedHelpWithSomethingElseText() {
+        return needHelpWithSomethingElseText.getText();
+    }
 }
