@@ -7,6 +7,6 @@ import org.junit.jupiter.api.Test;
 public class VerifyTitleFirstPageRegistrationTest extends PrepareFirstRegistrationPageTestData {
     @Test
     void verifyTitleFirstPageRegistration(){
-        Assertions.assertEquals("What do you need legally solved?", new FirstRegistrationPage().getWhatDoYouNeedLegallySolved(),"'What do you need legally solved?' should be shown on First Registration Page");
+        Assertions.assertEquals("What do you need legally solved?", new FirstRegistrationPage().getWhatDoYouNeedLegallySolved(),"'What do you need legally solved?' should be shown");
     }
 }

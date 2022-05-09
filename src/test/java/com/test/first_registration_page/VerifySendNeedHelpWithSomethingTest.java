@@ -11,10 +11,10 @@ public class VerifySendNeedHelpWithSomethingTest extends PrepareFirstRegistratio
         String needHelpWithSomethingText = "my custom need";
         FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage();
         firstRegistrationPage.clickNeedHelpWithSomethingElseButton();
-        CreateCustomRequestOverlay createCustomRequestOverlay = new CreateCustomRequestOverlay();
-        createCustomRequestOverlay.setNeedHelpWithSomethingElseText(needHelpWithSomethingText);
-        createCustomRequestOverlay.clickNeedHelpWithSomethingElseSendButton();
+        CreateCustomRequestOverlay createCustomRequestOverlay =
+                new CreateCustomRequestOverlay()
+                        .setNeedHelpWithSomethingElseText(needHelpWithSomethingText)
+                        .clickNeedHelpWithSomethingElseSendButton();
         Assertions.assertEquals(createCustomRequestOverlay.getNeedHelpWithSomethingElseText(), needHelpWithSomethingText, "'my custom need' should be shown");
     }
-
 }

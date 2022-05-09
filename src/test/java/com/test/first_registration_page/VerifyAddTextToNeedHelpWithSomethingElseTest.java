@@ -13,6 +13,6 @@ public class VerifyAddTextToNeedHelpWithSomethingElseTest extends PrepareFirstRe
                 new FirstRegistrationPage()
                         .clickNeedHelpWithSomethingElseButton()
                         .setNeedHelpWithSomethingElseText(needHelpWithSomethingText);
-        Assertions.assertEquals(needHelpWithSomethingText, createCustomRequestOverlay.getNeedHelpWithSomethingElseText(), "Added text should be equal to displayed");
+        Assertions.assertEquals(needHelpWithSomethingText, createCustomRequestOverlay.getNeedHelpWithSomethingElseText(), "'my custom need' should be equal to displayed");
     }
 }
