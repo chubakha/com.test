@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyCloseNeedHelpWithSomethingElsePopupTest extends PrepareFirstRegistrationPageTestData {
+public class VerifyCloseCreateCustomRequestPopupTest extends PrepareFirstRegistrationPageTestData {
     @Test
-    void verifyCloseNeedHelpWithSomethingElsePopup(){
+    void verifyCloseCreateCustomRequestPopup(){
         FirstRegistrationPage firstRegistrationPage =
                 new FirstRegistrationPage()
                         .clickNeedHelpWithSomethingElseButton()

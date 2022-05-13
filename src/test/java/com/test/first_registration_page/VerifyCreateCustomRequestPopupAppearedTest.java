@@ -7,12 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyHelpWithSomethingElseTitleTest extends PrepareFirstRegistrationPageTestData {
+public class VerifyCreateCustomRequestPopupAppearedTest extends PrepareFirstRegistrationPageTestData {
     @Test
-    void verifyHelpWithSomethingElseTitle(){
+    void verifyCreateCustomRequestPopupAppeared() {
         CreateCustomRequestOverlay createCustomRequestOverlay =
                 new FirstRegistrationPage()
                         .clickNeedHelpWithSomethingElseButton();
-        Assertions.assertEquals("Create Custom Request", createCustomRequestOverlay.getNeedHelpWithSomethingElseTitle(), "'Create Custom Request' should be shown on popup");
+        sleep(3000);
+        Assertions.assertTrue(createCustomRequestOverlay.isNeedHelpWithSomethingElse(),"'Create Custom Request' should be shown");
     }
 }
