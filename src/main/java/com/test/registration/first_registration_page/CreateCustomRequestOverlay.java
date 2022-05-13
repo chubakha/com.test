@@ -8,12 +8,7 @@ public class CreateCustomRequestOverlay {
     private SelenideElement needHelpWithSomethingElseTextArea = $x("//*[contains(@class, 'CustomModal_textarea')]");
 
     public boolean isNeedHelpWithSomethingElse(){
-        boolean b = $x("//*[contains(@class, 'slide-enter-done')]").exists();
-        System.out.println(b);
-
-        boolean c = $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
-        System.out.println(c);
-        return $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
+        return $x("//div[contains(@class, 'slide-enter-done')]").isDisplayed();
     }
 
     public CreateCustomRequestOverlay setNeedHelpWithSomethingElseText(String text){
@@ -23,6 +18,10 @@ public class CreateCustomRequestOverlay {
 
     public String getNeedHelpWithSomethingElseText(){
         return needHelpWithSomethingElseTextArea.getText();
+    }
+
+    public String getNeedHelpWithSomethingElseTitle(){
+        return $x("//h2[contains(@class, 'CustomModal_heading')]").getText();
     }
 
     public FirstRegistrationPage clickNeedHelpWithSomethingElseSendButton(){
