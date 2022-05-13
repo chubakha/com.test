@@ -5,17 +5,15 @@ import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-///////////???????????
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyCloseNeedHelpWithSomethingElsePopupTest extends PrepareFirstRegistrationPageTestData {
     @Test
     void verifyCloseNeedHelpWithSomethingElsePopup(){
-        CreateCustomRequestOverlay createCustomRequestOverlay =
-                new FirstRegistrationPage()
-                        .clickNeedHelpWithSomethingElseButton();
         FirstRegistrationPage firstRegistrationPage =
-                new CreateCustomRequestOverlay()
+                new FirstRegistrationPage()
+                        .clickNeedHelpWithSomethingElseButton()
                         .clickHelpWithSomethingElseClosePopup();
-        Assertions.assertTrue(createCustomRequestOverlay.isNeedHelpWithSomethingElse(),"'Create Custom Request' should be shown");
+        Assertions.assertFalse(firstRegistrationPage.isNotNeedHelpWithSomethingElse(), "'Create Custom Request' should not be shown");
     }
 }

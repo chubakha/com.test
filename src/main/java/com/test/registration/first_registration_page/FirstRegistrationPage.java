@@ -8,13 +8,6 @@ import java.util.Random;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FirstRegistrationPage {
-    private SelenideElement nextButton = $x("//*[text() = 'NEXT']");
-    private SelenideElement needHelpWithSomethingElse = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]");
-    private SelenideElement whatDoYouNeedLegallySolved = $x("//*[text() = 'What do you need legally solved?']");
-    private SelenideElement stepNumberTextLabel = $x("//div[@class='registration-quiz__header-container']/b");
-    private SelenideElement addedHelpWithSomethingElseText = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[2]/div[contains(@class, 'checkbox_checkbox')]");
-    private SelenideElement needHelpWithSomethingElseText = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[1]");
-
     public SecondRegistrationPage clickOneCheckboxInEverySection(){
         clickRandomIncorporationCheckBox();
         clickAccountingAndTaxesOneCheckbox();
@@ -89,28 +82,36 @@ public class FirstRegistrationPage {
     }
 
     public void clickNextButton() {
-        nextButton.click();
+        $x("//*[text() = 'NEXT']").click();
     }
 
     public CreateCustomRequestOverlay clickNeedHelpWithSomethingElseButton() {
-        needHelpWithSomethingElse.click();
+        $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]").click();
         return new CreateCustomRequestOverlay();
     }
 
     public FirstRegistrationPage deleteNeedHelpWithSomethingElseButton() {
-        addedHelpWithSomethingElseText.click();
+        $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[2]/div[contains(@class, 'checkbox_checkbox')]").click();
         return this;
     }
 
     public String getWhatDoYouNeedLegallySolved(){
-        return whatDoYouNeedLegallySolved.getText();
+        return $x("//*[text() = 'What do you need legally solved?']").getText();
     }
 
     public String getStepNumberTextLabel(){
-        return stepNumberTextLabel.getText();
+        return $x("//div[@class='registration-quiz__header-container']/b").getText();
+    }
+
+    public String getAddedNeedHelpWithSomethingElseText() {
+        return $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[2]/div/span").getText();
     }
 
     public String getNeedHelpWithSomethingElseText() {
-        return needHelpWithSomethingElseText.getText();
+        return $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[1]").getText();
+    }
+
+    public boolean isNotNeedHelpWithSomethingElse(){
+        return $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
     }
 }
