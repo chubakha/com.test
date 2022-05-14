@@ -1,5 +1,6 @@
 package com.test.registration.first_registration_page;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
 import java.util.Random;
@@ -7,7 +8,9 @@ import java.util.Random;
 import static com.codeborne.selenide.Selenide.*;
 
 public class FirstRegistrationPage {
-    public SecondRegistrationPage clickOneCheckboxInEverySection(){
+    private ElementsCollection toolTipIcons = $$x("//div[contains(@class,'FirstStep_firstStepBlockHeading')]/div[contains(@class,'FirstStep_firstStepBlockTooltip')]");
+
+    public SecondRegistrationPage clickOneCheckboxInEverySection() {
         clickRandomIncorporationCheckBox();
         clickAccountingAndTaxesOneCheckbox();
         clickHiringOneCheckbox();
@@ -15,7 +18,7 @@ public class FirstRegistrationPage {
         return new SecondRegistrationPage();
     }
 
-    public SecondRegistrationPage clickAllCheckboxInEverySection(){
+    public SecondRegistrationPage clickAllCheckboxInEverySection() {
         clickAllCheckboxInIncorporation();
         clickAllCheckboxInAccountingAndTaxes();
         clickAllCheckboxInHiring();
@@ -23,14 +26,14 @@ public class FirstRegistrationPage {
         return new SecondRegistrationPage();
     }
 
-    public FirstRegistrationPage clickRandomIncorporationCheckBox(){
+    public FirstRegistrationPage clickRandomIncorporationCheckBox() {
         int randomIncorporation = choiceRandomOneCheckbox(3);
         IncorporationValuesType incorporation = IncorporationValuesType.values()[randomIncorporation];
         clickCheckbox(incorporation.getValue());
         return this;
     }
 
-    public FirstRegistrationPage clickAccountingAndTaxesOneCheckbox(){
+    public FirstRegistrationPage clickAccountingAndTaxesOneCheckbox() {
         int randomAccountingAndTaxes = choiceRandomOneCheckbox(6);
         AccountingAndTaxesValueType accountingandtaxes = AccountingAndTaxesValueType.values()[randomAccountingAndTaxes];
         clickCheckbox(accountingandtaxes.getValue());
@@ -65,16 +68,20 @@ public class FirstRegistrationPage {
         return this;
     }
 
-    public FirstRegistrationPage hoverOneInfoIcon(SelenideElement selenideElement) {
-        selenideElement.hover();
-        return this;
+    public boolean[] hoverAllInfoIcon() {
+        boolean[] textHintArray = new boolean[toolTipIcons.size()];
+        for (int i = 0; i < toolTipIcons.size(); i++) {
+            toolTipIcons.get(i).hover();
+            textHintArray[i] = $$x("//div[contains(@class,'FirstStep_firstStepBlockTooltipDropDown')]").get(i).isDisplayed();
+        }
+        return textHintArray;
     }
 
-    public int choiceRandomOneCheckbox(int amount){
+    public int choiceRandomOneCheckbox(int amount) {
         return new Random().nextInt(amount);
     }
 
-    public FirstRegistrationPage clickCheckbox(String value){
+    public FirstRegistrationPage clickCheckbox(String value) {
         String xpath = String.format("//*[text() = '%s']", value);
         $x(xpath).click();
         return this;
@@ -94,11 +101,11 @@ public class FirstRegistrationPage {
         return this;
     }
 
-    public String getWhatDoYouNeedLegallySolved(){
+    public String getWhatDoYouNeedLegallySolved() {
         return $x("//*[text() = 'What do you need legally solved?']").getText();
     }
 
-    public String getStepNumberTextLabel(){
+    public String getStepNumberTextLabel() {
         return $x("//div[@class='registration-quiz__header-container']/b").getText();
     }
 
@@ -110,7 +117,7 @@ public class FirstRegistrationPage {
         return $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[1]").getText();
     }
 
-    public boolean isNotNeedHelpWithSomethingElse(){
+    public boolean isNotNeedHelpWithSomethingElse() {
         return $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
     }
 }
