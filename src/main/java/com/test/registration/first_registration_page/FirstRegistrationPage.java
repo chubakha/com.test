@@ -1,7 +1,6 @@
 package com.test.registration.first_registration_page;
 
 import com.codeborne.selenide.SelenideElement;
-import com.test.registration.*;
 
 import java.util.Random;
 
