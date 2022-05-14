@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class FirstRegistrationPage {
     private ElementsCollection toolTipIcons = $$x("//div[contains(@class,'FirstStep_firstStepBlockHeading')]/div[contains(@class,'FirstStep_firstStepBlockTooltip')]");
+    private ElementsCollection toolTipText = $$x("//div[contains(@class,'FirstStep_firstStepBlockTooltipDropDown')]");
 
     public SecondRegistrationPage clickOneCheckboxInEverySection() {
         clickRandomIncorporationCheckBox();
@@ -72,7 +73,15 @@ public class FirstRegistrationPage {
         boolean[] textHintArray = new boolean[toolTipIcons.size()];
         for (int i = 0; i < toolTipIcons.size(); i++) {
             toolTipIcons.get(i).hover();
-            textHintArray[i] = $$x("//div[contains(@class,'FirstStep_firstStepBlockTooltipDropDown')]").get(i).isDisplayed();
+            textHintArray[i] = toolTipText.get(i).isDisplayed();
+        }
+        return textHintArray;
+    }
+
+    public String[] getToolTipText(){
+        String[] textHintArray = new String[toolTipText.size()];
+        for (int i = 0; i < toolTipText.size(); i++) {
+            textHintArray[i] = toolTipText.get(i).innerText();
         }
         return textHintArray;
     }

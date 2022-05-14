@@ -9,7 +9,7 @@ public class VerifyToolTipsPopupIsShownTest extends PrepareFirstRegistrationPage
     void verifyToolTipsPopupIsShown(){
         boolean textHintArray[] = new FirstRegistrationPage().hoverAllInfoIcon();
         boolean trueArray[] = new boolean[textHintArray.length];
-        Arrays.fill(trueArray, false);
+        Arrays.fill(trueArray, true);
         Assertions.assertArrayEquals(trueArray, textHintArray, "Every text hint should be shown after hovering");
     }
 }
