@@ -9,8 +9,7 @@ public class VerifyAllSelectedCheckboxesTest extends PrepareFirstRegistrationPag
     void verifyAllSelectedCheckboxes() {
         SecondRegistrationPage secondRegistrationPage =
                 new FirstRegistrationPage()
-                        .clickAllCheckboxInEverySection();
-
+                        .choiceAllCheckboxInEverySection();
         secondRegistrationPage.getStepNumberTextLabel();
         Assertions.assertEquals("2/4", secondRegistrationPage.getStepNumberTextLabel(),"2/4 should be shown on Second Registration Page");
     }

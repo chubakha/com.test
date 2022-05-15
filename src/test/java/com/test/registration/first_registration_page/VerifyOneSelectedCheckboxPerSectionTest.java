@@ -10,7 +10,7 @@ public class VerifyOneSelectedCheckboxPerSectionTest extends PrepareFirstRegistr
     void verifyOneSelectedCheckboxPerSection() {
         SecondRegistrationPage secondRegistrationPage =
                 new FirstRegistrationPage()
-                        .clickOneCheckboxInEverySection();
+                        .choiceOneCheckboxInEverySection();
 
         secondRegistrationPage.getStepNumberTextLabel();
         Assertions.assertEquals("2/4", secondRegistrationPage.getStepNumberTextLabel(),"2/4 should be shown on Second Registration Page");

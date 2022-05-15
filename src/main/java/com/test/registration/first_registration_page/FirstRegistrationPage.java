@@ -1,8 +1,10 @@
 package com.test.registration.first_registration_page;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.test.registration.Functions;
 import com.test.registration.second_registration_page.SecondRegistrationPage;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -10,8 +12,16 @@ import static com.codeborne.selenide.Selenide.*;
 public class FirstRegistrationPage {
     private ElementsCollection toolTipIcons = $$x("//div[contains(@class,'FirstStep_firstStepBlockHeading')]/div[contains(@class,'FirstStep_firstStepBlockTooltip')]");
     private ElementsCollection toolTipText = $$x("//div[contains(@class,'FirstStep_firstStepBlockTooltipDropDown')]");
+    private ElementsCollection selectedOptions = $$x("//div[contains(@class, 'checkbox_containerActive')]/following-sibling::span");
 
-    public SecondRegistrationPage clickOneCheckboxInEverySection() {
+
+    public SecondRegistrationPage choiceOneCheckboxInEverySection() {
+        selectOneCheckboxInEverySection();
+        clickNextButton();
+        return new SecondRegistrationPage();
+    }
+
+    public FirstRegistrationPage selectOneCheckboxInEverySection() {
         clickRandomIncorporationCheckBox();
         clickRandomAccountingAndTaxesCheckbox();
         clickRandomHiringCheckbox();
@@ -21,11 +31,16 @@ public class FirstRegistrationPage {
         clickRandomFundraisingCheckbox();
         clickRandomTokenGenerationDistributionCheckbox();
         clickRandomLaunchingDaoWeb3Checkbox();
+        return this;
+    }
+
+    public SecondRegistrationPage choiceAllCheckboxInEverySection() {
+        selectAllCheckboxInEverySection();
         clickNextButton();
         return new SecondRegistrationPage();
     }
 
-    public SecondRegistrationPage clickAllCheckboxInEverySection() {
+    public FirstRegistrationPage selectAllCheckboxInEverySection() {
         clickAllIncorporationCheckbox();
         clickAllAccountingAndTaxesCheckbox();
         clickAllHiringCheckbox();
@@ -35,8 +50,7 @@ public class FirstRegistrationPage {
         clickAllFundraisingCheckbox();
         clickAllTokenGenerationDistributionCheckbox();
         clickAllLaunchingDaoWeb3CheckboxCheckbox();
-        clickNextButton();
-        return new SecondRegistrationPage();
+        return this;
     }
 
     public FirstRegistrationPage clickRandomIncorporationCheckBox() {
@@ -225,4 +239,14 @@ public class FirstRegistrationPage {
     public boolean isNotNeedHelpWithSomethingElse() {
         return $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
     }
+
+    public String[] selectRandomOptionsForCompareOnSecondRegistrationPage(){
+        choiceOneCheckboxInEverySection();
+        //System.out.println(selectedOptions.size());
+        String[] chosenListFirstCopy = new Functions().getChosenOptions(selectedOptions);
+        String[] chosenListFirst = Arrays.copyOfRange(chosenListFirstCopy, 0, chosenListFirstCopy.length/2);
+        return chosenListFirst;
+    }
+
+
 }
