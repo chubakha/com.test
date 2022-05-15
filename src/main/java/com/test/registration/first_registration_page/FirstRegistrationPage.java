@@ -1,7 +1,7 @@
 package com.test.registration.first_registration_page;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
+import com.test.registration.second_registration_page.SecondRegistrationPage;
 
 import java.util.Random;
 
@@ -13,16 +13,28 @@ public class FirstRegistrationPage {
 
     public SecondRegistrationPage clickOneCheckboxInEverySection() {
         clickRandomIncorporationCheckBox();
-        clickAccountingAndTaxesOneCheckbox();
-        clickHiringOneCheckbox();
+        clickRandomAccountingAndTaxesCheckbox();
+        clickRandomHiringCheckbox();
+        clickRandomIpprotectionCheckbox();
+        clickRandomClientAcquisitionCheckbox();
+        clickRandomPrivacygdprcomplianceCheckbox();
+        clickRandomFundraisingCheckbox();
+        clickRandomTokenGenerationDistributionCheckbox();
+        clickRandomLaunchingDaoWeb3Checkbox();
         clickNextButton();
         return new SecondRegistrationPage();
     }
 
     public SecondRegistrationPage clickAllCheckboxInEverySection() {
-        clickAllCheckboxInIncorporation();
-        clickAllCheckboxInAccountingAndTaxes();
-        clickAllCheckboxInHiring();
+        clickAllIncorporationCheckbox();
+        clickAllAccountingAndTaxesCheckbox();
+        clickAllHiringCheckbox();
+        clickAllIpprotectionCheckbox();
+        clickAllClientAcquisitionCheckbox();
+        clickAllPrivacygdprcomplianceCheckbox();
+        clickAllFundraisingCheckbox();
+        clickAllTokenGenerationDistributionCheckbox();
+        clickAllLaunchingDaoWeb3CheckboxCheckbox();
         clickNextButton();
         return new SecondRegistrationPage();
     }
@@ -34,37 +46,121 @@ public class FirstRegistrationPage {
         return this;
     }
 
-    public FirstRegistrationPage clickAccountingAndTaxesOneCheckbox() {
-        int randomAccountingAndTaxes = choiceRandomOneCheckbox(6);
+    public FirstRegistrationPage clickRandomAccountingAndTaxesCheckbox() {
+        int randomAccountingAndTaxes = choiceRandomOneCheckbox(5);
         AccountingAndTaxesValueType accountingandtaxes = AccountingAndTaxesValueType.values()[randomAccountingAndTaxes];
         clickCheckbox(accountingandtaxes.getValue());
         return this;
     }
 
-    public FirstRegistrationPage clickHiringOneCheckbox() {
+    public FirstRegistrationPage clickRandomHiringCheckbox() {
         int randomHiring = choiceRandomOneCheckbox(4);
         HiringValueType hiring = HiringValueType.values()[randomHiring];
         clickCheckbox(hiring.getValue());
         return this;
     }
 
-    public FirstRegistrationPage clickAllCheckboxInIncorporation() {
+    public FirstRegistrationPage clickRandomIpprotectionCheckbox() {
+        int randomIpprotection = choiceRandomOneCheckbox(2);
+        IpprotectionValueType ipprotection = IpprotectionValueType.values()[randomIpprotection];
+        clickCheckbox(ipprotection.getValue());
+        return this;
+    }
+
+    public FirstRegistrationPage clickRandomClientAcquisitionCheckbox() {
+        int randomClientAcquisition = choiceRandomOneCheckbox(3);
+        ClientAcquisitionValueType clientAcquisition = ClientAcquisitionValueType.values()[randomClientAcquisition];
+        clickCheckbox(clientAcquisition.getValue());
+        return this;
+    }
+
+    public FirstRegistrationPage clickRandomPrivacygdprcomplianceCheckbox() {
+        int randomPrivacygdprcompliance = choiceRandomOneCheckbox(3);
+        PrivacygdprcomplianceValueType privacygdprcompliance = PrivacygdprcomplianceValueType.values()[randomPrivacygdprcompliance];
+        clickCheckbox(privacygdprcompliance.getValue());
+        return this;
+    }
+
+    public FirstRegistrationPage clickRandomFundraisingCheckbox() {
+        int randomFundraising = choiceRandomOneCheckbox(4);
+        FundraisingValueType fundraising = FundraisingValueType.values()[randomFundraising];
+        clickCheckbox(fundraising.getValue());
+        return this;
+    }
+
+    public FirstRegistrationPage clickRandomTokenGenerationDistributionCheckbox() {
+        int randomTokenGenerationDistribution = choiceRandomOneCheckbox(4);
+        TokenGenerationDistributionValueType tokenGenerationDistribution = TokenGenerationDistributionValueType.values()[randomTokenGenerationDistribution];
+        clickCheckbox(tokenGenerationDistribution.getValue());
+        return this;
+    }
+
+    public FirstRegistrationPage clickRandomLaunchingDaoWeb3Checkbox() {
+        int randomLaunchingDaoWeb3 = choiceRandomOneCheckbox(4);
+        LaunchingDaoWeb3ValueType launchingDaoWeb3 = LaunchingDaoWeb3ValueType.values()[randomLaunchingDaoWeb3];
+        clickCheckbox(launchingDaoWeb3.getValue());
+        return this;
+    }
+
+    public FirstRegistrationPage clickAllIncorporationCheckbox() {
         for (IncorporationValuesType incorporation : IncorporationValuesType.values()) {
             clickCheckbox(incorporation.getValue());
         }
         return this;
     }
 
-    public FirstRegistrationPage clickAllCheckboxInAccountingAndTaxes() {
+    public FirstRegistrationPage clickAllAccountingAndTaxesCheckbox() {
         for (AccountingAndTaxesValueType accountingandtaxes : AccountingAndTaxesValueType.values()) {
             clickCheckbox(accountingandtaxes.getValue());
         }
         return this;
     }
 
-    public FirstRegistrationPage clickAllCheckboxInHiring() {
+    public FirstRegistrationPage clickAllHiringCheckbox() {
         for (HiringValueType hiring : HiringValueType.values()) {
             clickCheckbox(hiring.getValue());
+        }
+        return this;
+    }
+
+    public FirstRegistrationPage clickAllIpprotectionCheckbox() {
+        for (IpprotectionValueType ipprotection : IpprotectionValueType.values()) {
+            clickCheckbox(ipprotection.getValue());
+        }
+        return this;
+    }
+
+    public FirstRegistrationPage clickAllClientAcquisitionCheckbox() {
+        for (ClientAcquisitionValueType clientAcquisition : ClientAcquisitionValueType.values()) {
+            clickCheckbox(clientAcquisition.getValue());
+        }
+        return this;
+    }
+
+    public FirstRegistrationPage clickAllPrivacygdprcomplianceCheckbox() {
+        for (PrivacygdprcomplianceValueType privacygdprcompliance : PrivacygdprcomplianceValueType.values()) {
+            clickCheckbox(privacygdprcompliance.getValue());
+        }
+        return this;
+    }
+
+    public FirstRegistrationPage clickAllFundraisingCheckbox() {
+        for (FundraisingValueType fundraising : FundraisingValueType.values()) {
+            clickCheckbox(fundraising.getValue());
+        }
+        return this;
+    }
+
+    public FirstRegistrationPage clickAllTokenGenerationDistributionCheckbox() {
+        for (TokenGenerationDistributionValueType tokenGenerationDistribution : TokenGenerationDistributionValueType.values()) {
+            clickCheckbox(tokenGenerationDistribution.getValue());
+        }
+        return this;
+    }
+
+    public FirstRegistrationPage clickAllLaunchingDaoWeb3CheckboxCheckbox() {
+        for (LaunchingDaoWeb3ValueType daoWeb3Checkbox : LaunchingDaoWeb3ValueType.values()) {
+            clickCheckbox(daoWeb3Checkbox.getValue());
         }
         return this;
     }

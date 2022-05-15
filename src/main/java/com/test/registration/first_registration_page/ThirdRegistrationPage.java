@@ -1,6 +1,7 @@
 package com.test.registration.first_registration_page;
 
 import com.codeborne.selenide.SelenideElement;
+import com.test.registration.second_registration_page.SecondRegistrationPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 
