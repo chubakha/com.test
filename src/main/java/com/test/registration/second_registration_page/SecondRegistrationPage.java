@@ -2,6 +2,7 @@ package com.test.registration.second_registration_page;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.test.registration.Functions;
+import com.test.registration.first_registration_page.FirstRegistrationPage;
 
 import java.util.Random;
 
@@ -45,10 +46,15 @@ public class SecondRegistrationPage {
         return chosenListSecondPage;
     }
 
-    public String deleteOneRandomChosenOption(){
+    public String deleteOneRandomChosenOptionFromFew(){
         String[] chosenListSecondPage = getChosenOptions();
         String deletingElement = chosenListSecondPage[new Random().nextInt(chosenListSecondPage.length/2)];
         $x("//*[contains(text(), '" + deletingElement + "')]").click();
         return deletingElement;
+    }
+
+    public FirstRegistrationPage deleteOneRandomChosenOptionFromOne(){
+        $x("(//span[contains(@class,'checkbox_label')])[1]").click();
+        return new FirstRegistrationPage();
     }
 }

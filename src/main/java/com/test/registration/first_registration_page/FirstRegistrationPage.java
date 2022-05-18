@@ -206,6 +206,12 @@ public class FirstRegistrationPage {
         return this;
     }
 
+    public SecondRegistrationPage choiceFirstCheckbox(){
+        $x("(//span[contains(@class,'checkbox_label')])[1]").click();
+        clickNextButton();
+        return new SecondRegistrationPage();
+    }
+
     public void clickNextButton() {
         $x("//*[text() = 'NEXT']").click();
     }
