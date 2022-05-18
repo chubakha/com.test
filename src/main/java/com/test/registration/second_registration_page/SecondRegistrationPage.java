@@ -1,13 +1,11 @@
 package com.test.registration.second_registration_page;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import com.test.registration.Functions;
-import com.test.registration.first_registration_page.FirstRegistrationPage;
-import com.test.registration.first_registration_page.ThirdRegistrationPage;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import java.util.Random;
+
+import static com.codeborne.selenide.Selenide.*;
 
 public class SecondRegistrationPage {
 
@@ -43,7 +41,14 @@ public class SecondRegistrationPage {
     }
 
     public String[] getChosenOptions(){
-        String[] chosenListSecond = new Functions().getChosenOptions(selectedOptions);
-        return chosenListSecond;
+        String[] chosenListSecondPage = new Functions().getChosenOptions(selectedOptions);
+        return chosenListSecondPage;
+    }
+
+    public String deleteOneRandomChosenOption(){
+        String[] chosenListSecondPage = getChosenOptions();
+        String deletingElement = chosenListSecondPage[new Random().nextInt(chosenListSecondPage.length/2)];
+        $x("//*[contains(text(), '" + deletingElement + "')]").click();
+        return deletingElement;
     }
 }

@@ -240,9 +240,8 @@ public class FirstRegistrationPage {
         return $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
     }
 
-    public String[] selectRandomOptionsForCompareOnSecondRegistrationPage(){
+    public String[] getChosenOptions(){
         choiceOneCheckboxInEverySection();
-        //System.out.println(selectedOptions.size());
         String[] chosenListFirstCopy = new Functions().getChosenOptions(selectedOptions);
         String[] chosenListFirst = Arrays.copyOfRange(chosenListFirstCopy, 0, chosenListFirstCopy.length/2);
         return chosenListFirst;
