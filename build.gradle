@@ -16,6 +16,7 @@ ext {
 }
 
 dependencies {
+    //compile('org.slf4j:slf4j-api:1.7.21')
     implementation("com.codeborne:selenide:5.10.0")
     testImplementation("org.junit.jupiter:junit-jupiter:$junit5Ver","com.codeborne:selenide:6.4.0")
     testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Ver")

@@ -54,63 +54,63 @@ public class FirstRegistrationPage {
     }
 
     public FirstRegistrationPage clickRandomIncorporationCheckBox() {
-        int randomIncorporation = choiceRandomOneCheckbox(3);
+        int randomIncorporation = generateRandomOneCheckbox(3);
         IncorporationValuesType incorporation = IncorporationValuesType.values()[randomIncorporation];
         clickCheckbox(incorporation.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomAccountingAndTaxesCheckbox() {
-        int randomAccountingAndTaxes = choiceRandomOneCheckbox(5);
+        int randomAccountingAndTaxes = generateRandomOneCheckbox(5);
         AccountingAndTaxesValueType accountingandtaxes = AccountingAndTaxesValueType.values()[randomAccountingAndTaxes];
         clickCheckbox(accountingandtaxes.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomHiringCheckbox() {
-        int randomHiring = choiceRandomOneCheckbox(4);
+        int randomHiring = generateRandomOneCheckbox(4);
         HiringValueType hiring = HiringValueType.values()[randomHiring];
         clickCheckbox(hiring.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomIpprotectionCheckbox() {
-        int randomIpprotection = choiceRandomOneCheckbox(2);
+        int randomIpprotection = generateRandomOneCheckbox(2);
         IpprotectionValueType ipprotection = IpprotectionValueType.values()[randomIpprotection];
         clickCheckbox(ipprotection.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomClientAcquisitionCheckbox() {
-        int randomClientAcquisition = choiceRandomOneCheckbox(3);
+        int randomClientAcquisition = generateRandomOneCheckbox(3);
         ClientAcquisitionValueType clientAcquisition = ClientAcquisitionValueType.values()[randomClientAcquisition];
         clickCheckbox(clientAcquisition.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomPrivacygdprcomplianceCheckbox() {
-        int randomPrivacygdprcompliance = choiceRandomOneCheckbox(3);
+        int randomPrivacygdprcompliance = generateRandomOneCheckbox(3);
         PrivacygdprcomplianceValueType privacygdprcompliance = PrivacygdprcomplianceValueType.values()[randomPrivacygdprcompliance];
         clickCheckbox(privacygdprcompliance.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomFundraisingCheckbox() {
-        int randomFundraising = choiceRandomOneCheckbox(4);
+        int randomFundraising = generateRandomOneCheckbox(4);
         FundraisingValueType fundraising = FundraisingValueType.values()[randomFundraising];
         clickCheckbox(fundraising.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomTokenGenerationDistributionCheckbox() {
-        int randomTokenGenerationDistribution = choiceRandomOneCheckbox(4);
+        int randomTokenGenerationDistribution = generateRandomOneCheckbox(4);
         TokenGenerationDistributionValueType tokenGenerationDistribution = TokenGenerationDistributionValueType.values()[randomTokenGenerationDistribution];
         clickCheckbox(tokenGenerationDistribution.getValue());
         return this;
     }
 
     public FirstRegistrationPage clickRandomLaunchingDaoWeb3Checkbox() {
-        int randomLaunchingDaoWeb3 = choiceRandomOneCheckbox(4);
+        int randomLaunchingDaoWeb3 = generateRandomOneCheckbox(4);
         LaunchingDaoWeb3ValueType launchingDaoWeb3 = LaunchingDaoWeb3ValueType.values()[randomLaunchingDaoWeb3];
         clickCheckbox(launchingDaoWeb3.getValue());
         return this;
@@ -196,7 +196,7 @@ public class FirstRegistrationPage {
         return textHintArray;
     }
 
-    public int choiceRandomOneCheckbox(int amount) {
+    public int generateRandomOneCheckbox(int amount) {
         return new Random().nextInt(amount);
     }
 
@@ -206,10 +206,20 @@ public class FirstRegistrationPage {
         return this;
     }
 
-    public SecondRegistrationPage choiceFirstCheckbox(){
-        $x("(//span[contains(@class,'checkbox_label')])[1]").click();
+    public void clickOneRandomCheckbox(){
+        int randomOption = new Random().nextInt(9) + 1;
+        $x("(//span[contains(@class,'checkbox_label')])["+randomOption+"]").click();
+    }
+
+    public SecondRegistrationPage choiceOneRandomCheckbox(){
+        clickOneRandomCheckbox();
         clickNextButton();
         return new SecondRegistrationPage();
+    }
+
+    public FirstRegistrationPage clickNextButtonWithoutOption(){
+        clickNextButton();
+        return this;
     }
 
     public void clickNextButton() {
@@ -246,12 +256,15 @@ public class FirstRegistrationPage {
         return $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
     }
 
-    public String[] getChosenOptions(){
+    public String[] choiceAndGetAllChosenOptions(){
         choiceOneCheckboxInEverySection();
+        String[] chosenListFirst = getAllChosenOptions();
+        return chosenListFirst;
+    }
+
+    public String[] getAllChosenOptions(){
         String[] chosenListFirstCopy = new Functions().getChosenOptions(selectedOptions);
         String[] chosenListFirst = Arrays.copyOfRange(chosenListFirstCopy, 0, chosenListFirstCopy.length/2);
         return chosenListFirst;
     }
-
-
 }
