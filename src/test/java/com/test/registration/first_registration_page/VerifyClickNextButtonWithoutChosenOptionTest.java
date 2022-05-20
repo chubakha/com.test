@@ -8,7 +8,7 @@ public class VerifyClickNextButtonWithoutChosenOptionTest extends PrepareFirstRe
     void verifyClickNextButtonWithoutChosenOption(){
         FirstRegistrationPage firstRegistrationPage =
                 new FirstRegistrationPage()
-                        .clickNextButtonWithoutOption();
+                        .clickNextButtonWithoutRedirection();
         Assertions.assertEquals("1/4", firstRegistrationPage.getStepNumberTextLabel(), "1/4 should be shown");
     }
 }

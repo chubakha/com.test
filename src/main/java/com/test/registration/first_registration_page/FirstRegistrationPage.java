@@ -217,9 +217,14 @@ public class FirstRegistrationPage {
         return new SecondRegistrationPage();
     }
 
-    public FirstRegistrationPage clickNextButtonWithoutOption(){
+    public FirstRegistrationPage clickNextButtonWithoutRedirection(){
         clickNextButton();
         return this;
+    }
+
+    public SecondRegistrationPage clickNextButtonToSecondPage() {
+        $x("//*[text() = 'NEXT']").click();
+        return new SecondRegistrationPage();
     }
 
     public void clickNextButton() {
@@ -258,13 +263,19 @@ public class FirstRegistrationPage {
 
     public String[] choiceAndGetAllChosenOptions(){
         choiceOneCheckboxInEverySection();
-        String[] chosenListFirst = getAllChosenOptions();
-        return chosenListFirst;
+        String[] chosenListFirstPage = getAllChosenOptions();
+        return chosenListFirstPage;
     }
 
     public String[] getAllChosenOptions(){
-        String[] chosenListFirstCopy = new Functions().getChosenOptions(selectedOptions);
-        String[] chosenListFirst = Arrays.copyOfRange(chosenListFirstCopy, 0, chosenListFirstCopy.length/2);
-        return chosenListFirst;
+        String[] chosenListFirstPageCopy = new Functions().getChosenOptions(selectedOptions);
+        String[] chosenListFirstPage = Arrays.copyOfRange(chosenListFirstPageCopy, 0, chosenListFirstPageCopy.length/2);
+        return chosenListFirstPage;
     }
+
+    public String[] getAllChosenOptionsOriginal(){
+        String[] chosenListFirstPage = new Functions().getChosenOptions(selectedOptions);
+        return chosenListFirstPage;
+    }
+
 }
