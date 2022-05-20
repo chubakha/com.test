@@ -3,6 +3,7 @@ package com.test.registration.second_registration_page;
 import com.codeborne.selenide.ElementsCollection;
 import com.test.registration.Functions;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.third_page_registration.ThirdRegistrationPage;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -11,12 +12,12 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class SecondRegistrationPage {
 
-    /*public ThirdRegistrationPage clickNextButton() {
-        nextButton.click();
-        return new ThirdRegistrationPage();
-    }*/
-
     private ElementsCollection selectedOptions = $$x("//div[contains(@class, 'checkbox_containerActive')]/following-sibling::span");
+
+    public ThirdRegistrationPage clickNextButton() {
+        $x("//*[text() = 'NEXT']").click();
+        return new ThirdRegistrationPage();
+    }
 
     public FirstRegistrationPage clickBackButton() {
         $x("//*[text() = 'back']").click();

@@ -7,9 +7,9 @@ import org.junit.jupiter.api.Test;
 public class VerifyPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOutTest extends PrepareSecondRegistrationPageTestData {
     @Test
     void verifyPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOutTest(){
-        new FirstRegistrationPage().choiceOneCheckboxInEverySection();
+        SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage().choiceOneCheckboxInEverySection();
         Assertions.assertEquals("Please check the list of tasks which should be legally sorted out",
-                new SecondRegistrationPage().getPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOut(),
+                secondRegistrationPage.getPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOut(),
                 "'Please check the list of tasks which should be legally sorted out' should be shown");
 
     }
