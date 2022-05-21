@@ -14,10 +14,10 @@ public class VerifyReturnToPreviousPageTest extends PrepareRegistrationTestData 
     void verifyReturnToPreviousPage(){
         new FirstRegistrationPage()
                         .choiceOneRandomCheckbox();
-        sleep(2000);
+        sleep(1000);
         new SecondRegistrationPage()
                 .clickNextButton();
-        sleep(2000);
+        sleep(1000);
         SecondRegistrationPage secondRegistrationPage =
                 new ThirdRegistrationPage()
                         .clickBackButton();

@@ -2,7 +2,7 @@ package com.test.registration.third_page_registration;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.test.registration.Functions;
-import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import com.test.registration.second_registration_page.SecondRegistrationPage;
 
 import static com.codeborne.selenide.Selenide.$$x;
@@ -36,5 +36,20 @@ public class ThirdRegistrationPage {
     public SecondRegistrationPage clickBackButton() {
         $x("//*[text() = 'back']").click();
         return new SecondRegistrationPage();
+    }
+
+    public FourthRegistrationPage clickConnectButton() {
+        $x("//*[text() = 'CONNECT']").click();
+        return new FourthRegistrationPage();
+    }
+
+    public String getOneChosenOption(){
+        String chosenOption = $x("//*[contains(@class,'ThirdStep_needItem')]").getText();
+        return chosenOption;
+    }
+
+    public String getOneChosenSection(){
+        String chosenOption = $x("//*[contains(@class,'ThirdStep_categoryCol')]").getText();
+        return chosenOption;
     }
 }

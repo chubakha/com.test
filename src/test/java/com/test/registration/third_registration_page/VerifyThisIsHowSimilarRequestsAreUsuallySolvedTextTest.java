@@ -15,9 +15,11 @@ public class VerifyThisIsHowSimilarRequestsAreUsuallySolvedTextTest extends Prep
         new FirstRegistrationPage()
                 .choiceOneRandomCheckbox();
         sleep(1000);
-        new SecondRegistrationPage().clickNextButton();
+        ThirdRegistrationPage thirdRegistrationPage =
+                new SecondRegistrationPage()
+                    .clickNextButton();
         Assertions.assertEquals("This is how similar requests are usually solved",
-                new ThirdRegistrationPage().getThisIsHowSimilarRequestsAreUsuallySolved(),
+                thirdRegistrationPage.getThisIsHowSimilarRequestsAreUsuallySolved(),
                 "'This is how similar requests are usually solved' should be shown");
     }
 

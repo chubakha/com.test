@@ -12,7 +12,7 @@ public class VerifyCreateCustomRequestPopupAppearedTest extends PrepareRegistrat
         CreateCustomRequestOverlay createCustomRequestOverlay =
                 new FirstRegistrationPage()
                         .clickNeedHelpWithSomethingElseButton();
-        sleep(3000);
+        sleep(1000);
         Assertions.assertTrue(createCustomRequestOverlay.isNeedHelpWithSomethingElse(),"'Create Custom Request' should be shown");
     }
 }

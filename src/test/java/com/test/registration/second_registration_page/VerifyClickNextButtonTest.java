@@ -11,10 +11,12 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyClickNextButtonTest extends PrepareRegistrationTestData {
     @Test
     void verifyClickNextButton(){
-                new FirstRegistrationPage()
-                        .choiceOneRandomCheckbox();
+        new FirstRegistrationPage()
+                .choiceOneRandomCheckbox();
                 sleep(1000);
-                new SecondRegistrationPage().clickNextButton();
-        Assertions.assertEquals("3/4", new ThirdRegistrationPage().getStepNumberTextLabel(), "'3/4' should be shown");
+        ThirdRegistrationPage thirdRegistrationPage =
+                new SecondRegistrationPage()
+                        .clickNextButton();
+        Assertions.assertEquals("3/4", thirdRegistrationPage.getStepNumberTextLabel(), "'3/4' should be shown");
     }
 }

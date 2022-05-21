@@ -15,9 +15,11 @@ public class VerifyMoveForwardToRegisterAndBookACallTextTest extends PrepareRegi
         new FirstRegistrationPage()
                 .choiceOneRandomCheckbox();
         sleep(1000);
-        new SecondRegistrationPage().clickNextButton();
+        ThirdRegistrationPage thirdRegistrationPage =
+                new SecondRegistrationPage()
+                        .clickNextButton();
         Assertions.assertEquals("Move forward to register and book a call with lawyer to discuss the suggested legal solutions",
-                new ThirdRegistrationPage().getMoveForwardToRegisterAndBookACall(),
+                thirdRegistrationPage.getMoveForwardToRegisterAndBookACall(),
                 "'Move forward to register and book a call with lawyer to discuss the suggested legal solutions' should be shown");
     }
 }
