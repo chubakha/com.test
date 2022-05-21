@@ -1,6 +1,13 @@
 package com.test.registration;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
+import com.google.common.collect.Multimap;
+
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Map;
 
 public class Functions {
     public String[] getChosenOptions(ElementsCollection selectedOptions){

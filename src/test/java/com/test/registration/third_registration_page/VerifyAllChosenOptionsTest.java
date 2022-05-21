@@ -17,9 +17,9 @@ public class VerifyAllChosenOptionsTest extends PrepareRegistrationTestData {
                         .selectAllCheckboxInEverySection()
                         .getAllChosenOptionsOriginal();
         new FirstRegistrationPage().clickNextButtonToSecondPage();
-        sleep(3000);
+        sleep(2000);
         new SecondRegistrationPage().clickNextButton();
-        sleep(3000);
+        sleep(2000);
         String[] chosenListSecondColumnTable =
                 new ThirdRegistrationPage().getSecondColumnTable();
         Assertions.assertArrayEquals(chosenListFirstPage, chosenListSecondColumnTable,

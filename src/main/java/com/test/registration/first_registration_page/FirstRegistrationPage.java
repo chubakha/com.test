@@ -5,6 +5,7 @@ import com.test.registration.Functions;
 import com.test.registration.second_registration_page.SecondRegistrationPage;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -188,7 +189,7 @@ public class FirstRegistrationPage {
         return textHintArray;
     }
 
-    public String[] getToolTipText(){
+    public String[] getToolTipText() {
         String[] textHintArray = new String[toolTipText.size()];
         for (int i = 0; i < toolTipText.size(); i++) {
             textHintArray[i] = toolTipText.get(i).innerText();
@@ -206,18 +207,18 @@ public class FirstRegistrationPage {
         return this;
     }
 
-    public void clickOneRandomCheckbox(){
+    public void clickOneRandomCheckbox() {
         int randomOption = new Random().nextInt(9) + 1;
-        $x("(//span[contains(@class,'checkbox_label')])["+randomOption+"]").click();
+        $x("(//span[contains(@class,'checkbox_label')])[" + randomOption + "]").click();
     }
 
-    public SecondRegistrationPage choiceOneRandomCheckbox(){
+    public SecondRegistrationPage choiceOneRandomCheckbox() {
         clickOneRandomCheckbox();
         clickNextButton();
         return new SecondRegistrationPage();
     }
 
-    public FirstRegistrationPage clickNextButtonWithoutRedirection(){
+    public FirstRegistrationPage clickNextButtonWithoutRedirection() {
         clickNextButton();
         return this;
     }
@@ -261,19 +262,19 @@ public class FirstRegistrationPage {
         return $x("//*[contains(@class, 'slide-enter-done')]").isDisplayed();
     }
 
-    public String[] choiceAndGetAllChosenOptions(){
+    public String[] choiceAndGetAllChosenOptions() {
         choiceOneCheckboxInEverySection();
         String[] chosenListFirstPage = getAllChosenOptions();
         return chosenListFirstPage;
     }
 
-    public String[] getAllChosenOptions(){
+    public String[] getAllChosenOptions() {
         String[] chosenListFirstPageCopy = new Functions().getChosenOptions(selectedOptions);
-        String[] chosenListFirstPage = Arrays.copyOfRange(chosenListFirstPageCopy, 0, chosenListFirstPageCopy.length/2);
+        String[] chosenListFirstPage = Arrays.copyOfRange(chosenListFirstPageCopy, 0, chosenListFirstPageCopy.length / 2);
         return chosenListFirstPage;
     }
 
-    public String[] getAllChosenOptionsOriginal(){
+    public String[] getAllChosenOptionsOriginal() {
         String[] chosenListFirstPage = new Functions().getChosenOptions(selectedOptions);
         return chosenListFirstPage;
     }
