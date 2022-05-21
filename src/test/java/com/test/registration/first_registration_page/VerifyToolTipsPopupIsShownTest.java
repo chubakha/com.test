@@ -1,10 +1,11 @@
 package com.test.registration.first_registration_page;
+import com.test.registration.PrepareRegistrationTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-public class VerifyToolTipsPopupIsShownTest extends PrepareFirstRegistrationPageTestData {
+public class VerifyToolTipsPopupIsShownTest extends PrepareRegistrationTestData {
     @Test
     void verifyToolTipsPopupIsShown(){
         boolean textHintArray[] = new FirstRegistrationPage().hoverAllInfoIcon();

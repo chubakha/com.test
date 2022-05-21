@@ -1,9 +1,10 @@
 package com.test.registration.first_registration_page;
 
+import com.test.registration.PrepareRegistrationTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VerifyToolTipsTextTest extends PrepareFirstRegistrationPageTestData {
+public class VerifyToolTipsTextTest extends PrepareRegistrationTestData {
     @Test
     void verifyToolTipsText() {
         String[] tipText = new FirstRegistrationPage().getToolTipText();

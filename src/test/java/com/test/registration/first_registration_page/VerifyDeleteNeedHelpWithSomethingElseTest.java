@@ -1,9 +1,10 @@
 package com.test.registration.first_registration_page;
 
+import com.test.registration.PrepareRegistrationTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VerifyDeleteNeedHelpWithSomethingElseTest extends PrepareFirstRegistrationPageTestData {
+public class VerifyDeleteNeedHelpWithSomethingElseTest extends PrepareRegistrationTestData {
     @Test
     void verifyDeleteNeedHelpWithSomethingElse() {
         FirstRegistrationPage firstRegistrationPage =

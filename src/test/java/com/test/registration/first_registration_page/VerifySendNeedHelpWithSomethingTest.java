@@ -1,9 +1,10 @@
 package com.test.registration.first_registration_page;
 
+import com.test.registration.PrepareRegistrationTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VerifySendNeedHelpWithSomethingTest extends PrepareFirstRegistrationPageTestData {
+public class VerifySendNeedHelpWithSomethingTest extends PrepareRegistrationTestData {
     @Test
     void verifySendNeedHelpWithSomething() {
         String needHelpWithSomethingText = "my custom need";

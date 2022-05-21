@@ -1,11 +1,10 @@
 package com.test.registration.first_registration_page;
 
-import com.test.registration.second_registration_page.SecondRegistrationPage;
+import com.test.registration.PrepareRegistrationTestData;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class VerifyClickWithEmptyOptionsListTest extends PrepareFirstRegistrationPageTestData {
+public class VerifyClickWithEmptyOptionsListTest extends PrepareRegistrationTestData {
     @Test
     void verifyClickWithEmptyOptionsList(){
         new FirstRegistrationPage().clickNextButton();

@@ -2,6 +2,8 @@ package com.test.registration.third_page_registration;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.test.registration.Functions;
+import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.second_registration_page.SecondRegistrationPage;
 
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
@@ -29,5 +31,10 @@ public class ThirdRegistrationPage {
     public String[] getSecondColumnTable(){
         String[] chosenListSecondColumnTable = new Functions().getChosenOptions(selectedOptions);
         return chosenListSecondColumnTable;
+    }
+
+    public SecondRegistrationPage clickBackButton() {
+        $x("//*[text() = 'back']").click();
+        return new SecondRegistrationPage();
     }
 }
