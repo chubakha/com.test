@@ -11,11 +11,11 @@ public class FourthRegistrationPage {
     private SelenideElement companyNameField = $x("//input[@placeholder='Company']");
     private SelenideElement passwordField = $x("//input[@placeholder='Password']");
     private SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
-    private SelenideElement policyCheckBox = $x("//div[contains(@class,'checkbox_container')]");
-    private SelenideElement createAccountButton = $x("//*[text() = 'CREATE ACCOUNT']");
+    private SelenideElement iveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container')]");
+    private SelenideElement createAccountButton = $x("//*[text() = 'CREATE ACCOUNT']/..");
 
-    public FourthRegistrationPage clickPrivacyPolicy() {
-        policyCheckBox.click();
+    public FourthRegistrationPage clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
+        iveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
         return this;
     }
 
@@ -81,7 +81,22 @@ public class FourthRegistrationPage {
         return $x("//div[@class='registration-quiz__header-container']/b").getText();
     }
 
+    public String getDisabledCreateAccountButton(){
+        return createAccountButton.getAttribute("disabled");
+    }
+
     public void clickCreateAccountButton() {
         createAccountButton.click();
     }
+
+    public FourthRegistrationPage clickInactiveCreateAccountButton() {
+        clickCreateAccountButton();
+        return new FourthRegistrationPage();
+    }
+
+    public FourthRegistrationPage clickActiveCreateAccountButton() {
+        clickCreateAccountButton();
+        return new FourthRegistrationPage();
+    }
+
 }

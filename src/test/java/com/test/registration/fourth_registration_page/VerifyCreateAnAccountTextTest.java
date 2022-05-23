@@ -11,14 +11,13 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyCreateAnAccountTextTest extends PrepareRegistrationTestData {
     @Test
-    void verifyCreateAnAccountText(){
+    void verifyCreateAnAccountText() {
         new FirstRegistrationPage()
                 .choiceOneRandomCheckbox();
         sleep(1000);
-        new SecondRegistrationPage()
-                .clickNextButton();
         FourthRegistrationPage fourthRegistrationPage =
-                new ThirdRegistrationPage()
+                new SecondRegistrationPage()
+                        .clickNextButton()
                         .clickConnectButton();
         Assertions.assertEquals("Create an account",
                 fourthRegistrationPage.getCreateAnAccount(),
