@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 public class VerifyToolTipsTextTest extends PrepareRegistrationTestData {
     @Test
     void verifyToolTipsText() {
-        String[] tipText = new FirstRegistrationPage().getToolTipText();
-        String[] trueTip = WhatDoYouNeedLegallySolvedInfoTexts.getAllValues();
-        Assertions.assertArrayEquals(trueTip, tipText, "Tips from 'enum WhatDoYouNeedLegallySolvedInfoTexts' enum file should be on page");
+        String[] actualTipText = new FirstRegistrationPage().getToolTipText();
+        String[] expectedTipText = WhatDoYouNeedLegallySolvedInfoTexts.getAllValues();
+        Assertions.assertArrayEquals(expectedTipText, actualTipText, "Tips from 'enum WhatDoYouNeedLegallySolvedInfoTexts' enum file should be on page");
     }
 }

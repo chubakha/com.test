@@ -16,6 +16,7 @@ public class VerifyClickConnectButtonTest extends PrepareRegistrationTestData {
         new FirstRegistrationPage().choiceOneRandomCheckbox();
         sleep(2000);
         new SecondRegistrationPage().clickNextButton();
+        sleep(1000);
         FourthRegistrationPage fourthRegistrationPage =
                 new ThirdRegistrationPage()
                         .clickConnectButton();

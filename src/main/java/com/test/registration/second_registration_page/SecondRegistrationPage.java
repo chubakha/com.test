@@ -1,5 +1,6 @@
 package com.test.registration.second_registration_page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.test.registration.Functions;
@@ -16,12 +17,12 @@ public class SecondRegistrationPage {
     private ElementsCollection selectedOptions = $$x("//div[contains(@class, 'checkbox_containerActive')]/following-sibling::span");
 
     public ThirdRegistrationPage clickNextButton() {
-        $x("//*[text() = 'NEXT']").click();
+        $x("//*[text() = 'NEXT']/..").shouldBe(Condition.attribute("disabled","")).click();
         return new ThirdRegistrationPage();
     }
 
     public FirstRegistrationPage clickBackButton() {
-        $x("//*[text() = 'back']").click();
+        $x("//*[text() = 'back']").shouldBe(Condition.visible).click();
         return new FirstRegistrationPage();
     }
 

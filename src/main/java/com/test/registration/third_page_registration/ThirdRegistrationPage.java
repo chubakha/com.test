@@ -1,5 +1,6 @@
 package com.test.registration.third_page_registration;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.test.registration.Functions;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
@@ -34,12 +35,12 @@ public class ThirdRegistrationPage {
     }
 
     public SecondRegistrationPage clickBackButton() {
-        $x("//*[text() = 'back']").click();
+        $x("//*[text() = 'back']").shouldBe(Condition.visible).click();
         return new SecondRegistrationPage();
     }
 
     public FourthRegistrationPage clickConnectButton() {
-        $x("//*[text() = 'CONNECT']").click();
+        $x("//*[text() = 'CONNECT']").shouldBe(Condition.visible).click();
         return new FourthRegistrationPage();
     }
 

@@ -1,23 +1,25 @@
 package com.test.registration.fourth_registration_page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
 
 public class FourthRegistrationPage {
     private SelenideElement firstNameField = $x("//input[@placeholder='First name']");
+    private SelenideElement fieldIsRequiredForFirstNameField = $x("//input[@placeholder='First name']/following-sibling::p");
     private SelenideElement lastNameField = $x("//input[@placeholder='Last name']");
+    private SelenideElement fieldIsRequiredForLastNameField = $x("//input[@placeholder='Last name']/following-sibling::p");
     private SelenideElement emailField = $x("//input[@placeholder='Email']");
+    private SelenideElement fieldIsRequiredForEmailField = $x("//input[@placeholder='Email']/following-sibling::p");
     private SelenideElement companyNameField = $x("//input[@placeholder='Company']");
+    private SelenideElement fieldIsRequiredForCompanyNameField = $x("//input[@placeholder='Company']/following-sibling::p");
     private SelenideElement passwordField = $x("//input[@placeholder='Password']");
+    private SelenideElement fieldIsRequiredForPasswordField = $x("//input[@placeholder='Password']/following-sibling::p");
     private SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
+    private SelenideElement fieldIsRequiredForRepeatPasswordField = $x("//input[@placeholder='Repeat password']/following-sibling::p");
     private SelenideElement iveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container')]");
     private SelenideElement createAccountButton = $x("//*[text() = 'CREATE ACCOUNT']/..");
-
-    public FourthRegistrationPage clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
-        iveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
-        return this;
-    }
 
     public FourthRegistrationPage setFirstNameField(String first_name){
         firstNameField.val(first_name);
@@ -26,6 +28,10 @@ public class FourthRegistrationPage {
 
     public String getFirstNameField(){
         return firstNameField.getText();
+    }
+
+    public String getFieldIsRequiredForFirstNameField(){
+        return fieldIsRequiredForFirstNameField.getText();
     }
 
     public FourthRegistrationPage setLastNameField(String last_name){
@@ -37,6 +43,10 @@ public class FourthRegistrationPage {
         return lastNameField.getText();
     }
 
+    public String getFieldIsRequiredForLastNameField(){
+        return fieldIsRequiredForLastNameField.getText();
+    }
+
     public FourthRegistrationPage setCompanyNameField(String company_name){
         companyNameField.val(company_name);
         return this;
@@ -44,6 +54,10 @@ public class FourthRegistrationPage {
 
     public String getCompanyNameField(){
         return companyNameField.getText();
+    }
+
+    public String getFieldIsRequiredForCompanyNameField(){
+        return fieldIsRequiredForCompanyNameField.getText();
     }
 
     public FourthRegistrationPage setEmailField(String email){
@@ -64,6 +78,14 @@ public class FourthRegistrationPage {
         return passwordField.getText();
     }
 
+    public String getFieldIsRequiredForPasswordField(){
+        return fieldIsRequiredForPasswordField.getText();
+    }
+
+    public String getFieldIsRequiredForEmailField(){
+        return fieldIsRequiredForEmailField.getText();
+    }
+
     public FourthRegistrationPage setRepeatPasswordField(String password2){
         repeatPasswordField.val(password2);
         return this;
@@ -71,6 +93,15 @@ public class FourthRegistrationPage {
 
     public String getRepeatPasswordField(){
         return repeatPasswordField.getText();
+    }
+
+    public String getFieldIsRequiredForRepeatPasswordField(){
+        return fieldIsRequiredForRepeatPasswordField.getText();
+    }
+
+    public FourthRegistrationPage clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
+        iveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
+        return this;
     }
 
     public String getCreateAnAccount(){
@@ -86,7 +117,7 @@ public class FourthRegistrationPage {
     }
 
     public void clickCreateAccountButton() {
-        createAccountButton.click();
+        createAccountButton.shouldBe(Condition.visible).click();
     }
 
     public FourthRegistrationPage clickInactiveCreateAccountButton() {

@@ -193,6 +193,7 @@ public class FirstRegistrationPage {
         String[] textHintArray = new String[toolTipText.size()];
         for (int i = 0; i < toolTipText.size(); i++) {
             textHintArray[i] = toolTipText.get(i).innerText();
+            System.out.println(textHintArray[i]);
         }
         return textHintArray;
     }

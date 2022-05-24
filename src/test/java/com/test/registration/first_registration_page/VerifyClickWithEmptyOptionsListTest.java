@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 public class VerifyClickWithEmptyOptionsListTest extends PrepareRegistrationTestData {
     @Test
     void verifyClickWithEmptyOptionsList(){
-        new FirstRegistrationPage().clickNextButton();
-        Assertions.assertEquals("1/4", new FirstRegistrationPage().getStepNumberTextLabel(), "'1/4' should be shown");
+        FirstRegistrationPage firstRegistrationPage =
+                new FirstRegistrationPage()
+                        .clickNextButtonWithoutRedirection();
+        Assertions.assertEquals("1/4", firstRegistrationPage.getStepNumberTextLabel(), "'1/4' should be shown");
     }
 }
