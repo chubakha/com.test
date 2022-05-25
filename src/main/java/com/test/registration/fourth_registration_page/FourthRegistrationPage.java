@@ -30,6 +30,10 @@ public class FourthRegistrationPage {
         return firstNameField.getText();
     }
 
+    public boolean isFieldIsRequiredForFirstNameField(){
+        return fieldIsRequiredForFirstNameField.isDisplayed();
+    }
+
     public String getFieldIsRequiredForFirstNameField(){
         return fieldIsRequiredForFirstNameField.getText();
     }
@@ -47,6 +51,10 @@ public class FourthRegistrationPage {
         return fieldIsRequiredForLastNameField.getText();
     }
 
+    public boolean isFieldIsRequiredForLastNameField(){
+        return fieldIsRequiredForLastNameField.isDisplayed();
+    }
+
     public FourthRegistrationPage setCompanyNameField(String company_name){
         companyNameField.val(company_name);
         return this;
@@ -60,6 +68,10 @@ public class FourthRegistrationPage {
         return fieldIsRequiredForCompanyNameField.getText();
     }
 
+    public boolean isFieldIsRequiredForCompanyNameField(){
+        return fieldIsRequiredForCompanyNameField.isDisplayed();
+    }
+
     public FourthRegistrationPage setEmailField(String email){
         emailField.val(email);
         return this;
@@ -67,6 +79,14 @@ public class FourthRegistrationPage {
 
     public String getEmailField(){
         return emailField.getText();
+    }
+
+    public String getFieldIsRequiredForEmailField(){
+        return fieldIsRequiredForEmailField.getText();
+    }
+
+    public boolean isFieldIsRequiredForEmailField(){
+        return fieldIsRequiredForEmailField.isDisplayed();
     }
 
     public FourthRegistrationPage setPasswordField(String password1){
@@ -80,10 +100,6 @@ public class FourthRegistrationPage {
 
     public String getFieldIsRequiredForPasswordField(){
         return fieldIsRequiredForPasswordField.getText();
-    }
-
-    public String getFieldIsRequiredForEmailField(){
-        return fieldIsRequiredForEmailField.getText();
     }
 
     public FourthRegistrationPage setRepeatPasswordField(String password2){
