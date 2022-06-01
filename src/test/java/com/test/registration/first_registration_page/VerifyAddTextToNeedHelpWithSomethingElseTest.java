@@ -8,10 +8,9 @@ public class VerifyAddTextToNeedHelpWithSomethingElseTest extends PrepareRegistr
     @Test
     void verifyAddedTextNeedHelpWithSomethingElse() {
         String needHelpWithSomethingText = "my custom need";
-        CreateCustomRequestOverlay createCustomRequestOverlay =
-                new FirstRegistrationPage()
-                        .clickNeedHelpWithSomethingElseButton()
-                        .setNeedHelpWithSomethingElseText(needHelpWithSomethingText);
+        CreateCustomRequestOverlay createCustomRequestOverlay = new FirstRegistrationPage()
+                .clickNeedHelpWithSomethingElseButton()
+                .setNeedHelpWithSomethingElseText(needHelpWithSomethingText);
         Assertions.assertEquals(needHelpWithSomethingText, createCustomRequestOverlay.getNeedHelpWithSomethingElseText(), "'my custom need' should be equal to displayed");
     }
 }

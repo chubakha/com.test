@@ -7,6 +7,6 @@ import org.junit.jupiter.api.Test;
 public class VerifyWhatDoYouNeedLegallySolvedTextTest extends PrepareRegistrationTestData {
     @Test
     void verifyWhatDoYouNeedLegallySolvedTitle(){
-        Assertions.assertEquals("What do you need legally solved?", new FirstRegistrationPage().getWhatDoYouNeedLegallySolved(),"'What do you need legally solved?' should be shown");
+        Assertions.assertEquals("What do you need legally solved?", new FirstRegistrationPage().getPageTitle(),"'What do you need legally solved?' should be shown");
     }
 }

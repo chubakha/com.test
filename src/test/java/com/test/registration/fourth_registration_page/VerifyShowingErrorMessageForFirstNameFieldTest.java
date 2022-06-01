@@ -12,7 +12,7 @@ public class VerifyShowingErrorMessageForFirstNameFieldTest extends PrepareRegis
     @Test
     void verifyShowingErrorMessageForFirstNameField() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

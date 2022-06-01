@@ -9,10 +9,9 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyCreateCustomRequestPopupAppearedTest extends PrepareRegistrationTestData {
     @Test
     void verifyCreateCustomRequestPopupAppeared() {
-        CreateCustomRequestOverlay createCustomRequestOverlay =
-                new FirstRegistrationPage()
-                        .clickNeedHelpWithSomethingElseButton();
+        CreateCustomRequestOverlay createCustomRequestOverlay = new FirstRegistrationPage()
+                .clickNeedHelpWithSomethingElseButton();
         sleep(1000);
-        Assertions.assertTrue(createCustomRequestOverlay.isNeedHelpWithSomethingElse(),"'Create Custom Request' should be shown");
+        Assertions.assertTrue(createCustomRequestOverlay.isNeedHelpWithSomethingElseShown(), "'Create Custom Request' should be shown");
     }
 }

@@ -13,7 +13,7 @@ public class VerifyReturnToPreviousPageTest extends PrepareRegistrationTestData 
     @Test
     void verifyReturnToPreviousPage(){
         new FirstRegistrationPage()
-                        .choiceOneRandomCheckbox();
+                        .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(1000);
         new SecondRegistrationPage()
                 .clickNextButton();
@@ -21,6 +21,6 @@ public class VerifyReturnToPreviousPageTest extends PrepareRegistrationTestData 
         SecondRegistrationPage secondRegistrationPage =
                 new ThirdRegistrationPage()
                         .clickBackButton();
-        Assertions.assertEquals("2/4", secondRegistrationPage.getStepNumberTextLabel(), "2/4 should be shown");
+        Assertions.assertEquals("2/4", secondRegistrationPage.getRegistrationPageNumber(), "2/4 should be shown");
     }
 }

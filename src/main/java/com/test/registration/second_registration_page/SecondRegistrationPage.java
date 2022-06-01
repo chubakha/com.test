@@ -2,7 +2,6 @@ package com.test.registration.second_registration_page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.SelenideElement;
 import com.test.registration.Functions;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
 import com.test.registration.third_page_registration.ThirdRegistrationPage;
@@ -17,12 +16,13 @@ public class SecondRegistrationPage {
     private ElementsCollection selectedOptions = $$x("//div[contains(@class, 'checkbox_containerActive')]/following-sibling::span");
 
     public ThirdRegistrationPage clickNextButton() {
-        $x("//*[text() = 'NEXT']/..").shouldBe(Condition.attribute("disabled","")).click();
+        System.out.println("456");
+        $x("//*[text() = 'NEXT']/..").shouldHave(Condition.visible).click();
         return new ThirdRegistrationPage();
     }
 
     public FirstRegistrationPage clickBackButton() {
-        $x("//*[text() = 'back']").shouldBe(Condition.visible).click();
+        $x("//*[text() = 'back']").click();
         return new FirstRegistrationPage();
     }
 
@@ -30,21 +30,23 @@ public class SecondRegistrationPage {
         return $x("//*[text() = 'Please check the list of tasks which should be legally sorted out']").getText();
     }
 
-    public String getStepNumberTextLabel() {
-        return $x("//div[@class='registration-quiz__header-container']/b").getText();
+    public String getRegistrationPageNumber() {
+        return $x("//div[contains(@class, 'header-container')]/b").getText();
     }
 
-    public String[] getAllChosenOptions() {
-        String[] chosenListSecondPageCopy = new Functions().getChosenOptions(selectedOptions);
-        String[] chosenListSecondPage = Arrays.copyOfRange(chosenListSecondPageCopy, 0, chosenListSecondPageCopy.length / 2);
+    public String[] getSelectedOptions() {
+        String[] chosenListSecondPage = new Functions().getChosenOptions(selectedOptions);
         return chosenListSecondPage;
     }
 
-    public String deleteOneChosenOptionFromFew() {
-        String[] chosenListSecondPage = getAllChosenOptions();
-        String deletingElement = chosenListSecondPage[new Random().nextInt(chosenListSecondPage.length / 2)];
-        $x("//*[contains(text(), '" + deletingElement + "')]").click();
-        return deletingElement;
+    public SecondRegistrationPage deleteLead(String leadName) {
+        $x("//*[contains(text(), '" + leadName + "')]").click();
+        return this;
+    }
+
+    public String getRandomLead(){
+        String[] chosenListSecondPage = getSelectedOptions();
+        return getSelectedOptions()[new Random().nextInt(chosenListSecondPage.length / 2)];
     }
 
     public FirstRegistrationPage deleteOneChosenOptionFromOne() {

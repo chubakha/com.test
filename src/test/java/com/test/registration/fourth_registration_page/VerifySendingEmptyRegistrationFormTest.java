@@ -12,7 +12,7 @@ public class VerifySendingEmptyRegistrationFormTest extends PrepareRegistrationT
     @Test
     void verifySendingEmptyRegistrationForm() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

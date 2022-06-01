@@ -8,15 +8,15 @@ import org.junit.jupiter.api.Test;
 public class VerifyAllChosenOptionAfterReturnToPreviousPageTest extends PrepareRegistrationTestData {
     @Test
     void verifyChosenAllOptionAfterReturnToPreviousPage() {
-        String[] chosenOptionSecond =
-                new FirstRegistrationPage()
-                        .choiceAllCheckboxInEverySection()
-                        .getAllChosenOptions();
-        String[] chosenOptionFirst  =
-                new SecondRegistrationPage()
-                        .clickBackButton()
-                        .getAllChosenOptions();
-        Assertions.assertArrayEquals(chosenOptionSecond, chosenOptionFirst, "chosen list on first page registrations should be equal to a list option on second page registration");
+        FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage()
+                .selectAllCheckboxInEverySection();
+        String[] chosenOptionBeforeRedirectToSecondRegistrationPage = firstRegistrationPage.getSelectedOptions();
+        firstRegistrationPage
+                .clickEnabledNextButton()
+                .clickBackButton();
+        String[] chosenOptionAfterRedirectToSecondRegistrationPage = firstRegistrationPage.getSelectedOptions();
+        Assertions.assertArrayEquals(chosenOptionBeforeRedirectToSecondRegistrationPage, chosenOptionAfterRedirectToSecondRegistrationPage,
+                "chosen list on first page registrations should be the same after come back from second registration page on first registration page");
 
     }
 }

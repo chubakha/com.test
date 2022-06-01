@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyComparingSectionsAndOptionsTest extends PrepareRegistrationTestData {
     @Test
     void verifyComparingSectionsAndOptions(){
-        new FirstRegistrationPage().choiceOneRandomCheckbox();
+        new FirstRegistrationPage().selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(1000);
         new SecondRegistrationPage().clickNextButton();
         String chosenOption = new ThirdRegistrationPage().getOneChosenOption();

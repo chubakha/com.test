@@ -51,7 +51,7 @@ public class FourthRegistrationPage {
         return fieldIsRequiredForLastNameField.getText();
     }
 
-    public boolean isFieldIsRequiredForLastNameField(){
+    public boolean isLastNameFieldRequiredErrorMessageShown(){
         return fieldIsRequiredForLastNameField.isDisplayed();
     }
 
@@ -117,6 +117,17 @@ public class FourthRegistrationPage {
 
     public FourthRegistrationPage clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
         iveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
+        return this;
+    }
+
+    public FourthRegistrationPage clickTermsAndConditionsLink(){
+        $x("//*[text() = 'Terms & Conditions']").click();
+        $x("//*[@class = 'ndfHFb-c4YZDc-cYSp0e-Oz6c3e ndfHFb-c4YZDc-cYSp0e-DARUcf-gSKZZ ndfHFb-c4YZDc-neVct-RCfa3e']").shouldBe(Condition.visible);
+        return this;
+    }
+
+    public FourthRegistrationPage clickPrivacyPolicyLink(){
+        $x("//*[text() = 'Privacy Policy']").click();
         return this;
     }
 

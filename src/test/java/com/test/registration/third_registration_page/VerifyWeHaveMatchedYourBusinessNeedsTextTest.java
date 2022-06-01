@@ -7,14 +7,12 @@ import com.test.registration.third_page_registration.ThirdRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyWeHaveMatchedYourBusinessNeedsTextTest extends PrepareRegistrationTestData {
     @Test
     void verifyWeHaveMatchedYourBusinessNeedsText(){
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
-        sleep(1000);
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+        //sleep(1000);
         new SecondRegistrationPage().clickNextButton();
         Assertions.assertEquals("We have matched your business needs with the legal solutions.",
                 new ThirdRegistrationPage().getWeHaveMatchedYourBusinessNeedsWithTheLegalSolutions(),

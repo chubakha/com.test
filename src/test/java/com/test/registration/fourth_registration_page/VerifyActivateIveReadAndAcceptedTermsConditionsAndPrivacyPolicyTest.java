@@ -14,7 +14,7 @@ public class VerifyActivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTest
     @Test
     void verifyActivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(1000);
         new SecondRegistrationPage()
                 .clickNextButton();

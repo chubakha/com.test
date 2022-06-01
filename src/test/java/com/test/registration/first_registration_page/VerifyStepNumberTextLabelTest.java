@@ -7,6 +7,6 @@ import org.junit.jupiter.api.Test;
 public class VerifyStepNumberTextLabelTest extends PrepareRegistrationTestData {
     @Test
     void verifyStepNumberTextLabel(){
-        Assertions.assertEquals("1/4", new FirstRegistrationPage().getStepNumberTextLabel(), "'1/4' should be shown");
+        Assertions.assertEquals("1/4", new FirstRegistrationPage().getStepNumber(), "'1/4' should be shown");
     }
 }

@@ -9,20 +9,19 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyHidingErrorMessageForLastNameFieldTest extends PrepareRegistrationTestData {
-    @Test
+    @Test//тут
     void verifyHidingErrorMessageForLastNameField() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(2000);
-        boolean isFieldIsRequiredForLastNameField =
-                new SecondRegistrationPage()
-                        .clickNextButton()
-                        .clickConnectButton()
-                        .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
-                        .clickInactiveCreateAccountButton()
-                        .setLastNameField(LAST_NAME_REGISTRATION_TEST_CLIENT)
-                        .clickInactiveCreateAccountButton()
-                        .isFieldIsRequiredForLastNameField();
-        Assertions.assertFalse(isFieldIsRequiredForLastNameField, "'field is required' should not be shown below LastName field");
+        FourthRegistrationPage fourthRegistrationPage = new SecondRegistrationPage()
+                .clickNextButton()
+                .clickConnectButton()
+                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveCreateAccountButton()
+                .setLastNameField(LAST_NAME_REGISTRATION_TEST_CLIENT)
+                .clickInactiveCreateAccountButton();
+        Assertions.assertFalse(fourthRegistrationPage.isLastNameFieldRequiredErrorMessageShown(),
+                "'field is required' should not be shown below LastName field");
     }
 }

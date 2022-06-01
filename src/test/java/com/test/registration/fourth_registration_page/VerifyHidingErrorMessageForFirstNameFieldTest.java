@@ -12,7 +12,7 @@ public class VerifyHidingErrorMessageForFirstNameFieldTest extends PrepareRegist
     @Test
     void verifyHidingErrorMessageForFirstNameField() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(2000);
         boolean isFieldIsRequiredForFirstNameField =
                 new SecondRegistrationPage()

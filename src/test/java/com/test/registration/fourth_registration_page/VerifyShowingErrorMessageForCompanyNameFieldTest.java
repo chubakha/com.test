@@ -12,7 +12,7 @@ public class VerifyShowingErrorMessageForCompanyNameFieldTest extends PrepareReg
     @Test
     void verifyShowingErrorMessageForCompanyNameField() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

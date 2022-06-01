@@ -8,8 +8,12 @@ import org.junit.jupiter.api.Test;
 public class VerifyAddedOptionsTest extends PrepareRegistrationTestData {
     @Test
     void verifyAddedOptions(){
-        String[] chosenListFirstPage = new FirstRegistrationPage().choiceAndGetAllChosenOptions();
-        String[] chosenListSecondPage = new SecondRegistrationPage().getAllChosenOptions();
-        Assertions.assertArrayEquals(chosenListFirstPage, chosenListSecondPage, "chosen list on first page registrations should be equal to a list option on second page registration");
+        FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage().selectOneCheckboxInEverySection();
+        String[] needListFirst = firstRegistrationPage.getSelectedOptions();
+        firstRegistrationPage.clickEnabledNextButton();
+        String[] needListSecond = firstRegistrationPage.getSelectedOptions();
+        Assertions.assertArrayEquals(needListFirst, needListSecond, "chosen list on first page registrations should be equal to a list option on second page registration");
+
     }
+
 }

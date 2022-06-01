@@ -12,7 +12,7 @@ public class VerifyShowingErrorMessageForPasswordFieldTest extends PrepareRegist
     @Test
     void verifyShowingErrorMessageForPasswordField() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

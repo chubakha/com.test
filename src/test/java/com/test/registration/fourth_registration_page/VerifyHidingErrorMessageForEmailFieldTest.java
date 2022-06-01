@@ -12,7 +12,7 @@ public class VerifyHidingErrorMessageForEmailFieldTest extends PrepareRegistrati
     @Test
     void verifyHidingErrorMessageForEmailField() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(2000);
         boolean isFieldIsRequiredForEmailField =
                 new SecondRegistrationPage()

@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class VerifyClickNextButtonWithoutChosenOptionTest extends PrepareRegistrationTestData {
     @Test
-    void verifyClickNextButtonWithoutChosenOption(){
-        FirstRegistrationPage firstRegistrationPage =
-                new FirstRegistrationPage()
-                        .clickNextButtonWithoutRedirection();
-        Assertions.assertEquals("1/4", firstRegistrationPage.getStepNumberTextLabel(), "1/4 should be shown");
+    void verifyClickNextButtonWithoutChosenOption() {
+        FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage()
+                .clickDisabledNextButton();
+        Assertions.assertEquals("1/4", firstRegistrationPage.getStepNumber(), "1/4 should be shown");
     }
 }

@@ -6,11 +6,10 @@ import org.junit.jupiter.api.Test;
 
 public class VerifyCloseCreateCustomRequestPopupTest extends PrepareRegistrationTestData {
     @Test
-    void verifyCloseCreateCustomRequestPopup(){
-        FirstRegistrationPage firstRegistrationPage =
-                new FirstRegistrationPage()
-                        .clickNeedHelpWithSomethingElseButton()
-                        .clickHelpWithSomethingElseClosePopup();
-        Assertions.assertFalse(firstRegistrationPage.isNotNeedHelpWithSomethingElse(), "'Create Custom Request' should not be shown");
+    void verifyCloseCreateCustomRequestPopup() {
+        FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage()
+                .clickNeedHelpWithSomethingElseButton()
+                .clickNeedHelpWithSomethingElseClosePopup();
+        Assertions.assertFalse(firstRegistrationPage.isNotNeedHelpWithSomethingElsePopupShown(), "'Create Custom Request' should not be shown");
     }
 }

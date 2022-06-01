@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class PrepareRegistrationTestData {
     @BeforeEach
     void openPage(){
-        open("https://signup.legalnodes.com/registration");
+        open("https://stag.legalnodes.co/registration");
     }
 
     public String FIRST_NAME_REGISTRATION_TEST_CLIENT = "TestClientFirstName";

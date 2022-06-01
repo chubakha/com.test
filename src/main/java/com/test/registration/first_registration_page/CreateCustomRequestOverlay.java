@@ -6,9 +6,13 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class CreateCustomRequestOverlay {
     private SelenideElement needHelpWithSomethingElseTextArea = $x("//*[contains(@class, 'CustomModal_textarea')]");
+    private SelenideElement needHelpWithSomethingElsePopupTitle = $x("//*[contains(@class, 'slide-enter-done')]");
+    private SelenideElement needHelpWithSomethingElseTitle = $x("//h2[contains(@class, 'CustomModal_heading')]");
+    private SelenideElement needHelpWithSomethingElseSendButton = $x("//*[text() = 'SEND']");
+    private SelenideElement needHelpWithSomethingElseClosePopup = $x("//img[contains(@class, 'CustomModal_close')]");
 
-    public boolean isNeedHelpWithSomethingElse(){
-        return $x("//div[contains(@class, 'slide-enter-done')]").isDisplayed();
+    public boolean isNeedHelpWithSomethingElseShown(){
+        return needHelpWithSomethingElsePopupTitle.isDisplayed();
     }
 
     public CreateCustomRequestOverlay setNeedHelpWithSomethingElseText(String text){
@@ -21,16 +25,16 @@ public class CreateCustomRequestOverlay {
     }
 
     public String getNeedHelpWithSomethingElseTitle(){
-        return $x("//h2[contains(@class, 'CustomModal_heading')]").getText();
+        return needHelpWithSomethingElseTitle.getText();
     }
 
     public FirstRegistrationPage clickNeedHelpWithSomethingElseSendButton(){
-        $x("//*[text() = 'SEND']").click();
+        needHelpWithSomethingElseSendButton.click();
         return new FirstRegistrationPage();
     }
 
-    public FirstRegistrationPage clickHelpWithSomethingElseClosePopup(){
-        $x("//img[contains(@class, 'CustomModal_close')]").click();
+    public FirstRegistrationPage clickNeedHelpWithSomethingElseClosePopup(){
+        needHelpWithSomethingElseClosePopup.click();
         return new FirstRegistrationPage();
     }
 }

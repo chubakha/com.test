@@ -13,7 +13,7 @@ public class VerifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTe
     @Test
     void verifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(1000);
         new SecondRegistrationPage()
                 .clickNextButton();

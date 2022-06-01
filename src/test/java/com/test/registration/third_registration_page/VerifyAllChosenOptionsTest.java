@@ -15,8 +15,8 @@ public class VerifyAllChosenOptionsTest extends PrepareRegistrationTestData {
         String[] chosenListFirstPage =
                 new FirstRegistrationPage()
                         .selectAllCheckboxInEverySection()
-                        .getAllChosenOptionsOriginal();
-        new FirstRegistrationPage().clickNextButtonToSecondPage();
+                        .getSelectedOptions();
+        new FirstRegistrationPage().clickEnabledNextButton();
         sleep(1000);
         new SecondRegistrationPage().clickNextButton();
         sleep(1000);

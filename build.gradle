@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "io.qameta.allure-report" version "2.9.6"
 }
 
 group 'com.test(GroupId)'
@@ -13,13 +14,23 @@ repositories {
 
 ext {
     junit5Ver = "5.8.2"
+    allureVersion = "2.12.1"
 }
 
 dependencies {
-    //compile('org.slf4j:slf4j-api:1.7.21')
-    implementation("com.codeborne:selenide:5.10.0", "org.assertj:assertj-core:3.11.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:$junit5Ver","com.codeborne:selenide:6.4.0","org.assertj:assertj-core:3.11.1")
-    testRuntimeOnly("org.junit.vintage:junit-vintage-engine:$junit5Ver")
+    implementation("com.codeborne:selenide:6.4.0", "org.assertj:assertj-core:3.11.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:$junit5Ver",
+            "com.codeborne:selenide:6.4.0",
+            "org.assertj:assertj-core:3.11.1")
+    testImplementation("org.junit.vintage:junit-vintage-engine:$junit5Ver")
+    testImplementation 'org.aspectj:aspectjweaver:1.9.5'
+    testImplementation 'io.qameta.allure:allure-junit5:2.12.1'
+    testImplementation 'io.qameta.allure:allure-commandline:2.12.1'
+    testImplementation 'io.qameta.allure:allure-assertj:2.12.1'
+    testImplementation 'io.qameta.allure:allure-rest-assured:2.12.1'
+    testImplementation 'io.qameta.allure:allure-java-commons:2.12.1'
+    testImplementation 'io.qameta.allure:allure-selenide:2.12.1'
+
 }
 
 test {

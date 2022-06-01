@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Map;
 
 public class Functions {
-    public String[] getChosenOptions(ElementsCollection selectedOptions){
+    public String[] getChosenOptions(ElementsCollection selectedOptions) {
         String[] chosenList = new String[selectedOptions.size()];
         for (int i = 0; i < selectedOptions.size(); i++) {
             chosenList[i] = selectedOptions.get(i).getText();
@@ -17,7 +17,7 @@ public class Functions {
         return chosenList;
     }
 
-    public boolean compareSectionAndOption(String chosenOption, String chosenSection){
+    public boolean compareSectionAndOption(String chosenOption, String chosenSection) {
         ListMultimap<String, String> sectionsAndOptionsArray = ArrayListMultimap.create();
         Map<String, Collection<String>> map = Map.of(
                 "INCORPORATION", Arrays.asList("Pick the best jurisdictions and corporate structure for my tech project",
@@ -59,16 +59,16 @@ public class Functions {
             String key = entry.getKey();
             Collection<String> value = entry.getValue();
             sectionsAndOptionsArray.putAll(key, value);
-            for (String valueCurrent : value){
-                if(valueCurrent.equals(chosenOption)){
+            for (String valueCurrent : value) {
+                if (valueCurrent.equals(chosenOption)) {
                     i++;
-                    if (key.equals(chosenSection)){
+                    if (key.equals(chosenSection)) {
                         j++;
                     }
                 }
             }
         }
-        if ((i == 1)&&(j == 1)){
+        if ((i == 1) && (j == 1)) {
             sectionIsRight = true;
         }
         return sectionIsRight;

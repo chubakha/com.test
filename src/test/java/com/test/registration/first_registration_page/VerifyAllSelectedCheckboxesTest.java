@@ -8,9 +8,9 @@ import org.junit.jupiter.api.Test;
 public class VerifyAllSelectedCheckboxesTest extends PrepareRegistrationTestData {
     @Test
     void verifyAllSelectedCheckboxes() {
-        SecondRegistrationPage secondRegistrationPage =
-                new FirstRegistrationPage()
-                        .choiceAllCheckboxInEverySection();
-        Assertions.assertEquals("2/4", secondRegistrationPage.getStepNumberTextLabel(),"2/4 should be shown");
+        SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
+                .selectAllCheckboxInEverySection()
+                .clickEnabledNextButton();
+        Assertions.assertEquals("2/4", secondRegistrationPage.getRegistrationPageNumber(), "2/4 should be shown");
     }
 }

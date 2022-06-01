@@ -12,8 +12,8 @@ public class VerifyClickNextButtonTest extends PrepareRegistrationTestData {
     @Test
     void verifyClickNextButton(){
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
-                sleep(1000);
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                //sleep(1000);
         ThirdRegistrationPage thirdRegistrationPage =
                 new SecondRegistrationPage()
                         .clickNextButton();

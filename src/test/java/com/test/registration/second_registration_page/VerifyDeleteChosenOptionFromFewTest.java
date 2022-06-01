@@ -9,12 +9,13 @@ import java.util.Arrays;
 
 public class VerifyDeleteChosenOptionFromFewTest extends PrepareRegistrationTestData {
     @Test
-    void verifyDeleteChosenOptionFromFew(){
-        String deletingElement =
-                new FirstRegistrationPage()
-                        .choiceOneCheckboxInEverySection()
-                        .deleteOneChosenOptionFromFew();
-        String[] chosenListAfterDeleting = new SecondRegistrationPage().getAllChosenOptions();
-        Assertions.assertFalse(Arrays.asList(chosenListAfterDeleting).contains(deletingElement), "deletingElement shouldn't be in the chosen list");
+    void verifyDeleteChosenOptionFromFew() {
+        SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
+                .selectOneCheckboxInEverySection()
+                .clickEnabledNextButton();
+        String deletedLeadValue = secondRegistrationPage.getRandomLead();
+        secondRegistrationPage.deleteLead(deletedLeadValue);
+        Assertions.assertFalse(Arrays.asList(secondRegistrationPage.getSelectedOptions()).contains(deletedLeadValue),
+                String.format("deletingElement '%s' shouldn't be in the chosen list", deletedLeadValue));
     }
 }

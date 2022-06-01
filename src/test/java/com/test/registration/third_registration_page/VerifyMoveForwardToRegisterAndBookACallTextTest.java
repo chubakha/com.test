@@ -13,7 +13,7 @@ public class VerifyMoveForwardToRegisterAndBookACallTextTest extends PrepareRegi
     @Test
     void verifyMoveForwardToRegisterAndBookACallText(){
         new FirstRegistrationPage()
-                .choiceOneRandomCheckbox();
+                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
         sleep(1000);
         ThirdRegistrationPage thirdRegistrationPage =
                 new SecondRegistrationPage()

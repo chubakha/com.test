@@ -10,12 +10,12 @@ public class VerifyOneChosenOptionAfterReturnToPreviousPageTest extends PrepareR
     void verifyChosenOneOptionAfterReturnToPreviousPage() {
         String[] chosenOptionSecond =
                 new FirstRegistrationPage()
-                        .choiceOneRandomCheckbox()
-                        .getAllChosenOptions();
+                        .selectOneRandomOptionAndRedirectOnSecondRegistrationPage()
+                        .getSelectedOptions();
         String[] chosenOptionFirst  =
                 new SecondRegistrationPage()
                         .clickBackButton()
-                        .getAllChosenOptions();
+                        .getSelectedOptions();
         Assertions.assertArrayEquals(chosenOptionSecond, chosenOptionFirst, "chosen list on first page registrations should be equal to a list option on second page registration");
 
     }

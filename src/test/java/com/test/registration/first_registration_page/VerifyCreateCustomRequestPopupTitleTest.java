@@ -6,10 +6,9 @@ import org.junit.jupiter.api.Test;
 
 public class VerifyCreateCustomRequestPopupTitleTest extends PrepareRegistrationTestData {
     @Test
-    void verifyCreateCustomRequestPopupTitle(){
-        CreateCustomRequestOverlay createCustomRequestOverlay =
-                new FirstRegistrationPage()
-                        .clickNeedHelpWithSomethingElseButton();
+    void verifyCreateCustomRequestPopupTitle() {
+        CreateCustomRequestOverlay createCustomRequestOverlay = new FirstRegistrationPage()
+                .clickNeedHelpWithSomethingElseButton();
         Assertions.assertEquals("Create Custom Request", createCustomRequestOverlay.getNeedHelpWithSomethingElseTitle(), "'Create Custom Request' should be shown on popup");
     }
 }
