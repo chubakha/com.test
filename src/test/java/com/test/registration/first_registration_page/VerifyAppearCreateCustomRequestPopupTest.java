@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyCreateCustomRequestPopupAppearedTest extends PrepareRegistrationTestData {
+public class VerifyAppearCreateCustomRequestPopupTest extends PrepareRegistrationTestData {
     @Test
     void verifyCreateCustomRequestPopupAppeared() {
         CreateCustomRequestOverlay createCustomRequestOverlay = new FirstRegistrationPage()

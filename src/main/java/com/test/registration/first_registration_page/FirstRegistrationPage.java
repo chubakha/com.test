@@ -255,8 +255,8 @@ public class FirstRegistrationPage {
     }
 
     public String[] getSelectedOptions() {
-        String[] chosenListFirstPage = new Functions().getChosenOptions(selectedOptions);
-        return chosenListFirstPage;
+        String[] chosenOptionListOnFirstPage = new Functions().getChosenOptions(selectedOptions);
+        return chosenOptionListOnFirstPage;
     }
 
 }

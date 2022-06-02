@@ -2,6 +2,7 @@ package com.test.registration.second_registration_page;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import com.test.registration.Functions;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
 import com.test.registration.third_page_registration.ThirdRegistrationPage;
@@ -13,30 +14,36 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class SecondRegistrationPage {
 
-    private ElementsCollection selectedOptions = $$x("//div[contains(@class, 'checkbox_containerActive')]/following-sibling::span");
+    private ElementsCollection selectedOptions = $$x("//div[contains(@class, 'FirstStep_firstStepBlockBodyItem')]/div[contains(@class, 'checkbox_containerActive')]/following-sibling::span");
+    private SelenideElement nextButton = $x("//*[text() = 'NEXT']/..");
+    private SelenideElement backButton = $x("//*[text() = 'back']");
+    private SelenideElement pageTitle = $x("//*[text() = 'Please check the list of tasks which should be legally sorted out']");
+    private SelenideElement stepNumber = $x("//div[contains(@class, 'header-container')]/b");
+    private SelenideElement selectedOneOption = $x("//span[contains(@class,'checkbox_label')]");
+    private SelenideElement selectedOneSection = $x("//*[contains(@class,'FirstStep_firstStepBlockHeading')]");
+
 
     public ThirdRegistrationPage clickNextButton() {
-        System.out.println("456");
-        $x("//*[text() = 'NEXT']/..").shouldHave(Condition.visible).click();
+        nextButton.shouldHave(Condition.visible).click();
         return new ThirdRegistrationPage();
     }
 
     public FirstRegistrationPage clickBackButton() {
-        $x("//*[text() = 'back']").click();
+        backButton.click();
         return new FirstRegistrationPage();
     }
 
     public String getPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOut() {
-        return $x("//*[text() = 'Please check the list of tasks which should be legally sorted out']").getText();
+        return pageTitle.getText();
     }
 
     public String getRegistrationPageNumber() {
-        return $x("//div[contains(@class, 'header-container')]/b").getText();
+        return stepNumber.getText();
     }
 
     public String[] getSelectedOptions() {
-        String[] chosenListSecondPage = new Functions().getChosenOptions(selectedOptions);
-        return chosenListSecondPage;
+        String[] chosenOptionListOnSecondPage = new Functions().getChosenOptions(selectedOptions);
+        return chosenOptionListOnSecondPage;
     }
 
     public SecondRegistrationPage deleteLead(String leadName) {
@@ -50,17 +57,17 @@ public class SecondRegistrationPage {
     }
 
     public FirstRegistrationPage deleteOneChosenOptionFromOne() {
-        $x("(//span[contains(@class,'checkbox_label')])[1]").click();
+        selectedOneOption.click();
         return new FirstRegistrationPage();
     }
 
     public String getOneChosenOption(){
-        String chosenOption = $x("//*[contains(@class,'checkbox_label')]").getText();
+        String chosenOption = selectedOneOption.getText();
         return chosenOption;
     }
 
     public String getOneChosenSection(){
-        String chosenOption = $x("//*[contains(@class,'FirstStep_firstStepBlockHeading')]").getText();
+        String chosenOption = selectedOneSection.getText();
         return chosenOption;
     }
 

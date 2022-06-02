@@ -5,7 +5,7 @@ import com.test.registration.second_registration_page.SecondRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VerifyAllSelectedCheckboxesTest extends PrepareRegistrationTestData {
+public class VerifySelectAllOptionsTest extends PrepareRegistrationTestData {
     @Test
     void verifyAllSelectedCheckboxes() {
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
