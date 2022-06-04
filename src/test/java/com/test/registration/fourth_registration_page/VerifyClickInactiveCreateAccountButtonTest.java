@@ -12,7 +12,8 @@ public class VerifyClickInactiveCreateAccountButtonTest extends PrepareRegistrat
     @Test
     void verifyClickInactiveCreateAccountButton() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(1000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

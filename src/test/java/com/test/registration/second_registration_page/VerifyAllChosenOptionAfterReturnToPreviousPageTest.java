@@ -16,10 +16,8 @@ public class VerifyAllChosenOptionAfterReturnToPreviousPageTest extends PrepareR
         firstRegistrationPage
                 .clickEnabledNextButton()
                 .clickBackButton();
-        sleep(2000);
-        String[] chosenOptionAfterRedirectToSecondRegistrationPage = new SecondRegistrationPage().getSelectedOptions();
-        Assertions.assertArrayEquals(chosenOptionBeforeRedirectToSecondRegistrationPage, chosenOptionAfterRedirectToSecondRegistrationPage,
-                "chosen list on first page registrations should be the same after come back from second registration page on first registration page");
+        Assertions.assertArrayEquals(chosenOptionBeforeRedirectToSecondRegistrationPage, firstRegistrationPage.getSelectedOptions(),
+                "chosen list on first page registrations should be the same as after come back from second registration page on first registration page");
 
     }
 }

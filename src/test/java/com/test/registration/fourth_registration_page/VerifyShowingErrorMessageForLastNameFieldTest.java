@@ -12,7 +12,8 @@ public class VerifyShowingErrorMessageForLastNameFieldTest extends PrepareRegist
     @Test
     void verifyShowingErrorMessageForLastNameField() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

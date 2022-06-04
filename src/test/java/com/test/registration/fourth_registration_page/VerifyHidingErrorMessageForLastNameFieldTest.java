@@ -12,7 +12,8 @@ public class VerifyHidingErrorMessageForLastNameFieldTest extends PrepareRegistr
     @Test//тут
     void verifyHidingErrorMessageForLastNameField() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage = new SecondRegistrationPage()
                 .clickNextButton()

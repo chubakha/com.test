@@ -13,7 +13,8 @@ public class VerifyReturnToPreviousPageTest extends PrepareRegistrationTestData 
     @Test
     void verifyReturnToPreviousPage(){
         new FirstRegistrationPage()
-                        .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(1000);
         new SecondRegistrationPage()
                 .clickNextButton();

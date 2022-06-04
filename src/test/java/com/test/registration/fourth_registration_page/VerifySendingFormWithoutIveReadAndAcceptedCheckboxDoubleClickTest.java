@@ -12,7 +12,8 @@ public class VerifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest e
     @Test
     void verifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClick() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

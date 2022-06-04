@@ -5,13 +5,13 @@ import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class VerifyReturnToPreviousPageTest extends PrepareRegistrationTestData {
+public class VerifyReturnOnPreviousPageTest extends PrepareRegistrationTestData {
     @Test
-    void verifyReturnToPreviousPage(){
-        FirstRegistrationPage firstRegistrationPage =
-                new FirstRegistrationPage()
-                        .selectOneRandomOptionAndRedirectOnSecondRegistrationPage()
-                        .clickBackButton();
+    void verifyReturnToPreviousPage() {
+        FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage()
+                .selectOneRandomOption()
+                .clickEnabledNextButton()
+                .clickBackButton();
         Assertions.assertEquals("1/4", firstRegistrationPage.getStepNumber(), "1/4 should be shown");
     }
 }

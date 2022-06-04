@@ -13,7 +13,9 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyClickConnectButtonTest extends PrepareRegistrationTestData {
     @Test
     void verifyClickConnectButton() {
-        new FirstRegistrationPage().selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+        new FirstRegistrationPage()
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         new SecondRegistrationPage().clickNextButton();
         sleep(1000);

@@ -1,5 +1,6 @@
 package com.test.registration.first_registration_page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -12,7 +13,7 @@ public class CreateCustomRequestOverlay {
     private SelenideElement needHelpWithSomethingElseClosePopup = $x("//img[contains(@class, 'CustomModal_close')]");
 
     public boolean isNeedHelpWithSomethingElseShown(){
-        return needHelpWithSomethingElsePopupTitle.isDisplayed();
+        return needHelpWithSomethingElsePopupTitle.shouldBe(Condition.visible).isDisplayed();
     }
 
     public CreateCustomRequestOverlay setNeedHelpWithSomethingElseText(String text){

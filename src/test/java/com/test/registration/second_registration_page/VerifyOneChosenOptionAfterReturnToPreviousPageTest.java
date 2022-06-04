@@ -5,18 +5,19 @@ import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.sleep;
+
 public class VerifyOneChosenOptionAfterReturnToPreviousPageTest extends PrepareRegistrationTestData {
     @Test
     void verifyChosenOneOptionAfterReturnToPreviousPage() {
-        String[] chosenOptionSecond =
-                new FirstRegistrationPage()
-                        .selectOneRandomOptionAndRedirectOnSecondRegistrationPage()
-                        .getSelectedOptions();
-        String[] chosenOptionFirst  =
-                new SecondRegistrationPage()
-                        .clickBackButton()
-                        .getSelectedOptions();
-        Assertions.assertArrayEquals(chosenOptionSecond, chosenOptionFirst, "chosen list on first page registrations should be equal to a list option on second page registration");
+        SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
+        String[] chosenOptionOnSecond = secondRegistrationPage
+                .getSelectedOptions();
+        secondRegistrationPage
+                .clickBackButton();
+        Assertions.assertArrayEquals(chosenOptionOnSecond, secondRegistrationPage.getSelectedOptions(), "chosen list on first page registrations should be equal to a list option on second page registration");
 
     }
 }

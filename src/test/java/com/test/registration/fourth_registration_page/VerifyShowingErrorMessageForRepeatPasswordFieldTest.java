@@ -12,7 +12,8 @@ public class VerifyShowingErrorMessageForRepeatPasswordFieldTest extends Prepare
     @Test
     void verifyShowingErrorMessageForRepeatPasswordField() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

@@ -11,7 +11,8 @@ public class VerifyOpeningTermsAndConditionsLinkTest extends PrepareRegistration
     @Test
     void verifyOpeningTermsAndConditionsLink(){
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

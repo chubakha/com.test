@@ -12,7 +12,8 @@ public class VerifyCreateAnAccountTextTest extends PrepareRegistrationTestData {
     @Test
     void verifyCreateAnAccountText() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(1000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

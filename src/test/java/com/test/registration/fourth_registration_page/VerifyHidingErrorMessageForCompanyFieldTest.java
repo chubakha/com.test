@@ -12,7 +12,8 @@ public class VerifyHidingErrorMessageForCompanyFieldTest extends PrepareRegistra
     @Test
     void verifyHidingErrorMessageForCompanyField() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         boolean isFieldIsRequiredForCompanyNameField =
                 new SecondRegistrationPage()

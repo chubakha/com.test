@@ -13,7 +13,8 @@ public class VerifyThisIsHowSimilarRequestsAreUsuallySolvedTextTest extends Prep
     @Test
     void verifyThisIsHowSimilarRequestsAreUsuallySolvedText(){
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         //sleep(1000);
         ThirdRegistrationPage thirdRegistrationPage =
                 new SecondRegistrationPage()

@@ -11,7 +11,7 @@ import java.util.Map;
 public class Functions {
     public String[] getChosenOptions(ElementsCollection selectedOptions) {
         String[] chosenList = new String[selectedOptions.size()];
-        for (int i = 0; i < selectedOptions.size(); i++) {
+        for (int i = 0; i < chosenList.length; i++) {
             chosenList[i] = selectedOptions.get(i).getText();
         }
         return chosenList;

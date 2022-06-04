@@ -1,5 +1,6 @@
 package com.test.registration.first_registration_page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import com.test.registration.Functions;
@@ -179,7 +180,7 @@ public class FirstRegistrationPage {
 
     public FirstRegistrationPage hoverOnEveryToolTipIcon(){
         for (int i = 0; i < toolTipIcons.size(); i++) {
-            toolTipIcons.get(i).hover();
+            toolTipIcons.get(i).hover().shouldBe(Condition.visible);
             toolTipTextArray[i] = toolTipText.get(i).isDisplayed();
         }
         return this;
@@ -203,15 +204,11 @@ public class FirstRegistrationPage {
         return this;
     }
 
-    public void selectOneRandomOption() {
-        int randomOption = new Random().nextInt(9) + 1;
+    public FirstRegistrationPage selectOneRandomOption() {
+        int randomOption = new Random().nextInt(30)+1;
         $x("(//span[contains(@class,'checkbox_label')])[" + randomOption + "]").click();
-    }
-
-    public SecondRegistrationPage selectOneRandomOptionAndRedirectOnSecondRegistrationPage() {
-        selectOneRandomOption();
-        clickEnabledNextButton();
-        return new SecondRegistrationPage();
+        //System.out.println("1");
+        return this;
     }
 
     public FirstRegistrationPage clickDisabledNextButton() {
@@ -220,7 +217,7 @@ public class FirstRegistrationPage {
     }
 
     public SecondRegistrationPage clickEnabledNextButton() {
-        enabledNextButton.click();
+        enabledNextButton.shouldBe(Condition.attribute("id", "aaa")).click();
         return new SecondRegistrationPage();
     }
 
@@ -239,7 +236,7 @@ public class FirstRegistrationPage {
     }
 
     public String getStepNumber() {
-        return stepNumber.getText();
+        return stepNumber.shouldHave(Condition.text("1/4")).getText();
     }
 
     public String getAddedNeedHelpWithSomethingElse() {
@@ -255,6 +252,7 @@ public class FirstRegistrationPage {
     }
 
     public String[] getSelectedOptions() {
+        sleep(500);
         String[] chosenOptionListOnFirstPage = new Functions().getChosenOptions(selectedOptions);
         return chosenOptionListOnFirstPage;
     }

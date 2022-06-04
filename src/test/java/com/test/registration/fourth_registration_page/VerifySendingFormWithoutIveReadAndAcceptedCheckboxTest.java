@@ -12,7 +12,8 @@ public class VerifySendingFormWithoutIveReadAndAcceptedCheckboxTest extends Prep
     @Test
     void verifySendingFormWithoutIveReadAndAcceptedCheckbox() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

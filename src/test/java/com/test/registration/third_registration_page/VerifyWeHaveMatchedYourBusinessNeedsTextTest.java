@@ -11,7 +11,8 @@ public class VerifyWeHaveMatchedYourBusinessNeedsTextTest extends PrepareRegistr
     @Test
     void verifyWeHaveMatchedYourBusinessNeedsText(){
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         //sleep(1000);
         new SecondRegistrationPage().clickNextButton();
         Assertions.assertEquals("We have matched your business needs with the legal solutions.",

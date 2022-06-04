@@ -6,14 +6,16 @@ import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.sleep;
+
 public class VerifyComparingSectionsAndOptionsTest extends PrepareRegistrationTestData {
     @Test
     void verifyComparingSectionsAndOptions(){
-        new FirstRegistrationPage().selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
-        //sleep(3000);
-        String chosenOption = new SecondRegistrationPage().getOneChosenOption();
-        String chosenSection = new SecondRegistrationPage().getOneChosenSection();
-        boolean sectionIsRight = new Functions().compareSectionAndOption(chosenOption, chosenSection);
-        Assertions.assertTrue(sectionIsRight, "chosen option on first registration page should be correspond to section");
+        SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
+        Assertions.assertTrue(new Functions().compareSectionAndOption(secondRegistrationPage.getOneChosenOption(),
+                secondRegistrationPage.getOneChosenSection()),
+                "chosen option on first registration page should be correspond to section");
     }
 }

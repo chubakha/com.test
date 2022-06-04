@@ -12,7 +12,8 @@ public class VerifyShowingErrorMessageForEmailFieldTest extends PrepareRegistrat
     @Test
     void verifyShowingErrorMessageForEmailField() {
         new FirstRegistrationPage()
-                .selectOneRandomOptionAndRedirectOnSecondRegistrationPage();
+                .selectOneRandomOption()
+                .clickEnabledNextButton();
         sleep(2000);
         FourthRegistrationPage fourthRegistrationPage =
                 new SecondRegistrationPage()

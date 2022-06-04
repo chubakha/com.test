@@ -7,6 +7,7 @@ import com.test.registration.Functions;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
 import com.test.registration.third_page_registration.ThirdRegistrationPage;
 
+import java.time.Duration;
 import java.util.*;
 
 
@@ -24,7 +25,7 @@ public class SecondRegistrationPage {
 
 
     public ThirdRegistrationPage clickNextButton() {
-        nextButton.shouldHave(Condition.visible).click();
+        nextButton.shouldBe(Condition.attribute("id", "")).click();
         return new ThirdRegistrationPage();
     }
 
@@ -42,6 +43,7 @@ public class SecondRegistrationPage {
     }
 
     public String[] getSelectedOptions() {
+        sleep(500);
         String[] chosenOptionListOnSecondPage = new Functions().getChosenOptions(selectedOptions);
         return chosenOptionListOnSecondPage;
     }
@@ -57,18 +59,17 @@ public class SecondRegistrationPage {
     }
 
     public FirstRegistrationPage deleteOneChosenOptionFromOne() {
+        nextButton.shouldBe(Condition.attribute("id", ""));
         selectedOneOption.click();
         return new FirstRegistrationPage();
     }
 
     public String getOneChosenOption(){
-        String chosenOption = selectedOneOption.getText();
-        return chosenOption;
+        return selectedOneOption.getText();
     }
 
     public String getOneChosenSection(){
-        String chosenOption = selectedOneSection.getText();
-        return chosenOption;
+        return selectedOneSection.getText();
     }
 
 

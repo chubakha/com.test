@@ -2,19 +2,22 @@ package com.test.registration.third_page_registration;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import com.test.registration.Functions;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import com.test.registration.second_registration_page.SecondRegistrationPage;
 
-import static com.codeborne.selenide.Selenide.$$x;
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ThirdRegistrationPage {
+
+    private SelenideElement stepNumber = $x("//div[contains(@class, 'header-container')]/b");
 
     private ElementsCollection selectedOptions = $$x("//*[contains(@class, 'ThirdStep_needItem')]");
 
     public String getStepNumberTextLabel(){
-        return $x("//div[@class='registration-quiz__header-container']/b").getText();
+        //stepNumber.shouldHave(Condition.text("3/4"));
+        return stepNumber.getText();
     }
 
     public String getThisIsHowSimilarRequestsAreUsuallySolved(){
