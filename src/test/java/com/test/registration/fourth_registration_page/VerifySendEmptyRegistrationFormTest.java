@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifySendingEmptyRegistrationFormTest extends PrepareRegistrationTestData {
+public class VerifySendEmptyRegistrationFormTest extends PrepareRegistrationTestData {
     @Test
     void verifySendingEmptyRegistrationForm() {
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()

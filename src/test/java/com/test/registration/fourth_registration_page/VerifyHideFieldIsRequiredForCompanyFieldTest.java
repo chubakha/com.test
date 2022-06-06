@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyHidingErrorMessageForPasswordFieldTest extends PrepareRegistrationTestData {
+public class VerifyHideFieldIsRequiredForCompanyFieldTest extends PrepareRegistrationTestData {
     @Test
-    void verifyHidingErrorMessageForPasswordField() {
+    void verifyHidingErrorMessageForCompanyField() {
         Faker faker = new Faker();
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
@@ -20,8 +20,8 @@ public class VerifyHidingErrorMessageForPasswordFieldTest extends PrepareRegistr
                 .clickConnectButton()
                 .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
-                .setPasswordField(faker.internet().password(8,30))
+                .setCompanyNameField(faker.company().name())
                 .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("Passwords mismatch", fourthRegistrationPage.getFieldIsRequiredForPasswordField(), "'Passwords mismatch' should be shown below Password field");
+        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForCompanyNameFieldShown(), "'field is required' should not be shown below CompanyName field");
     }
 }

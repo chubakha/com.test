@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyShowingErrorMessageForEmailFieldTest extends PrepareRegistrationTestData {
+public class VerifyAppearFieldIsRequiredForEmailFieldTest extends PrepareRegistrationTestData {
     @Test
     void verifyShowingErrorMessageForEmailField() {
         Faker faker = new Faker();

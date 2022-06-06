@@ -9,11 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifySendingFormWithoutIveReadAndAcceptedCheckboxTest extends PrepareRegistrationTestData {
+public class VerifyAppearFieldIsRequiredForRepeatPasswordFieldTest extends PrepareRegistrationTestData {
     @Test
-    void verifySendingFormWithoutIveReadAndAcceptedCheckbox() {
+    void verifyShowingErrorMessageForRepeatPasswordField() {
         Faker faker = new Faker();
-        String currentPassword = faker.internet().password(8,30);
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
                 .clickEnabledNextButton()
@@ -23,9 +22,9 @@ public class VerifySendingFormWithoutIveReadAndAcceptedCheckboxTest extends Prep
                 .setLastNameField(faker.name().lastName())
                 .setCompanyNameField(faker.company().name())
                 .setEmailField(faker.internet().emailAddress())
-                .setPasswordField(currentPassword)
-                .setRepeatPasswordField(currentPassword)
+                .setPasswordField(faker.internet().password(8, 30))
+                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumber(), "'4/4' should be shown");
+        Assertions.assertEquals("Passwords mismatch", fourthRegistrationPage.getFieldIsRequiredForPasswordField(), "'Passwords mismatch' should be shown below Repeat Password");
     }
 }

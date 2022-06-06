@@ -9,11 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyShowingErrorMessageForCompanyNameFieldTest extends PrepareRegistrationTestData {
+public class VerifySendFormWithoutIveReadAndAcceptedCheckboxTest extends PrepareRegistrationTestData {
     @Test
-    void verifyShowingErrorMessageForCompanyNameField() {
+    void verifySendingFormWithoutIveReadAndAcceptedCheckbox() {
         Faker faker = new Faker();
-        String currentPassword = faker.internet().password(8, 30);
+        String currentPassword = faker.internet().password(8,30);
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
                 .clickEnabledNextButton()
@@ -21,11 +21,11 @@ public class VerifyShowingErrorMessageForCompanyNameFieldTest extends PrepareReg
                 .clickConnectButton()
                 .setFirstNameField(faker.name().firstName())
                 .setLastNameField(faker.name().lastName())
+                .setCompanyNameField(faker.company().name())
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(currentPassword)
                 .setRepeatPasswordField(currentPassword)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("field is required", fourthRegistrationPage.getFieldIsRequiredForCompanyNameField(), "'field is required' should be shown below CompanyName field");
+        Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumber(), "'4/4' should be shown");
     }
 }

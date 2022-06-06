@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyShowingErrorMessageForLastNameFieldTest extends PrepareRegistrationTestData {
+public class VerifyAppearFieldIsRequiredForCompanyNameFieldTest extends PrepareRegistrationTestData {
     @Test
-    void verifyShowingErrorMessageForLastNameField() {
+    void verifyShowingErrorMessageForCompanyNameField() {
         Faker faker = new Faker();
         String currentPassword = faker.internet().password(8, 30);
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
@@ -20,12 +20,12 @@ public class VerifyShowingErrorMessageForLastNameFieldTest extends PrepareRegist
                 .clickNextButton()
                 .clickConnectButton()
                 .setFirstNameField(faker.name().firstName())
-                .setCompanyNameField(faker.company().name())
+                .setLastNameField(faker.name().lastName())
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(currentPassword)
                 .setRepeatPasswordField(currentPassword)
                 .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("field is required", fourthRegistrationPage.getFieldIsRequiredForLastNameField(), "'field is required' should be shown below LastName field");
+        Assertions.assertEquals("field is required", fourthRegistrationPage.getFieldIsRequiredForCompanyNameField(), "'field is required' should be shown below CompanyName field");
     }
 }

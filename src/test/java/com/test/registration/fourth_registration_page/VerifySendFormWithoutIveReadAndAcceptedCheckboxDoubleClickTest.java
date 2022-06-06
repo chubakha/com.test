@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest extends PrepareRegistrationTestData {
+public class VerifySendFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest extends PrepareRegistrationTestData {
     @Test
     void verifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClick() {
         Faker faker = new Faker();
