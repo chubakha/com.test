@@ -9,12 +9,11 @@ import org.junit.jupiter.api.Test;
 
 public class VerifyWeHaveMatchedYourBusinessNeedsTextTest extends PrepareRegistrationTestData {
     @Test
-    void verifyWeHaveMatchedYourBusinessNeedsText(){
-        new FirstRegistrationPage()
+    void verifyWeHaveMatchedYourBusinessNeedsText() {
+        ThirdRegistrationPage thirdRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
-                .clickEnabledNextButton();
-        //sleep(1000);
-        new SecondRegistrationPage().clickNextButton();
+                .clickEnabledNextButton()
+                .clickNextButton();
         Assertions.assertEquals("We have matched your business needs with the legal solutions.",
                 new ThirdRegistrationPage().getWeHaveMatchedYourBusinessNeedsWithTheLegalSolutions(),
                 "'We have matched your business needs with the legal solutions.' should be shown");

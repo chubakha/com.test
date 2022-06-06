@@ -12,6 +12,6 @@ public class VerifySelectOneOptionPerSectionTest extends PrepareRegistrationTest
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
                 .selectOneCheckboxInEverySection()
                 .clickEnabledNextButton();
-        Assertions.assertEquals("2/4", secondRegistrationPage.getRegistrationPageNumber(), "2/4 should be shown on Second Registration Page");
+        Assertions.assertEquals("2/4", secondRegistrationPage.getStepNumber(), "2/4 should be shown on Second Registration Page");
     }
 }

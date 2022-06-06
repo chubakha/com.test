@@ -11,6 +11,6 @@ public class VerifySelectAllOptionsTest extends PrepareRegistrationTestData {
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
                 .selectAllCheckboxInEverySection()
                 .clickEnabledNextButton();
-        Assertions.assertEquals("2/4", secondRegistrationPage.getRegistrationPageNumber(), "2/4 should be shown");
+        Assertions.assertEquals("2/4", secondRegistrationPage.getStepNumber(), "2/4 should be shown");
     }
 }

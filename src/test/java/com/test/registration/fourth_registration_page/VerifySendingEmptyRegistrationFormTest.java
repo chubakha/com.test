@@ -11,16 +11,13 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifySendingEmptyRegistrationFormTest extends PrepareRegistrationTestData {
     @Test
     void verifySendingEmptyRegistrationForm() {
-        new FirstRegistrationPage()
+        FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
-                .clickEnabledNextButton();
-        sleep(2000);
-        FourthRegistrationPage fourthRegistrationPage =
-                new SecondRegistrationPage()
-                        .clickNextButton()
-                        .clickConnectButton()
-                        .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
-                        .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumberTextLabel(), "'4/4' should be shown");
+                .clickEnabledNextButton()
+                .clickNextButton()
+                .clickConnectButton()
+                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveCreateAccountButton();
+        Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumber(), "'4/4' should be shown");
     }
 }

@@ -6,8 +6,6 @@ import com.test.registration.third_page_registration.ThirdRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyClickNextButtonTest extends PrepareRegistrationTestData {
     @Test
     void verifyClickNextButton(){
@@ -15,6 +13,6 @@ public class VerifyClickNextButtonTest extends PrepareRegistrationTestData {
                 .selectOneRandomOption()
                 .clickEnabledNextButton()
                 .clickNextButton();
-        Assertions.assertEquals("3/4", thirdRegistrationPage.getStepNumberTextLabel(), "'3/4' should be shown");
+        Assertions.assertEquals("3/4", thirdRegistrationPage.getStepNumber(), "'3/4' should be shown");
     }
 }

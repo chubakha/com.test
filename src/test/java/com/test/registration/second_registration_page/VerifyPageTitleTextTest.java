@@ -12,7 +12,7 @@ public class VerifyPageTitleTextTest extends PrepareRegistrationTestData {
                 .selectOneCheckboxInEverySection()
                 .clickEnabledNextButton();
         Assertions.assertEquals("Please check the list of tasks which should be legally sorted out",
-                secondRegistrationPage.getPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOut(),
+                secondRegistrationPage.getPageTitle(),
                 "'Please check the list of tasks which should be legally sorted out' should be shown");
 
     }

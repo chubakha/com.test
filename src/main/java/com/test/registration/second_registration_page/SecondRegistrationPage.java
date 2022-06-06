@@ -7,7 +7,6 @@ import com.test.registration.Functions;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
 import com.test.registration.third_page_registration.ThirdRegistrationPage;
 
-import java.time.Duration;
 import java.util.*;
 
 
@@ -30,16 +29,17 @@ public class SecondRegistrationPage {
     }
 
     public FirstRegistrationPage clickBackButton() {
+        System.out.println("2");
         backButton.click();
         return new FirstRegistrationPage();
     }
 
-    public String getPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOut() {
+    public String getPageTitle() {
         return pageTitle.getText();
     }
 
-    public String getRegistrationPageNumber() {
-        return stepNumber.getText();
+    public String getStepNumber() {
+        return stepNumber.shouldHave(Condition.text("2/4")).getText();
     }
 
     public String[] getSelectedOptions() {

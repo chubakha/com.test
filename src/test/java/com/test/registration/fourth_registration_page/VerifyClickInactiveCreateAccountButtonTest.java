@@ -11,15 +11,12 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyClickInactiveCreateAccountButtonTest extends PrepareRegistrationTestData {
     @Test
     void verifyClickInactiveCreateAccountButton() {
-        new FirstRegistrationPage()
+        FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
-                .clickEnabledNextButton();
-        sleep(1000);
-        FourthRegistrationPage fourthRegistrationPage =
-                new SecondRegistrationPage()
-                        .clickNextButton()
-                        .clickConnectButton()
-                        .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumberTextLabel(), "'4/4' should be shown");
+                .clickEnabledNextButton()
+                .clickNextButton()
+                .clickConnectButton()
+                .clickInactiveCreateAccountButton();
+        Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumber(), "'4/4' should be shown");
     }
 }

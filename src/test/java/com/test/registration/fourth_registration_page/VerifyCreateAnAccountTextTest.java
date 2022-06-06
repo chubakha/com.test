@@ -11,16 +11,11 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyCreateAnAccountTextTest extends PrepareRegistrationTestData {
     @Test
     void verifyCreateAnAccountText() {
-        new FirstRegistrationPage()
+        FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
-                .clickEnabledNextButton();
-        sleep(1000);
-        FourthRegistrationPage fourthRegistrationPage =
-                new SecondRegistrationPage()
-                        .clickNextButton()
-                        .clickConnectButton();
-        Assertions.assertEquals("Create an account",
-                fourthRegistrationPage.getCreateAnAccount(),
-                "'Create an account' should be shown");
+                .clickEnabledNextButton()
+                .clickNextButton()
+                .clickConnectButton();
+        Assertions.assertEquals("Create an account", fourthRegistrationPage.getPageTitle(), "'Create an account' should be shown");
     }
 }

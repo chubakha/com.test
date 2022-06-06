@@ -1,6 +1,7 @@
 package com.test.registration.fourth_registration_page;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -20,6 +21,10 @@ public class FourthRegistrationPage {
     private SelenideElement fieldIsRequiredForRepeatPasswordField = $x("//input[@placeholder='Repeat password']/following-sibling::p");
     private SelenideElement iveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container')]");
     private SelenideElement createAccountButton = $x("//*[text() = 'CREATE ACCOUNT']/..");
+    private SelenideElement termsAndConditionsLink = $x("//*[text() = 'Terms & Conditions']");
+    private SelenideElement privacyPolicyLink = $x("//*[text() = 'Privacy Policy']");
+    private SelenideElement pageTitle = $x("//*[text() = 'Create an account']");
+    private SelenideElement stepNumber = $x("//div[@class='registration-quiz__header-container']/b");
 
     public FourthRegistrationPage setFirstNameField(String first_name){
         firstNameField.val(first_name);
@@ -30,7 +35,7 @@ public class FourthRegistrationPage {
         return firstNameField.getText();
     }
 
-    public boolean isFieldIsRequiredForFirstNameField(){
+    public boolean isFieldIsRequiredForFirstNameFieldShown(){
         return fieldIsRequiredForFirstNameField.isDisplayed();
     }
 
@@ -51,7 +56,7 @@ public class FourthRegistrationPage {
         return fieldIsRequiredForLastNameField.getText();
     }
 
-    public boolean isLastNameFieldRequiredErrorMessageShown(){
+    public boolean isFieldIsRequiredForLastNameFieldShown(){
         return fieldIsRequiredForLastNameField.isDisplayed();
     }
 
@@ -68,7 +73,7 @@ public class FourthRegistrationPage {
         return fieldIsRequiredForCompanyNameField.getText();
     }
 
-    public boolean isFieldIsRequiredForCompanyNameField(){
+    public boolean isFieldIsRequiredForCompanyNameFieldShown(){
         return fieldIsRequiredForCompanyNameField.isDisplayed();
     }
 
@@ -85,7 +90,7 @@ public class FourthRegistrationPage {
         return fieldIsRequiredForEmailField.getText();
     }
 
-    public boolean isFieldIsRequiredForEmailField(){
+    public boolean isFieldIsRequiredForEmailFieldShown(){
         return fieldIsRequiredForEmailField.isDisplayed();
     }
 
@@ -120,31 +125,31 @@ public class FourthRegistrationPage {
         return this;
     }
 
-    public FourthRegistrationPage clickTermsAndConditionsLink(){
-        $x("//*[text() = 'Terms & Conditions']").click();
-        $x("//*[@class = 'ndfHFb-c4YZDc-cYSp0e-Oz6c3e ndfHFb-c4YZDc-cYSp0e-DARUcf-gSKZZ ndfHFb-c4YZDc-neVct-RCfa3e']").shouldBe(Condition.visible);
-        return this;
+    public TermsAndConditionsOverlay clickTermsAndConditionsLink(){
+        termsAndConditionsLink.click();
+        return new TermsAndConditionsOverlay();
     }
 
     public FourthRegistrationPage clickPrivacyPolicyLink(){
-        $x("//*[text() = 'Privacy Policy']").click();
+        privacyPolicyLink.click();
         return this;
     }
 
-    public String getCreateAnAccount(){
-        return $x("//*[text() = 'Create an account']").getText();
+    public String getPageTitle(){
+        return pageTitle.getText();
     }
 
-    public String getStepNumberTextLabel(){
-        return $x("//div[@class='registration-quiz__header-container']/b").getText();
+    public String getStepNumber(){
+        return stepNumber.getText();
     }
 
     public String getDisabledCreateAccountButton(){
+        stepNumber.shouldHave(Condition.text("4/4"));
         return createAccountButton.getAttribute("disabled");
     }
 
     public void clickCreateAccountButton() {
-        createAccountButton.shouldBe(Condition.visible).click();
+        createAccountButton.click();
     }
 
     public FourthRegistrationPage clickInactiveCreateAccountButton() {

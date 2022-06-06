@@ -9,15 +9,13 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyOpeningTermsAndConditionsLinkTest extends PrepareRegistrationTestData {
     @Test
-    void verifyOpeningTermsAndConditionsLink(){
+    void verifyOpeningTermsAndConditionsLink() {
         new FirstRegistrationPage()
                 .selectOneRandomOption()
-                .clickEnabledNextButton();
-        sleep(2000);
-        FourthRegistrationPage fourthRegistrationPage =
-                new SecondRegistrationPage()
-                        .clickNextButton()
-                        .clickConnectButton()
+                .clickEnabledNextButton()
+                .clickNextButton()
+                .clickConnectButton()
                 .clickTermsAndConditionsLink();
+        System.out.println(new TermsAndConditionsOverlay().getTermsAndConditionsTitle());
     }
 }

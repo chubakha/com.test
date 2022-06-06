@@ -7,20 +7,15 @@ import com.test.registration.third_page_registration.ThirdRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyThisIsHowSimilarRequestsAreUsuallySolvedTextTest extends PrepareRegistrationTestData {
     @Test
     void verifyThisIsHowSimilarRequestsAreUsuallySolvedText(){
-        new FirstRegistrationPage()
+        ThirdRegistrationPage thirdRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
-                .clickEnabledNextButton();
-        //sleep(1000);
-        ThirdRegistrationPage thirdRegistrationPage =
-                new SecondRegistrationPage()
-                    .clickNextButton();
+                .clickEnabledNextButton()
+                .clickNextButton();
         Assertions.assertEquals("This is how similar requests are usually solved",
-                thirdRegistrationPage.getThisIsHowSimilarRequestsAreUsuallySolved(),
+                thirdRegistrationPage.getPageTitle(),
                 "'This is how similar requests are usually solved' should be shown");
     }
 

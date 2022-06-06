@@ -12,48 +12,56 @@ import static com.codeborne.selenide.Selenide.*;
 public class ThirdRegistrationPage {
 
     private SelenideElement stepNumber = $x("//div[contains(@class, 'header-container')]/b");
+    private SelenideElement pageTitle = $x("//*[text() = 'This is how similar requests are usually solved']");
+    private SelenideElement moveForwardToRegisterAndBookACall = $x("//*[text() = 'Move forward to register and book a call with lawyer to discuss the suggested legal solutions']");
+    private SelenideElement weHaveMatchedYourBusinessNeedsWithTheLegalSolutions = $x("//*[text() = 'We have matched your business needs with the legal solutions.']");
+    private SelenideElement backButton = $x("//*[text() = 'back']");
+    private SelenideElement connectButton = $x("//*[text() = 'CONNECT']");
+    private SelenideElement chosenOnOption = $x("//*[contains(@class,'ThirdStep_needItem')]");
+    private SelenideElement chosenOneSection = $x("//*[contains(@class,'ThirdStep_categoryCol')]");
 
     private ElementsCollection selectedOptions = $$x("//*[contains(@class, 'ThirdStep_needItem')]");
 
-    public String getStepNumberTextLabel(){
-        //stepNumber.shouldHave(Condition.text("3/4"));
+    public String getStepNumber(){
         return stepNumber.getText();
     }
 
-    public String getThisIsHowSimilarRequestsAreUsuallySolved(){
-        return $x("//*[text() = 'This is how similar requests are usually solved']").getText();
+    public String getPageTitle(){
+        return pageTitle.getText();
     }
 
     public String getMoveForwardToRegisterAndBookACall(){
-        return $x("//*[text() = 'Move forward to register and book a call with lawyer to discuss the suggested legal solutions']").getText();
+        return moveForwardToRegisterAndBookACall.getText();
     }
 
     public String getWeHaveMatchedYourBusinessNeedsWithTheLegalSolutions(){
-        return $x("//*[text() = 'We have matched your business needs with the legal solutions.']").getText();
+        return weHaveMatchedYourBusinessNeedsWithTheLegalSolutions.getText();
     }
 
     public String[] getSecondColumnTable(){
+        chosenOnOption.shouldBe(Condition.visible);
         String[] chosenListSecondColumnTable = new Functions().getChosenOptions(selectedOptions);
         return chosenListSecondColumnTable;
     }
 
     public SecondRegistrationPage clickBackButton() {
-        $x("//*[text() = 'back']").shouldBe(Condition.visible).click();
+        chosenOnOption.shouldBe(Condition.visible);
+        backButton.shouldHave(Condition.visible).click();
         return new SecondRegistrationPage();
     }
 
     public FourthRegistrationPage clickConnectButton() {
-        $x("//*[text() = 'CONNECT']").shouldBe(Condition.visible).click();
+        connectButton.shouldBe(Condition.visible).click();
         return new FourthRegistrationPage();
     }
 
     public String getOneChosenOption(){
-        String chosenOption = $x("//*[contains(@class,'ThirdStep_needItem')]").getText();
-        return chosenOption;
+        String chosenOptionText = chosenOnOption.getText();
+        return chosenOptionText;
     }
 
-    public String getOneChosenSection(){
-        String chosenOption = $x("//*[contains(@class,'ThirdStep_categoryCol')]").getText();
-        return chosenOption;
+    public String getSectionForChosenOption(){
+        String chosenSectionText = chosenOneSection.getText();
+        return chosenSectionText;
     }
 }
