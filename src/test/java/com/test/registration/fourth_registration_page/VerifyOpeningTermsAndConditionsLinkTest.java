@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyOpeningTermsAndConditionsLinkTest extends PrepareRegistrationTestData {
     @Test
-    void verifyOpeningTermsAndConditionsLink() { 
+    void verifyOpeningTermsAndConditionsLink() {
         new FirstRegistrationPage()
                 .selectOneRandomOption()
                 .clickEnabledNextButton()

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.test.registration.third_registration_page.VerifyReturnToPreviousPageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-01T21:11:26" hostname="glbuh-note" time="6.225">
+  <properties/>
+  <testcase name="verifyReturnToPreviousPage()" classname="com.test.registration.third_registration_page.VerifyReturnToPreviousPageTest" time="6.225"/>
+  <system-out><![CDATA[456
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

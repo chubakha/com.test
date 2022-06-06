@@ -1,0 +1,11 @@
+[ {
+  "uid" : "283b971c7d051bca",
+  "name" : "verifyAllSelectedCheckboxes()",
+  "time" : {
+    "start" : 1654099706954,
+    "stop" : 1654099716424,
+    "duration" : 9470
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

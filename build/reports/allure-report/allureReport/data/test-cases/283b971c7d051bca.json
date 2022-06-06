@@ -1,0 +1,57 @@
+{
+  "uid" : "283b971c7d051bca",
+  "name" : "verifyAllSelectedCheckboxes()",
+  "fullName" : "com.test.registration.first_registration_page.VerifyAllSelectedCheckboxesTest.verifyAllSelectedCheckboxes",
+  "historyId" : "5918dfbb73e88c41d41528805f4abf",
+  "time" : {
+    "start" : 1654099706954,
+    "stop" : 1654099716424,
+    "duration" : 9470
+  },
+  "description" : "",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "host",
+    "value" : "glbuh-note"
+  }, {
+    "name" : "thread",
+    "value" : "5268@glbuh-note.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit-platform"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "package",
+    "value" : "com.test.registration.first_registration_page.VerifyAllSelectedCheckboxesTest"
+  }, {
+    "name" : "testClass",
+    "value" : "com.test.registration.first_registration_page.VerifyAllSelectedCheckboxesTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "verifyAllSelectedCheckboxes"
+  }, {
+    "name" : "suite",
+    "value" : "com.test.registration.first_registration_page.VerifyAllSelectedCheckboxesTest"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "283b971c7d051bca.json",
+  "parameterValues" : [ ]
+}
