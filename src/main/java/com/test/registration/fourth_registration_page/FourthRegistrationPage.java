@@ -1,7 +1,6 @@
 package com.test.registration.fourth_registration_page;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -125,14 +124,14 @@ public class FourthRegistrationPage {
         return this;
     }
 
-    public TermsAndConditionsOverlay clickTermsAndConditionsLink(){
+    public AttachmentDocumentsOverlay clickTermsAndConditionsLink(){
         termsAndConditionsLink.click();
-        return new TermsAndConditionsOverlay();
+        return new AttachmentDocumentsOverlay();
     }
 
-    public FourthRegistrationPage clickPrivacyPolicyLink(){
+    public AttachmentDocumentsOverlay clickPrivacyPolicyLink(){
         privacyPolicyLink.click();
-        return this;
+        return new AttachmentDocumentsOverlay();
     }
 
     public String getPageTitle(){
