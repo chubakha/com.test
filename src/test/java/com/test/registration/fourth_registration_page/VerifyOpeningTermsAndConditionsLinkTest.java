@@ -16,6 +16,6 @@ public class VerifyOpeningTermsAndConditionsLinkTest extends PrepareRegistration
                 .clickNextButton()
                 .clickConnectButton()
                 .clickTermsAndConditionsLink();
-        System.out.println(new TermsAndConditionsOverlay().getTermsAndConditionsTitle());
+        new TermsAndConditionsOverlay().getTermsAndConditionsTitle();
     }
 }
