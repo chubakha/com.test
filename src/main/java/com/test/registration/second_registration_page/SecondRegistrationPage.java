@@ -29,7 +29,6 @@ public class SecondRegistrationPage {
     }
 
     public FirstRegistrationPage clickBackButton() {
-        System.out.println("2");
         backButton.click();
         return new FirstRegistrationPage();
     }
@@ -43,7 +42,6 @@ public class SecondRegistrationPage {
     }
 
     public String[] getSelectedOptions() {
-        sleep(500);
         String[] chosenOptionListOnSecondPage = new Functions().getChosenOptions(selectedOptions);
         return chosenOptionListOnSecondPage;
     }

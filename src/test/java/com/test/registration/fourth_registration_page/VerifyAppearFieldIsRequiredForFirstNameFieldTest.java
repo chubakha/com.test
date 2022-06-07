@@ -7,7 +7,6 @@ import com.test.registration.second_registration_page.SecondRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyAppearFieldIsRequiredForFirstNameFieldTest extends PrepareRegistrationTestData {
     @Test

@@ -22,6 +22,7 @@ public class FirstRegistrationPage {
     private SelenideElement pageTitle = $x("//*[text() = 'What do you need legally solved?']");
     private SelenideElement stepNumber = $x("//div[@class='registration-quiz__header-container']/b");
     private SelenideElement needHelpWithSomethingElsePopupTitle = $x("//*[contains(@class, 'slide-enter-done')]");
+    private SelenideElement backButton = $x("//*[text() = 'back']");
 
     public boolean[] toolTipTextArray = new boolean[toolTipIcons.size()];
 
@@ -252,7 +253,7 @@ public class FirstRegistrationPage {
     }
 
     public String[] getSelectedOptions() {
-        sleep(500);
+        backButton.shouldNotBe(Condition.exist);
         String[] chosenOptionListOnFirstPage = new Functions().getChosenOptions(selectedOptions);
         return chosenOptionListOnFirstPage;
     }

@@ -4,7 +4,6 @@ import com.test.registration.PrepareRegistrationTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyAppearCreateCustomRequestPopupTest extends PrepareRegistrationTestData {
     @Test
