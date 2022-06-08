@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifyClickInactiveCreateAccountButtonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:13:13" hostname="glbuh-note" time="1.821">
+<testsuite name="com.test.registration.fourth_registration_page.VerifyClickInactiveCreateAccountButtonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T20:54:45" hostname="glbuh-note" time="2.341">
   <properties/>
-  <testcase name="verifyClickInactiveCreateAccountButton()" classname="com.test.registration.fourth_registration_page.VerifyClickInactiveCreateAccountButtonTest" time="1.821"/>
+  <testcase name="verifyClickInactiveCreateAccountButton()" classname="com.test.registration.fourth_registration_page.VerifyClickInactiveCreateAccountButtonTest" time="2.341"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

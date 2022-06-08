@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.second_registration_page.VerifyReturnOnPreviousPageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:14:45" hostname="glbuh-note" time="1.04">
+<testsuite name="com.test.registration.second_registration_page.VerifyReturnOnPreviousPageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T20:56:45" hostname="glbuh-note" time="1.383">
   <properties/>
-  <testcase name="verifyReturnToPreviousPage()" classname="com.test.registration.second_registration_page.VerifyReturnOnPreviousPageTest" time="1.04"/>
+  <testcase name="verifyReturnToPreviousPage()" classname="com.test.registration.second_registration_page.VerifyReturnOnPreviousPageTest" time="1.383"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

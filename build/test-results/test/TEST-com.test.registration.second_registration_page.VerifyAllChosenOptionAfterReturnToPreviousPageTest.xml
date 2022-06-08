@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.second_registration_page.VerifyAllChosenOptionAfterReturnToPreviousPageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:14:17" hostname="glbuh-note" time="6.953">
+<testsuite name="com.test.registration.second_registration_page.VerifyAllChosenOptionAfterReturnToPreviousPageTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T20:56:13" hostname="glbuh-note" time="9.363">
   <properties/>
-  <testcase name="verifyChosenAllOptionAfterReturnToPreviousPage()" classname="com.test.registration.second_registration_page.VerifyAllChosenOptionAfterReturnToPreviousPageTest" time="6.953"/>
+  <testcase name="verifyChosenAllOptionAfterReturnToPreviousPage()" classname="com.test.registration.second_registration_page.VerifyAllChosenOptionAfterReturnToPreviousPageTest" time="9.363"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.second_registration_page.VerifyDeleteOneChosenOptionFromOneTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:14:39" hostname="glbuh-note" time="1.85">
+<testsuite name="com.test.registration.second_registration_page.VerifyDeleteOneChosenOptionFromOneTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T20:56:37" hostname="glbuh-note" time="1.92">
   <properties/>
-  <testcase name="verifyDeleteChosenOptionFromOne()" classname="com.test.registration.second_registration_page.VerifyDeleteOneChosenOptionFromOneTest" time="1.85"/>
+  <testcase name="verifyDeleteChosenOptionFromOne()" classname="com.test.registration.second_registration_page.VerifyDeleteOneChosenOptionFromOneTest" time="1.92"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
