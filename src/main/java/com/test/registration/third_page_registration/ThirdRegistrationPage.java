@@ -17,8 +17,8 @@ public class ThirdRegistrationPage {
     private SelenideElement weHaveMatchedYourBusinessNeedsWithTheLegalSolutions = $x("//*[text() = 'We have matched your business needs with the legal solutions.']");
     private SelenideElement backButton = $x("//*[text() = 'back']");
     private SelenideElement connectButton = $x("//*[text() = 'CONNECT']");
-    private SelenideElement chosenOnOption = $x("//*[contains(@class,'ThirdStep_needItem')]");
-    private SelenideElement chosenOneSection = $x("//*[contains(@class,'ThirdStep_categoryCol')]");
+    private SelenideElement selectedOnOption = $x("//*[contains(@class,'ThirdStep_needItem')]");
+    private SelenideElement selectedOneSection = $x("//*[contains(@class,'ThirdStep_categoryCol')]");
 
     private ElementsCollection selectedOptions = $$x("//*[contains(@class, 'ThirdStep_needItem')]");
 
@@ -39,29 +39,30 @@ public class ThirdRegistrationPage {
     }
 
     public String[] getSecondColumnTable(){
-        chosenOnOption.shouldBe(Condition.visible);
+        selectedOnOption.shouldBe(Condition.visible);
         String[] chosenListSecondColumnTable = new Functions().getChosenOptions(selectedOptions);
         return chosenListSecondColumnTable;
     }
 
     public SecondRegistrationPage clickBackButton() {
-        chosenOnOption.shouldBe(Condition.visible);
+        selectedOnOption.shouldBe(Condition.visible);
         backButton.shouldHave(Condition.visible).click();
         return new SecondRegistrationPage();
     }
 
     public FourthRegistrationPage clickConnectButton() {
-        connectButton.shouldBe(Condition.visible).click();
+        stepNumber.shouldHave(Condition.text("3/4"));
+        connectButton.click();
         return new FourthRegistrationPage();
     }
 
     public String getOneChosenOption(){
-        String chosenOptionText = chosenOnOption.getText();
+        String chosenOptionText = selectedOnOption.getText();
         return chosenOptionText;
     }
 
     public String getSectionForChosenOption(){
-        String chosenSectionText = chosenOneSection.getText();
+        String chosenSectionText = selectedOneSection.getText();
         return chosenSectionText;
     }
 }

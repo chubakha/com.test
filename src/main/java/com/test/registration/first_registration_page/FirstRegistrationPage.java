@@ -218,7 +218,7 @@ public class FirstRegistrationPage {
     }
 
     public SecondRegistrationPage clickEnabledNextButton() {
-        enabledNextButton.shouldBe(Condition.attribute("id", "aaa")).click();
+        enabledNextButton.shouldNotBe(Condition.attribute("disabled")).click();
         return new SecondRegistrationPage();
     }
 

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.third_registration_page.VerifyClickConnectButtonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-01T21:11:13" hostname="glbuh-note" time="6.13">
+<testsuite name="com.test.registration.third_registration_page.VerifyClickConnectButtonTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:14:56" hostname="glbuh-note" time="1.489">
   <properties/>
-  <testcase name="verifyClickConnectButton()" classname="com.test.registration.third_registration_page.VerifyClickConnectButtonTest" time="6.13"/>
-  <system-out><![CDATA[456
-]]></system-out>
+  <testcase name="verifyClickConnectButton()" classname="com.test.registration.third_registration_page.VerifyClickConnectButtonTest" time="1.489"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

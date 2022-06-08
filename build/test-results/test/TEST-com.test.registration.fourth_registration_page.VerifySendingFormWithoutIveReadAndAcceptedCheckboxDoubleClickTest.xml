@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-01T21:10:00" hostname="glbuh-note" time="5.412">
-  <properties/>
-  <testcase name="verifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClick()" classname="com.test.registration.fourth_registration_page.VerifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest" time="5.412"/>
-  <system-out><![CDATA[456
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

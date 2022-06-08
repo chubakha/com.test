@@ -1,0 +1,1 @@
+{"uuid":"e8d060ee-c47c-4b8d-ba8a-190cacbba9c0","name":"verifyClickInactiveCreateAccountButton()","children":["19438213-0d9e-418d-a23d-5ba7a47b9016"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1654639993124,"stop":1654639993620}],"afters":[],"links":[],"start":1654639993121,"stop":1654639994941}

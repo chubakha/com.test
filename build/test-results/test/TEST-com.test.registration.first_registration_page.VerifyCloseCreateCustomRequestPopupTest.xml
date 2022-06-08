@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.first_registration_page.VerifyCloseCreateCustomRequestPopupTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-01T21:08:29" hostname="glbuh-note" time="2.351">
+<testsuite name="com.test.registration.first_registration_page.VerifyCloseCreateCustomRequestPopupTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:12:22" hostname="glbuh-note" time="2.263">
   <properties/>
-  <testcase name="verifyCloseCreateCustomRequestPopup()" classname="com.test.registration.first_registration_page.VerifyCloseCreateCustomRequestPopupTest" time="2.351"/>
+  <testcase name="verifyCloseCreateCustomRequestPopup()" classname="com.test.registration.first_registration_page.VerifyCloseCreateCustomRequestPopupTest" time="2.263"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

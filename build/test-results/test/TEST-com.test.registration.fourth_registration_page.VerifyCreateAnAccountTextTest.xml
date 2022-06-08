@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifyCreateAnAccountTextTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-01T21:09:00" hostname="glbuh-note" time="2.903">
+<testsuite name="com.test.registration.fourth_registration_page.VerifyCreateAnAccountTextTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:13:14" hostname="glbuh-note" time="2.029">
   <properties/>
-  <testcase name="verifyCreateAnAccountText()" classname="com.test.registration.fourth_registration_page.VerifyCreateAnAccountTextTest" time="2.903"/>
-  <system-out><![CDATA[456
-]]></system-out>
+  <testcase name="verifyCreateAnAccountText()" classname="com.test.registration.fourth_registration_page.VerifyCreateAnAccountTextTest" time="2.029"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

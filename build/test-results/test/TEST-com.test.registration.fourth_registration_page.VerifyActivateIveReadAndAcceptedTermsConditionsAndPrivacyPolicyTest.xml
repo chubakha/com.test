@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifyActivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-01T21:08:53" hostname="glbuh-note" time="4.297">
-  <properties/>
-  <testcase name="verifyActivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()" classname="com.test.registration.fourth_registration_page.VerifyActivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTest" time="4.297"/>
-  <system-out><![CDATA[456
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

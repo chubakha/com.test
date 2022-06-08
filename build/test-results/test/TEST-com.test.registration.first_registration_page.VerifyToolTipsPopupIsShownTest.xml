@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.first_registration_page.VerifyToolTipsPopupIsShownTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-06-01T21:08:45" hostname="glbuh-note" time="7.316">
+<testsuite name="com.test.registration.first_registration_page.VerifyToolTipsPopupIsShownTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-06-07T22:12:37" hostname="glbuh-note" time="7.379">
   <properties/>
-  <testcase name="verifyToolTipsPopupIsShown()" classname="com.test.registration.first_registration_page.VerifyToolTipsPopupIsShownTest" time="7.316">
+  <testcase name="verifyToolTipsPopupIsShown()" classname="com.test.registration.first_registration_page.VerifyToolTipsPopupIsShownTest" time="7.379">
     <failure message="java.lang.ClassCastException: class [Z cannot be cast to class [Ljava.lang.Object; ([Z and [Ljava.lang.Object; are in module java.base of loader 'bootstrap')" type="java.lang.ClassCastException">java.lang.ClassCastException: class [Z cannot be cast to class [Ljava.lang.Object; ([Z and [Ljava.lang.Object; are in module java.base of loader 'bootstrap')
 	at io.qameta.allure.assertj.AllureAspectJ.lambda$arrayToString$2(AllureAspectJ.java:95)
 	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)

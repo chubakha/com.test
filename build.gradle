@@ -37,3 +37,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+allure{
+    autoconfigure = true
+    aspectjweaver = true
+}

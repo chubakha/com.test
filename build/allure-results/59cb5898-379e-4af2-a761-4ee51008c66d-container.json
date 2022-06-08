@@ -1,0 +1,1 @@
+{"uuid":"59cb5898-379e-4af2-a761-4ee51008c66d","name":"verifyOpenTermsAndConditionsLink()","children":["da5348a5-1e90-42b9-bb9f-34bd01e6a64b"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1654639118163,"stop":1654639118577}],"afters":[],"links":[],"start":1654639118146,"stop":1654639122983}

@@ -42,6 +42,7 @@ public class SecondRegistrationPage {
     }
 
     public String[] getSelectedOptions() {
+        sleep(1000);
         String[] chosenOptionListOnSecondPage = new Functions().getChosenOptions(selectedOptions);
         return chosenOptionListOnSecondPage;
     }

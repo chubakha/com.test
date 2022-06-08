@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.first_registration_page.VerifyToolTipsTextTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-06-01T21:08:52" hostname="glbuh-note" time="0.747">
+<testsuite name="com.test.registration.first_registration_page.VerifyToolTipsTextTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2022-06-07T22:12:44" hostname="glbuh-note" time="0.557">
   <properties/>
-  <testcase name="verifyToolTipsText()" classname="com.test.registration.first_registration_page.VerifyToolTipsTextTest" time="0.747">
+  <testcase name="verifyToolTipsText()" classname="com.test.registration.first_registration_page.VerifyToolTipsTextTest" time="0.557">
     <failure message="org.opentest4j.AssertionFailedError: Tips from 'enum WhatDoYouNeedLegallySolvedInfoTexts' enum file should be on page ==&gt; array lengths differ, expected: &lt;9&gt; but was: &lt;0&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: Tips from 'enum WhatDoYouNeedLegallySolvedInfoTexts' enum file should be on page ==&gt; array lengths differ, expected: &lt;9&gt; but was: &lt;0&gt;
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:39)
 	at org.junit.jupiter.api.AssertArrayEquals.assertArraysHaveSameLength(AssertArrayEquals.java:423)

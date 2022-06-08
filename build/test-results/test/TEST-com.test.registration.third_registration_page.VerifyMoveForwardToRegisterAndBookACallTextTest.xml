@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.third_registration_page.VerifyMoveForwardToRegisterAndBookACallTextTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-01T21:11:23" hostname="glbuh-note" time="3.213">
+<testsuite name="com.test.registration.third_registration_page.VerifyMoveForwardToRegisterAndBookACallTextTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-07T22:15:00" hostname="glbuh-note" time="1.491">
   <properties/>
-  <testcase name="verifyMoveForwardToRegisterAndBookACallText()" classname="com.test.registration.third_registration_page.VerifyMoveForwardToRegisterAndBookACallTextTest" time="3.213"/>
-  <system-out><![CDATA[456
-]]></system-out>
+  <testcase name="verifyMoveForwardToRegisterAndBookACallText()" classname="com.test.registration.third_registration_page.VerifyMoveForwardToRegisterAndBookACallTextTest" time="1.491"/>
+  <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

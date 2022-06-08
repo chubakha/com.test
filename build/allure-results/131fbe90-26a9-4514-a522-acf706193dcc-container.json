@@ -1,0 +1,1 @@
+{"uuid":"131fbe90-26a9-4514-a522-acf706193dcc","name":"verifyCreateAnAccountText()","children":["bda1f20b-fe78-4159-95af-34fb263c3446"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1654639994960,"stop":1654639995202}],"afters":[],"links":[],"start":1654639994956,"stop":1654639996974}
