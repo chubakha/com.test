@@ -1,1 +1,0 @@
-{"uuid":"b3f3d0ae-2e40-4181-9eb8-f2a20022c7ae","name":"verifyMoveForwardToRegisterAndBookACallText()","children":["9ce070a6-47c6-494e-aa91-9e5f09c8b1b2"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1654639133440,"stop":1654639133876}],"afters":[],"links":[],"start":1654639133429,"stop":1654639134969}

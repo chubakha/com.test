@@ -1,1 +1,0 @@
-{"uuid":"81d27640-ea71-4945-80cd-2e0b11e64f08","name":"verifyShowingErrorMessageForCompanyNameField()","children":["30163dc8-08bc-4034-b559-3494dd9015a7"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1654639971523,"stop":1654639972000}],"afters":[],"links":[],"start":1654639971519,"stop":1654639974852}
