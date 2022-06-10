@@ -6,6 +6,7 @@ import com.test.registration.second_registration_page.SecondRegistrationPage;
 
 import com.test.registration.third_page_registration.ThirdRegistrationPage;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 

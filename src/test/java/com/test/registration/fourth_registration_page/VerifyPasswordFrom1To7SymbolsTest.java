@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class VerifyPasswordFrom1To7SymbolsTest extends PrepareRegistrationTestData{
+    @Disabled
     @ParameterizedTest
     @MethodSource
     void verifyPasswordFrom1To7Symbols(String password){

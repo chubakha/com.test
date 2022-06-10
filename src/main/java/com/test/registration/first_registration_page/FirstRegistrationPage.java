@@ -181,7 +181,8 @@ public class FirstRegistrationPage {
 
     public FirstRegistrationPage hoverOnEveryToolTipIcon(){
         for (int i = 0; i < toolTipIcons.size(); i++) {
-            toolTipIcons.get(i).hover().shouldBe(Condition.visible);
+            toolTipIcons.get(i).hover();
+            toolTipText.get(i).shouldBe(Condition.visible);
             toolTipTextArray[i] = toolTipText.get(i).isDisplayed();
         }
         return this;

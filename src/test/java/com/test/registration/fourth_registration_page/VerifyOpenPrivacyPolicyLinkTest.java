@@ -15,5 +15,6 @@ public class VerifyOpenPrivacyPolicyLinkTest extends PrepareRegistrationTestData
                 .clickConnectButton()
                 .clickPrivacyPolicyLink();
         Assertions.assertEquals("https://drive.google.com/file/d/1SjuP_NyIPlz2aHcfhCAGYOOOgUylZNWe/view", attachmentDocumentsOverlay.getAttachmentDocumentUrl(), "Document link should be 'https://drive.google.com/file/d/1SjuP_NyIPlz2aHcfhCAGYOOOgUylZNWe/view'");
+        attachmentDocumentsOverlay.closeAttachmentDocumentTab();
     }
 }

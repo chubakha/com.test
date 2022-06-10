@@ -15,5 +15,6 @@ public class VerifyOpenTermsAndConditionsLinkTest extends PrepareRegistrationTes
                 .clickConnectButton()
                 .clickTermsAndConditionsLink();
         Assertions.assertEquals("https://drive.google.com/file/d/1yOBnDvIqXjxaDy4NPc7idvXUMEg0WN-2/view", attachmentDocumentsOverlay.getAttachmentDocumentUrl(), "Document link should be 'https://drive.google.com/file/d/1yOBnDvIqXjxaDy4NPc7idvXUMEg0WN-2/view'");
+        attachmentDocumentsOverlay.closeAttachmentDocumentTab();
     }
 }

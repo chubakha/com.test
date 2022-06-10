@@ -20,6 +20,7 @@ public class VerifyHideTextIsRequiredForPasswordFieldTest extends PrepareRegistr
                 .clickInactiveCreateAccountButton()
                 .setPasswordField(faker.internet().password(8,30))
                 .clickInactiveCreateAccountButton();
+
         Assertions.assertEquals("Passwords mismatch", fourthRegistrationPage.getFieldIsRequiredForPasswordField(), "'Passwords mismatch' should be shown below Password field");
     }
 }

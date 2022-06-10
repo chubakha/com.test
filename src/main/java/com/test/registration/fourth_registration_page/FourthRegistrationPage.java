@@ -3,6 +3,7 @@ package com.test.registration.fourth_registration_page;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class FourthRegistrationPage {
@@ -31,7 +32,7 @@ public class FourthRegistrationPage {
     }
 
     public String getFirstNameField(){
-        return firstNameField.shouldBe(Condition.visible).getText();
+        return firstNameField.getText();
     }
 
     public boolean isFieldIsRequiredForFirstNameFieldShown(){
@@ -39,20 +40,20 @@ public class FourthRegistrationPage {
     }
 
     public String getFieldIsRequiredForFirstNameField(){
-        return fieldIsRequiredForFirstNameField.shouldBe(Condition.visible).getText();
+        return fieldIsRequiredForFirstNameField.getText();
     }
 
     public FourthRegistrationPage setLastNameField(String last_name){
-        lastNameField.shouldBe(Condition.visible).val(last_name);
+        lastNameField.val(last_name);
         return this;
     }
 
     public String getLastNameField(){
-        return lastNameField.shouldBe(Condition.visible).getText();
+        return lastNameField.getText();
     }
 
     public String getFieldIsRequiredForLastNameField(){
-        return fieldIsRequiredForLastNameField.shouldBe(Condition.visible).getText();
+        return fieldIsRequiredForLastNameField.getText();
     }
 
     public boolean isFieldIsRequiredForLastNameFieldShown(){
@@ -60,16 +61,16 @@ public class FourthRegistrationPage {
     }
 
     public FourthRegistrationPage setCompanyNameField(String company_name){
-        companyNameField.shouldBe(Condition.visible).val(company_name);
+        companyNameField.val(company_name);
         return this;
     }
 
     public String getCompanyNameField(){
-        return companyNameField.shouldBe(Condition.visible).getText();
+        return companyNameField.getText();
     }
 
     public String getFieldIsRequiredForCompanyNameField(){
-        return fieldIsRequiredForCompanyNameField.shouldBe(Condition.visible).getText();
+        return fieldIsRequiredForCompanyNameField.getText();
     }
 
     public boolean isFieldIsRequiredForCompanyNameFieldShown(){
@@ -77,16 +78,16 @@ public class FourthRegistrationPage {
     }
 
     public FourthRegistrationPage setEmailField(String email){
-        emailField.shouldBe(Condition.visible).val(email);
+        emailField.val(email);
         return this;
     }
 
     public String getEmailField(){
-        return emailField.shouldBe(Condition.visible).getText();
+        return emailField.getText();
     }
 
     public String getFieldIsRequiredForEmailField(){
-        return fieldIsRequiredForEmailField.shouldBe(Condition.visible).getText();
+        return fieldIsRequiredForEmailField.getText();
     }
 
     public boolean isFieldIsRequiredForEmailFieldShown(){
@@ -94,16 +95,17 @@ public class FourthRegistrationPage {
     }
 
     public FourthRegistrationPage setPasswordField(String password1){
-        passwordField.shouldBe(Condition.visible).val(password1);
+        passwordField.val(password1);
         return this;
     }
 
     public String getPasswordField(){
-        return passwordField.shouldBe(Condition.visible).getText();
+        return passwordField.getText();
     }
 
+    //тут замениь проверку на видимость кнопки или чекбокса
     public String getFieldIsRequiredForPasswordField(){
-        return fieldIsRequiredForPasswordField.shouldBe(Condition.visible).getText();
+        return fieldIsRequiredForPasswordField.getText();
     }
 
     public boolean isFieldIsRequiredForPasswordFieldShown(){
@@ -111,52 +113,48 @@ public class FourthRegistrationPage {
     }
 
     public FourthRegistrationPage setRepeatPasswordField(String password2){
-        repeatPasswordField.shouldBe(Condition.visible).val(password2);
+        repeatPasswordField.val(password2);
         return this;
     }
 
     public String getRepeatPasswordField(){
-        return repeatPasswordField.shouldBe(Condition.visible).getText();
+        return repeatPasswordField.getText();
     }
 
     public String getFieldIsRequiredForRepeatPasswordField(){
-        return fieldIsRequiredForRepeatPasswordField.shouldBe(Condition.visible).getText();
-    }
-
-    public boolean isFieldIsRequiredForRepeatPasswordFieldShown(){
-        return fieldIsRequiredForRepeatPasswordField.isDisplayed();
+        return fieldIsRequiredForRepeatPasswordField.getText();
     }
 
     public FourthRegistrationPage clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
-        iveReadAndAcceptedTermsConditionsAndPrivacyPolicy.shouldBe(Condition.visible).click();
+        privacyPolicyLink.shouldHave(visible);
+        iveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
         return this;
     }
 
     public AttachmentDocumentsOverlay clickTermsAndConditionsLink(){
-        termsAndConditionsLink.shouldBe(Condition.visible).click();
+        termsAndConditionsLink.click();
         return new AttachmentDocumentsOverlay();
     }
 
     public AttachmentDocumentsOverlay clickPrivacyPolicyLink(){
-        privacyPolicyLink.shouldBe(Condition.visible).click();
+        privacyPolicyLink.click();
         return new AttachmentDocumentsOverlay();
     }
 
     public String getPageTitle(){
-        return pageTitle.shouldBe(Condition.visible).getText();
+        return pageTitle.getText();
     }
 
     public String getStepNumber(){
-        return stepNumber.shouldBe(Condition.visible).getText();
+        return stepNumber.getText();
     }
 
     public String getDisabledCreateAccountButton(){
-        stepNumber.shouldHave(Condition.text("4/4"));
         return createAccountButton.getAttribute("disabled");
     }
 
     public void clickCreateAccountButton() {
-        createAccountButton.shouldBe(Condition.visible).click();
+        createAccountButton.click();
     }
 
     public FourthRegistrationPage clickInactiveCreateAccountButton() {

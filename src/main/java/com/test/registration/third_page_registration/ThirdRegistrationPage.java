@@ -7,6 +7,7 @@ import com.test.registration.Functions;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import com.test.registration.second_registration_page.SecondRegistrationPage;
 
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ThirdRegistrationPage {
@@ -16,8 +17,8 @@ public class ThirdRegistrationPage {
     private SelenideElement moveForwardToRegisterAndBookACall = $x("//*[text() = 'Move forward to register and book a call with lawyer to discuss the suggested legal solutions']");
     private SelenideElement weHaveMatchedYourBusinessNeedsWithTheLegalSolutions = $x("//*[text() = 'We have matched your business needs with the legal solutions.']");
     private SelenideElement backButton = $x("//*[text() = 'back']");
-    private SelenideElement connectButton = $x("//*[text() = 'CONNECT']");
-    private SelenideElement selectedOnOption = $x("//*[contains(@class,'ThirdStep_needItem')]");
+    private SelenideElement connectButton = $x("//*[text() = 'CONNECT']/..");
+    private SelenideElement selectedOneOption = $x("//*[contains(@class,'ThirdStep_needItem')]");
     private SelenideElement selectedOneSection = $x("//*[contains(@class,'ThirdStep_categoryCol')]");
 
     private ElementsCollection selectedOptions = $$x("//*[contains(@class, 'ThirdStep_needItem')]");
@@ -39,25 +40,25 @@ public class ThirdRegistrationPage {
     }
 
     public String[] getSecondColumnTable(){
-        selectedOnOption.shouldBe(Condition.visible);
+        selectedOneSection.shouldHave(visible);
         String[] chosenListSecondColumnTable = new Functions().getChosenOptions(selectedOptions);
         return chosenListSecondColumnTable;
     }
 
     public SecondRegistrationPage clickBackButton() {
-        selectedOnOption.shouldBe(Condition.visible);
-        backButton.shouldHave(Condition.visible).click();
+        selectedOneSection.shouldHave(visible);
+        backButton.click();
         return new SecondRegistrationPage();
     }
 
     public FourthRegistrationPage clickConnectButton() {
-        stepNumber.shouldHave(Condition.text("3/4"));
+        selectedOneSection.shouldHave(visible);
         connectButton.click();
         return new FourthRegistrationPage();
     }
 
     public String getOneChosenOption(){
-        String chosenOptionText = selectedOnOption.getText();
+        String chosenOptionText = selectedOneOption.getText();
         return chosenOptionText;
     }
 
