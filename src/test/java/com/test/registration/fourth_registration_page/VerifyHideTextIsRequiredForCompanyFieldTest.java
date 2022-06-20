@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyHideTextIsRequiredForCompanyFieldTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyHideTextIsRequiredForCompanyField() {
         Faker faker = new Faker();
@@ -16,10 +17,11 @@ public class VerifyHideTextIsRequiredForCompanyFieldTest extends PrepareRegistra
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton()
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
                 .setCompanyNameField(faker.company().name())
                 .clickInactiveCreateAccountButton();
-        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForCompanyNameFieldShown(), "'field is required' should not be shown below CompanyName field");
+        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForCompanyNameFieldShown(),
+                "'field is required' should not be shown below CompanyName field");
     }
 }

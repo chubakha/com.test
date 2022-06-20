@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyHideTextIsRequiredForFirstNameFieldTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyHideTextIsRequiredForFirstNameField() {
         Faker faker = new Faker();
@@ -16,10 +17,11 @@ public class VerifyHideTextIsRequiredForFirstNameFieldTest extends PrepareRegist
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton()
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
                 .setFirstNameField(faker.name().firstName())
                 .clickInactiveCreateAccountButton();
-        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForFirstNameFieldShown(), "'field is required' should not be shown below FirstName field");
+        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForFirstNameFieldShown(),
+                "'field is required' should not be shown below FirstName field");
     }
 }

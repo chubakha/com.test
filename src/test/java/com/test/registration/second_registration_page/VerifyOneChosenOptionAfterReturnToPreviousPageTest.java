@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyOneChosenOptionAfterReturnToPreviousPageTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyChosenOneOptionAfterReturnToPreviousPage() {
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
@@ -14,9 +15,10 @@ public class VerifyOneChosenOptionAfterReturnToPreviousPageTest extends PrepareR
                 .clickEnabledNextButton();
         String[] chosenOptionOnSecond = secondRegistrationPage
                 .getSelectedOptions();
-        secondRegistrationPage
+        FirstRegistrationPage firstRegistrationPage = secondRegistrationPage
                 .clickBackButton();
-        Assertions.assertArrayEquals(chosenOptionOnSecond, secondRegistrationPage.getSelectedOptions(), "chosen list on first page registrations should be equal to a list option on second page registration");
+        Assertions.assertArrayEquals(chosenOptionOnSecond, firstRegistrationPage.getSelectedOptions(),
+                "chosen list on first page registrations should be equal to a list option on second page registration");
 
     }
 }

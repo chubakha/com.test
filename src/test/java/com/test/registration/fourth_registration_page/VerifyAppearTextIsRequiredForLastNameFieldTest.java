@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyAppearTextIsRequiredForLastNameFieldTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyAppearTextIsRequiredForLastNameField() {
         Faker faker = new Faker();
@@ -22,8 +23,9 @@ public class VerifyAppearTextIsRequiredForLastNameFieldTest extends PrepareRegis
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(currentPassword)
                 .setRepeatPasswordField(currentPassword)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("field is required", fourthRegistrationPage.getFieldIsRequiredForLastNameField(), "'field is required' should be shown below LastName field");
+        Assertions.assertEquals("field is required", fourthRegistrationPage.getFieldIsRequiredForLastNameField(),
+                "'field is required' should be shown below LastName field");
     }
 }

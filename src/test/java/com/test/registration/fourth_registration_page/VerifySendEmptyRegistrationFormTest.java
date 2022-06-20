@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifySendEmptyRegistrationFormTest extends PrepareRegistrationTestData {
+
     @Test
     void verifySendingEmptyRegistrationForm() {
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
@@ -14,7 +15,7 @@ public class VerifySendEmptyRegistrationFormTest extends PrepareRegistrationTest
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton()
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
         Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumber(), "'4/4' should be shown");
     }

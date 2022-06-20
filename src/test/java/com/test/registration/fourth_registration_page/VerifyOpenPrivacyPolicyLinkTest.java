@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyOpenPrivacyPolicyLinkTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyOpenPrivacyPolicyLink() {
         AttachmentDocumentsOverlay attachmentDocumentsOverlay = new FirstRegistrationPage()
@@ -14,7 +15,9 @@ public class VerifyOpenPrivacyPolicyLinkTest extends PrepareRegistrationTestData
                 .clickNextButton()
                 .clickConnectButton()
                 .clickPrivacyPolicyLink();
-        Assertions.assertEquals("https://drive.google.com/file/d/1SjuP_NyIPlz2aHcfhCAGYOOOgUylZNWe/view", attachmentDocumentsOverlay.getAttachmentDocumentUrl(), "Document link should be 'https://drive.google.com/file/d/1SjuP_NyIPlz2aHcfhCAGYOOOgUylZNWe/view'");
+        Assertions.assertEquals("https://drive.google.com/file/d/1SjuP_NyIPlz2aHcfhCAGYOOOgUylZNWe/view",
+                attachmentDocumentsOverlay.getAttachmentDocumentUrl(),
+                "Document link should be 'https://drive.google.com/file/d/1SjuP_NyIPlz2aHcfhCAGYOOOgUylZNWe/view'");
         attachmentDocumentsOverlay.closeAttachmentDocumentTab();
     }
 }

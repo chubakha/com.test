@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 public class VerifyDeleteOneChosenOptionFromFewTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyDeleteChosenOptionFromFew() {
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()

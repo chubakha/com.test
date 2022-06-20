@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyCreateAnAccountTextTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyCreateAnAccountText() {
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
@@ -14,6 +15,7 @@ public class VerifyCreateAnAccountTextTest extends PrepareRegistrationTestData {
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton();
-        Assertions.assertEquals("Create an account", fourthRegistrationPage.getPageTitle(), "'Create an account' should be shown");
+        Assertions.assertEquals("Create an account", fourthRegistrationPage.getPageTitle(),
+                "'Create an account' should be shown");
     }
 }

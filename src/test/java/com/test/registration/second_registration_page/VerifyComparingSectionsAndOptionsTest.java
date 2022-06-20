@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyComparingSectionsAndOptionsTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyComparingSectionsAndOptions(){
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()

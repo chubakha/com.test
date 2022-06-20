@@ -1,1 +1,0 @@
-{"uuid":"a4c5bb4e-3fba-402f-b247-d5097f8eeed7","name":"verifyDeleteChosenOptionFromOne()","children":["06dc2320-ab9f-4ae9-9661-f2e8e108eefd"],"befores":[{"name":"openPage","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1654640079192,"stop":1654640079600}],"afters":[],"links":[],"start":1654640079188,"stop":1654640081039}

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyHideTextIsRequiredForPasswordFieldTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyHideTextIsRequiredForPasswordField() {
         Faker faker = new Faker();
@@ -16,11 +17,12 @@ public class VerifyHideTextIsRequiredForPasswordFieldTest extends PrepareRegistr
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton()
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
                 .setPasswordField(faker.internet().password(8,30))
                 .clickInactiveCreateAccountButton();
 
-        Assertions.assertEquals("Passwords mismatch", fourthRegistrationPage.getFieldIsRequiredForPasswordField(), "'Passwords mismatch' should be shown below Password field");
+        Assertions.assertEquals("Passwords mismatch", fourthRegistrationPage.getFieldIsRequiredForPasswordField(),
+                "'Passwords mismatch' should be shown below Password field");
     }
 }

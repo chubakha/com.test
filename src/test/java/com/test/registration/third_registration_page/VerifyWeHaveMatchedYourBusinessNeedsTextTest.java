@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyWeHaveMatchedYourBusinessNeedsTextTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyWeHaveMatchedYourBusinessNeedsText() {
         ThirdRegistrationPage thirdRegistrationPage = new FirstRegistrationPage()

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyDeleteOneChosenOptionFromOneTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyDeleteChosenOptionFromOne() {
         FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage()

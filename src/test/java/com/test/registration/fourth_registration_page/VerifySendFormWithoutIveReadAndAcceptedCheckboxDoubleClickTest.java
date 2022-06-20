@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifySendFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest extends PrepareRegistrationTestData {
+
     @Test
     void verifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClick() {
         Faker faker = new Faker();
@@ -23,8 +24,8 @@ public class VerifySendFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest exte
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(currentPassword)
                 .setRepeatPasswordField(currentPassword)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickActiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
         Assertions.assertEquals("4/4", fourthRegistrationPage.getStepNumber(), "'4/4' should be shown");
     }

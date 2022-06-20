@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyClickConnectButtonTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyClickConnectButton() {
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()

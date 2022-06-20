@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifySendFormWithoutIveReadAndAcceptedCheckboxTest extends PrepareRegistrationTestData {
+
     @Test
     void verifySendingFormWithoutIveReadAndAcceptedCheckbox() {
         Faker faker = new Faker();

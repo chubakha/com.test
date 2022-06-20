@@ -1,6 +1,5 @@
 package com.test.registration.fourth_registration_page;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.visible;
@@ -19,7 +18,8 @@ public class FourthRegistrationPage {
     private SelenideElement fieldIsRequiredForPasswordField = $x("//input[@placeholder='Password']/following-sibling::p");
     private SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
     private SelenideElement fieldIsRequiredForRepeatPasswordField = $x("//input[@placeholder='Repeat password']/following-sibling::p");
-    private SelenideElement iveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container')]");
+    private SelenideElement inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and not(contains(@class, 'checkbox_containerActive'))]");
+    private SelenideElement activeIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and (contains(@class, 'checkbox_containerActive'))]");
     private SelenideElement createAccountButton = $x("//*[text() = 'CREATE ACCOUNT']/..");
     private SelenideElement termsAndConditionsLink = $x("//*[text() = 'Terms & Conditions']");
     private SelenideElement privacyPolicyLink = $x("//*[text() = 'Privacy Policy']");
@@ -125,9 +125,13 @@ public class FourthRegistrationPage {
         return fieldIsRequiredForRepeatPasswordField.getText();
     }
 
-    public FourthRegistrationPage clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
-        privacyPolicyLink.shouldHave(visible);
-        iveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
+    public FourthRegistrationPage clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
+        inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
+        return this;
+    }
+
+    public FourthRegistrationPage clickActiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
+        activeIveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
         return this;
     }
 

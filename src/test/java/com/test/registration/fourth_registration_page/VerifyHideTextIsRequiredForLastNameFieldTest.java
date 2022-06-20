@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyHideTextIsRequiredForLastNameFieldTest extends PrepareRegistrationTestData {
-    @Test//тут
+
+    @Test
     void verifyHideTextIsRequiredForLastNameField() {
         Faker faker = new Faker();
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
@@ -15,7 +16,7 @@ public class VerifyHideTextIsRequiredForLastNameFieldTest extends PrepareRegistr
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton()
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
                 .setLastNameField(faker.name().lastName())
                 .clickInactiveCreateAccountButton();

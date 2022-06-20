@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyReturnToPreviousPageTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyReturnToPreviousPage(){
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()

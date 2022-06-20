@@ -16,7 +16,7 @@ public class CreateCustomRequestOverlay {
         return needHelpWithSomethingElsePopupTitle.shouldBe(Condition.visible).isDisplayed();
     }
 
-    public CreateCustomRequestOverlay setNeedHelpWithSomethingElseText(String text){
+    public CreateCustomRequestOverlay setNeedHelpWithSomethingElse(String text){
         needHelpWithSomethingElseTextArea.val(text);
         return this;
     }

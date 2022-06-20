@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyClickInactiveCreateAccountButtonTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyClickInactiveCreateAccountButton() {
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()

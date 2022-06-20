@@ -5,7 +5,6 @@ import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -14,6 +13,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class VerifyPasswordFrom1To7SymbolsTest extends PrepareRegistrationTestData{
+
     @Disabled
     @ParameterizedTest
     @MethodSource
@@ -30,9 +30,10 @@ public class VerifyPasswordFrom1To7SymbolsTest extends PrepareRegistrationTestDa
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(password)
                 .setRepeatPasswordField(password)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
-        Assertions.assertEquals(String.format("min length is 8 symbols (%s)", password.length()), fourthRegistrationPage.getFieldIsRequiredForPasswordField());
+        Assertions.assertEquals(String.format("min length is 8 symbols (%s)", password.length()),
+                fourthRegistrationPage.getFieldIsRequiredForPasswordField());
     }
 
     static Stream<String> verifyPasswordFrom1To7Symbols(){
@@ -42,6 +43,8 @@ public class VerifyPasswordFrom1To7SymbolsTest extends PrepareRegistrationTestDa
             passwords.add(faker.internet().password(i,i+1));
         }
         Stream stream = passwords.stream();
+
+
         return stream;
     }
 

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyAppearTextIsRequiredForCompanyNameFieldTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyAppearTextIsRequiredForCompanyNameField() {
         Faker faker = new Faker();
@@ -22,8 +23,9 @@ public class VerifyAppearTextIsRequiredForCompanyNameFieldTest extends PrepareRe
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(currentPassword)
                 .setRepeatPasswordField(currentPassword)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
-        Assertions.assertEquals("field is required", fourthRegistrationPage.getFieldIsRequiredForCompanyNameField(), "'field is required' should be shown below CompanyName field");
+        Assertions.assertEquals("field is required", fourthRegistrationPage.getFieldIsRequiredForCompanyNameField(),
+                "'field is required' should be shown below CompanyName field");
     }
 }

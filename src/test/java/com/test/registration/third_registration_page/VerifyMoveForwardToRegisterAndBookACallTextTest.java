@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyMoveForwardToRegisterAndBookACallTextTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyMoveForwardToRegisterAndBookACallText() {
         ThirdRegistrationPage thirdRegistrationPage = new FirstRegistrationPage()

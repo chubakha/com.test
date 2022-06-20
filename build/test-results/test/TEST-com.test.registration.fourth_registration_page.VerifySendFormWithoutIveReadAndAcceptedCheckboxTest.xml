@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T20:56:09" hostname="glbuh-note" time="4.329">
+<testsuite name="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:04:25" hostname="glbuh-note" time="6.539">
   <properties/>
-  <testcase name="verifySendingFormWithoutIveReadAndAcceptedCheckbox()" classname="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxTest" time="4.329"/>
+  <testcase name="verifySendingFormWithoutIveReadAndAcceptedCheckbox()" classname="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxTest" time="6.539"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

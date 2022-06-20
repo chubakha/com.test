@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyPageTitleTextTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOutTest(){
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()

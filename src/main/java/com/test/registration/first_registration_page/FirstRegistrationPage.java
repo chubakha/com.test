@@ -24,8 +24,6 @@ public class FirstRegistrationPage {
     private SelenideElement needHelpWithSomethingElsePopupTitle = $x("//*[contains(@class, 'slide-enter-done')]");
     private SelenideElement backButton = $x("//*[text() = 'back']");
 
-    public boolean[] toolTipTextArray = new boolean[toolTipIcons.size()];
-
 
     public FirstRegistrationPage selectOneCheckboxInEverySection() {
         selectRandomIncorporationCheckBox();
@@ -41,11 +39,11 @@ public class FirstRegistrationPage {
     }
 
     public FirstRegistrationPage selectAllCheckboxInEverySection() {
-        selectAllIncorporationCheckbox();
-        selectAllAccountingAndTaxesCheckbox();
-        selectAllHiringCheckbox();
-        selectAllIpprotectionCheckbox();
-        selectAllClientAcquisitionCheckbox();
+        selectAllIncorporationCheckbox()
+                .selectAllAccountingAndTaxesCheckbox()
+                .selectAllHiringCheckbox()
+    .selectAllIpprotectionCheckbox()
+                .selectAllClientAcquisitionCheckbox();
         selectAllPrivacygdprcomplianceCheckbox();
         selectAllFundraisingCheckbox();
         selectAllTokenGenerationDistributionCheckbox();
@@ -62,15 +60,15 @@ public class FirstRegistrationPage {
 
     public FirstRegistrationPage selectRandomAccountingAndTaxesCheckbox() {
         int randomAccountingAndTaxes = getRandomOneOption(5);
-        AccountingAndTaxesValueType accountingandtaxes = AccountingAndTaxesValueType.values()[randomAccountingAndTaxes];
-        selectOption(accountingandtaxes.getValue());
+        AccountingAndTaxesValueType accountingAndTaxes = AccountingAndTaxesValueType.values()[randomAccountingAndTaxes];
+        selectOption(accountingAndTaxes.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectRandomHiringCheckbox() {
         int randomHiring = getRandomOneOption(4);
-        HiringValueType hiring = HiringValueType.values()[randomHiring];
-        selectOption(hiring.getValue());
+        HiringValueType hiringValue = HiringValueType.values()[randomHiring];
+        selectOption(hiringValue.getValue());
         return this;
     }
 
@@ -180,9 +178,10 @@ public class FirstRegistrationPage {
     }
 
     public FirstRegistrationPage hoverOnEveryToolTipIcon(){
+        boolean[] toolTipTextArray = new boolean[toolTipIcons.size()];
         for (int i = 0; i < toolTipIcons.size(); i++) {
             toolTipIcons.get(i).hover();
-            toolTipText.get(i).shouldBe(Condition.visible);
+            toolTipText.get(i).shouldBe(Condition.appear);
             toolTipTextArray[i] = toolTipText.get(i).isDisplayed();
         }
         return this;
@@ -201,6 +200,7 @@ public class FirstRegistrationPage {
     }
 
     public FirstRegistrationPage selectOption(String value) {
+        //написать интерфейс с Владом
         String xpath = String.format("//*[text() = '%s']", value);
         $x(xpath).click();
         return this;
@@ -209,7 +209,6 @@ public class FirstRegistrationPage {
     public FirstRegistrationPage selectOneRandomOption() {
         int randomOption = new Random().nextInt(30)+1;
         $x("(//span[contains(@class,'checkbox_label')])[" + randomOption + "]").click();
-        //System.out.println("1");
         return this;
     }
 
@@ -255,8 +254,7 @@ public class FirstRegistrationPage {
 
     public String[] getSelectedOptions() {
         backButton.shouldNotBe(Condition.exist);
-        String[] chosenOptionListOnFirstPage = new Functions().getChosenOptions(selectedOptions);
-        return chosenOptionListOnFirstPage;
+        return new Functions().getChosenOptions(selectedOptions);
     }
 
 }

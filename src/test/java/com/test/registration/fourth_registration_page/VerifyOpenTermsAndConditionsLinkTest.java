@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyOpenTermsAndConditionsLinkTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyOpenTermsAndConditionsLink() {
         AttachmentDocumentsOverlay attachmentDocumentsOverlay = new FirstRegistrationPage()
@@ -14,7 +15,9 @@ public class VerifyOpenTermsAndConditionsLinkTest extends PrepareRegistrationTes
                 .clickNextButton()
                 .clickConnectButton()
                 .clickTermsAndConditionsLink();
-        Assertions.assertEquals("https://drive.google.com/file/d/1yOBnDvIqXjxaDy4NPc7idvXUMEg0WN-2/view", attachmentDocumentsOverlay.getAttachmentDocumentUrl(), "Document link should be 'https://drive.google.com/file/d/1yOBnDvIqXjxaDy4NPc7idvXUMEg0WN-2/view'");
+        Assertions.assertEquals("https://drive.google.com/file/d/1yOBnDvIqXjxaDy4NPc7idvXUMEg0WN-2/view",
+                attachmentDocumentsOverlay.getAttachmentDocumentUrl(),
+                "Document link should be 'https://drive.google.com/file/d/1yOBnDvIqXjxaDy4NPc7idvXUMEg0WN-2/view'");
         attachmentDocumentsOverlay.closeAttachmentDocumentTab();
     }
 }

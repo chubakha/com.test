@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyChooseOneOptionsTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyChooseOneOptions() {
         FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage()

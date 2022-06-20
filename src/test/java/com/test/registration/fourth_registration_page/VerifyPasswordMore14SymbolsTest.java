@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class VerifyPasswordMore14SymbolsTest extends PrepareRegistrationTestData{
+
     @Disabled
     @ParameterizedTest
     @MethodSource
@@ -29,9 +30,10 @@ public class VerifyPasswordMore14SymbolsTest extends PrepareRegistrationTestData
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(password)
                 .setRepeatPasswordField(password)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
-        Assertions.assertEquals(String.format("max length is 14 symbols (%s)", password.length()), fourthRegistrationPage.getFieldIsRequiredForPasswordField());
+        Assertions.assertEquals(String.format("max length is 14 symbols (%s)", password.length()),
+                fourthRegistrationPage.getFieldIsRequiredForPasswordField());
     }
 
     static Stream<String> VerifyPasswordMore14SymbolsTest(){

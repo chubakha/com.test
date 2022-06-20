@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.second_registration_page.VerifyChosenOptionsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T20:56:23" hostname="glbuh-note" time="4.243">
+<testsuite name="com.test.registration.second_registration_page.VerifyChosenOptionsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:04:51" hostname="glbuh-note" time="6.456">
   <properties/>
-  <testcase name="verifyAddedOptions()" classname="com.test.registration.second_registration_page.VerifyChosenOptionsTest" time="4.243"/>
+  <testcase name="verifyAddedOptions()" classname="com.test.registration.second_registration_page.VerifyChosenOptionsTest" time="6.456"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

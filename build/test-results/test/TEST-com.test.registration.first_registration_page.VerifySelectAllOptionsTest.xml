@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.first_registration_page.VerifySelectAllOptionsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-08T20:54:00" hostname="glbuh-note" time="6.814">
+<testsuite name="com.test.registration.first_registration_page.VerifySelectAllOptionsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:02:30" hostname="glbuh-note" time="13.164">
   <properties/>
-  <testcase name="verifyAllSelectedCheckboxes()" classname="com.test.registration.first_registration_page.VerifySelectAllOptionsTest" time="6.814"/>
+  <testcase name="verifyAllSelectedCheckboxes()" classname="com.test.registration.first_registration_page.VerifySelectAllOptionsTest" time="13.164"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

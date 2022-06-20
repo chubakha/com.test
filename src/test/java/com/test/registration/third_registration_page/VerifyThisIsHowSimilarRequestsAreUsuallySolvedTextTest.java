@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class VerifyThisIsHowSimilarRequestsAreUsuallySolvedTextTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyThisIsHowSimilarRequestsAreUsuallySolvedText(){
         ThirdRegistrationPage thirdRegistrationPage = new FirstRegistrationPage()

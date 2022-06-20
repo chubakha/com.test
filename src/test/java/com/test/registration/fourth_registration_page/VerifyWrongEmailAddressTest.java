@@ -9,6 +9,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class VerifyWrongEmailAddressTest extends PrepareRegistrationTestData {
+
     @Disabled
     @ParameterizedTest
     @ValueSource(strings = {"testgmail.com", "test@@gmail.com", "test@gmailcom", "test@gmail", "test@gmail,com", "gmail.com", "test@.com", "test@com", "test@gmail.c", "test@gmail.comcom", "test@gmail.com.com", "почта@gmail.com", "test@гмаил.com", ".test@gmail.com", "test.@gmail.com", "test!@gmail.com", "test?@gmail.com"})
@@ -26,7 +27,7 @@ public class VerifyWrongEmailAddressTest extends PrepareRegistrationTestData {
                 .setEmailField(email)
                 .setPasswordField(password)
                 .setRepeatPasswordField(password)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
         Assertions.assertTrue(fourthRegistrationPage.isFieldIsRequiredForEmailFieldShown());
 

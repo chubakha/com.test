@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class VerifyHideTextIsRequiredForEmailFieldTest extends PrepareRegistrationTestData {
+
     @Test
     void verifyHideTextIsRequiredForEmailField() {
         Faker faker = new Faker();
@@ -16,10 +17,11 @@ public class VerifyHideTextIsRequiredForEmailFieldTest extends PrepareRegistrati
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton()
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
                 .setEmailField(faker.internet().emailAddress())
                 .clickInactiveCreateAccountButton();
-        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForEmailFieldShown(), "'field is required' should not be shown below Email field");
+        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForEmailFieldShown(),
+                "'field is required' should not be shown below Email field");
     }
 }

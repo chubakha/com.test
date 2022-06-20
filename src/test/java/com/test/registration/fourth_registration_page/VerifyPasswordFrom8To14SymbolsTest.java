@@ -3,7 +3,6 @@ package com.test.registration.fourth_registration_page;
 import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.first_registration_page.FirstRegistrationPage;
-import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -30,7 +29,7 @@ public class VerifyPasswordFrom8To14SymbolsTest extends PrepareRegistrationTestD
                 .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(password)
                 .setRepeatPasswordField(password)
-                .clickIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
+                .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
         Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForPasswordFieldShown());
     }
