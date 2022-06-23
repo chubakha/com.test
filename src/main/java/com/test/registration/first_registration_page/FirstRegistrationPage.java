@@ -6,6 +6,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.registration.Functions;
 import com.test.registration.second_registration_page.SecondRegistrationPage;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -20,21 +21,21 @@ public class FirstRegistrationPage {
     private SelenideElement addedNeedHelpWithSomethingElseText = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[2]/div/span");
     private SelenideElement needHelpWithSomethingElseTitle = $x("(//div[contains(@class,'FirstStep_customRequestBlock')])[1]/div/div[1]");
     private SelenideElement pageTitle = $x("//*[text() = 'What do you need legally solved?']");
-    private SelenideElement stepNumber = $x("//div[@class='registration-quiz__header-container']/b");
+    private SelenideElement stepNumber = $x("//div[contains(@class, 'header-container')]/b");
     private SelenideElement needHelpWithSomethingElsePopupTitle = $x("//*[contains(@class, 'slide-enter-done')]");
     private SelenideElement backButton = $x("//*[text() = 'back']");
 
 
     public FirstRegistrationPage selectOneCheckboxInEverySection() {
-        selectRandomIncorporationCheckBox();
-        selectRandomAccountingAndTaxesCheckbox();
-        selectRandomHiringCheckbox();
-        selectRandomIpprotectionCheckbox();
-        selectRandomClientAcquisitionCheckbox();
-        selectRandomPrivacyGdprComplianceCheckbox();
-        selectRandomFundraisingCheckbox();
-        selectRandomTokenGenerationDistributionCheckbox();
-        selectRandomLaunchingDaoWeb3Checkbox();
+        selectRandomIncorporationCheckBox()
+                .selectRandomAccountingAndTaxesCheckbox()
+                .selectRandomHiringCheckbox()
+                .selectRandomIpprotectionCheckbox()
+                .selectRandomClientAcquisitionCheckbox()
+                .selectRandomPrivacyGdprComplianceCheckbox()
+                .selectRandomFundraisingCheckbox()
+                .selectRandomTokenGenerationDistributionCheckbox()
+                .selectRandomLaunchingDaoWeb3Checkbox();
         return this;
     }
 
@@ -42,26 +43,26 @@ public class FirstRegistrationPage {
         selectAllIncorporationCheckbox()
                 .selectAllAccountingAndTaxesCheckbox()
                 .selectAllHiringCheckbox()
-    .selectAllIpprotectionCheckbox()
-                .selectAllClientAcquisitionCheckbox();
-        selectAllPrivacygdprcomplianceCheckbox();
-        selectAllFundraisingCheckbox();
-        selectAllTokenGenerationDistributionCheckbox();
-        selectAllLaunchingDaoWeb3CheckboxCheckbox();
+                .selectAllIpprotectionCheckbox()
+                .selectAllClientAcquisitionCheckbox()
+                .selectAllPrivacygdprcomplianceCheckbox()
+                .selectAllFundraisingCheckbox()
+                .selectAllTokenGenerationDistributionCheckbox()
+                .selectAllLaunchingDaoWeb3CheckboxCheckbox();
         return this;
     }
 
     public FirstRegistrationPage selectRandomIncorporationCheckBox() {
         int randomIncorporation = getRandomOneOption(3);
-        IncorporationValuesType incorporation = IncorporationValuesType.values()[randomIncorporation];
-        selectOption(incorporation.getValue());
+        IncorporationValuesType incorporationValue = IncorporationValuesType.values()[randomIncorporation];
+        selectOption(incorporationValue.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectRandomAccountingAndTaxesCheckbox() {
         int randomAccountingAndTaxes = getRandomOneOption(5);
-        AccountingAndTaxesValueType accountingAndTaxes = AccountingAndTaxesValueType.values()[randomAccountingAndTaxes];
-        selectOption(accountingAndTaxes.getValue());
+        AccountingAndTaxesValueType accountingAndTaxesValue = AccountingAndTaxesValueType.values()[randomAccountingAndTaxes];
+        selectOption(accountingAndTaxesValue.getValue());
         return this;
     }
 
@@ -74,115 +75,116 @@ public class FirstRegistrationPage {
 
     public FirstRegistrationPage selectRandomIpprotectionCheckbox() {
         int randomIpprotection = getRandomOneOption(2);
-        IpprotectionValueType ipprotection = IpprotectionValueType.values()[randomIpprotection];
-        selectOption(ipprotection.getValue());
+        IpprotectionValueType ipprotectionValue = IpprotectionValueType.values()[randomIpprotection];
+        selectOption(ipprotectionValue.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectRandomClientAcquisitionCheckbox() {
         int randomClientAcquisition = getRandomOneOption(3);
-        ClientAcquisitionValueType clientAcquisition = ClientAcquisitionValueType.values()[randomClientAcquisition];
-        selectOption(clientAcquisition.getValue());
+        ClientAcquisitionValueType clientAcquisitionValue = ClientAcquisitionValueType.values()[randomClientAcquisition];
+        selectOption(clientAcquisitionValue.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectRandomPrivacyGdprComplianceCheckbox() {
         int randomPrivacygdprcompliance = getRandomOneOption(3);
-        PrivacygdprcomplianceValueType privacygdprcompliance = PrivacygdprcomplianceValueType.values()[randomPrivacygdprcompliance];
-        selectOption(privacygdprcompliance.getValue());
+        PrivacygdprcomplianceValueType privacygdprcomplianceValue = PrivacygdprcomplianceValueType.values()[randomPrivacygdprcompliance];
+        selectOption(privacygdprcomplianceValue.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectRandomFundraisingCheckbox() {
         int randomFundraising = getRandomOneOption(4);
-        FundraisingValueType fundraising = FundraisingValueType.values()[randomFundraising];
-        selectOption(fundraising.getValue());
+        FundraisingValueType fundraisingValue = FundraisingValueType.values()[randomFundraising];
+        selectOption(fundraisingValue.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectRandomTokenGenerationDistributionCheckbox() {
         int randomTokenGenerationDistribution = getRandomOneOption(4);
-        TokenGenerationDistributionValueType tokenGenerationDistribution = TokenGenerationDistributionValueType.values()[randomTokenGenerationDistribution];
-        selectOption(tokenGenerationDistribution.getValue());
+        TokenGenerationDistributionValueType tokenGenerationDistributionValue = TokenGenerationDistributionValueType.values()[randomTokenGenerationDistribution];
+        selectOption(tokenGenerationDistributionValue.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectRandomLaunchingDaoWeb3Checkbox() {
         int randomLaunchingDaoWeb3 = getRandomOneOption(4);
-        LaunchingDaoWeb3ValueType launchingDaoWeb3 = LaunchingDaoWeb3ValueType.values()[randomLaunchingDaoWeb3];
-        selectOption(launchingDaoWeb3.getValue());
+        LaunchingDaoWeb3ValueType launchingDaoWeb3Value = LaunchingDaoWeb3ValueType.values()[randomLaunchingDaoWeb3];
+        selectOption(launchingDaoWeb3Value.getValue());
         return this;
     }
 
     public FirstRegistrationPage selectAllIncorporationCheckbox() {
-        for (IncorporationValuesType incorporation : IncorporationValuesType.values()) {
-            selectOption(incorporation.getValue());
+        for (IncorporationValuesType incorporationValue : IncorporationValuesType.values()) {
+            selectOption(incorporationValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllAccountingAndTaxesCheckbox() {
-        for (AccountingAndTaxesValueType accountingandtaxes : AccountingAndTaxesValueType.values()) {
-            selectOption(accountingandtaxes.getValue());
+        for (AccountingAndTaxesValueType accountingandtaxesValue : AccountingAndTaxesValueType.values()) {
+            selectOption(accountingandtaxesValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllHiringCheckbox() {
-        for (HiringValueType hiring : HiringValueType.values()) {
-            selectOption(hiring.getValue());
+        for (HiringValueType hiringValue : HiringValueType.values()) {
+            selectOption(hiringValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllIpprotectionCheckbox() {
-        for (IpprotectionValueType ipprotection : IpprotectionValueType.values()) {
-            selectOption(ipprotection.getValue());
+        for (IpprotectionValueType ipprotectionValue : IpprotectionValueType.values()) {
+            selectOption(ipprotectionValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllClientAcquisitionCheckbox() {
-        for (ClientAcquisitionValueType clientAcquisition : ClientAcquisitionValueType.values()) {
-            selectOption(clientAcquisition.getValue());
+        for (ClientAcquisitionValueType clientAcquisitionValue : ClientAcquisitionValueType.values()) {
+            selectOption(clientAcquisitionValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllPrivacygdprcomplianceCheckbox() {
-        for (PrivacygdprcomplianceValueType privacygdprcompliance : PrivacygdprcomplianceValueType.values()) {
-            selectOption(privacygdprcompliance.getValue());
+        for (PrivacygdprcomplianceValueType privacygdprcomplianceValue : PrivacygdprcomplianceValueType.values()) {
+            selectOption(privacygdprcomplianceValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllFundraisingCheckbox() {
-        for (FundraisingValueType fundraising : FundraisingValueType.values()) {
-            selectOption(fundraising.getValue());
+        for (FundraisingValueType fundraisingValue : FundraisingValueType.values()) {
+            selectOption(fundraisingValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllTokenGenerationDistributionCheckbox() {
-        for (TokenGenerationDistributionValueType tokenGenerationDistribution : TokenGenerationDistributionValueType.values()) {
-            selectOption(tokenGenerationDistribution.getValue());
+        for (TokenGenerationDistributionValueType tokenGenerationDistributionValue : TokenGenerationDistributionValueType.values()) {
+            selectOption(tokenGenerationDistributionValue.getValue());
         }
         return this;
     }
 
     public FirstRegistrationPage selectAllLaunchingDaoWeb3CheckboxCheckbox() {
-        for (LaunchingDaoWeb3ValueType daoWeb3Checkbox : LaunchingDaoWeb3ValueType.values()) {
-            selectOption(daoWeb3Checkbox.getValue());
+        for (LaunchingDaoWeb3ValueType daoWeb3CheckboxValue : LaunchingDaoWeb3ValueType.values()) {
+            selectOption(daoWeb3CheckboxValue.getValue());
         }
         return this;
     }
 
-    public FirstRegistrationPage hoverOnEveryToolTipIcon(){
-        boolean[] toolTipTextArray = new boolean[toolTipIcons.size()];
+    public FirstRegistrationPage hoverOnEveryToolTipIcon() {
+        //boolean[] toolTipTextArray = new boolean[toolTipIcons.size()];
+        ArrayList<String> toolTipTextArray = new ArrayList<String>();
         for (int i = 0; i < toolTipIcons.size(); i++) {
             toolTipIcons.get(i).hover();
             toolTipText.get(i).shouldBe(Condition.appear);
-            toolTipTextArray[i] = toolTipText.get(i).isDisplayed();
+            toolTipTextArray.add(Boolean.toString(toolTipText.get(i).isDisplayed()));
         }
         return this;
     }
@@ -207,7 +209,7 @@ public class FirstRegistrationPage {
     }
 
     public FirstRegistrationPage selectOneRandomOption() {
-        int randomOption = new Random().nextInt(30)+1;
+        int randomOption = new Random().nextInt(30) + 1;
         $x("(//span[contains(@class,'checkbox_label')])[" + randomOption + "]").click();
         return this;
     }

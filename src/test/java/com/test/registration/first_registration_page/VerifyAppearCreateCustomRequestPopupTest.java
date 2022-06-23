@@ -6,12 +6,13 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 
+@Owner(value = AUTHOR_ALEX_CHU)
 public class VerifyAppearCreateCustomRequestPopupTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic(value = "First registration page")
-    @Owner(value = "Alex Chu")
+    @Epic(value = STEP_FIRST_REGISTRATION_PAGE)
     void verifyAppearCreateCustomRequestPopup() {
         CreateCustomRequestOverlay createCustomRequestOverlay = new FirstRegistrationPage()
                 .clickNeedHelpWithSomethingElseButton();

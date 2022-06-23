@@ -24,7 +24,7 @@ public class FourthRegistrationPage {
     private SelenideElement termsAndConditionsLink = $x("//*[text() = 'Terms & Conditions']");
     private SelenideElement privacyPolicyLink = $x("//*[text() = 'Privacy Policy']");
     private SelenideElement pageTitle = $x("//*[text() = 'Create an account']");
-    private SelenideElement stepNumber = $x("//div[@class='registration-quiz__header-container']/b");
+    private SelenideElement stepNumber = $x("//div[@class='registration-quiz__header-container']");
 
     public FourthRegistrationPage setFirstNameField(String first_name){
         firstNameField.val(first_name);

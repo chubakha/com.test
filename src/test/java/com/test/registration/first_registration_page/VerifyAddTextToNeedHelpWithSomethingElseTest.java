@@ -6,17 +6,19 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-@Owner(value = PrepareRegistrationTestData.)
+import static com.test.registration.PrepareRegistrationTestData.*;
+
+@Owner(value = AUTHOR_ALEX_CHU)
 public class VerifyAddTextToNeedHelpWithSomethingElseTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic(value = "First registration page")
+    @Epic(value = STEP_FIRST_REGISTRATION_PAGE)
     void verifyAddedTextNeedHelpWithSomethingElse() {
         String needHelpWithSomething = new Faker().name().fullName();
         CreateCustomRequestOverlay createCustomRequestOverlay = new FirstRegistrationPage()
                 .clickNeedHelpWithSomethingElseButton()
                 .setNeedHelpWithSomethingElse(needHelpWithSomething);
         Assertions.assertEquals(needHelpWithSomething, createCustomRequestOverlay.getNeedHelpWithSomethingElseText(),
-                String.format("'%s' should be shown in ", needHelpWithSomething));
+                String.format("'%s' should be shown", needHelpWithSomething));
     }
 }

@@ -7,19 +7,20 @@ import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
+
+@Owner(value = AUTHOR_ALEX_CHU)
 public class VerifyDeleteNeedHelpWithSomethingElseTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic(value = "First registration page")
-    @Owner(value = "Alex Chu")
+    @Epic(value = STEP_FIRST_REGISTRATION_PAGE)
     void verifyDeleteNeedHelpWithSomethingElse() {
-        String needHelpMessage = new Faker().name().fullName();
         FirstRegistrationPage firstRegistrationPage = new FirstRegistrationPage()
                 .clickNeedHelpWithSomethingElseButton()
-                .setNeedHelpWithSomethingElse(needHelpMessage)
+                .setNeedHelpWithSomethingElse(new Faker().name().fullName())
                 .clickNeedHelpWithSomethingElseSendButton()
                 .deleteNeedHelpWithSomethingElse();
-        Assertions.assertEquals(firstRegistrationPage.getNeedHelpWithSomethingElseTitle(), "NEED HELP WITH SOMETHING ELSE?",
+        Assertions.assertEquals("NEED HELP WITH SOMETHING ELSE?", firstRegistrationPage.getNeedHelpWithSomethingElseTitle(),
                 "'NEED HELP WITH SOMETHING ELSE?' should be shown");
     }
 }
