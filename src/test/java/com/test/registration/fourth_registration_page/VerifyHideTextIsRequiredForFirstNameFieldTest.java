@@ -2,7 +2,7 @@ package com.test.registration.fourth_registration_page;
 
 import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
-import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
@@ -23,7 +23,7 @@ public class VerifyHideTextIsRequiredForFirstNameFieldTest extends PrepareRegist
                 .clickConnectButton()
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
-                .setFirstNameField(new Faker().name().firstName())
+                .setFirstNameField(faker.name().firstName())
                 .clickInactiveCreateAccountButton();
         Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForFirstNameFieldShown(),
                 "'field is required' should not be shown below FirstName field");

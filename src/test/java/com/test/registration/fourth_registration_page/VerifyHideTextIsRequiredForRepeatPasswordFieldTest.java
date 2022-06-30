@@ -2,7 +2,7 @@ package com.test.registration.fourth_registration_page;
 
 import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
-import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
@@ -23,7 +23,7 @@ public class VerifyHideTextIsRequiredForRepeatPasswordFieldTest extends PrepareR
                 .clickConnectButton()
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
-                .setRepeatPasswordField(new Faker().internet().password(8,30))
+                .setRepeatPasswordField(faker.internet().password(8,30))
                 .clickInactiveCreateAccountButton();
         Assertions.assertEquals("Passwords mismatch", fourthRegistrationPage.getFieldIsRequiredForRepeatPasswordField(),
                 "'Passwords mismatch' should be shown below Repeat Password field");

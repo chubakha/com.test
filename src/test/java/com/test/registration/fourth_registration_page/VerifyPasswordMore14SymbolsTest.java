@@ -2,7 +2,7 @@ package com.test.registration.fourth_registration_page;
 
 import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
-import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
@@ -24,27 +24,25 @@ public class VerifyPasswordMore14SymbolsTest extends PrepareRegistrationTestData
     @MethodSource
     @Epic(value = STEP_FOURTH_REGISTRATION_PAGE)
     void VerifyPasswordMore14SymbolsTest(String password){
-        Faker userData = new Faker();
         FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()
                 .clickEnabledNextButton()
                 .clickNextButton()
                 .clickConnectButton()
-                .setFirstNameField(userData.name().firstName())
-                .setLastNameField(userData.name().lastName())
-                .setCompanyNameField(userData.company().name())
-                .setEmailField(userData.internet().emailAddress())
+                .setFirstNameField(faker.name().firstName())
+                .setLastNameField(faker.name().lastName())
+                .setCompanyNameField(faker.company().name())
+                .setEmailField(faker.internet().emailAddress())
                 .setPasswordField(password)
                 .setRepeatPasswordField(password)
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
-                .clickActiveCreateAccountButton();
+                .clickInactiveCreateAccountButton();
         Assertions.assertEquals(String.format("max length is 14 symbols (%s)", password.length()),
                 fourthRegistrationPage.getFieldIsRequiredForPasswordField());
     }
 
     static Stream<String> VerifyPasswordMore14SymbolsTest(){
         List<String> passwords = new ArrayList<String>();
-        Faker faker = new Faker();
         for (int i = 15; i <= 17; i++){
             passwords.add(faker.internet().password(i,i+1));
         }

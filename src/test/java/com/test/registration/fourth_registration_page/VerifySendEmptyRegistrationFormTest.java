@@ -1,8 +1,8 @@
 package com.test.registration.fourth_registration_page;
 
 import com.test.registration.PrepareRegistrationTestData;
-import com.test.registration.RegistrationSteps;
-import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.RegistrationStepsType;
+import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
@@ -23,7 +23,7 @@ public class VerifySendEmptyRegistrationFormTest extends PrepareRegistrationTest
                 .clickConnectButton()
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton();
-        Assertions.assertEquals(RegistrationSteps.REGISTRATION_STEP4.getValue(), fourthRegistrationPage.getStepNumber(),
-                "'" + RegistrationSteps.REGISTRATION_STEP4.getValue() + "' should be shown");
+        Assertions.assertEquals(RegistrationStepsType.REGISTRATION_STEP4.getValue(), fourthRegistrationPage.getStepNumber(),
+                "'" + RegistrationStepsType.REGISTRATION_STEP4.getValue() + "' should be shown");
     }
 }

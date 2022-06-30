@@ -1,6 +1,8 @@
 package com.test.registration;
 
 import com.codeborne.selenide.Configuration;
+import com.github.javafaker.Faker;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -22,4 +24,12 @@ public class PrepareRegistrationTestData {
     public static final String STEP_SECOND_REGISTRATION_PAGE = "Second registration page";
     public static final String STEP_THIRD_REGISTRATION_PAGE = "Third registration page";
     public static final String STEP_FOURTH_REGISTRATION_PAGE = "Fourth registration page";
+
+    protected static Faker faker;
+
+    @Before
+    public static void linksInitializations(){
+        faker = new Faker();
+    }
+
 }

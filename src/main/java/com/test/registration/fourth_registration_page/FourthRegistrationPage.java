@@ -2,29 +2,27 @@ package com.test.registration.fourth_registration_page;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class FourthRegistrationPage {
     private SelenideElement firstNameField = $x("//input[@placeholder='First name']");
-    private SelenideElement fieldIsRequiredForFirstNameField = $x("//input[@placeholder='First name']/following-sibling::p");
+    private SelenideElement fieldIsRequiredForFirstNameField = $x("//input[@placeholder='First name']//following-sibling::p");
     private SelenideElement lastNameField = $x("//input[@placeholder='Last name']");
-    private SelenideElement fieldIsRequiredForLastNameField = $x("//input[@placeholder='Last name']/following-sibling::p");
+    private SelenideElement fieldIsRequiredForLastNameField = $x("//input[@placeholder='Last name']//following-sibling::p");
     private SelenideElement emailField = $x("//input[@placeholder='Email']");
-    private SelenideElement fieldIsRequiredForEmailField = $x("//input[@placeholder='Email']/following-sibling::p");
+    private SelenideElement fieldIsRequiredForEmailField = $x("//input[@placeholder='Email']//following-sibling::p");
     private SelenideElement companyNameField = $x("//input[@placeholder='Company']");
-    private SelenideElement fieldIsRequiredForCompanyNameField = $x("//input[@placeholder='Company']/following-sibling::p");
+    private SelenideElement fieldIsRequiredForCompanyNameField = $x("//input[@placeholder='Company']//following-sibling::p");
     private SelenideElement passwordField = $x("//input[@placeholder='Password']");
-    private SelenideElement fieldIsRequiredForPasswordField = $x("//input[@placeholder='Password']/following-sibling::p");
+    private SelenideElement fieldIsRequiredForPasswordField = $x("//input[@placeholder='Password']//following-sibling::p");
     private SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
-    private SelenideElement fieldIsRequiredForRepeatPasswordField = $x("//input[@placeholder='Repeat password']/following-sibling::p");
+    private SelenideElement fieldIsRequiredForRepeatPasswordField = $x("//input[@placeholder='Repeat password']//following-sibling::p");
     private SelenideElement inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and not(contains(@class, 'checkbox_containerActive'))]");
     private SelenideElement activeIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and (contains(@class, 'checkbox_containerActive'))]");
-    private SelenideElement createAccountButton = $x("//*[text() = 'CREATE ACCOUNT']/..");
-    private SelenideElement termsAndConditionsLink = $x("//*[text() = 'Terms & Conditions']");
-    private SelenideElement privacyPolicyLink = $x("//*[text() = 'Privacy Policy']");
-    private SelenideElement pageTitle = $x("//*[text() = 'Create an account']");
-    private SelenideElement stepNumber = $x("//div[@class='registration-quiz__header-container']");
+    private SelenideElement createAccountButton = $x("//button[contains(@class, 'nextButton')]");
+    private SelenideElement termsAndConditionsLink = $x("//*[contains(text(), 'Terms & Conditions')]");
+    private SelenideElement privacyPolicyLink = $x("//*[contains(text(), 'Privacy Policy')]");
+    private SelenideElement pageTitle = $x("//*[contains(text(), 'Registration')]");
 
     public FourthRegistrationPage setFirstNameField(String first_name){
         firstNameField.val(first_name);
@@ -149,10 +147,6 @@ public class FourthRegistrationPage {
         return pageTitle.getText();
     }
 
-    public String getStepNumber(){
-        return stepNumber.getText();
-    }
-
     public String getDisabledCreateAccountButton(){
         return createAccountButton.getAttribute("disabled");
     }
@@ -163,12 +157,12 @@ public class FourthRegistrationPage {
 
     public FourthRegistrationPage clickInactiveCreateAccountButton() {
         clickCreateAccountButton();
-        return new FourthRegistrationPage();
+        return this;
     }
 
-    public FourthRegistrationPage clickActiveCreateAccountButton() {
+    public ConfirmYourAccountOverlay clickActiveCreateAccountButton() {
         clickCreateAccountButton();
-        return new FourthRegistrationPage();
+        return new ConfirmYourAccountOverlay();
     }
 
 }

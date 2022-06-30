@@ -2,7 +2,7 @@ package com.test.registration.fourth_registration_page;
 
 import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
-import com.test.registration.first_registration_page.FirstRegistrationPage;
+import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
@@ -23,7 +23,7 @@ public class VerifyHideTextIsRequiredForEmailFieldTest extends PrepareRegistrati
                 .clickConnectButton()
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickInactiveCreateAccountButton()
-                .setEmailField(new Faker().internet().emailAddress())
+                .setEmailField(faker.internet().emailAddress())
                 .clickInactiveCreateAccountButton();
         Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForEmailFieldShown(),
                 "'field is required' should not be shown below Email field");
