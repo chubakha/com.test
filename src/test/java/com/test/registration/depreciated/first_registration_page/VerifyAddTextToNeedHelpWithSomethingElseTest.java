@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.test.registration.PrepareRegistrationTestData.*;

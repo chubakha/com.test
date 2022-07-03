@@ -2,7 +2,6 @@ package com.test.registration.depreciated.second_registration_page;
 
 import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
-import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,6 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 public class VerifyPageTitleTextTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic(value = STEP_SECOND_REGISTRATION_PAGE)
     void verifyPleaseCheckTheListOfTasksWhichShouldBeLegallySortedOutTest(){
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
                 .selectOneCheckboxInEverySection()

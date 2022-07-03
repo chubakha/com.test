@@ -4,7 +4,6 @@ import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.RegistrationStepsType;
 import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
 import com.test.registration.depreciated.second_registration_page.SecondRegistrationPage;
-import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,7 +14,6 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 public class VerifyReturnToPreviousPageTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic(value = STEP_THIRD_REGISTRATION_PAGE)
     void verifyReturnToPreviousPage(){
         SecondRegistrationPage secondRegistrationPage = new FirstRegistrationPage()
                 .selectOneRandomOption()

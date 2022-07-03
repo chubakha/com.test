@@ -1,8 +1,7 @@
 package com.test.registration.fourth_registration_page;
 
 import com.test.registration.PrepareRegistrationTestData;
-import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
-import io.qameta.allure.Epic;
+import com.test.registration.RegistrationStepsType;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -13,14 +12,10 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 public class VerifyCreateAnAccountTextTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic(value = STEP_FOURTH_REGISTRATION_PAGE)
     void verifyCreateAnAccountText() {
-        FourthRegistrationPage fourthRegistrationPage = new FirstRegistrationPage()
-                .selectOneRandomOption()
-                .clickEnabledNextButton()
-                .clickNextButton()
-                .clickConnectButton();
-        Assertions.assertEquals("Create an account", fourthRegistrationPage.getPageTitle(),
-                "'Create an account' should be shown");
+        String fourthRegistrationPage = new FourthRegistrationPage()
+                .getPageTitle();
+        Assertions.assertEquals(RegistrationStepsType.REGISTRATION_STEP4.getValue(), fourthRegistrationPage,
+                String.format("'%s' should be shown", RegistrationStepsType.REGISTRATION_STEP4.getValue()));
     }
 }

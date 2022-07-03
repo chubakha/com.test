@@ -14,16 +14,16 @@ public class FourthRegistrationPage {
     private SelenideElement companyNameField = $x("//input[@placeholder='Company']");
     private SelenideElement fieldIsRequiredForCompanyNameField = $x("//input[@placeholder='Company']//following-sibling::p");
     private SelenideElement passwordField = $x("//input[@placeholder='Password']");
-    private SelenideElement fieldIsRequiredForPasswordField = $x("//input[@placeholder='Password']//following-sibling::p");
+    private SelenideElement validationMessageForPasswordField = $x("//input[@placeholder='Password']//following-sibling::p");
     private SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
-    private SelenideElement fieldIsRequiredForRepeatPasswordField = $x("//input[@placeholder='Repeat password']//following-sibling::p");
+    private SelenideElement validationMessageForRepeatPasswordField = $x("//input[@placeholder='Repeat password']//following-sibling::p");
     private SelenideElement inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and not(contains(@class, 'checkbox_containerActive'))]");
     private SelenideElement activeIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and (contains(@class, 'checkbox_containerActive'))]");
     private SelenideElement createAccountButton = $x("//button[contains(@class, 'nextButton')]");
     private SelenideElement termsAndConditionsLink = $x("//*[contains(text(), 'Terms & Conditions')]");
     private SelenideElement privacyPolicyLink = $x("//*[contains(text(), 'Privacy Policy')]");
     private SelenideElement pageTitle = $x("//*[contains(text(), 'Registration')]");
-
+//first name
     public FourthRegistrationPage setFirstNameField(String first_name){
         firstNameField.val(first_name);
         return this;
@@ -40,7 +40,7 @@ public class FourthRegistrationPage {
     public String getFieldIsRequiredForFirstNameField(){
         return fieldIsRequiredForFirstNameField.getText();
     }
-
+//last name
     public FourthRegistrationPage setLastNameField(String last_name){
         lastNameField.val(last_name);
         return this;
@@ -57,7 +57,7 @@ public class FourthRegistrationPage {
     public boolean isFieldIsRequiredForLastNameFieldShown(){
         return fieldIsRequiredForLastNameField.isDisplayed();
     }
-
+//company
     public FourthRegistrationPage setCompanyNameField(String company_name){
         companyNameField.val(company_name);
         return this;
@@ -74,7 +74,7 @@ public class FourthRegistrationPage {
     public boolean isFieldIsRequiredForCompanyNameFieldShown(){
         return fieldIsRequiredForCompanyNameField.isDisplayed();
     }
-
+//email
     public FourthRegistrationPage setEmailField(String email){
         emailField.val(email);
         return this;
@@ -91,7 +91,7 @@ public class FourthRegistrationPage {
     public boolean isFieldIsRequiredForEmailFieldShown(){
         return fieldIsRequiredForEmailField.isDisplayed();
     }
-
+//password
     public FourthRegistrationPage setPasswordField(String password1){
         passwordField.val(password1);
         return this;
@@ -101,15 +101,14 @@ public class FourthRegistrationPage {
         return passwordField.getText();
     }
 
-    //тут замениь проверку на видимость кнопки или чекбокса
-    public String getFieldIsRequiredForPasswordField(){
-        return fieldIsRequiredForPasswordField.getText();
+    public String getValidationMessageForPasswordField(){
+        return validationMessageForPasswordField.getText();
     }
 
-    public boolean isFieldIsRequiredForPasswordFieldShown(){
-        return fieldIsRequiredForPasswordField.isDisplayed();
+    public boolean isValidationMessageForPasswordFieldShown(){
+        return validationMessageForPasswordField.isDisplayed();
     }
-
+//repeat password
     public FourthRegistrationPage setRepeatPasswordField(String password2){
         repeatPasswordField.val(password2);
         return this;
@@ -119,10 +118,14 @@ public class FourthRegistrationPage {
         return repeatPasswordField.getText();
     }
 
-    public String getFieldIsRequiredForRepeatPasswordField(){
-        return fieldIsRequiredForRepeatPasswordField.getText();
+    public String getValidationMessageForRepeatPasswordField(){
+        return validationMessageForRepeatPasswordField.getText();
     }
 
+    public boolean isFieldIsRequiredForRepeatPasswordFieldShown(){
+        return validationMessageForRepeatPasswordField.isDisplayed();
+    }
+//checkboxes
     public FourthRegistrationPage clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy() {
         inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy.click();
         return this;

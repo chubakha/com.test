@@ -13,6 +13,7 @@ public class PrepareRegistrationTestData {
     void openPage(){
         //setUp();
         open("https://stag.cabinet.legalnodes.co/registration");
+        faker = new Faker();
     }
 
     public void setUp() {
@@ -25,11 +26,6 @@ public class PrepareRegistrationTestData {
     public static final String STEP_THIRD_REGISTRATION_PAGE = "Third registration page";
     public static final String STEP_FOURTH_REGISTRATION_PAGE = "Fourth registration page";
 
-    protected static Faker faker;
-
-    @Before
-    public static void linksInitializations(){
-        faker = new Faker();
-    }
+    public static Faker faker;
 
 }

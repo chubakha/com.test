@@ -12,7 +12,6 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 public class VerifyCreateCustomRequestPopupTitleTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic(value = STEP_FIRST_REGISTRATION_PAGE)
     void verifyCreateCustomRequestPopupTitle() {
         CreateCustomRequestOverlay createCustomRequestOverlay = new FirstRegistrationPage()
                 .clickNeedHelpWithSomethingElseButton();

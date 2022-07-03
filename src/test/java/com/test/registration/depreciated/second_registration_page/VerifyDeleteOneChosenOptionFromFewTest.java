@@ -5,6 +5,7 @@ import com.test.registration.depreciated.first_registration_page.FirstRegistrati
 import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

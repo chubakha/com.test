@@ -7,8 +7,8 @@ import com.test.registration.Functions;
 import com.test.registration.depreciated.first_registration_page.FirstRegistrationPage;
 import com.test.registration.depreciated.third_page_registration.ThirdRegistrationPage;
 
-import java.util.*;
 
+import java.util.Random;
 
 import static com.codeborne.selenide.Selenide.*;
 

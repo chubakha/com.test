@@ -12,7 +12,6 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 @Owner(value = AUTHOR_ALEX_CHU)
 public class VerifyToolTipsTextTest extends PrepareRegistrationTestData {
 
-    @Disabled
     @Test
     @Epic(value = STEP_FIRST_REGISTRATION_PAGE)
     void verifyToolTipsText() {
