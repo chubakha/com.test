@@ -22,12 +22,14 @@ public class VerifyDisappearMinLengthIs8SymbolsMessageForPasswordTest extends Pr
                 .setPasswordField(password)
                 .setRepeatPasswordField(password)
                 .clickInactiveCreateAccountButton();
-        Assertions.assertFalse(fourthRegistrationPage.isValidationMessageForPasswordFieldShown(),
-                String.format("'%s' should not be shown next to Password Field",
-                        String.format(ValidationErrorMessagesType.MIN_LENGTH_IS_8_SYMBOLS.getValue(), shortPassword.length())));
-        Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForRepeatPasswordFieldShown(),
-                String.format("'%s' should not be shown next to Repeat Password Field",
-                        String.format(ValidationErrorMessagesType.MIN_LENGTH_IS_8_SYMBOLS.getValue(), shortPassword.length())));
+        Assertions.assertAll("Should return address of Oracle's headquarter",
+                () -> Assertions.assertFalse(fourthRegistrationPage.isValidationMessageForPasswordFieldShown(),
+                        String.format("'%s' should not be shown next to Password Field",
+                                String.format(ValidationErrorMessagesType.MIN_LENGTH_IS_8_SYMBOLS.getValue(), shortPassword.length()))),
+                () -> Assertions.assertFalse(fourthRegistrationPage.isFieldIsRequiredForRepeatPasswordFieldShown(),
+                        String.format("'%s' should not be shown next to Repeat Password Field",
+                                String.format(ValidationErrorMessagesType.MIN_LENGTH_IS_8_SYMBOLS.getValue(), shortPassword.length())))
+        );
     }
 
 }

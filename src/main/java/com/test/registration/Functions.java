@@ -3,6 +3,7 @@ package com.test.registration;
 import com.codeborne.selenide.ElementsCollection;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
+import com.test.registration.depreciated.first_registration_page.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,38 +21,38 @@ public class Functions {
     public boolean compareSectionAndOption(String chosenOption, String chosenSection) {
         ListMultimap<String, String> sectionsAndOptionsArray = ArrayListMultimap.create();
         Map<String, Collection<String>> map = Map.of(
-                "INCORPORATION", Arrays.asList("Pick the best jurisdictions and corporate structure for my tech project",
-                        "Register a company for initial fundraising & go-to-market",
-                        "Set up or update terms of cooperation between founders"),
-                "ACCOUNTING & TAXES", Arrays.asList("Get taxation analysis on the country chosen for company registration",
-                        "Obtain a company tax number",
-                        "Start issuing and collecting invoices in a tax-compliant way",
-                        "Set up accounting for paying salaries",
-                        "Obtain company VAT number"),
-                "HIRING", Arrays.asList("Hire a new team member",
-                        "Protect intellectual property and trade secrets",
-                        "Incentivize the team by issuing share options",
-                        "Engage a new contractor"),
-                "IP PROTECTION", Arrays.asList("Protect the name and logo of the company",
-                        "Protect the company`s invention"),
-                "CLIENT ACQUISITION", Arrays.asList("Start user acquisition on the website / app",
-                        "Start receiving payments from B2B clients",
-                        "Start working with a new referral partner"),
-                "PRIVACY / GDPR COMPLIANCE", Arrays.asList("Make the website / app compliant with privacy laws",
-                        "Start working with EU-based clients and users",
-                        "Sign B2B agreements with EU-based clients"),
-                "FUNDRAISING", Arrays.asList("Prepare for the fundraising",
-                        "Raise investments",
-                        "Raise investments with the promise to issue tokens",
-                        "Make a cash-out / exit"),
-                "TOKEN GENERATION & DISTRIBUTION (WEB3)", Arrays.asList("Register a company to issue the tokens",
-                        "Ensuring regulatory and AML compliance when selling tokens",
-                        "Public Token distribution through launchpads, listing tokens on crypto exchanges",
-                        "Launching DeFi and token incentive programs for users (staking, yield farming, airdrops, NFTs, etc.)"),
-                "LAUNCHING A DAO (WEB3)", Arrays.asList("DAO Legal Wrapper setup",
-                        "DAO Governance legal setup",
-                        "Appointment of DAO Management",
-                        "Onboarding DAO members"));
+                CategoriesType.INCORPORATION.getValue(), Arrays.asList(IncorporationValuesType.PICK_THE_BEST_JURISDICTIONS_AND_CORPORATE_STRUCTURE_FOR_MY_TECH_PROJECT.getValue(),
+                        IncorporationValuesType.REGISTER_A_COMPANY_FOR_INITIAL_FUNDRAISING_AND_GO_TO_MARKET.getValue(),
+                        IncorporationValuesType.REGISTER_A_COMPANY_FOR_INITIAL_FUNDRAISING_AND_GO_TO_MARKET.getValue()),
+                CategoriesType.ACCOUNTING_TAXES.getValue(), Arrays.asList(AccountingAndTaxesValueType.GET_TAXATION_ANALYSIS_ON_THE_COUNTRY_CHOSEN_FOR_COMPANY_REGISTRATION.getValue(),
+                        AccountingAndTaxesValueType.OBTAIN_A_COMPANY_TAX_NUMBER.getValue(),
+                        AccountingAndTaxesValueType.START_ISSUING_AND_COLLECTING_INVOICES_IN_A_TAX_COMPLIANT_WAY.getValue(),
+                        AccountingAndTaxesValueType.SET_UP_ACCOUNTING_FOR_PAYING_SALARIES.getValue(),
+                        AccountingAndTaxesValueType.OBTAIN_COMPANY_VAT_NUMBER.getValue()),
+                CategoriesType.HIRING.getValue(), Arrays.asList(HiringValueType.HIRE_A_NEW_TEAM_MEMBER.getValue(),
+                        HiringValueType.PROTECT_INTELLECTUAL_PROPERTY_AND_TRADE_SECRETS.getValue(),
+                        HiringValueType.INCENTIVIZE_THE_TEAM_BY_ISSUING_SHARE_OPTIONS.getValue(),
+                        HiringValueType.ENGAGE_A_NEW_CONTRACTOR.getValue()),
+                CategoriesType.IP_PROTECTION.getValue(), Arrays.asList(IpprotectionValueType.PROTECT_THE_NAME_AND_LOGO_OF_THE_COMPANY.getValue(),
+                        IpprotectionValueType.PROTECT_THE_NAME_AND_LOGO_OF_THE_COMPANY.getValue()),
+                CategoriesType.CLIENT_ACQUISITION.getValue(), Arrays.asList(ClientAcquisitionValueType.START_USER_ACQUISITION_ON_THE_WEBSITE_APP.getValue(),
+                        ClientAcquisitionValueType.START_RECEIVING_PAYMENTS_FROM_B2B_CLIENTS.getValue(),
+                        ClientAcquisitionValueType.START_WORKING_WITH_A_NEW_REFERRAL_PARTNER.getValue()),
+                CategoriesType.PRIVACY_GDPR_COMPLIANCE.getValue(), Arrays.asList(PrivacygdprcomplianceValueType.MAKE_THE_WEBSITE_APP_COMPLIANT_WITH_PRIVACY_LAWS.getValue(),
+                        PrivacygdprcomplianceValueType.START_WORKING_WITH_EU_BASED_CLIENTS_AND_USERS.getValue(),
+                        PrivacygdprcomplianceValueType.SIGN_B2B_AGREEMENTS_WITH_EU_BASED_CLIENTS.getValue()),
+                CategoriesType.FUNDRAISING.getValue(), Arrays.asList(FundraisingValueType.PREPARE_FOR_THE_FUNDRAISING.getValue(),
+                        FundraisingValueType.RAISE_INVESTMENTS.getValue(),
+                        FundraisingValueType.RAISE_INVESTMENTS_WITH_THE_PROMISE_TO_ISSUE_TOKENS.getValue(),
+                        FundraisingValueType.MAKE_A_CASH_OUT_EXIT.getValue()),
+                CategoriesType.TOKEN_GENERATION_DISTRIBUTION_WEB3.getValue(), Arrays.asList(TokenGenerationDistributionValueType.REGISTER_A_COMPANY_TO_ISSUE_THE_TOKENS.getValue(),
+                        TokenGenerationDistributionValueType.ENSURING_REGULATORY_AND_AML_COMPLIANCE_WHEN_SELLING_TOKENS.getValue(),
+                        TokenGenerationDistributionValueType.PUBLIC_TOKEN_DISTRIBUTION_THROUGH_LAUNCHPADS_LISTING_TOKENS_ON_CRYPTO_EXCHANGES.getValue(),
+                        TokenGenerationDistributionValueType.LAUNCHING_DEFI_AND_TOKEN_INCENTIVE_PROGRAMS_FOR_USERS_STAKING_YIELD_FARMING_AIRDROPS_NFTS_ETC.getValue()),
+                CategoriesType.LAUNCHING_A_DAO_WEB3.getValue(), Arrays.asList(LaunchingDaoWeb3ValueType.DAO_LEGAL_WRAPPER_SETUP.getValue(),
+                        LaunchingDaoWeb3ValueType.DAO_GOVERNANCE_LEGAL_SETUP.getValue(),
+                        LaunchingDaoWeb3ValueType.APPOINTMENT_OF_DAO_MANAGEMENT.getValue(),
+                        LaunchingDaoWeb3ValueType.ONBOARDING_DAO_MEMBERS.getValue()));
         int i = 0;
         int j = 0;
         boolean sectionIsRight = false;

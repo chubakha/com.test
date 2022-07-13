@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
+
 import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 
 @Owner(value = AUTHOR_ALEX_CHU)
@@ -24,11 +28,20 @@ public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegis
                 .setRepeatPasswordField(password)
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
-        Assertions.assertEquals("Confirm your account", confirmYourAccountOverlay.getPageTitle(), "'Confirm your account' should be shown");
+        Assertions.assertEquals("Confirm your account", confirmYourAccountOverlay.getPageTitle(),
+                "'Confirm your account' page should be shown");
     }
 
     /*static Stream<String> verifyPasswordFrom8To14Symbols(){
         List<String> passwords = new ArrayList<String>();
+        for (int i = 8; i <= 14; i++){
+            passwords.add(faker.internet().password(i,i+1));
+        }
+        return Stream.of("alex", "brian");
+    }*/
+
+    /*static Stream<String> verifyPasswordFrom8To14Symbols(){
+        List<String> passwords = new ArrayList();
         for (int i = 8; i <= 14; i++){
             passwords.add(faker.internet().password(i,i+1));
         }

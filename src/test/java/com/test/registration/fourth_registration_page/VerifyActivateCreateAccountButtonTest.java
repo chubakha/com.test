@@ -14,7 +14,6 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 public class VerifyActivateCreateAccountButtonTest extends PrepareRegistrationTestData {
 
     @Test
-    @Epic("Эпик")
     @Description("Activate button 'Create a account' after click on 'I’ve read and accepted Terms & Conditions and Privacy Policy.' checkbox")
     void verifyActivateCreateAccountButton() {
         FourthRegistrationPage fourthRegistrationPage = new FourthRegistrationPage()
