@@ -8,22 +8,31 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
 
-    private SelenideElement emailField = $("[placeholder='Email ']");
-    private SelenideElement passwordField = $("[placeholder='Password']");
-    private SelenideElement loginButton = $(".login-page__btn");
+    private SelenideElement emailField = $x("//input[contains(@placeholder, 'Email')]");
+    private SelenideElement passwordField = $x("//input[contains(@placeholder, 'Password')]");
+    private SelenideElement loginButton = $x("//button[contains(text(), 'SIGN IN')]");
+    private SelenideElement validationMessage = $x("//*[contains(@class, 'error-message')]");
+    private SelenideElement forgotPasswordLink = $x("//*[contains(text(), 'Forgot Password')]");
+    private SelenideElement pageTitle = $x("//h1[contains(text(), 'Sign in to access')]");
+    private SelenideElement forgotPasswordPopup = $x("//*[contains(@class, 'auth-modal')]");
 
-    public ManagerCabinetPage loginAsUserByManager(String email, String password) {
-        setEmailField(email);
-        setPasswordField(password);
+    public void clickLoginButton(){
+        loginButton.click();
+    }
+
+    public ManagerCabinetPage loginAsManager() {
         clickLoginButton();
         return new ManagerCabinetPage();
     }
 
-    public ClientCabinetPage loginAsUserByClient(String email, String password) {
-        setEmailField(email);
-        setPasswordField(password);
+    public ClientCabinetPage loginAsClient() {
         clickLoginButton();
         return new ClientCabinetPage();
+    }
+
+    public LoginPage clickInactiveSignUpButton() {
+        clickLoginButton();
+        return this;
     }
 
     public LoginPage setEmailField(String email){
@@ -36,10 +45,6 @@ public class LoginPage {
         return this;
     }
 
-    public void clickLoginButton(){
-        loginButton.click();
-    }
-
     public String getEmailField(){
         return emailField.getText();
     }
@@ -47,4 +52,22 @@ public class LoginPage {
     public String getPasswordField(){
         return passwordField.getText();
     }
+
+    public String getPageTitle(){
+        return pageTitle.getText();
+    }
+
+    public ForgotPasswordOverlay clickForgotPasswordLink(){
+        forgotPasswordLink.click();
+        return new ForgotPasswordOverlay();
+    }
+
+    public String getValidationMessage(){
+        return validationMessage.getText();
+    }
+
+    public boolean forgotPasswordPopupIsShown(){
+        return forgotPasswordPopup.exists();
+    }
+
 }

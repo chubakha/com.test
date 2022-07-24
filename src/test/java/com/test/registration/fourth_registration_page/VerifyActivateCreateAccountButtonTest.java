@@ -3,7 +3,6 @@ package com.test.registration.fourth_registration_page;
 import com.test.registration.PrepareRegistrationTestData;
 
 import io.qameta.allure.Description;
-import io.qameta.allure.Epic;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
