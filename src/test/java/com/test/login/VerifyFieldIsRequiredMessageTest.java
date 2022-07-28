@@ -7,7 +7,7 @@ public class VerifyFieldIsRequiredMessageTest extends PrepareLoginTestData{
 
     @Test
     void verifyFieldIsRequiredMessage(){
-        ForgotPasswordOverlay forgotPasswordOverlay = new LoginPage()
+        ForgotPasswordOverlay forgotPasswordOverlay = new ClientLoginPage()
                 .clickForgotPasswordLink()
                 .clickSendButton();
         Assertions.assertEquals(ValidationErrorMessagesType.FIELD_IS_REQUIRED.getValue(),

@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.open;
+
 public class Functions {
     public String[] getChosenOptions(ElementsCollection selectedOptions) {
         String[] chosenList = new String[selectedOptions.size()];
@@ -74,5 +76,7 @@ public class Functions {
         }
         return sectionIsRight;
     }
+
+
 
 }

@@ -7,10 +7,10 @@ public class VerifyMissingParametersMessageTest extends PrepareLoginTestData{
 
     @Test
     void verifyMissingParametersMessage(){
-        LoginPage loginPage = new LoginPage()
+        ClientLoginPage clientLoginPage = new ClientLoginPage()
                 .clickInactiveSignUpButton();
         Assertions.assertEquals(ValidationErrorMessagesType.MISSING_PARAMETERS.getValue(),
-                loginPage.getValidationMessage(),
+                clientLoginPage.getValidationMessage(),
                 String.format("'%s' message should be shown next to password field", ValidationErrorMessagesType.MISSING_PARAMETERS.getValue()));
     }
 }

@@ -9,11 +9,11 @@ public class VerifyCloseForgotPasswordPopupTest extends PrepareLoginTestData{
 
     @Test
     void verifyCloseForgotPasswordPopup(){
-        LoginPage loginPage = new LoginPage()
+        ClientLoginPage clientLoginPage = new ClientLoginPage()
                 .clickForgotPasswordLink()
                 .clickSendMeBackButton();
         sleep(3000);
-        Assertions.assertFalse(loginPage.forgotPasswordPopupIsShown(),
+        Assertions.assertFalse(clientLoginPage.forgotPasswordPopupIsShown(),
                 "'Forgot Password' popup should not be shown");
     }
 }

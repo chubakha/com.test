@@ -34,9 +34,9 @@ public class ForgotPasswordOverlay {
         return emailField.getText();
     }
 
-    public LoginPage clickSendMeBackButton(){
+    public ClientLoginPage clickSendMeBackButton(){
         sendMeBackButton.click();
-        return new LoginPage();
+        return new ClientLoginPage();
     }
 
     public boolean forgotPasswordPopupIsShown(){

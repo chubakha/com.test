@@ -1,13 +1,13 @@
 package com.test.registration.fourth_registration_page;
 
+import com.github.javafaker.Faker;
 import com.test.registration.PrepareRegistrationTestData;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.runners.Parameterized;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
@@ -15,9 +15,13 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 @Owner(value = AUTHOR_ALEX_CHU)
 public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegistrationTestData {
 
+    @Parameterized.AfterParam
+    void testTest(){
+        System.out.println("12");
+    }
+
     @ParameterizedTest
-    @ValueSource(strings = {"12345678", "123456789", "1234567891", "12345678912", "123456789123", "1234567891234"})
-    //@MethodSource("verifyPasswordFrom8To14Symbols")
+    @MethodSource
     void verifySendFormWithPasswordFrom8To14Symbols(String password) {
         ConfirmYourAccountOverlay confirmYourAccountOverlay = new FourthRegistrationPage()
                 .setFirstNameField(faker.name().firstName())
@@ -32,20 +36,15 @@ public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegis
                 "'Confirm your account' page should be shown");
     }
 
-    /*static Stream<String> verifyPasswordFrom8To14Symbols(){
-        List<String> passwords = new ArrayList<String>();
-        for (int i = 8; i <= 14; i++){
-            passwords.add(faker.internet().password(i,i+1));
-        }
-        return Stream.of("alex", "brian");
-    }*/
-
-    /*static Stream<String> verifyPasswordFrom8To14Symbols(){
-        List<String> passwords = new ArrayList();
-        for (int i = 8; i <= 14; i++){
-            passwords.add(faker.internet().password(i,i+1));
-        }
-        return Stream.of("alex", "brian");
-    }*/
+    static Stream<String> verifySendFormWithPasswordFrom8To14Symbols(){
+        faker = new Faker();
+        return Stream.of(faker.internet().password(8,9),
+                faker.internet().password(9,10),
+                faker.internet().password(10,11),
+                faker.internet().password(11,12),
+                faker.internet().password(12,13),
+                faker.internet().password(13,14),
+                faker.internet().password(14,15));
+    }
 
 }

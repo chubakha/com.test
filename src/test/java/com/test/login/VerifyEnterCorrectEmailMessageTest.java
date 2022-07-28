@@ -7,7 +7,7 @@ public class VerifyEnterCorrectEmailMessageTest extends PrepareLoginTestData {
 
     @Test
     void verifyEnterCorrectEmailMessage(){
-        ForgotPasswordOverlay forgotPasswordOverlay = new LoginPage()
+        ForgotPasswordOverlay forgotPasswordOverlay = new ClientLoginPage()
                 .clickForgotPasswordLink()
                 .setEmailField(faker.name().username())
                 .clickSendButton();

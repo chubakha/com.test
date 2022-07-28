@@ -12,8 +12,10 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class PrepareLoginTestData {
 
-    protected static String email;
-    protected static String password;
+    protected static String clientEmail;
+    protected static String clientPassword;
+    protected static String managerEmail;
+    protected static String managerPassword;
 
     @BeforeEach
     void openPage() {
@@ -24,17 +26,23 @@ public class PrepareLoginTestData {
     @BeforeAll
     static void generalLinksInitialization(){
         faker = new Faker();
-        email = PrepareLoginTestData.getEmail();
-        password = PrepareLoginTestData.getPassword();
+        clientEmail = PrepareLoginTestData.getClientEmail();
+        clientPassword = PrepareLoginTestData.getClientPassword();
+        managerEmail = PrepareLoginTestData.getClientEmail();
+        managerPassword = PrepareLoginTestData.getClientPassword();
+    }
+
+    public static void openLoginPage(){
+        open("https://stag.cabinet.legalnodes.co/");
     }
 
     public static Faker faker;
 
-    private static String getEmail() {
+    private static String getClientEmail() {
         return getPropertyFileData().getProperty("stag.client.email");
     }
 
-    private static String getPassword(){
+    private static String getClientPassword(){
         return getPropertyFileData().getProperty("stag.client.password");
     }
 
@@ -52,4 +60,5 @@ public class PrepareLoginTestData {
     public void setUp() {
         Configuration.headless = true;
     }
+
 }
