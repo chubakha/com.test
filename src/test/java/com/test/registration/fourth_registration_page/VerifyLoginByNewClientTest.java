@@ -1,11 +1,14 @@
 package com.test.registration.fourth_registration_page;
 
 import com.test.admin_panel.LoginAdminPage;
+import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PreparingAdminPanelTestData;
-import com.test.admin_panel.client_section.MainClientPage;
-import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
+import com.test.admin_panel.clients_section.MainClientPage;
+import com.test.admin_panel.clients_section.ViewClientPage;
+import com.test.admin_panel.companies_section.MainCompaniesPage;
 import com.test.login.ClientLoginPage;
 import com.test.login.PrepareLoginTestData;
+import com.test.onboarding.WelcomePopupOverlay;
 import com.test.registration.PrepareRegistrationTestData;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
 
+import static com.codeborne.selenide.Selenide.sleep;
 import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 
 @Owner(value = AUTHOR_ALEX_CHU)
@@ -25,7 +29,7 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(1)
-    void verifyRegistrationNewClient(){
+    void registrationNewClient(){
         ConfirmYourAccountOverlay confirmYourAccountOverlay = new FourthRegistrationPage()
                 .setFirstNameField(faker.name().firstName())
                 .setLastNameField(faker.name().lastName())
@@ -41,35 +45,61 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(2)
-    void verifyLoginByNewClient(){
-        PrepareLoginTestData.openLoginPage();
-        ClientCabinetPage clientCabinetPage = new ClientLoginPage()
-                .setEmailField(emailCurrent)
-                .setPasswordField(passwordCurrent)
-                .loginAsClient();
-        Assertions.assertTrue(clientCabinetPage.isTaskRequestShownButton(),
-                String.format("'%s' button should be shown", clientCabinetPage.getTaskRequestButtonText()));
-    }
-
-    @Test
-    @Order(3)
-    void deleteNewClient(){
+    void activateNewClient(){
         PreparingAdminPanelTestData.openLoginAdminPage();
-        MainClientPage mainClientPage = new LoginAdminPage()
+        ViewClientPage viewClientPage = new LoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(emailCurrent)
                 .focusOutSearchFields()
-                .clickDeleteButton()
-                .pressEnterKey();
+                .clickUpdateButton()
+                .activateStatus()
+                .saveClient();
+        sleep(500);
+        Assertions.assertEquals("Active", viewClientPage.getStatusState(), "Page title should be shown");
+    }
+
+    @Test
+    @Order(3)
+    void verifyLoginByNewClient(){
+        PrepareLoginTestData.openLoginPage();
+        WelcomePopupOverlay welcomePopupOverlay = new ClientLoginPage()
+                .setEmailField(emailCurrent)
+                .setPasswordField(passwordCurrent)
+                .loginAsNewClient();
+        sleep(3000);
+        Assertions.assertTrue(welcomePopupOverlay.isPopupShown(),"Welcome popup should be shown");
     }
 
     @Test
     @Order(4)
+    void deleteNewClient(){
+        PreparingAdminPanelTestData.openLoginAdminPage();
+        MainClientPage mainClientPage = new MainAdminPage()
+                .clickClientsLink()
+                .setClientSearchByEmailField(emailCurrent)
+                .focusOutSearchFields()
+                .clickDeleteButton()
+                .pressEnterKey()
+                .setClientSearchByEmailField(emailCurrent)
+                .focusOutSearchFields();
+        Assertions.assertTrue(mainClientPage.isNoResultMessageShown(), "'No results found.' should be shown");
+    }
+
+    @Test
+    @Order(5)
     void deleteNewCompany(){
         PreparingAdminPanelTestData.openLoginAdminPage();
-
+        MainCompaniesPage mainCompaniesPage = new MainAdminPage()
+                .clickCompaniesLink()
+                .setClientSearchByCompanyField(companyCurrent)
+                .focusOutSearchFields()
+                .clickDeleteButton()
+                .pressEnterKey()
+                .setClientSearchByCompanyField(companyCurrent)
+                .focusOutSearchFields();
+        Assertions.assertTrue(mainCompaniesPage.isNoResultMessageShown(), "'No results found.' should be shown");
     }
 }

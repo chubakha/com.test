@@ -3,6 +3,7 @@ package com.test.login;
 import com.codeborne.selenide.SelenideElement;
 import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
 import com.test.cabinet.manager_cabinet_page.ManagerCabinetPage;
+import com.test.onboarding.WelcomePopupOverlay;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -28,6 +29,11 @@ public class ClientLoginPage {
     public ClientCabinetPage loginAsClient() {
         clickLoginButton();
         return new ClientCabinetPage();
+    }
+
+    public WelcomePopupOverlay loginAsNewClient() {
+        clickLoginButton();
+        return new WelcomePopupOverlay();
     }
 
     public ClientLoginPage clickInactiveSignUpButton() {
@@ -66,7 +72,7 @@ public class ClientLoginPage {
         return validationMessage.getText();
     }
 
-    public boolean forgotPasswordPopupIsShown(){
+    public boolean isForgotPasswordPopupShown(){
         return forgotPasswordPopup.exists();
     }
 

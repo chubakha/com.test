@@ -9,7 +9,7 @@ public class VerifyAppearForgotPasswordPopupTest extends PrepareLoginTestData {
     void verifyAppearForgotPasswordPopup(){
         ForgotPasswordOverlay forgotPasswordOverlay = new ClientLoginPage()
                 .clickForgotPasswordLink();
-        Assertions.assertTrue(forgotPasswordOverlay.forgotPasswordPopupIsShown(),
+        Assertions.assertTrue(forgotPasswordOverlay.isForgotPasswordPopupShown(),
                 "'Forgot Password' popup should be shown");
 
     }

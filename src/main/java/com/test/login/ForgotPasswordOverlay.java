@@ -39,7 +39,7 @@ public class ForgotPasswordOverlay {
         return new ClientLoginPage();
     }
 
-    public boolean forgotPasswordPopupIsShown(){
+    public boolean isForgotPasswordPopupShown(){
         return forgotPasswordPopup.exists();
     }
 

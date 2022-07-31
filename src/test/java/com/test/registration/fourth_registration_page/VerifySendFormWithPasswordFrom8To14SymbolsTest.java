@@ -14,12 +14,6 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 
 @Owner(value = AUTHOR_ALEX_CHU)
 public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegistrationTestData {
-
-    @Parameterized.AfterParam
-    void testTest(){
-        System.out.println("12");
-    }
-
     @ParameterizedTest
     @MethodSource
     void verifySendFormWithPasswordFrom8To14Symbols(String password) {

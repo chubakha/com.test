@@ -19,7 +19,7 @@ public class VerifyLoginAsClientPageTest extends PrepareLoginTestData {
                 .setPasswordField(clientPassword)
                 .loginAsClient();
         sleep(5000);
-        Assertions.assertTrue(clientCabinetPage.isTaskRequestShownButton(),
+        Assertions.assertTrue(clientCabinetPage.isTaskRequestButtonShown(),
                 String.format("'%s' button should be shown", clientCabinetPage.getTaskRequestButtonText()));
     }
 

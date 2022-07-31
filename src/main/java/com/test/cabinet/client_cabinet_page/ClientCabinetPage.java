@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class ClientCabinetPage {
     private SelenideElement taskRequestButton = $x("//button[contains(text(), 'task request')]");
 
-    public boolean isTaskRequestShownButton(){
+    public boolean isTaskRequestButtonShown(){
         return taskRequestButton.isDisplayed();
     }
 

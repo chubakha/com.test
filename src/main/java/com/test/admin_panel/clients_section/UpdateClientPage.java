@@ -1,4 +1,4 @@
-package com.test.admin_panel.client_section;
+package com.test.admin_panel.clients_section;
 
 import com.codeborne.selenide.SelenideElement;
 
