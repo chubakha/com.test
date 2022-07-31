@@ -9,6 +9,8 @@ public class MainClientPage {
     private SelenideElement clientSearchByEmailField = $x("//input[contains(@name, 'UserClientSearch') and contains(@name, 'email')]");
     private SelenideElement pageTitle = $x("//h1");
     private SelenideElement deleteButton = $x("//a[contains(@title, 'Delete')]");
+    private SelenideElement updateButton = $x("//a[contains(@title, 'Update')]");
+    private SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
 
     public MainClientPage setClientSearchByEmailField(String searchRequest){
         clientSearchByEmailField.val(searchRequest);
@@ -25,8 +27,17 @@ public class MainClientPage {
         return this;
     }
 
+    public UpdateClientPage clickUpdateButton(){
+        updateButton.click();
+        return new UpdateClientPage();
+    }
+
     public MainClientPage pressEnterKey(){
         Selenide.switchTo().alert().accept();
         return this;
+    }
+
+    public boolean isNoResultMessageShown(){
+        return noResultMessage.exists();
     }
 }
