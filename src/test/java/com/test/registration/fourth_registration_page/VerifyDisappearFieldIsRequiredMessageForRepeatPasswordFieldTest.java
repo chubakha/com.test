@@ -1,13 +1,16 @@
 package com.test.registration.fourth_registration_page;
 
+import com.test.ScreenshotExtension;
 import com.test.registration.PrepareRegistrationTestData;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 
 @Owner(value = AUTHOR_ALEX_CHU)
+@ExtendWith(ScreenshotExtension.class)
 public class VerifyDisappearFieldIsRequiredMessageForRepeatPasswordFieldTest extends PrepareRegistrationTestData {
 
     @Test

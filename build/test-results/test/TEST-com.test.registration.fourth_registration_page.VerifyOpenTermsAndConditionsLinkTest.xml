@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifyOpenTermsAndConditionsLinkTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:03:53" hostname="glbuh-note" time="12.896">
+<testsuite name="com.test.registration.fourth_registration_page.VerifyOpenTermsAndConditionsLinkTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-01T14:30:07" hostname="chubakha" time="6.162">
   <properties/>
-  <testcase name="verifyOpenTermsAndConditionsLink()" classname="com.test.registration.fourth_registration_page.VerifyOpenTermsAndConditionsLinkTest" time="12.896"/>
+  <testcase name="verifyOpenTermsAndConditionsLink()" classname="com.test.registration.fourth_registration_page.VerifyOpenTermsAndConditionsLinkTest" time="6.162"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[Starting ChromeDriver 102.0.5005.61 (0e59bcc00cc4985ce39ad31c150065f159d95ad3-refs/branch-heads/5005@{#819}) on port 54965
+  <system-err><![CDATA[Starting ChromeDriver 103.0.5060.134 (8ec6fce403b3feb0869b0732eda8bd95011d333c-refs/branch-heads/5060@{#1262}) on port 57688
 Only local connections are allowed.
 Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
 ChromeDriver was started successfully.
-июн. 11, 2022 2:03:56 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+авг. 01, 2022 5:30:09 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-июн. 11, 2022 2:03:57 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-WARNING: Unable to find an exact match for CDP version 102, so returning the closest version found: 99
-июн. 11, 2022 2:03:57 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
-INFO: Found CDP implementation for version 102 of 99
+авг. 01, 2022 5:30:09 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 103, so returning the closest version found: 99
+авг. 01, 2022 5:30:09 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+INFO: Found CDP implementation for version 103 of 99
 ]]></system-err>
 </testsuite>

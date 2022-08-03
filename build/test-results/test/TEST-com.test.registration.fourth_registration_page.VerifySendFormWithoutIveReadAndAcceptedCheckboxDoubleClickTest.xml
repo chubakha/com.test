@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:04:17" hostname="glbuh-note" time="7.467">
+<testsuite name="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-01T14:30:13" hostname="chubakha" time="4.167">
   <properties/>
-  <testcase name="verifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClick()" classname="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest" time="7.467"/>
+  <testcase name="verifySendingFormWithoutIveReadAndAcceptedCheckboxDoubleClick()" classname="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxDoubleClickTest" time="4.167"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[Starting ChromeDriver 103.0.5060.134 (8ec6fce403b3feb0869b0732eda8bd95011d333c-refs/branch-heads/5060@{#1262}) on port 49878
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+авг. 01, 2022 5:30:15 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+авг. 01, 2022 5:30:15 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 103, so returning the closest version found: 99
+авг. 01, 2022 5:30:15 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+INFO: Found CDP implementation for version 103 of 99
+]]></system-err>
 </testsuite>

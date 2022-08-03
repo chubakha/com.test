@@ -3,7 +3,7 @@ package com.test.registration;
 import com.codeborne.selenide.ElementsCollection;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ListMultimap;
-import com.test.registration.depreciated.first_registration_page.*;
+//import com.test.registration.depreciated.first_registration_page.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -12,7 +12,7 @@ import java.util.Map;
 import static com.codeborne.selenide.Selenide.open;
 
 public class Functions {
-    public String[] getChosenOptions(ElementsCollection selectedOptions) {
+/*    public String[] getChosenOptions(ElementsCollection selectedOptions) {
         String[] chosenList = new String[selectedOptions.size()];
         for (int i = 0; i < chosenList.length; i++) {
             chosenList[i] = selectedOptions.get(i).getText();
@@ -78,5 +78,5 @@ public class Functions {
     }
 
 
-
+*/
 }

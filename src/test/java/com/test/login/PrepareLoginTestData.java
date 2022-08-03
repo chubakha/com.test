@@ -28,8 +28,8 @@ public class PrepareLoginTestData {
         faker = new Faker();
         clientEmail = PrepareLoginTestData.getClientEmail();
         clientPassword = PrepareLoginTestData.getClientPassword();
-        managerEmail = PrepareLoginTestData.getClientEmail();
-        managerPassword = PrepareLoginTestData.getClientPassword();
+        managerEmail = PrepareLoginTestData.getManagerEmail();
+        managerPassword = PrepareLoginTestData.getManagerPassword();
     }
 
     public static void openLoginPage(){
@@ -44,6 +44,14 @@ public class PrepareLoginTestData {
 
     private static String getClientPassword(){
         return getPropertyFileData().getProperty("stag.client.password");
+    }
+
+    private static String getManagerEmail() {
+        return getPropertyFileData().getProperty("stag.manager.email");
+    }
+
+    private static String getManagerPassword(){
+        return getPropertyFileData().getProperty("stag.manager.password");
     }
 
     private static Properties getPropertyFileData(){

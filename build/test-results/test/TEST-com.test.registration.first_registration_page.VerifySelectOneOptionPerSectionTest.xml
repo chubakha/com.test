@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.first_registration_page.VerifySelectOneOptionPerSectionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:02:43" hostname="glbuh-note" time="2.669">
-  <properties/>
-  <testcase name="verifySelectOneOptionPerSection()" classname="com.test.registration.first_registration_page.VerifySelectOneOptionPerSectionTest" time="2.669"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -17,7 +17,7 @@ public class FourthRegistrationPage {
     private SelenideElement validationMessageForPasswordField = $x("//input[@placeholder='Password']//following-sibling::p");
     private SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
     private SelenideElement validationMessageForRepeatPasswordField = $x("//input[@placeholder='Repeat password']//following-sibling::p");
-    private SelenideElement inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and not(contains(@class, 'checkbox_containerActive'))]");
+    private SelenideElement inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container1') and not(contains(@class, 'checkbox_containerActive'))]");
     private SelenideElement activeIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and (contains(@class, 'checkbox_containerActive'))]");
     private SelenideElement createAccountButton = $x("//button[contains(@class, 'nextButton')]");
     private SelenideElement termsAndConditionsLink = $x("//*[contains(text(), 'Terms & Conditions')]");

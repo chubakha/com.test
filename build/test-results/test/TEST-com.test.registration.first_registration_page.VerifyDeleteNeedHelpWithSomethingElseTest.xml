@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.first_registration_page.VerifyDeleteNeedHelpWithSomethingElseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:02:25" hostname="glbuh-note" time="2.997">
-  <properties/>
-  <testcase name="verifyDeleteNeedHelpWithSomethingElse()" classname="com.test.registration.first_registration_page.VerifyDeleteNeedHelpWithSomethingElseTest" time="2.997"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.third_registration_page.VerifyWeHaveMatchedYourBusinessNeedsTextTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-11T11:05:43" hostname="glbuh-note" time="1.712">
-  <properties/>
-  <testcase name="verifyWeHaveMatchedYourBusinessNeedsText()" classname="com.test.registration.third_registration_page.VerifyWeHaveMatchedYourBusinessNeedsTextTest" time="1.712"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

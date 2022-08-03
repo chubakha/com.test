@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.WebDriver;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -11,6 +12,8 @@ import java.util.Properties;
 import static com.codeborne.selenide.Selenide.open;
 
 public class PrepareRegistrationTestData {
+
+    public static WebDriver driver;
 
     @BeforeEach
     void openPage(){
@@ -27,10 +30,6 @@ public class PrepareRegistrationTestData {
     }
 
     public static final String AUTHOR_ALEX_CHU = "Alex Chu";
-    public static final String STEP_FIRST_REGISTRATION_PAGE = "First registration page";
-    public static final String STEP_SECOND_REGISTRATION_PAGE = "Second registration page";
-    public static final String STEP_THIRD_REGISTRATION_PAGE = "Third registration page";
-    public static final String STEP_FOURTH_REGISTRATION_PAGE = "Fourth registration page";
 
     public static Faker faker;
 

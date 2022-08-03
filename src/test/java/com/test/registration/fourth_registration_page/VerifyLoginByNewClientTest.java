@@ -2,14 +2,15 @@ package com.test.registration.fourth_registration_page;
 
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PreparingAdminPanelTestData;
+import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.admin_panel.clients_section.MainClientPage;
 import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.admin_panel.companies_section.MainCompaniesPage;
-import com.test.login.ClientLoginPage;
+import com.test.login.LoginCabinetPage;
 import com.test.login.PrepareLoginTestData;
 import com.test.onboarding.WelcomePopupOverlay;
 import com.test.registration.PrepareRegistrationTestData;
+import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
@@ -29,6 +30,7 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(1)
+    @Description("Registration new client")
     void registrationNewClient(){
         ConfirmYourAccountOverlay confirmYourAccountOverlay = new FourthRegistrationPage()
                 .setFirstNameField(faker.name().firstName())
@@ -45,8 +47,9 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(2)
+    @Description("activate new client")
     void activateNewClient(){
-        PreparingAdminPanelTestData.openLoginAdminPage();
+        PrepareAdminPanelTestData.openLoginAdminPage();
         ViewClientPage viewClientPage = new LoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
@@ -63,9 +66,10 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(3)
+    @Description("Login by new client")
     void verifyLoginByNewClient(){
         PrepareLoginTestData.openLoginPage();
-        WelcomePopupOverlay welcomePopupOverlay = new ClientLoginPage()
+        WelcomePopupOverlay welcomePopupOverlay = new LoginCabinetPage()
                 .setEmailField(emailCurrent)
                 .setPasswordField(passwordCurrent)
                 .loginAsNewClient();
@@ -75,8 +79,9 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(4)
+    @Description("Delete new client")
     void deleteNewClient(){
-        PreparingAdminPanelTestData.openLoginAdminPage();
+        PrepareAdminPanelTestData.openLoginAdminPage();
         MainClientPage mainClientPage = new MainAdminPage()
                 .clickClientsLink()
                 .setClientSearchByEmailField(emailCurrent)
@@ -90,8 +95,9 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(5)
+    @Description("Delete new company")
     void deleteNewCompany(){
-        PreparingAdminPanelTestData.openLoginAdminPage();
+        PrepareAdminPanelTestData.openLoginAdminPage();
         MainCompaniesPage mainCompaniesPage = new MainAdminPage()
                 .clickCompaniesLink()
                 .setClientSearchByCompanyField(companyCurrent)
