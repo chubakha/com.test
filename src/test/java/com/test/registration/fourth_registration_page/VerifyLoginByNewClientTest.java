@@ -95,7 +95,7 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(5)
-    @Description("Delete new company")
+    @Description("Delete new company =)")
     void deleteNewCompany(){
         PrepareAdminPanelTestData.openLoginAdminPage();
         MainCompaniesPage mainCompaniesPage = new MainAdminPage()
