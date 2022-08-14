@@ -7,10 +7,10 @@ import com.test.admin_panel.clients_section.MainClientPage;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MainCompaniesPage {
-    private SelenideElement clientSearchByCompanyField = $x("//input[contains(@name, 'CompanySearch') and contains(@name, 'name')]");
-    private SelenideElement pageTitle = $x("//h1");
-    private SelenideElement deleteButton = $x("//a[contains(@title, 'Delete')]");
-    private SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
+    private final SelenideElement clientSearchByCompanyField = $x("//input[contains(@name, 'CompanySearch') and contains(@name, 'name')]");
+    private final SelenideElement pageTitle = $x("//h1");
+    private final SelenideElement deleteButton = $x("//a[contains(@title, 'Delete')]");
+    private final SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
 
     public MainCompaniesPage setClientSearchByCompanyField(String searchRequest){
         clientSearchByCompanyField.val(searchRequest);

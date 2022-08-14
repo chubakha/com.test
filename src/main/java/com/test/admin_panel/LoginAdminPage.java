@@ -5,11 +5,11 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginAdminPage {
-    private SelenideElement usernameField = $x("//input[contains(@placeholder, 'Username')]");
-    private SelenideElement passwordField = $x("//input[contains(@placeholder, 'Password')]");
-    private SelenideElement signInButton = $x("//button[contains(text(), 'Sign in')]");
+    private final SelenideElement usernameField = $x("//input[contains(@placeholder, 'Username')]");
+    private final SelenideElement passwordField = $x("//input[contains(@placeholder, 'Password')]");
+    private final SelenideElement signInButton = $x("//button[contains(text(), 'Sign in')]");
 
-    void clickSignInButton(){
+    private void clickSignInButton(){
         signInButton.click();
     }
 
@@ -32,4 +32,5 @@ public class LoginAdminPage {
         passwordField.val(password);
         return this;
     }
+
 }

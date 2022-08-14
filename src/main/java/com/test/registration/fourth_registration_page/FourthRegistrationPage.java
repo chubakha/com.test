@@ -5,24 +5,24 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class FourthRegistrationPage {
-    private SelenideElement firstNameField = $x("//input[@placeholder='First name']");
-    private SelenideElement fieldIsRequiredForFirstNameField = $x("//input[@placeholder='First name']//following-sibling::p");
-    private SelenideElement lastNameField = $x("//input[@placeholder='Last name']");
-    private SelenideElement fieldIsRequiredForLastNameField = $x("//input[@placeholder='Last name']//following-sibling::p");
-    private SelenideElement emailField = $x("//input[@placeholder='Email']");
-    private SelenideElement fieldIsRequiredForEmailField = $x("//input[@placeholder='Email']//following-sibling::p");
-    private SelenideElement companyNameField = $x("//input[@placeholder='Company']");
-    private SelenideElement fieldIsRequiredForCompanyNameField = $x("//input[@placeholder='Company']//following-sibling::p");
-    private SelenideElement passwordField = $x("//input[@placeholder='Password']");
-    private SelenideElement validationMessageForPasswordField = $x("//input[@placeholder='Password']//following-sibling::p");
-    private SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
-    private SelenideElement validationMessageForRepeatPasswordField = $x("//input[@placeholder='Repeat password']//following-sibling::p");
-    private SelenideElement inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container1') and not(contains(@class, 'checkbox_containerActive'))]");
-    private SelenideElement activeIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and (contains(@class, 'checkbox_containerActive'))]");
-    private SelenideElement createAccountButton = $x("//button[contains(@class, 'nextButton')]");
-    private SelenideElement termsAndConditionsLink = $x("//*[contains(text(), 'Terms & Conditions')]");
-    private SelenideElement privacyPolicyLink = $x("//*[contains(text(), 'Privacy Policy')]");
-    private SelenideElement pageTitle = $x("//*[contains(text(), 'Registration')]");
+    private final SelenideElement firstNameField = $x("//input[@placeholder='First name']");
+    private final SelenideElement fieldIsRequiredForFirstNameField = $x("//input[@placeholder='First name']//following-sibling::p");
+    private final SelenideElement lastNameField = $x("//input[@placeholder='Last name']");
+    private final SelenideElement fieldIsRequiredForLastNameField = $x("//input[@placeholder='Last name']//following-sibling::p");
+    private final SelenideElement emailField = $x("//input[@placeholder='Email']");
+    private final SelenideElement fieldIsRequiredForEmailField = $x("//input[@placeholder='Email']//following-sibling::p");
+    private final SelenideElement companyNameField = $x("//input[@placeholder='Company']");
+    private final SelenideElement fieldIsRequiredForCompanyNameField = $x("//input[@placeholder='Company']//following-sibling::p");
+    private final SelenideElement passwordField = $x("//input[@placeholder='Password']");
+    private final SelenideElement validationMessageForPasswordField = $x("//input[@placeholder='Password']//following-sibling::p");
+    private final SelenideElement repeatPasswordField = $x("//input[@placeholder='Repeat password']");
+    private final SelenideElement validationMessageForRepeatPasswordField = $x("//input[@placeholder='Repeat password']//following-sibling::p");
+    private final SelenideElement inactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and not(contains(@class, 'checkbox_containerActive'))]");
+    private final SelenideElement activeIveReadAndAcceptedTermsConditionsAndPrivacyPolicy = $x("//div[contains(@class,'checkbox_container') and (contains(@class, 'checkbox_containerActive'))]");
+    private final SelenideElement createAccountButton = $x("//button[contains(@class, 'nextButton')]");
+    private final SelenideElement termsAndConditionsLink = $x("//*[contains(text(), 'Terms & Conditions')]");
+    private final SelenideElement privacyPolicyLink = $x("//*[contains(text(), 'Privacy Policy')]");
+    private final SelenideElement pageTitle = $x("//*[contains(text(), 'Registration')]");
 //first name
     public FourthRegistrationPage setFirstNameField(String first_name){
         firstNameField.val(first_name);
@@ -154,7 +154,7 @@ public class FourthRegistrationPage {
         return createAccountButton.getAttribute("disabled");
     }
 
-    public void clickCreateAccountButton() {
+    private void clickCreateAccountButton() {
         createAccountButton.click();
     }
 

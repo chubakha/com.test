@@ -1,7 +1,7 @@
 package com.test.registration;
 
 import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
+import com.test.PrepareOverallTestData;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
@@ -11,7 +11,7 @@ import java.util.Properties;
 
 import static com.codeborne.selenide.Selenide.open;
 
-public class PrepareRegistrationTestData {
+public class PrepareRegistrationTestData extends PrepareOverallTestData {
 
     public static WebDriver driver;
 
@@ -20,21 +20,14 @@ public class PrepareRegistrationTestData {
         open("https://stag.cabinet.legalnodes.co/registration");
     }
 
-    @BeforeAll
-    static void testTest(){
-        faker = new Faker();
-    }
-
     public void setUp() {
         Configuration.headless = true;
     }
 
     public static final String AUTHOR_ALEX_CHU = "Alex Chu";
 
-    public static Faker faker;
-
-    protected static String usernameAdmin;
-    protected static String passwordAdmin;
+    public static String usernameAdmin;
+    public static String passwordAdmin;
 
     @BeforeAll
     static void generalLinksInitialization() {

@@ -6,11 +6,11 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class MainClientPage {
-    private SelenideElement clientSearchByEmailField = $x("//input[contains(@name, 'UserClientSearch') and contains(@name, 'email')]");
-    private SelenideElement pageTitle = $x("//h1");
-    private SelenideElement deleteButton = $x("//a[contains(@title, 'Delete')]");
-    private SelenideElement updateButton = $x("//a[contains(@title, 'Update')]");
-    private SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
+    private final SelenideElement clientSearchByEmailField = $x("//input[contains(@name, 'UserClientSearch') and contains(@name, 'email')]");
+    private final SelenideElement pageTitle = $x("//h1");
+    private final SelenideElement deleteButton = $x("//a[contains(@title, 'Delete')]");
+    private final SelenideElement updateButton = $x("//a[contains(@title, 'Update')]");
+    private final SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
 
     public MainClientPage setClientSearchByEmailField(String searchRequest){
         clientSearchByEmailField.val(searchRequest);

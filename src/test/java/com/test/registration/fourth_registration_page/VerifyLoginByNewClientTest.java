@@ -1,7 +1,7 @@
 package com.test.registration.fourth_registration_page;
 
+import com.codeborne.selenide.Selenide;
 import com.test.admin_panel.LoginAdminPage;
-import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.admin_panel.clients_section.MainClientPage;
 import com.test.admin_panel.clients_section.ViewClientPage;
@@ -12,12 +12,9 @@ import com.test.onboarding.WelcomePopupOverlay;
 import com.test.registration.PrepareRegistrationTestData;
 import io.qameta.allure.Description;
 import io.qameta.allure.Owner;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
+import static com.codeborne.selenide.Selenide.localStorage;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 
@@ -59,7 +56,7 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
                 .focusOutSearchFields()
                 .clickUpdateButton()
                 .activateStatus()
-                .saveClient();
+                .clickSaveButton();
         sleep(500);
         Assertions.assertEquals("Active", viewClientPage.getStatusState(), "Page title should be shown");
     }
@@ -82,7 +79,10 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     @Description("Delete new client")
     void deleteNewClient(){
         PrepareAdminPanelTestData.openLoginAdminPage();
-        MainClientPage mainClientPage = new MainAdminPage()
+        MainClientPage mainClientPage = new LoginAdminPage()
+                .setUsernameField(usernameAdmin)
+                .setPasswordField(passwordAdmin)
+                .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(emailCurrent)
                 .focusOutSearchFields()
@@ -95,10 +95,13 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
 
     @Test
     @Order(5)
-    @Description("Delete new company =)")
+    @Description("Delete new company")
     void deleteNewCompany(){
         PrepareAdminPanelTestData.openLoginAdminPage();
-        MainCompaniesPage mainCompaniesPage = new MainAdminPage()
+        MainCompaniesPage mainCompaniesPage = new LoginAdminPage()
+                .setUsernameField(usernameAdmin)
+                .setPasswordField(passwordAdmin)
+                .loginAsAdmin()
                 .clickCompaniesLink()
                 .setClientSearchByCompanyField(companyCurrent)
                 .focusOutSearchFields()
@@ -108,4 +111,11 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
                 .focusOutSearchFields();
         Assertions.assertTrue(mainCompaniesPage.isNoResultMessageShown(), "'No results found.' should be shown");
     }
+
+    @AfterEach
+    void clearCookiesAndLocalStorage(){
+        Selenide.clearBrowserCookies();
+        localStorage().clear();
+    }
+
 }

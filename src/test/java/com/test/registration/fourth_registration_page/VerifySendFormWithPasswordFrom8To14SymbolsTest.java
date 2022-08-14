@@ -73,8 +73,8 @@ public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegis
                 .focusOutSearchFields()
                 .clickDeleteButton()
                 .pressEnterKey();
-        Selenide.clearBrowserCookies();
-        Selenide.clearBrowserLocalStorage();
+        new MainAdminPage()
+                .clickLogoutLink();
     }
 
 }

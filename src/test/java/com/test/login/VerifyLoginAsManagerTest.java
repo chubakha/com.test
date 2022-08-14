@@ -1,7 +1,9 @@
 package com.test.login;
 
+import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
 import com.test.cabinet.manager_cabinet_page.ManagerCabinetPage;
 import io.qameta.allure.Owner;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -12,7 +14,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 
 @Owner(value = AUTHOR_ALEX_CHU)
-public class VerifyLoginAsManagerPageTest extends PrepareLoginTestData {
+public class VerifyLoginAsManagerTest extends PrepareLoginTestData {
 
     @Test
     void loginAsManagerPage() throws IOException {
@@ -20,19 +22,15 @@ public class VerifyLoginAsManagerPageTest extends PrepareLoginTestData {
                 .setEmailField(managerEmail)
                 .setPasswordField(managerPassword)
                 .loginAsManager();
-        sleep(3000);
+        sleep(5000);
         Assertions.assertTrue(managerCabinetPage.isNewOfferButtonShown(),
                 String.format("'%s' button should be shown", managerCabinetPage.getNewOfferButtonText()));
     }
 
-    @Test
-    @Order(2)
-    void logOutManagerCabinet(){
-        LoginCabinetPage loginCabinetPage = new ManagerCabinetPage()
+    @AfterAll
+    static void logOutManagerCabinet(){
+        new ManagerCabinetPage()
                 .clickLogOutLink();
-        Assertions.assertEquals("Sign in to access your Legal Nodes workspace and communicate with your " +
-                        "Virtual Legal Officer",
-                loginCabinetPage.getPageTitle());
     }
 
 

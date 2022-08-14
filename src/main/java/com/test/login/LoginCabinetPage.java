@@ -9,35 +9,35 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class LoginCabinetPage {
 
-    private SelenideElement emailField = $x("//input[contains(@placeholder, 'Email')]");
-    private SelenideElement passwordField = $x("//input[contains(@placeholder, 'Password')]");
-    private SelenideElement loginButton = $x("//button[contains(text(), 'SIGN IN')]");
-    private SelenideElement validationMessage = $x("//*[contains(@class, 'error-message')]");
-    private SelenideElement forgotPasswordLink = $x("//*[contains(text(), 'Forgot Password')]");
-    private SelenideElement pageTitle = $x("//h1[contains(text(), 'Sign in to access')]");
-    private SelenideElement forgotPasswordPopup = $x("//*[contains(@class, 'auth-modal')]");
+    private final SelenideElement emailField = $x("//input[contains(@placeholder, 'Email')]");
+    private final SelenideElement passwordField = $x("//input[contains(@placeholder, 'Password')]");
+    private final SelenideElement sighInButton = $x("//button[contains(text(), 'SIGN IN')]");
+    private final SelenideElement validationMessage = $x("//*[contains(@class, 'error-message')]");
+    private final SelenideElement forgotPasswordLink = $x("//*[contains(text(), 'Forgot Password')]");
+    private final SelenideElement pageTitle = $x("//h1[contains(text(), 'Sign in to access')]");
+    private final SelenideElement forgotPasswordPopup = $x("//*[contains(@class, 'auth-modal')]");
 
-    public void clickLoginButton(){
-        loginButton.click();
+    private void clickSighInButton(){
+        sighInButton.click();
     }
 
     public ManagerCabinetPage loginAsManager() {
-        clickLoginButton();
+        clickSighInButton();
         return new ManagerCabinetPage();
     }
 
     public ClientCabinetPage loginAsClient() {
-        clickLoginButton();
+        clickSighInButton();
         return new ClientCabinetPage();
     }
 
     public WelcomePopupOverlay loginAsNewClient() {
-        clickLoginButton();
+        clickSighInButton();
         return new WelcomePopupOverlay();
     }
 
     public LoginCabinetPage clickInactiveSignUpButton() {
-        clickLoginButton();
+        clickSighInButton();
         return this;
     }
 
@@ -74,6 +74,10 @@ public class LoginCabinetPage {
 
     public boolean isForgotPasswordPopupShown(){
         return forgotPasswordPopup.exists();
+    }
+
+    public boolean isPageTitleShown(){
+        return pageTitle.exists();
     }
 
 }

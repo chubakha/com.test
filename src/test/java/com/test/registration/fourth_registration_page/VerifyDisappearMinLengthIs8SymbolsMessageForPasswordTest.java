@@ -22,7 +22,7 @@ public class VerifyDisappearMinLengthIs8SymbolsMessageForPasswordTest extends Pr
                 .setPasswordField(password)
                 .setRepeatPasswordField(password)
                 .clickInactiveCreateAccountButton();
-        Assertions.assertAll("Should return address of Oracle's headquarter",
+        Assertions.assertAll("Validation message should have next:",
                 () -> Assertions.assertFalse(fourthRegistrationPage.isValidationMessageForPasswordFieldShown(),
                         String.format("'%s' should not be shown next to Password Field",
                                 String.format(ValidationErrorMessagesType.MIN_LENGTH_IS_8_SYMBOLS.getValue(), shortPassword.length()))),

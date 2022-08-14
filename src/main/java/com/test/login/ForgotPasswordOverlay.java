@@ -5,15 +5,20 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ForgotPasswordOverlay {
-    private SelenideElement overlayTitle = $x("//h1[contains(text(), 'Forgot Password')]");
-    private SelenideElement sendButton = $x("//button[contains(text(), 'Send')]");
-    private SelenideElement validationMessage = $x("//*[contains(@class, 'input-error')]");
-    private SelenideElement emailField = $x("//input[@placeholder = 'Enter Email']");
-    private SelenideElement sendMeBackButton = $x("//*[contains(@class, 'modal__close-button')]");
-    private SelenideElement forgotPasswordPopup = $x("//*[contains(@class, 'auth-modal')]");
+    private final SelenideElement overlayTitle = $x("//h1[contains(text(), 'Forgot Password')]");
+    private final SelenideElement sendButton = $x("//button[contains(text(), 'Send')]");
+    private final SelenideElement validationMessage = $x("//*[contains(@class, 'input-error')]");
+    private final SelenideElement emailField = $x("//input[@placeholder = 'Enter Email']");
+    private final SelenideElement sendMeBackButton = $x("//*[contains(@class, 'modal__close-button')]");
+    private final SelenideElement forgotPasswordPopup = $x("//*[contains(@class, 'auth-modal')]");
+    private final SelenideElement successfulMessageHead = $x("//h1[contains(text(), 'Success')]");
 
-    public String getOverlayTitle(){
-        return overlayTitle.getText();
+    public boolean isOverlayTitleShown(){
+        return overlayTitle.exists();
+    }
+
+    public boolean isSuccessfulMessageHeadShown(){
+        return successfulMessageHead.exists();
     }
 
     public ForgotPasswordOverlay clickSendButton(){
