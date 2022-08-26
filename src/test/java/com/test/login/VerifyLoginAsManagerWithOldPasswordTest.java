@@ -1,20 +1,15 @@
 package com.test.login;
 
-import com.codeborne.selenide.Selenide;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
-import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
-import com.test.forgot_password_mail.IncomingMailPage;
-import com.test.forgot_password_mail.MainYopmailPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.localStorage;
 import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestData {
 
@@ -25,21 +20,7 @@ public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestDat
                 .clickForgotPasswordLink()
                 .setEmailField(managerEmail)
                 .clickSendButton();
-        boolean isProd = new IncomingMailPage().isProductionDomainShown(url());
-        openYopmailPage();
-        new MainYopmailPage()
-                .setLoginField(managerEmail)
-                .clickLoginButton();
-        sleep(1000);
-        new IncomingMailPage().clickRefreshButton()
-                .switchIframe();
-        sleep(1000);
-        if(isProd){
-            openAnyLink(new IncomingMailPage().getProductionForgetPasswordToken());
-        }
-        else {
-            openAnyLink(new IncomingMailPage().getStagingForgetPasswordToken());
-        }
+        redirectToForgetPasswordToken(managerEmail);
         sleep(1000);
         String password = faker.internet().password(8, 15);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
@@ -55,7 +36,6 @@ public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestDat
                 String.format("'%s' message should be shown next to password field",
                         ValidationErrorMessagesType.INVALID_USERNAME_AND_PASSWORD_COMBINATION.getValue()));
         localStorage().clear();
-        Selenide.clearBrowserCookies();
     }
 
     @AfterAll

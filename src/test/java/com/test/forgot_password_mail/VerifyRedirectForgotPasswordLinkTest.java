@@ -17,19 +17,7 @@ public class VerifyRedirectForgotPasswordLinkTest extends PrepareLoginTestData {
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        boolean isProd = new IncomingMailPage().isProductionDomainShown(url());
-        openYopmailPage();
-        new MainYopmailPage()
-                .setLoginField(clientEmail)
-                .clickLoginButton()
-                .clickRefreshButton()
-                .switchIframe();
-        if(isProd == true){
-            openAnyLink(new IncomingMailPage().getProductionForgetPasswordToken());
-        }
-        else {
-            openAnyLink(new IncomingMailPage().getStagingForgetPasswordToken());
-        }
+        redirectToForgetPasswordToken(clientEmail);
         sleep(2000);
         Assertions.assertEquals("Reset Password",
                 new CreateNewPasswordOverlay().getOverlayTitle(), "'Reset Password' should be shown on overlay");

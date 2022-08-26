@@ -1,14 +1,14 @@
 package com.test.login;
 
-import com.codeborne.selenide.Selenide;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
-import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
-import com.test.forgot_password_mail.IncomingMailPage;
-import com.test.forgot_password_mail.MainYopmailPage;
+import com.test.forgot_password_mail.MailHogIncomingPage;
+import com.test.forgot_password_mail.MailHogMainPage;
+import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,21 +26,7 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        boolean isProd = new IncomingMailPage().isProductionDomainShown(url());
-        openYopmailPage();
-        new MainYopmailPage()
-                .setLoginField(clientEmail)
-                .clickLoginButton();
-        sleep(1000);
-        new IncomingMailPage().clickRefreshButton()
-                .switchIframe();
-        sleep(1000);
-        if(isProd){
-            openAnyLink(new IncomingMailPage().getProductionForgetPasswordToken());
-        }
-        else {
-            openAnyLink(new IncomingMailPage().getStagingForgetPasswordToken());
-        }
+        redirectToForgetPasswordToken(clientEmail);
         sleep(2000);
         String password = faker.internet().password(8, 15);
         ClientCabinetPage clientCabinetPage = new CreateNewPasswordOverlay()
@@ -53,7 +39,6 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
                 .loginAsClient();
         Assertions.assertTrue(clientCabinetPage.isTaskRequestButtonShown(),
                 String.format("'%s' button should be shown", clientCabinetPage.getTaskRequestButtonText()));
-        Selenide.clearBrowserCookies();
         localStorage().clear();
     }
 

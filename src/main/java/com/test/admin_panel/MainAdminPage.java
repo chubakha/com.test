@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.admin_panel.clients_section.MainClientPage;
 import com.test.admin_panel.companies_section.MainCompaniesPage;
 import com.test.admin_panel.manager_section.MainManagerPage;
+import com.test.admin_panel.onboarding_section.MainOnboardingPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -11,6 +12,7 @@ public class MainAdminPage {
     private final SelenideElement clientsLink = $x("//span[contains(text(), 'Clients')]");
     private final SelenideElement managerLink = $x("//span[contains(text(), 'Managers')]");
     private final SelenideElement companiesLink = $x("//span[contains(text(), 'Companies')]");
+    private final SelenideElement onboardingLink = $x("//span[contains(text(), 'Onboarding')]");
     private final SelenideElement logoutLink = $x("//*[contains(@id, 'logout')]");
 
     public MainClientPage clickClientsLink(){
@@ -31,5 +33,10 @@ public class MainAdminPage {
     public LoginAdminPage clickLogoutLink(){
         logoutLink.click();
         return new LoginAdminPage();
+    }
+
+    public MainOnboardingPage clickOnboardingLink(){
+        onboardingLink.click();
+        return new MainOnboardingPage();
     }
 }

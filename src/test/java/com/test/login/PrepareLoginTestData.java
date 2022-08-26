@@ -1,40 +1,23 @@
 package com.test.login;
 
 import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
 import com.test.PrepareOverallTestData;
-import com.test.registration.PrepareRegistrationTestData;
-import org.junit.jupiter.api.BeforeAll;
+import com.test.forgot_password_mail.MailHogIncomingPage;
+import com.test.forgot_password_mail.MailHogMainPage;
+import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.BeforeEach;
 
-import java.io.FileInputStream;
-import java.util.Properties;
-
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class PrepareLoginTestData extends PrepareOverallTestData {
-
-    protected static String clientEmail;
-    protected static String clientPassword;
-    protected static String managerEmail;
-    protected static String managerPassword;
-    protected static String usernameAdmin;
-    protected static String passwordAdmin;
 
     @BeforeEach
     void openPage() {
         //setUp();
         open("https://stag.cabinet.legalnodes.co/");
-    }
-
-    @BeforeAll
-    static void generalLinksInitialization(){
-        clientEmail = PrepareLoginTestData.getClientEmail();
-        clientPassword = PrepareLoginTestData.getClientPassword();
-        managerEmail = PrepareLoginTestData.getManagerEmail();
-        managerPassword = PrepareLoginTestData.getManagerPassword();
-        usernameAdmin = PrepareLoginTestData.getUsernameAdmin();
-        passwordAdmin = PrepareLoginTestData.getEmailAdmin();
     }
 
     public static void openLoginPage(){
@@ -45,39 +28,30 @@ public class PrepareLoginTestData extends PrepareOverallTestData {
         open("https://yopmail.com/ru/");
     }
 
-    private static String getClientEmail() {
-        return getPropertyFileData().getProperty("stag.client.email");
-    }
-
-    private static String getClientPassword(){
-        return getPropertyFileData().getProperty("stag.client.password");
-    }
-
-    private static String getManagerEmail() {
-        return getPropertyFileData().getProperty("stag.manager.email");
-    }
-
-    private static String getManagerPassword(){
-        return getPropertyFileData().getProperty("stag.manager.password");
-    }
-
-    private static String getUsernameAdmin() {
-        return getPropertyFileData().getProperty("stag.admin.username");
-    }
-
-    private static String getEmailAdmin(){
-        return getPropertyFileData().getProperty("stag.admin.password");
-    }
-
-    public static Properties getPropertyFileData(){
-        Properties prop = new Properties();
-        try {
-            FileInputStream fileInputStream = new FileInputStream("src/test/resources/credentials.properties");
-            prop.load(fileInputStream);
-        } catch (Exception e){
-            e.printStackTrace();
+    public static void redirectToForgetPasswordToken(String email){
+        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
+        if(isProd){
+            openYopmailPage();
+            new YopmailMainPage()
+                    .setLoginField(email)
+                    .clickLoginButton();
+            sleep(2000);
+            new YopmailIncomingMailPage()
+                    .clickRefreshButton()
+                    .switchIframe();
+            sleep(2000);
+            openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
         }
-        return prop;
+        else {
+            openMailHogPage();
+            new MailHogMainPage().
+                    clickIncomingEmail(email);
+            openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
+        }
+    }
+
+    public static void openMailHogPage(){
+        open("https://stag.mailer.legalnodes.co/");
     }
 
     public void setUp() {

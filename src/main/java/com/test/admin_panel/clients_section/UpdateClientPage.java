@@ -10,7 +10,7 @@ public class UpdateClientPage {
     private final SelenideElement passwordField = $x("//input[@id = 'userform-password']");
     private final SelenideElement repeatPasswordField = $x("//input[@id = 'userform-password_repeat']");
 
-    public UpdateClientPage activateStatus(){
+    public UpdateClientPage switchStatusToActive(){
         statusSelect.selectOption(1);
         return this;
     }

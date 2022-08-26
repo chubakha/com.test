@@ -1,13 +1,13 @@
 package com.test.login;
 
-import com.codeborne.selenide.Selenide;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
-import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
-import com.test.forgot_password_mail.IncomingMailPage;
-import com.test.forgot_password_mail.MainYopmailPage;
+import com.test.forgot_password_mail.MailHogIncomingPage;
+import com.test.forgot_password_mail.MailHogMainPage;
+import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,24 +25,27 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        boolean isProd = new IncomingMailPage().isProductionDomainShown(url());
-        openYopmailPage();
-        new MainYopmailPage()
-                .setLoginField(clientEmail)
-                .clickLoginButton();
-        sleep(2000);
-        new IncomingMailPage()
-                .clickRefreshButton()
-                .switchIframe();
+        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
         String oldLink;
-        sleep(2000);
         if(isProd){
-            oldLink = new IncomingMailPage().getProductionForgetPasswordToken();
-            openAnyLink(new IncomingMailPage().getProductionForgetPasswordToken());
+            openYopmailPage();
+            new YopmailMainPage()
+                    .setLoginField(clientEmail)
+                    .clickLoginButton();
+            sleep(2000);
+            new YopmailIncomingMailPage()
+                    .clickRefreshButton()
+                    .switchIframe();
+            sleep(2000);
+            oldLink = new YopmailIncomingMailPage().getForgetPasswordToken();
+            openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
         }
         else {
-            oldLink = new IncomingMailPage().getStagingForgetPasswordToken();
-            openAnyLink(new IncomingMailPage().getStagingForgetPasswordToken());
+            openMailHogPage();
+            new MailHogMainPage().
+                    clickIncomingEmail(clientEmail);
+            oldLink = new MailHogIncomingPage().getForgetPasswordToken();
+            openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
         }
 
         sleep(2000);
@@ -62,7 +65,6 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
         Assertions.assertFalse(loginCabinetPage.isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
         localStorage().clear();
-        Selenide.clearBrowserCookies();
         sleep(2000);
     }
 

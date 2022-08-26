@@ -3,9 +3,10 @@ package com.test.login;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
-import com.test.admin_panel.clients_section.ViewClientPage;
-import com.test.forgot_password_mail.IncomingMailPage;
-import com.test.forgot_password_mail.MainYopmailPage;
+import com.test.forgot_password_mail.MailHogIncomingPage;
+import com.test.forgot_password_mail.MailHogMainPage;
+import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -22,20 +23,24 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        boolean isProd = new IncomingMailPage().isProductionDomainShown(url());
-        openYopmailPage();
-        new MainYopmailPage()
-                .setLoginField(clientEmail)
-                .clickLoginButton();
-        sleep(2000);
-        new IncomingMailPage().clickRefreshButton()
-                .switchIframe();
-        sleep(2000);
+        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
         if(isProd){
-            openAnyLink(new IncomingMailPage().getProductionForgetPasswordTokenPlusOneSymbol());
+            openYopmailPage();
+            new YopmailMainPage()
+                    .setLoginField(clientEmail)
+                    .clickLoginButton();
+            sleep(2000);
+            new YopmailIncomingMailPage()
+                    .clickRefreshButton()
+                    .switchIframe();
+            sleep(2000);
+            openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
         }
         else {
-            openAnyLink(new IncomingMailPage().getStagingForgetPasswordTokenPlusOneSymbol());
+            openMailHogPage();
+            new MailHogMainPage().
+                    clickIncomingEmail(clientEmail);
+            openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
         }
         sleep(2000);
         Assertions.assertFalse(new LoginCabinetPage().isForgotPasswordPopupShown(),

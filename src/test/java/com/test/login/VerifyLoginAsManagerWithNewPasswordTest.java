@@ -1,14 +1,14 @@
 package com.test.login;
 
-import com.codeborne.selenide.Selenide;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
-import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.cabinet.manager_cabinet_page.ManagerCabinetPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
-import com.test.forgot_password_mail.IncomingMailPage;
-import com.test.forgot_password_mail.MainYopmailPage;
+import com.test.forgot_password_mail.MailHogIncomingPage;
+import com.test.forgot_password_mail.MailHogMainPage;
+import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -26,21 +26,7 @@ public class VerifyLoginAsManagerWithNewPasswordTest extends PrepareLoginTestDat
                 .clickForgotPasswordLink()
                 .setEmailField(managerEmail)
                 .clickSendButton();
-        boolean isProd = new IncomingMailPage().isProductionDomainShown(url());
-        openYopmailPage();
-        new MainYopmailPage()
-                .setLoginField(managerEmail)
-                .clickLoginButton();
-        sleep(1000);
-        new IncomingMailPage()
-                .clickRefreshButton()
-                .switchIframe();
-        if(isProd){
-            openAnyLink(new IncomingMailPage().getProductionForgetPasswordToken());
-        }
-        else {
-            openAnyLink(new IncomingMailPage().getStagingForgetPasswordToken());
-        }
+        redirectToForgetPasswordToken(managerEmail);
         sleep(1000);
         String password = faker.internet().password(8, 15);
         ManagerCabinetPage managerCabinetPage = new CreateNewPasswordOverlay()
@@ -55,7 +41,6 @@ public class VerifyLoginAsManagerWithNewPasswordTest extends PrepareLoginTestDat
         Assertions.assertTrue(managerCabinetPage.isNewOfferButtonShown(),
                 String.format("'%s' button should be shown", managerCabinetPage.getNewOfferButtonText()));
         localStorage().clear();
-        Selenide.clearBrowserCookies();
     }
 
     @AfterAll

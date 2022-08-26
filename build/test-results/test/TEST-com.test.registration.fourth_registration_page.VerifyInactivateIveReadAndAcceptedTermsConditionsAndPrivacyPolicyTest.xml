@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-13T23:24:44" hostname="chubakha" time="0.51">
+<testsuite name="com.test.registration.fourth_registration_page.VerifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-25T08:53:16" hostname="chubakha" time="0.443">
   <properties/>
-  <testcase name="verifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()" classname="com.test.registration.fourth_registration_page.VerifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTest" time="0.51"/>
+  <testcase name="verifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()" classname="com.test.registration.fourth_registration_page.VerifyInactivateIveReadAndAcceptedTermsConditionsAndPrivacyPolicyTest" time="0.443"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

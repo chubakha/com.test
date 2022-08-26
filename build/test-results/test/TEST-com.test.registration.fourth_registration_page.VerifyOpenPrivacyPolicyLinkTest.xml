@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifyOpenPrivacyPolicyLinkTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-13T23:24:45" hostname="chubakha" time="4.568">
+<testsuite name="com.test.registration.fourth_registration_page.VerifyOpenPrivacyPolicyLinkTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-25T08:54:07" hostname="chubakha" time="2.723">
   <properties/>
-  <testcase name="verifyOpenPrivacyPolicyLink()" classname="com.test.registration.fourth_registration_page.VerifyOpenPrivacyPolicyLinkTest" time="4.568"/>
+  <testcase name="verifyOpenPrivacyPolicyLink()" classname="com.test.registration.fourth_registration_page.VerifyOpenPrivacyPolicyLinkTest" time="2.723"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
