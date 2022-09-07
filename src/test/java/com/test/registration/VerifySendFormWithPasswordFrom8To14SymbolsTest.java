@@ -39,8 +39,8 @@ public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegis
                 .setRepeatPasswordField(password)
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
-        Assertions.assertEquals("Confirm your account", confirmYourAccountOverlay.getPageTitle(),
-                "'Confirm your account' page should be shown");
+        Assertions.assertEquals("Please activate your account", confirmYourAccountOverlay.getPageTitle(),
+                "'Please activate your account' page should be shown");
     }
 
     static Stream<String> verifySendFormWithPasswordFrom8To14Symbols() {

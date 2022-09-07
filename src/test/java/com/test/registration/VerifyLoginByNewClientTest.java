@@ -1,15 +1,13 @@
 package com.test.registration;
 
 import com.codeborne.selenide.Selenide;
+import com.test.GenericPage;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.admin_panel.clients_section.MainClientPage;
 import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.admin_panel.companies_section.MainCompaniesPage;
-import com.test.login.LoginCabinetPage;
-import com.test.login.PrepareLoginTestData;
 import com.test.onboarding.WelcomePopupOverlay;
-import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.fourth_registration_page.ConfirmYourAccountOverlay;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import io.qameta.allure.Description;
@@ -40,8 +38,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
                 .setRepeatPasswordField(passwordCurrent)
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
-        Assertions.assertEquals("Confirm your account", confirmYourAccountOverlay.getPageTitle(),
-                "'Confirm your account' page should be shown");
+        Assertions.assertEquals("Please activate your account", confirmYourAccountOverlay.getPageTitle(),
+                "'Please activate your account' page should be shown");
     }
 
     @Test
@@ -67,8 +65,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     @Order(3)
     @Description("Login by new client")
     void verifyLoginByNewClient(){
-        PrepareLoginTestData.openLoginPage();
-        WelcomePopupOverlay welcomePopupOverlay = new LoginCabinetPage()
+        WelcomePopupOverlay welcomePopupOverlay = GenericPage
+                .openLoginPage()
                 .setEmailField(emailCurrent)
                 .setPasswordField(passwordCurrent)
                 .loginAsNewClient();

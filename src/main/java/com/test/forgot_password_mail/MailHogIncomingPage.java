@@ -19,7 +19,7 @@ public class MailHogIncomingPage extends GenericPage {
     }
 
     public String getForgetPasswordTokenMinusOneSymbol(){
-        return getForgetPasswordToken().substring(0, getForgetPasswordToken().length() - 1);
+        return getForgetPasswordToken().substring(0, getForgetPasswordToken().length() - 2);
     }
 
     public String getForgetPasswordTokenPlusOneSymbol(){

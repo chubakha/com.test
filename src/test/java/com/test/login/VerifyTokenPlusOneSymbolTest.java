@@ -1,12 +1,11 @@
 package com.test.login;
 
+import com.test.GenericPage;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.MailHogMainPage;
 import com.test.forgot_password_mail.YopmailIncomingMailPage;
-import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -25,8 +24,8 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
                 .clickSendButton();
         boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
         if(isProd){
-            openYopmailPage();
-            new YopmailMainPage()
+            GenericPage
+                    .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
             sleep(2000);
@@ -34,14 +33,13 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
                     .clickRefreshButton()
                     .switchIframe();
             sleep(2000);
-            openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
         }
         else {
-            openMailHogPage();
-            new MailHogMainPage().
-                    clickIncomingEmail(clientEmail);
-            openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
+            GenericPage
+                    .openMailHogPage()
+                    .clickIncomingEmail(clientEmail);
         }
+        GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
         sleep(2000);
         Assertions.assertFalse(new LoginCabinetPage().isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");

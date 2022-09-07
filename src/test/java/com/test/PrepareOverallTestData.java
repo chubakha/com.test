@@ -3,16 +3,12 @@ package com.test;
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.MailHogMainPage;
 import com.test.forgot_password_mail.YopmailIncomingMailPage;
-import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -24,23 +20,6 @@ public class PrepareOverallTestData {
     }
 
     public static Faker faker;
-
-    public static void openAnyLink(String link){
-        open(link);
-    }
-
-//    public boolean isProd = isProductionDomainShown(url());
-//
-//    public boolean isProductionDomainShown(String url){
-//        boolean isProd;
-//        if (url.equals("https://stag.cabinet.legalnodes.co/")){
-//            isProd = false;
-//        }
-//        else{
-//            isProd = true;
-//        }
-//        return isProd;
-//    }
 
     public static final String AUTHOR_ALEX_CHU = "Alex Chu";
 
@@ -112,16 +91,25 @@ public class PrepareOverallTestData {
         return prop;
     }
 
-    /*@AfterEach
-    void clearCookiesTest(){
-        Selenide.clearBrowserCookies();
-        localStorage().clear();
+    public static void redirectToForgetPasswordToken(String email){
+        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
+        if(isProd){
+            GenericPage
+                    .openYopmailPage()
+                    .setLoginField(email)
+                    .clickLoginButton();
+            sleep(2000);
+            new YopmailIncomingMailPage()
+                    .clickRefreshButton()
+                    .switchIframe();
+            sleep(2000);
+            GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
+        }
+        else {
+            GenericPage
+                    .openMailHogPage()
+                    .clickIncomingEmail(email);
+            GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
+        }
     }
-
-    @AfterAll
-    static void clearCookiesClass(){
-        localStorage().clear();
-    }*/
-
-
 }

@@ -13,7 +13,7 @@ public class CreateNewPasswordOverlay {
     private final SelenideElement retypePasswordField = $x("//input[@placeholder = 'Retype Password']");
     private final SelenideElement sendButton = $x("//button[contains(text(), 'Send')]");
     private final SelenideElement closeButton = $x("//button[contains(text(), 'Close')]");
-    private final SelenideElement sendMeBackLink = $x("//*[contains(text(), 'send me back')]");
+    private final SelenideElement cancelLink = $x("//*[contains(text(), 'Cancel')]");
 
     public String getOverlayTitle(){
         return overlayTitle.getText();
@@ -44,7 +44,7 @@ public class CreateNewPasswordOverlay {
     }
 
     public LoginCabinetPage clickSendMeBackLink(){
-        sendMeBackLink.click();
+        cancelLink.click();
         return new LoginCabinetPage();
     }
 

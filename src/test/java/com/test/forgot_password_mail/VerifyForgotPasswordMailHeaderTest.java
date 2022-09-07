@@ -1,5 +1,6 @@
 package com.test.forgot_password_mail;
 
+import com.test.GenericPage;
 import com.test.login.LoginCabinetPage;
 import com.test.login.PrepareLoginTestData;
 import org.junit.jupiter.api.Assertions;
@@ -17,8 +18,8 @@ public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
                 .setEmailField(clientEmail)
                 .clickSendButton();
         if(isProd){
-            openYopmailPage();
-            YopmailIncomingMailPage yopmailIncomingMailPage = new YopmailMainPage()
+            YopmailIncomingMailPage yopmailIncomingMailPage = GenericPage
+                    .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton()
                     .switchIframe();
@@ -26,9 +27,9 @@ public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
                         "'Legal Nodes Password Reset' should be shown");
         }
         else{
-            openMailHogPage();
-            MailHogIncomingPage mailHogIncomingPage = new MailHogMainPage().
-                    clickIncomingEmail(clientEmail);
+            MailHogIncomingPage mailHogIncomingPage = GenericPage
+                    .openMailHogPage()
+                    .clickIncomingEmail(clientEmail);
             Assertions.assertEquals("Legal Nodes Password Reset", mailHogIncomingPage.getMailHeader(),
                         "'Legal Nodes Password Reset' should be shown");
         }

@@ -1,13 +1,12 @@
 package com.test.login;
 
+import com.test.GenericPage;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.create_new_password.CreateNewPasswordOverlay;
 import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.MailHogMainPage;
 import com.test.forgot_password_mail.YopmailIncomingMailPage;
-import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -28,44 +27,44 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
         boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
         String oldLink;
         if(isProd){
-            openYopmailPage();
-            new YopmailMainPage()
+            GenericPage
+                    .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
-            sleep(2000);
+            sleep(1000);
             new YopmailIncomingMailPage()
                     .clickRefreshButton()
                     .switchIframe();
-            sleep(2000);
+            sleep(1000);
             oldLink = new YopmailIncomingMailPage().getForgetPasswordToken();
-            openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
+            GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
         }
         else {
-            openMailHogPage();
-            new MailHogMainPage().
-                    clickIncomingEmail(clientEmail);
+            GenericPage
+                    .openMailHogPage()
+                    .clickIncomingEmail(clientEmail);
             oldLink = new MailHogIncomingPage().getForgetPasswordToken();
-            openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
+            GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
         }
 
-        sleep(2000);
+        sleep(1000);
         String password = faker.internet().password(8, 15);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
                 .clickSendButton()
                 .clickCloseButton();
-        sleep(2000);
+        sleep(1000);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        openAnyLink(oldLink);
-        sleep(2000);
+        GenericPage.openAnyLink(oldLink);
+        sleep(1000);
         Assertions.assertFalse(loginCabinetPage.isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
         localStorage().clear();
-        sleep(2000);
+        sleep(1000);
     }
 
     @AfterEach

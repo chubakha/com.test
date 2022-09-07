@@ -13,7 +13,7 @@ public class LoginCabinetPage {
     private final SelenideElement passwordField = $x("//input[contains(@placeholder, 'Password')]");
     private final SelenideElement sighInButton = $x("//button[contains(text(), 'SIGN IN')]");
     private final SelenideElement validationMessage = $x("//*[contains(@class, 'error-message')]");
-    private final SelenideElement forgotPasswordLink = $x("//*[contains(text(), 'Forgot Password')]");
+    private final SelenideElement forgotPasswordLink = $x("//*[contains(text(), 'Forgot your password')]");
     private final SelenideElement pageTitle = $x("//h1[contains(text(), 'Sign in to access')]");
     private final SelenideElement forgotPasswordPopup = $x("//*[contains(@class, 'auth-modal')]");
 

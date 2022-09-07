@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-08-25T08:54:18" hostname="chubakha" time="1.167">
-  <properties/>
-  <testcase name="verifySendingFormWithoutIveReadAndAcceptedCheckbox()" classname="com.test.registration.fourth_registration_page.VerifySendFormWithoutIveReadAndAcceptedCheckboxTest" time="1.167"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

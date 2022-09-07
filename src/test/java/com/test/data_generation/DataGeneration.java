@@ -28,7 +28,7 @@ public class DataGeneration extends PrepareOverallTestData {
         open("https://stag.cabinet.legalnodes.co/registration");
     }
 
-    @Test
+    //@Test
     @Order(1)
     @Description("Registration new client")
     void registrationNewClient(){
@@ -41,8 +41,8 @@ public class DataGeneration extends PrepareOverallTestData {
                 .setRepeatPasswordField(clientPasswordDataGeneration)
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
-        Assertions.assertEquals("Confirm your account", confirmYourAccountOverlay.getPageTitle(),
-                "'Confirm your account' page should be shown");
+        Assertions.assertEquals("Please activate your account", confirmYourAccountOverlay.getPageTitle(),
+                "'Please activate your account' page should be shown");
     }
 
     @Test
@@ -67,18 +67,18 @@ public class DataGeneration extends PrepareOverallTestData {
         sleep(500);
     }
 
-    @Test
-    @Order(3)
-    @Description("Login by new client")
-    void verifyLoginByNewClient(){
-        PrepareLoginTestData.openLoginPage();
-        WelcomePopupOverlay welcomePopupOverlay = new LoginCabinetPage()
-                .setEmailField(clientEmailDataGeneration)
-                .setPasswordField(clientPasswordDataGeneration)
-                .loginAsNewClient();
-        sleep(3000);
-        Assertions.assertTrue(welcomePopupOverlay.isPopupShown(),"Welcome popup should be shown");
-    }
+//    @Test
+//    @Order(3)
+//    @Description("Login by new client")
+//    void verifyLoginByNewClient(){
+//        PrepareLoginTestData.openLoginPage();
+//        WelcomePopupOverlay welcomePopupOverlay = new LoginCabinetPage()
+//                .setEmailField(clientEmailDataGeneration)
+//                .setPasswordField(clientPasswordDataGeneration)
+//                .loginAsNewClient();
+//        sleep(3000);
+//        Assertions.assertTrue(welcomePopupOverlay.isPopupShown(),"Welcome popup should be shown");
+//    }
 
     @Test
     @Order(4)

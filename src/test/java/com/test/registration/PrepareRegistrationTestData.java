@@ -14,5 +14,4 @@ public class PrepareRegistrationTestData extends PrepareOverallTestData {
     void openPage(){
         open("https://stag.cabinet.legalnodes.co/registration");
     }
-
 }

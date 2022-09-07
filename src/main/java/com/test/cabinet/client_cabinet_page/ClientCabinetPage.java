@@ -7,7 +7,7 @@ import com.test.login.LoginCabinetPage;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ClientCabinetPage {
-    private final SelenideElement taskRequestButton = $x("//button[contains(text(), 'task request')]");
+    private final SelenideElement taskRequestButton = $x("//button[contains(text(), 'NEW REQUEST')]");
     private final SelenideElement logOutLink = $x("//*[contains(text(), 'Log out')]");
 
     public boolean isTaskRequestButtonShown(){

@@ -2,10 +2,7 @@ package com.test.forgot_password_mail;
 
 import com.codeborne.selenide.SelenideElement;
 
-import java.util.Random;
-
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class YopmailIncomingMailPage {
     private final SelenideElement mailHeader = $x("//div[contains(@class, 'ellipsis')]");
@@ -31,14 +28,10 @@ public class YopmailIncomingMailPage {
         return "https://" + link[0];
     }
 
-    public String getStagingForgetPasswordToken(){
-        String[] link = mailSubject.getText().split("https://")[1].split("Best");
-        String output = link[0].replace("cabinet.legalnodes.com", "stag.cabinet.legalnodes.co");
-        return "https://" + output;
-    }
+    public boolean isProd;
 
     public boolean isProductionDomainShown(String url){
-        boolean isProd;
+
         if (url.equals("https://stag.cabinet.legalnodes.co/")){
             isProd = false;
         }
@@ -46,26 +39,6 @@ public class YopmailIncomingMailPage {
             isProd = true;
         }
         return isProd;
-    }
-
-    public String getProductionForgetPasswordTokenMinusOneSymbol(){
-        return getForgetPasswordToken().substring(0, getForgetPasswordToken().length() - 1);
-    }
-
-    public String getStagingForgetPasswordTokenMinusOneSymbol(){
-        return getStagingForgetPasswordToken().substring(0, getStagingForgetPasswordToken().length() - 1);
-    }
-
-    public String getProductionForgetPasswordTokenPlusOneSymbol(){
-        Random r = new Random();
-        char c = (char)(r.nextInt(26) + 'a');
-        return getForgetPasswordToken() + c;
-    }
-
-    public String getStagingForgetPasswordTokenPlusOneSymbol(){
-        Random r = new Random();
-        char c = (char)(r.nextInt(26) + 'a');
-        return getStagingForgetPasswordToken() + c;
     }
 
     public YopmailIncomingMailPage clickRefreshButton(){
