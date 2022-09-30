@@ -17,12 +17,12 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 public class VerifyLoginAsManagerTest extends PrepareLoginTestData {
 
     @Test
-    void loginAsManagerPage() throws IOException {
+    void loginAsManagerPage() {
         ManagerCabinetPage managerCabinetPage = new LoginCabinetPage()
                 .setEmailField(managerEmail)
                 .setPasswordField(managerPassword)
                 .loginAsManager();
-        sleep(5000);
+        sleep(3000);
         Assertions.assertTrue(managerCabinetPage.isNewOfferButtonShown(),
                 String.format("'%s' button should be shown", managerCabinetPage.getNewOfferButtonText()));
     }

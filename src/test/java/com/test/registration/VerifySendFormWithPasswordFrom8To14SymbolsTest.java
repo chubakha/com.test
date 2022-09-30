@@ -1,9 +1,7 @@
 package com.test.registration;
 
-import com.test.admin_panel.LoginAdminPage;
+import com.test.GenericPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
-import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.fourth_registration_page.ConfirmYourAccountOverlay;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import io.qameta.allure.Owner;
@@ -55,8 +53,8 @@ public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegis
 
     @AfterEach
     void deleteClientAndCompany() {
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        new LoginAdminPage()
+        GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()

@@ -1,14 +1,9 @@
 package com.test.login;
 
-import com.test.admin_panel.LoginAdminPage;
+import com.test.GenericPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
-import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.MailHogMainPage;
-import com.test.forgot_password_mail.YopmailIncomingMailPage;
-import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -44,8 +39,8 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
 
     @AfterEach
     void resetPasswordToDefault(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        new LoginAdminPage()
+        GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -56,7 +51,7 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
                 .setPasswordField(clientPassword)
                 .setRepeatPasswordField(clientPassword)
                 .clickSaveButton();
-        sleep(1000);
+        sleep(2000);
         new MainAdminPage().clickLogoutLink();
         sleep(1000);
     }

@@ -1,9 +1,10 @@
 package com.test.registration;
 
-import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import io.qameta.allure.Attachment;
 import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -24,6 +25,7 @@ public class VerifyIncorrectEmailAddressTest extends PrepareRegistrationTestData
 
     @ParameterizedTest(name = "{index} - testing email: {0}")
     @ValueSource(strings = {"testgmail.com", "test@@gmail.com", "test@gmailcom", "test@gmail", "test@gmail,com", "gmail.com", "test@.com", "test@com", "test@gmail.c", "test@gmail.comcom", "test@gmail.com.com", "почта@gmail.com", "test@гмаил.com", ".test@gmail.com", "test.@gmail.com", "test!@gmail.com", "test?@gmail.com"})
+    @Severity(SeverityLevel.BLOCKER)
     void verifyIncorrectEmailAddress(String email) {
         String password = faker.internet().password(8, 15);
         FourthRegistrationPage fourthRegistrationPage = new FourthRegistrationPage()

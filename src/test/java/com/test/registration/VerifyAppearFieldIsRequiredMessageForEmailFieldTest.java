@@ -1,6 +1,5 @@
 package com.test.registration;
 
-import com.test.registration.PrepareRegistrationTestData;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import com.test.registration.fourth_registration_page.ValidationErrorMessagesType;
 import io.qameta.allure.Owner;

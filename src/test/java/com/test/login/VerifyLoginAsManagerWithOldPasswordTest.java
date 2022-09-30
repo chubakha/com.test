@@ -1,8 +1,7 @@
 package com.test.login;
 
-import com.test.admin_panel.LoginAdminPage;
+import com.test.GenericPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.create_new_password.CreateNewPasswordOverlay;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -21,7 +20,7 @@ public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestDat
                 .setEmailField(managerEmail)
                 .clickSendButton();
         redirectToForgetPasswordToken(managerEmail);
-        sleep(1000);
+        sleep(2000);
         String password = faker.internet().password(8, 15);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
@@ -40,8 +39,8 @@ public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestDat
 
     @AfterAll
     static void resetPasswordToDefault(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        new LoginAdminPage()
+        GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -52,7 +51,7 @@ public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestDat
                 .setPasswordField(managerPassword)
                 .setRepeatPasswordField(managerPassword)
                 .clickSaveButton();
-        sleep(1000);
+        sleep(2000);
         new MainAdminPage().clickLogoutLink();
         sleep(1000);
     }

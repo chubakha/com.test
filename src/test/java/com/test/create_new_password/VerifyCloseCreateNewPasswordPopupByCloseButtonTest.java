@@ -1,21 +1,15 @@
 package com.test.create_new_password;
 
-import com.test.admin_panel.LoginAdminPage;
+import com.test.GenericPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
-import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.MailHogMainPage;
 import com.test.login.LoginCabinetPage;
 import com.test.login.PrepareLoginTestData;
-import com.test.forgot_password_mail.YopmailIncomingMailPage;
-import com.test.forgot_password_mail.YopmailMainPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.localStorage;
 import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifyCloseCreateNewPasswordPopupByCloseButtonTest extends PrepareLoginTestData {
 
@@ -41,8 +35,8 @@ public class VerifyCloseCreateNewPasswordPopupByCloseButtonTest extends PrepareL
 
     @AfterAll
     static void resetPasswordToDefault(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        new LoginAdminPage()
+        GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -53,7 +47,7 @@ public class VerifyCloseCreateNewPasswordPopupByCloseButtonTest extends PrepareL
                 .setPasswordField(clientPassword)
                 .setRepeatPasswordField(clientPassword)
                 .clickSaveButton();
-        sleep(1000);
+        sleep(2000);
         new MainAdminPage().clickLogoutLink();
         sleep(1000);
     }

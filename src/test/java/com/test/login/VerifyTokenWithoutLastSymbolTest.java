@@ -1,9 +1,7 @@
 package com.test.login;
 
 import com.test.GenericPage;
-import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.forgot_password_mail.MailHogIncomingPage;
 import com.test.forgot_password_mail.YopmailIncomingMailPage;
 import org.junit.jupiter.api.AfterAll;
@@ -28,26 +26,26 @@ public class VerifyTokenWithoutLastSymbolTest extends PrepareLoginTestData {
                     .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
-            sleep(2000);
+            sleep(3000);
             new YopmailIncomingMailPage()
                     .clickRefreshButton()
                     .switchIframe();
-            sleep(2000);
+            sleep(3000);
         } else {
             GenericPage
                     .openMailHogPage()
                     .clickIncomingEmail(clientEmail);
         }
         GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenMinusOneSymbol());
-        sleep(1000);
+        sleep(2000);
         Assertions.assertFalse(new LoginCabinetPage().isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
     }
 
     @AfterAll
     static void resetPasswordToDefault() {
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        new LoginAdminPage()
+        GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -58,8 +56,8 @@ public class VerifyTokenWithoutLastSymbolTest extends PrepareLoginTestData {
                 .setPasswordField(clientPassword)
                 .setRepeatPasswordField(clientPassword)
                 .clickSaveButton();
-        sleep(1000);
-        new MainAdminPage().clickLogoutLink();
         sleep(2000);
+        new MainAdminPage().clickLogoutLink();
+        sleep(1000);
     }
 }

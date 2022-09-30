@@ -1,9 +1,7 @@
 package com.test.login;
 
 import com.test.GenericPage;
-import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.forgot_password_mail.MailHogIncomingPage;
 import com.test.forgot_password_mail.YopmailIncomingMailPage;
 import org.junit.jupiter.api.AfterAll;
@@ -47,8 +45,8 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
 
     @AfterAll
     static void resetPasswordToDefault(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        new LoginAdminPage()
+        GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -59,8 +57,8 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
                 .setPasswordField(clientPassword)
                 .setRepeatPasswordField(clientPassword)
                 .clickSaveButton();
-        sleep(1000);
-        new MainAdminPage().clickLogoutLink();
         sleep(2000);
+        new MainAdminPage().clickLogoutLink();
+        sleep(1000);
     }
 }

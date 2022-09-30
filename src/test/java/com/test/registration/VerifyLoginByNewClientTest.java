@@ -2,8 +2,6 @@ package com.test.registration;
 
 import com.codeborne.selenide.Selenide;
 import com.test.GenericPage;
-import com.test.admin_panel.LoginAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.admin_panel.clients_section.MainClientPage;
 import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.admin_panel.companies_section.MainCompaniesPage;
@@ -46,8 +44,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     @Order(2)
     @Description("activate new client")
     void activateNewClient(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        ViewClientPage viewClientPage = new LoginAdminPage()
+        ViewClientPage viewClientPage = GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -70,7 +68,7 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
                 .setEmailField(emailCurrent)
                 .setPasswordField(passwordCurrent)
                 .loginAsNewClient();
-        sleep(3000);
+        sleep(5000);
         Assertions.assertTrue(welcomePopupOverlay.isPopupShown(),"Welcome popup should be shown");
     }
 
@@ -78,8 +76,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     @Order(4)
     @Description("Delete new client")
     void deleteNewClient(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        MainClientPage mainClientPage = new LoginAdminPage()
+        MainClientPage mainClientPage = GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -97,8 +95,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     @Order(5)
     @Description("Delete new company")
     void deleteNewCompany(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        MainCompaniesPage mainCompaniesPage = new LoginAdminPage()
+        MainCompaniesPage mainCompaniesPage = GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()

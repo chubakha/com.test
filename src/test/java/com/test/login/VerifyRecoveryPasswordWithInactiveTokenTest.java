@@ -1,9 +1,7 @@
 package com.test.login;
 
 import com.test.GenericPage;
-import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.admin_panel.PrepareAdminPanelTestData;
 import com.test.create_new_password.CreateNewPasswordOverlay;
 import com.test.forgot_password_mail.MailHogIncomingPage;
 import com.test.forgot_password_mail.YopmailIncomingMailPage;
@@ -31,11 +29,11 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
                     .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
-            sleep(1000);
+            sleep(2000);
             new YopmailIncomingMailPage()
                     .clickRefreshButton()
                     .switchIframe();
-            sleep(1000);
+            sleep(2000);
             oldLink = new YopmailIncomingMailPage().getForgetPasswordToken();
             GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
         }
@@ -47,20 +45,20 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
             GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
         }
 
-        sleep(1000);
+        sleep(2000);
         String password = faker.internet().password(8, 15);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
                 .clickSendButton()
                 .clickCloseButton();
-        sleep(1000);
+        sleep(3000);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
         GenericPage.openAnyLink(oldLink);
-        sleep(1000);
+        sleep(2000);
         Assertions.assertFalse(loginCabinetPage.isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
         localStorage().clear();
@@ -69,8 +67,8 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
 
     @AfterEach
     void resetPasswordToDefault(){
-        PrepareAdminPanelTestData.openLoginAdminPage();
-        new LoginAdminPage()
+        GenericPage
+                .openLoginAdminPage()
                 .setUsernameField(usernameAdmin)
                 .setPasswordField(passwordAdmin)
                 .loginAsAdmin()
@@ -81,7 +79,7 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
                 .setPasswordField(clientPassword)
                 .setRepeatPasswordField(clientPassword)
                 .clickSaveButton();
-        sleep(1000);
+        sleep(2000);
         new MainAdminPage().clickLogoutLink();
         sleep(1000);
     }

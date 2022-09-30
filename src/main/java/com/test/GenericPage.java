@@ -1,5 +1,7 @@
 package com.test;
 
+import com.test.admin_panel.LoginAdminPage;
+import com.test.admin_panel.MainAdminPage;
 import com.test.forgot_password_mail.MailHogMainPage;
 import com.test.forgot_password_mail.YopmailMainPage;
 import com.test.login.LoginCabinetPage;
@@ -9,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 public abstract class GenericPage {
 
     public static LoginCabinetPage openLoginPage(){
-        open("https://stag.cabinet.legalnodes.co/");
+        open("https://cabinet.legalnodes.com/");
         return new LoginCabinetPage();
     }
 
@@ -25,5 +27,15 @@ public abstract class GenericPage {
 
     public static void openAnyLink(String link){
         open(link);
+    }
+
+    public static LoginAdminPage openLoginAdminPage(){
+        open("https://admin.legalnodes.com");
+        return new LoginAdminPage();
+    }
+
+    public static MainAdminPage openAdminPageWithoutAuthorization(){
+        open("https://admin.legalnodes.com");
+        return new MainAdminPage();
     }
 }

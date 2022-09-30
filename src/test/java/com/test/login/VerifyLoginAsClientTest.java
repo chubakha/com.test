@@ -3,6 +3,8 @@ package com.test.login;
 import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
 import com.test.cabinet.manager_cabinet_page.ManagerCabinetPage;
 import io.qameta.allure.Owner;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
