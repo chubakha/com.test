@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
@@ -24,6 +25,7 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
         if(isProd){
             GenericPage
                     .openYopmailPage()
+                    .clickCookiesAcceptButton()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
             sleep(2000);
@@ -31,13 +33,14 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
                     .clickRefreshButton()
                     .switchIframe();
             sleep(2000);
+            GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordTokenPlusOneSymbol());
         }
         else {
             GenericPage
                     .openMailHogPage()
                     .clickIncomingEmail(clientEmail);
+            GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
         }
-        GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
         sleep(2000);
         Assertions.assertFalse(new LoginCabinetPage().isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
@@ -47,8 +50,8 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
     static void resetPasswordToDefault(){
         GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(clientEmail)
@@ -60,5 +63,6 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
         sleep(2000);
         new MainAdminPage().clickLogoutLink();
         sleep(1000);
+        closeWindow();
     }
 }

@@ -1,7 +1,6 @@
 package com.test.cabinet.client_cabinet_page;
 
 import com.codeborne.selenide.SelenideElement;
-import com.test.forgot_password_mail.YopmailIncomingMailPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.switchTo;
@@ -23,9 +22,9 @@ public class CreateTaskRequestOverlay {
         return new CreateTaskRequestOverlay();
     }
 
-    public DetailRequestPage clickSubmitButton(){
+    public ClientDetailRequestPage clickSubmitButton(){
         submitButton.click();
-        return new DetailRequestPage();
+        return new ClientDetailRequestPage();
     }
 
     public CreateTaskRequestOverlay setTitleField(String title){

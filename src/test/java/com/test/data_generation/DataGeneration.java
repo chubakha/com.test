@@ -6,9 +6,13 @@ import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.admin_panel.onboarding_section.ViewOnboardingPage;
 import com.test.cabinet.OfferStatusesType;
-import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
+import com.test.cabinet.client_cabinet_page.ClientKanbanPage;
 import com.test.cabinet.client_cabinet_page.CreateTaskRequestOverlay;
-import com.test.cabinet.client_cabinet_page.DetailRequestPage;
+import com.test.cabinet.client_cabinet_page.ClientDetailOfferPage;
+import com.test.cabinet.client_cabinet_page.ClientDetailRequestPage;
+import com.test.cabinet.manager_cabinet_page.ManagerKanbanPage;
+import com.test.cabinet.manager_cabinet_page.ManagerDetailOfferPage;
+import com.test.login.LoginCabinetPage;
 import com.test.onboarding.WelcomePopupOverlay;
 import com.test.registration.fourth_registration_page.ConfirmYourAccountOverlay;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
@@ -18,8 +22,7 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static com.test.PrepareOverallTestData.AUTHOR_ALEX_CHU;
 
 @Owner(value = AUTHOR_ALEX_CHU)
@@ -28,7 +31,7 @@ public class DataGeneration extends PrepareOverallTestData {
 
     @BeforeAll
     static void openPage(){
-        open("https://cabinet.legalnodes.com/registration");
+        open("https://stag.cabinet.legalnodes.co/registration");
     }
 
     @Test
@@ -54,8 +57,8 @@ public class DataGeneration extends PrepareOverallTestData {
     void activateNewClient(){
         ViewClientPage viewClientPage = GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(clientEmailDataGeneration)
@@ -89,8 +92,8 @@ public class DataGeneration extends PrepareOverallTestData {
     void passingStep1Onboarding(){
         ViewOnboardingPage viewOnboardingPage = GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickOnboardingLink()
                 .clickUpdateButton(4, "DataGenerationFirstName")
@@ -153,38 +156,183 @@ public class DataGeneration extends PrepareOverallTestData {
                 .setPasswordField(clientPasswordDataGeneration)
                 .loginAsClient();
         sleep(3000);
-        new ClientCabinetPage()
+        new ClientKanbanPage()
                 .clickNewRequestButton()
                 .clickCreateNewRequestButton();
         sleep(3000);
-        DetailRequestPage detailRequestPage = new CreateTaskRequestOverlay()
+        ClientDetailRequestPage clientDetailRequestPage = new CreateTaskRequestOverlay()
                 .setTitleField(value)
                 .switchToDescriptionIframe()
                 .setDescriptionField(value)
                 .switchFocusToOverlay()
                 .clickSubmitButton();
         sleep(2000);
-        Assertions.assertEquals(OfferStatusesType.DISCUSS_WITH_VLO.getValue(), detailRequestPage.getRequestStatus(),
+        Assertions.assertEquals(OfferStatusesType.DISCUSS_WITH_VLO.getValue(), clientDetailRequestPage.getRequestStatus(),
                 String.format("'%s' status should be shown on a detail request page",
                         OfferStatusesType.DISCUSS_WITH_VLO.getValue()));
     }
 
-    @ParameterizedTest(name = "{index} - request name is {0}")
-    @ValueSource(strings = { "1", "2", "3", "4", "5", "6" })
+    @Test
     @Order(9)
-    @Description("Move 6 requests to offers")
+    @Description("Assign company to manager")
+    void assignCompanyToManager(){
+        clearBrowserLocalStorage();
+        sleep(2000);
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
+                .loginAsManager();
+        sleep(3000);
+        ManagerKanbanPage managerKanbanPage = new ManagerKanbanPage()
+                .clickNewClientButton()
+                .setEnterClientEmailField(clientEmailDataGeneration)
+                .clickAddNewClientButton()
+                .clickSubmitButton();
+        sleep(3000);
+        Assertions.assertEquals("DataGenerationCompany", managerKanbanPage.getSelectedCompany(),
+                "'DataGenerationCompany' should be as selected company");
+    }
+
+    @ParameterizedTest(name = "{index} - request name is {0}")
+    @ValueSource(strings = { "1", "2", "3", "4", "5" })
+    @Order(10)
+    @Description("Move 5 requests to offers")
     void moveRequestsToOffer(String value){
+        clearBrowserLocalStorage();
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
+                .loginAsManager();
+        sleep(3000);
+        new ManagerKanbanPage()
+                .clickCompanyListDropdown()
+                .clickCompanyInDropdown("DataGenerationCompany");
+                sleep(2000);
+        new ManagerKanbanPage()
+                .clickRequestCard(value)
+                .clickTurnIntoOfferButton()
+                .clickCreateOfferButton();
+        sleep(2000);
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerDetailOfferPage()
+                .clickPublishButton();
+        sleep(2000);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals("Copy", managerDetailOfferPage.getMoveToNextStatusButton(), "Button should has text 'Copy'"),
+                () -> Assertions.assertEquals(OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue(),managerDetailOfferPage.getNextStepText(),
+                        String.format("'%s' should not be shown on the top offer",
+                                OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue()))
+        );
+    }
+
+    @ParameterizedTest(name = "{index} - offer name is {0}")
+    @ValueSource(strings = { "6" })
+    @Order(11)
+    @Description("Move 1 requests to draft")
+    void moveRequestsToDraft(String value){
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
+                .loginAsManager();
+        sleep(3000);
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickRequestCard(value)
+                .clickTurnIntoOfferButton()
+                .clickCreateOfferButton();
+        sleep(2000);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals("Publish", managerDetailOfferPage.getMoveToNextStatusButton(), "Button should has text 'Copy'"),
+                () -> Assertions.assertEquals(OfferStatusesType.PREPARING_OFFER.getValue(),managerDetailOfferPage.getNextStepText(),
+                        String.format("'%s' should not be shown on the top offer",
+                                OfferStatusesType.PREPARING_OFFER.getValue()))
+        );
+    }
+
+    @ParameterizedTest(name = "{index} - offer name is {0}")
+    @ValueSource(strings = { "1", "2", "3", "4" })
+    @Order(12)
+    @Description("Move 4 offers to accepted status")
+    void moveOfferToAccepted(String value){
         GenericPage
                 .openLoginPage()
                 .setEmailField(clientEmailDataGeneration)
                 .setPasswordField(clientPasswordDataGeneration)
+                .loginAsClient();
+        sleep(3000);
+        ClientDetailOfferPage clientDetailOfferPage = new ClientKanbanPage()
+                .clickOfferCard(value)
+                .clickAcceptButton();
+        sleep(2000);
+        Assertions.assertAll(
+                () -> Assertions.assertFalse(clientDetailOfferPage.isAcceptButtonEnabled(), "Accepted button should be disabled"),
+                () -> Assertions.assertEquals(OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue(),clientDetailOfferPage.getStatusOfferText(),
+                        String.format("'%s' should not be shown on the top offer",
+                        OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue()))
+        );
+    }
+
+    @ParameterizedTest(name = "{index} - offer name is {0}")
+    @ValueSource(strings = { "1", "2", "3" })
+    @Order(13)
+    @Description("Move 3 offers to 'Move to payment'")
+    void moveOfferToMoveToPayment(String value){
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
                 .loginAsManager();
         sleep(3000);
-        new ClientCabinetPage()
-                .clickRequestCard(value)
-                .clickTurnIntoOfferButton();
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickOfferCard(value)
+                .clickStatusesDropDown()
+                .clickMoveToPaymentStatus();
         sleep(2000);
+        Assertions.assertEquals(OfferStatusesType.AWAITING_PAYMENT.getValue(), managerDetailOfferPage.getNextStepText(),
+                String.format("'%s' should not be shown on the top offer",
+                OfferStatusesType.AWAITING_PAYMENT.getValue()));
+    }
 
+    @ParameterizedTest(name = "{index} - offer name is {0}")
+    @ValueSource(strings = { "1", "2" })
+    @Order(14)
+    @Description("Move 2 offers to 'Start Delivery'")
+    void moveOfferToStartDelivery(String value){
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
+                .loginAsManager();
+        sleep(3000);
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickOfferCard(value)
+                .clickStatusesDropDown()
+                .clickStartDeliveryStatus();
+        sleep(2000);
+        Assertions.assertEquals(OfferStatusesType.PREPARING_DOCUMENT.getValue(), managerDetailOfferPage.getNextStepText(),
+                String.format("'%s' should not be shown on the top offer",
+                OfferStatusesType.PREPARING_DOCUMENT.getValue()));
+    }
 
+    @ParameterizedTest(name = "{index} - offer name is {0}")
+    @ValueSource(strings = { "1" })
+    @Order(15)
+    @Description("Move 1 offers to 'Done'")
+    void moveOfferToDone(String value){
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
+                .loginAsManager();
+        sleep(3000);
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickOfferCard(value)
+                .clickStatusesDropDown()
+                .clickMoveToDoneStatus();
+        sleep(2000);
+        Assertions.assertEquals(OfferStatusesType.DONE.getValue(), managerDetailOfferPage.getNextStepText(),
+                String.format("'%s' should not be shown on the top offer",
+                OfferStatusesType.DONE.getValue()));
     }
 }

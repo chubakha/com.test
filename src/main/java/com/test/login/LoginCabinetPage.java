@@ -1,8 +1,8 @@
 package com.test.login;
 
 import com.codeborne.selenide.SelenideElement;
-import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
-import com.test.cabinet.manager_cabinet_page.ManagerCabinetPage;
+import com.test.cabinet.client_cabinet_page.ClientKanbanPage;
+import com.test.cabinet.manager_cabinet_page.ManagerKanbanPage;
 import com.test.onboarding.WelcomePopupOverlay;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -21,14 +21,14 @@ public class LoginCabinetPage {
         sighInButton.click();
     }
 
-    public ManagerCabinetPage loginAsManager() {
+    public ManagerKanbanPage loginAsManager() {
         clickSighInButton();
-        return new ManagerCabinetPage();
+        return new ManagerKanbanPage();
     }
 
-    public ClientCabinetPage loginAsClient() {
+    public ClientKanbanPage loginAsClient() {
         clickSighInButton();
-        return new ClientCabinetPage();
+        return new ClientKanbanPage();
     }
 
     public WelcomePopupOverlay loginAsNewClient() {

@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 public abstract class GenericPage {
 
     public static LoginCabinetPage openLoginPage(){
-        open("https://cabinet.legalnodes.com/");
+        open("https://stag.cabinet.legalnodes.co/");
         return new LoginCabinetPage();
     }
 
@@ -30,12 +30,12 @@ public abstract class GenericPage {
     }
 
     public static LoginAdminPage openLoginAdminPage(){
-        open("https://admin.legalnodes.com");
+        open("https://stag.admin.legalnodes.co");
         return new LoginAdminPage();
     }
 
     public static MainAdminPage openAdminPageWithoutAuthorization(){
-        open("https://admin.legalnodes.com");
+        open("https://stag.admin.legalnodes.co");
         return new MainAdminPage();
     }
 }

@@ -27,6 +27,7 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
         if(isProd){
             GenericPage
                     .openYopmailPage()
+                    .clickCookiesAcceptButton()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
             sleep(2000);
@@ -69,8 +70,8 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
     void resetPasswordToDefault(){
         GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(clientEmail)

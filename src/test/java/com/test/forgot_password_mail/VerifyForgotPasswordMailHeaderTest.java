@@ -3,9 +3,11 @@ package com.test.forgot_password_mail;
 import com.test.GenericPage;
 import com.test.login.LoginCabinetPage;
 import com.test.login.PrepareLoginTestData;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.WebDriverRunner.closeWindow;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
@@ -20,6 +22,7 @@ public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
         if(isProd){
             YopmailIncomingMailPage yopmailIncomingMailPage = GenericPage
                     .openYopmailPage()
+                    .clickCookiesAcceptButton()
                     .setLoginField(clientEmail)
                     .clickLoginButton()
                     .switchIframe();
@@ -34,5 +37,10 @@ public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
                         "'Legal Nodes Password Reset' should be shown");
         }
 
+    }
+
+    @AfterAll
+    static void closeBrowser(){
+        closeWindow();
     }
 }

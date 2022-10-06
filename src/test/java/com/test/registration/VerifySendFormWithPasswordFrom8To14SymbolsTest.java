@@ -55,8 +55,8 @@ public class VerifySendFormWithPasswordFrom8To14SymbolsTest extends PrepareRegis
     void deleteClientAndCompany() {
         GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(emails.get(0))

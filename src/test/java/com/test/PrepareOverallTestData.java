@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class PrepareOverallTestData {
@@ -31,8 +31,10 @@ public class PrepareOverallTestData {
     protected static String clientPassword;
     protected static String managerEmail;
     protected static String managerPassword;
-    protected static String usernameAdmin;
-    protected static String passwordAdmin;
+    protected static String stageUsernameAdmin;
+    protected static String stagePasswordAdmin;
+    protected static String prodUsernameAdmin;
+    protected static String prodPasswordAdmin;
     protected static String clientEmailDataGeneration;
     protected static String clientPasswordDataGeneration;
 
@@ -42,8 +44,10 @@ public class PrepareOverallTestData {
         clientPassword = PrepareOverallTestData.getClientPassword();
         managerEmail = PrepareOverallTestData.getManagerEmail();
         managerPassword = PrepareOverallTestData.getManagerPassword();
-        usernameAdmin = PrepareOverallTestData.getUsernameAdmin();
-        passwordAdmin = PrepareOverallTestData.getEmailAdmin();
+        stageUsernameAdmin = PrepareOverallTestData.getStageUsernameAdmin();
+        stagePasswordAdmin = PrepareOverallTestData.getStagePasswordAdmin();
+        prodUsernameAdmin = PrepareOverallTestData.getProdUsernameAdmin();
+        prodPasswordAdmin = PrepareOverallTestData.getProdPasswordAdmin();
         clientEmailDataGeneration = PrepareOverallTestData.getClientEmailDataGeneration();
         clientPasswordDataGeneration = PrepareOverallTestData.getClientPasswordDataGeneration();
     }
@@ -64,12 +68,20 @@ public class PrepareOverallTestData {
         return getPropertyFileData().getProperty("stag.manager.password");
     }
 
-    private static String getUsernameAdmin() {
+    private static String getStageUsernameAdmin() {
         return getPropertyFileData().getProperty("stag.admin.username");
     }
 
-    private static String getEmailAdmin(){
+    private static String getStagePasswordAdmin(){
         return getPropertyFileData().getProperty("stag.admin.password");
+    }
+
+    private static String getProdUsernameAdmin() {
+        return getPropertyFileData().getProperty("prod.admin.username");
+    }
+
+    private static String getProdPasswordAdmin(){
+        return getPropertyFileData().getProperty("prod.admin.password");
     }
 
     private static String getClientEmailDataGeneration(){
@@ -96,6 +108,7 @@ public class PrepareOverallTestData {
         if(isProd){
             GenericPage
                     .openYopmailPage()
+                    .clickCookiesAcceptButton()
                     .setLoginField(email)
                     .clickLoginButton();
             sleep(2000);

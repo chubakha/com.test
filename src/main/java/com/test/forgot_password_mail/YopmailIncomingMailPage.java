@@ -2,6 +2,8 @@ package com.test.forgot_password_mail;
 
 import com.codeborne.selenide.SelenideElement;
 
+import java.util.Random;
+
 import static com.codeborne.selenide.Selenide.*;
 
 public class YopmailIncomingMailPage {
@@ -44,5 +46,21 @@ public class YopmailIncomingMailPage {
     public YopmailIncomingMailPage clickRefreshButton(){
         refreshButton.click();
         return this;
+    }
+
+//    public String getForgetPasswordToken(){
+//        String[] link = mailSubject.getText().split("https://")[1].split("Best");
+//        String output = link[0].replace("cabinet.legalnodes.com", "stag.cabinet.legalnodes.co");
+//        return "https://" + output;
+//    }
+
+    public String getForgetPasswordTokenMinusOneSymbol(){
+        return getForgetPasswordToken().substring(0, getForgetPasswordToken().length() - 2);
+    }
+
+    public String getForgetPasswordTokenPlusOneSymbol(){
+        Random r = new Random();
+        char c = (char)(r.nextInt(26) + 'a');
+        return getForgetPasswordToken() + c;
     }
 }

@@ -2,15 +2,13 @@ package com.test.login;
 
 import com.test.GenericPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.cabinet.client_cabinet_page.ClientCabinetPage;
+import com.test.cabinet.client_cabinet_page.ClientKanbanPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.WebDriverRunner.url;
+import static com.codeborne.selenide.Selenide.*;
 
 public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData {
 
@@ -24,7 +22,7 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
         redirectToForgetPasswordToken(clientEmail);
         sleep(2000);
         String password = faker.internet().password(8, 15);
-        ClientCabinetPage clientCabinetPage = new CreateNewPasswordOverlay()
+        ClientKanbanPage clientKanbanPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
                 .clickSendButton()
@@ -32,8 +30,9 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
                 .setEmailField(clientEmail)
                 .setPasswordField(password)
                 .loginAsClient();
-        Assertions.assertTrue(clientCabinetPage.isTaskRequestButtonShown(),
-                String.format("'%s' button should be shown", clientCabinetPage.getTaskRequestButtonText()));
+        sleep(3000);
+        Assertions.assertTrue(clientKanbanPage.isTaskRequestButtonShown(),
+                String.format("'%s' button should be shown", clientKanbanPage.getTaskRequestButtonText()));
         localStorage().clear();
     }
 
@@ -41,8 +40,8 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
     void resetPasswordToDefault(){
         GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(clientEmail)
@@ -54,5 +53,6 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
         sleep(2000);
         new MainAdminPage().clickLogoutLink();
         sleep(1000);
+        closeWindow();
     }
 }

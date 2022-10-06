@@ -46,8 +46,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     void activateNewClient(){
         ViewClientPage viewClientPage = GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(emailCurrent)
@@ -78,8 +78,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     void deleteNewClient(){
         MainClientPage mainClientPage = GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(emailCurrent)
@@ -97,8 +97,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     void deleteNewCompany(){
         MainCompaniesPage mainCompaniesPage = GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickCompaniesLink()
                 .setClientSearchByCompanyField(companyCurrent)

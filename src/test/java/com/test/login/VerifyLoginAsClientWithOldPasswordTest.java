@@ -7,8 +7,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 
 public class VerifyLoginAsClientWithOldPasswordTest extends PrepareLoginTestData {
 
@@ -42,8 +41,8 @@ public class VerifyLoginAsClientWithOldPasswordTest extends PrepareLoginTestData
     static void resetPasswordToDefault(){
         GenericPage
                 .openLoginAdminPage()
-                .setUsernameField(usernameAdmin)
-                .setPasswordField(passwordAdmin)
+                .setUsernameField(stageUsernameAdmin)
+                .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
                 .clickClientsLink()
                 .setClientSearchByEmailField(clientEmail)
@@ -55,5 +54,6 @@ public class VerifyLoginAsClientWithOldPasswordTest extends PrepareLoginTestData
         sleep(2000);
         new MainAdminPage().clickLogoutLink();
         sleep(1000);
+        closeWindow();
     }
 }
