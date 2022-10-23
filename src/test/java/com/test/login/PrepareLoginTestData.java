@@ -1,10 +1,8 @@
 package com.test.login;
 
 import com.test.PrepareOverallTestData;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.open;
 
 

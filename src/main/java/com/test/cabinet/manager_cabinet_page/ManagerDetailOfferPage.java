@@ -5,13 +5,14 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ManagerDetailOfferPage {
-    private final SelenideElement publishButton = $x("//button[contains(text(), 'Publish')]");
-    private final SelenideElement moveToNextStatusButton = $x("//button[contains(@class(), 'offerHeader__button')]");
+    private final SelenideElement publishButton = $x("//button[contains(text(), 'PUBLISH')]");
+    private final SelenideElement moveToNextStatusButton = $x("//button[contains(@class, 'offerHeader__button')]");
     private final SelenideElement statusesDropDown = $x("//div[@class = 'task-status']");
     private final SelenideElement moveToPaymentStatus = $x("//div[@class='task-status__body-item' and contains(text(), 'MOVE TO PAYMENT')]");
     private final SelenideElement startDeliveryStatus = $x("//div[@class='task-status__body-item' and contains(text(), 'START DELIVERY')]");
     private final SelenideElement moveToDoneStatus = $x("//div[@class='task-status__body-item' and contains(text(), 'MOVE TO DONE')]");
     private final SelenideElement nextStepText = $x("//span[@class='offerHeading__steps-step']");
+    private final SelenideElement offerStatusText = $x("//div[@class='offerHeader__status']");
 
     public ManagerDetailOfferPage clickPublishButton(){
         publishButton.click();
@@ -44,6 +45,10 @@ public class ManagerDetailOfferPage {
 
     public String getNextStepText(){
         return nextStepText.getText();
+    }
+
+    public String getOfferStatusText(){
+        return offerStatusText.getText();
     }
 
 }

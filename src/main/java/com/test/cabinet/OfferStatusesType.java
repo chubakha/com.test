@@ -6,8 +6,9 @@ public enum OfferStatusesType {
     PREPARING_OFFER("Preparing Offer"),
     AWAITING_PAYMENT("Awaiting payment"),
     PREPARING_DOCUMENT("Preparing document"),
-    DONE("Done"),
-    WAIT_FOR_VLO_RESPONSE("WAIT FOR VLO’S RESPONSE");
+    DONE("DONE"),
+    DRAFT("DRAFT"),
+    WAIT_FOR_VLO_RESPONSE("WAIT FOR VLO");
 
     private final String value;
 

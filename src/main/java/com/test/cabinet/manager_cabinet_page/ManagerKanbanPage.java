@@ -13,6 +13,11 @@ public class ManagerKanbanPage {
     private final SelenideElement logOutLink = $x("//*[contains(text(), 'Log out')]");
     private final SelenideElement selectedCompany = $x("//div[contains(@class, 'mobile__current')]/div[1]");
     private final SelenideElement companyListDropdown = $x("//div[contains(@class, 'kanban-dropdown')]/div[1]");
+    private final SelenideElement amountOfRequest = $x("//*[contains(text(), 'New requests from client')]/following-sibling::span");
+    private final SelenideElement amountOfNewOffers = $x("//*[contains(text(), 'New offers from VLO')]/following-sibling::span");
+    private final SelenideElement amountOfTasksInProgress = $x("//*[contains(text(), 'Tasks in progress')]/following-sibling::span");
+    private final SelenideElement amountOfTasksComplete = $x("//*[contains(text(), 'Tasks complete')]/following-sibling::span");
+
 
     public boolean isNewOfferButtonShown(){
         return newOfferButton.isDisplayed();
@@ -55,5 +60,23 @@ public class ManagerKanbanPage {
         $x("//*[@title = '" + company + "']").click();
         return this;
     }
+
+    public String getAmountOfRequest(){
+        return amountOfRequest.getText();
+    }
+
+    public String getAmountOfNewOffers(){
+        return amountOfNewOffers.getText();
+    }
+
+    public String getAmountOfTasksInProgress(){
+        return amountOfTasksInProgress.getText();
+    }
+
+    public String getAmountOfTasksComplete(){
+        return amountOfTasksComplete.getText();
+    }
+
+
 
 }

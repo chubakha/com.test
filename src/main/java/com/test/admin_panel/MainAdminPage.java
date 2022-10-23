@@ -12,7 +12,6 @@ public class MainAdminPage {
     private final SelenideElement clientsLink = $x("//span[contains(text(), 'Clients')]");
     private final SelenideElement managerLink = $x("//span[contains(text(), 'Managers')]");
     private final SelenideElement companiesLink = $x("//span[contains(text(), 'Companies')]");
-    private final SelenideElement onboardingLink = $x("//span[contains(text(), 'Onboarding')]");
     private final SelenideElement logoutLink = $x("//*[contains(@id, 'logout')]");
 
     public MainClientPage clickClientsLink(){
@@ -33,10 +32,5 @@ public class MainAdminPage {
     public LoginAdminPage clickLogoutLink(){
         logoutLink.click();
         return new LoginAdminPage();
-    }
-
-    public MainOnboardingPage clickOnboardingLink(){
-        onboardingLink.click();
-        return new MainOnboardingPage();
     }
 }

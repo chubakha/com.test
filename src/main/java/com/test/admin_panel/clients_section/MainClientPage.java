@@ -2,6 +2,7 @@ package com.test.admin_panel.clients_section;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.test.admin_panel.onboarding_section.MainOnboardingPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -11,6 +12,7 @@ public class MainClientPage {
     private final SelenideElement deleteButton = $x("//a[contains(@title, 'Delete')]");
     private final SelenideElement updateButton = $x("//a[contains(@title, 'Update')]");
     private final SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
+    private final SelenideElement onboardingLink = $x("//span[contains(text(), 'Onboarding')]");
 
     public MainClientPage setClientSearchByEmailField(String searchRequest){
         clientSearchByEmailField.val(searchRequest);
@@ -39,5 +41,10 @@ public class MainClientPage {
 
     public boolean isNoResultMessageShown(){
         return noResultMessage.exists();
+    }
+
+    public MainOnboardingPage clickOnboardingLink(){
+        onboardingLink.click();
+        return new MainOnboardingPage();
     }
 }

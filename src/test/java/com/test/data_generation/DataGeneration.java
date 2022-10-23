@@ -12,7 +12,6 @@ import com.test.cabinet.client_cabinet_page.ClientDetailOfferPage;
 import com.test.cabinet.client_cabinet_page.ClientDetailRequestPage;
 import com.test.cabinet.manager_cabinet_page.ManagerKanbanPage;
 import com.test.cabinet.manager_cabinet_page.ManagerDetailOfferPage;
-import com.test.login.LoginCabinetPage;
 import com.test.onboarding.WelcomePopupOverlay;
 import com.test.registration.fourth_registration_page.ConfirmYourAccountOverlay;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
@@ -75,7 +74,7 @@ public class DataGeneration extends PrepareOverallTestData {
 
     @Test
     @Order(3)
-    @Description("Login by new client")
+    @Description("Login by new client for creation onboarding stages")
     void verifyLoginByNewClient(){
         WelcomePopupOverlay welcomePopupOverlay = GenericPage
                 .openLoginPage()
@@ -95,6 +94,7 @@ public class DataGeneration extends PrepareOverallTestData {
                 .setUsernameField(stageUsernameAdmin)
                 .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
+                .clickClientsLink()
                 .clickOnboardingLink()
                 .clickUpdateButton(4, "DataGenerationFirstName")
                 .switchStageResultToDone()
@@ -109,6 +109,7 @@ public class DataGeneration extends PrepareOverallTestData {
     void passingStep2Onboarding(){
         ViewOnboardingPage viewOnboardingPage = GenericPage
                 .openAdminPageWithoutAuthorization()
+                .clickClientsLink()
                 .clickOnboardingLink()
                 .clickUpdateButton(3, "DataGenerationFirstName")
                 .switchStageResultToDone()
@@ -123,6 +124,7 @@ public class DataGeneration extends PrepareOverallTestData {
     void passingStep3Onboarding(){
         ViewOnboardingPage viewOnboardingPage = GenericPage
                 .openAdminPageWithoutAuthorization()
+                .clickClientsLink()
                 .clickOnboardingLink()
                 .clickUpdateButton(2, "DataGenerationFirstName")
                 .switchStageResultToDone()
@@ -137,6 +139,7 @@ public class DataGeneration extends PrepareOverallTestData {
     void passingStep4Onboarding(){
         ViewOnboardingPage viewOnboardingPage = GenericPage
                 .openAdminPageWithoutAuthorization()
+                .clickClientsLink()
                 .clickOnboardingLink()
                 .clickUpdateButton(1, "DataGenerationFirstName")
                 .switchStageResultToDone()
@@ -195,9 +198,9 @@ public class DataGeneration extends PrepareOverallTestData {
     }
 
     @ParameterizedTest(name = "{index} - request name is {0}")
-    @ValueSource(strings = { "1", "2", "3", "4", "5" })
+    @ValueSource(strings = { "1", "2", "3", "4", "5", "6" })
     @Order(10)
-    @Description("Move 5 requests to offers")
+    @Description("Move 6 requests to draft")
     void moveRequestsToOffer(String value){
         clearBrowserLocalStorage();
         GenericPage
@@ -210,43 +213,46 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown("DataGenerationCompany");
                 sleep(2000);
-        new ManagerKanbanPage()
-                .clickRequestCard(value)
-                .clickTurnIntoOfferButton()
-                .clickCreateOfferButton();
-        sleep(2000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerDetailOfferPage()
-                .clickPublishButton();
-        sleep(2000);
-        Assertions.assertAll(
-                () -> Assertions.assertEquals("Copy", managerDetailOfferPage.getMoveToNextStatusButton(), "Button should has text 'Copy'"),
-                () -> Assertions.assertEquals(OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue(),managerDetailOfferPage.getNextStepText(),
-                        String.format("'%s' should not be shown on the top offer",
-                                OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue()))
-        );
-    }
-
-    @ParameterizedTest(name = "{index} - offer name is {0}")
-    @ValueSource(strings = { "6" })
-    @Order(11)
-    @Description("Move 1 requests to draft")
-    void moveRequestsToDraft(String value){
-        GenericPage
-                .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
-        sleep(3000);
         ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
                 .clickRequestCard(value)
                 .clickTurnIntoOfferButton()
                 .clickCreateOfferButton();
         sleep(2000);
         Assertions.assertAll(
-                () -> Assertions.assertEquals("Publish", managerDetailOfferPage.getMoveToNextStatusButton(), "Button should has text 'Copy'"),
+                () -> Assertions.assertEquals(OfferStatusesType.DRAFT.getValue(), managerDetailOfferPage.getOfferStatusText(),
+                        String.format("'%s' should not be shown on the top offer",
+                                OfferStatusesType.DRAFT.getValue())),
                 () -> Assertions.assertEquals(OfferStatusesType.PREPARING_OFFER.getValue(),managerDetailOfferPage.getNextStepText(),
                         String.format("'%s' should not be shown on the top offer",
-                                OfferStatusesType.PREPARING_OFFER.getValue()))
+                                OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue()))
+        );
+    }
+
+    @ParameterizedTest(name = "{index} - request name is {0}")
+    @ValueSource(strings = { "1", "2", "3", "4", "5" })
+    @Order(10)
+    @Description("Move 5 requests to publish")
+    void moveRequestsToPublish(String value){
+        clearBrowserLocalStorage();
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
+                .loginAsManager();
+        sleep(3000);
+        new ManagerKanbanPage()
+                .clickCompanyListDropdown()
+                .clickCompanyInDropdown("DataGenerationCompany");
+        sleep(2000);
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickOfferCard(value)
+                .clickPublishButton();
+        sleep(2000);
+        Assertions.assertAll(
+                () -> Assertions.assertEquals("COPY", managerDetailOfferPage.getMoveToNextStatusButton(), "Button should has text 'Copy'"),
+                () -> Assertions.assertEquals(OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue(),managerDetailOfferPage.getNextStepText(),
+                        String.format("'%s' should not be shown on the top offer",
+                                OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue()))
         );
     }
 
@@ -266,8 +272,9 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickAcceptButton();
         sleep(2000);
         Assertions.assertAll(
-                () -> Assertions.assertFalse(clientDetailOfferPage.isAcceptButtonEnabled(), "Accepted button should be disabled"),
-                () -> Assertions.assertEquals(OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue(),clientDetailOfferPage.getStatusOfferText(),
+                () -> Assertions.assertFalse(clientDetailOfferPage.isAcceptButtonEnabled(),
+                        "Accepted button should be disabled"),
+                () -> Assertions.assertTrue(clientDetailOfferPage.getStatusOfferText().contains(OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue()),
                         String.format("'%s' should not be shown on the top offer",
                         OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue()))
         );
@@ -309,7 +316,7 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
                 .clickStartDeliveryStatus();
-        sleep(2000);
+        sleep(3000);
         Assertions.assertEquals(OfferStatusesType.PREPARING_DOCUMENT.getValue(), managerDetailOfferPage.getNextStepText(),
                 String.format("'%s' should not be shown on the top offer",
                 OfferStatusesType.PREPARING_DOCUMENT.getValue()));
@@ -331,7 +338,7 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickStatusesDropDown()
                 .clickMoveToDoneStatus();
         sleep(2000);
-        Assertions.assertEquals(OfferStatusesType.DONE.getValue(), managerDetailOfferPage.getNextStepText(),
+        Assertions.assertEquals(OfferStatusesType.DONE.getValue(), managerDetailOfferPage.getOfferStatusText(),
                 String.format("'%s' should not be shown on the top offer",
                 OfferStatusesType.DONE.getValue()));
     }
