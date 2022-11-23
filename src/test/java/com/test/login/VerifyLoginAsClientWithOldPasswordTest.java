@@ -19,7 +19,7 @@ public class VerifyLoginAsClientWithOldPasswordTest extends PrepareLoginTestData
                 .setEmailField(clientEmail)
                 .clickSendButton();
         redirectToForgetPasswordToken(clientEmail);
-        sleep(2000);
+        sleep(3000);
         String password = faker.internet().password(8, 15);
         new CreateNewPasswordOverlay()
                 .setPasswordField(password)
@@ -34,26 +34,10 @@ public class VerifyLoginAsClientWithOldPasswordTest extends PrepareLoginTestData
                 loginCabinetPage.getValidationMessage(),
                 String.format("'%s' message should be shown next to password field",
                         ValidationErrorMessagesType.INVALID_USERNAME_AND_PASSWORD_COMBINATION.getValue()));
-        localStorage().clear();
     }
 
     @AfterAll
     static void resetPasswordToDefault(){
-        GenericPage
-                .openLoginAdminPage()
-                .setUsernameField(stageUsernameAdmin)
-                .setPasswordField(stagePasswordAdmin)
-                .loginAsAdmin()
-                .clickClientsLink()
-                .setClientSearchByEmailField(clientEmail)
-                .focusOutSearchFields()
-                .clickUpdateButton()
-                .setPasswordField(clientPassword)
-                .setRepeatPasswordField(clientPassword)
-                .clickSaveButton();
-        sleep(2000);
-        new MainAdminPage().clickLogoutLink();
-        sleep(1000);
-        closeWindow();
+        resetDefaultClientPassword(clientEmail);
     }
 }

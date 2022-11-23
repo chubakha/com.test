@@ -8,8 +8,7 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.closeWindow;
-import static com.codeborne.selenide.Selenide.sleep;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
@@ -25,13 +24,12 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
         if(isProd){
             GenericPage
                     .openYopmailPage()
-                    .clickCookiesAcceptButton()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
             sleep(2000);
             new YopmailIncomingMailPage()
                     .clickRefreshButton()
-                    .switchIframe();
+                    .switchEmailIframe();
             sleep(2000);
             GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordTokenPlusOneSymbol());
         }
@@ -48,21 +46,6 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
 
     @AfterAll
     static void resetPasswordToDefault(){
-        GenericPage
-                .openLoginAdminPage()
-                .setUsernameField(stageUsernameAdmin)
-                .setPasswordField(stagePasswordAdmin)
-                .loginAsAdmin()
-                .clickClientsLink()
-                .setClientSearchByEmailField(clientEmail)
-                .focusOutSearchFields()
-                .clickUpdateButton()
-                .setPasswordField(clientPassword)
-                .setRepeatPasswordField(clientPassword)
-                .clickSaveButton();
-        sleep(2000);
-        new MainAdminPage().clickLogoutLink();
-        sleep(1000);
-        closeWindow();
+        resetDefaultClientPassword(clientEmail);
     }
 }

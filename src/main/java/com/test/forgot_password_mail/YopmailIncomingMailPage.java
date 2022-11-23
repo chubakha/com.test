@@ -1,6 +1,7 @@
 package com.test.forgot_password_mail;
 
 import com.codeborne.selenide.SelenideElement;
+import com.test.onboarding.HelloSignOverlay;
 
 import java.util.Random;
 
@@ -11,6 +12,7 @@ public class YopmailIncomingMailPage {
     private final SelenideElement mailSubject = $x("//pre");
     private final SelenideElement incomingMailIframe = $x("//iframe[@id='ifmail']");
     private final SelenideElement refreshButton = $x("//button[@id='refresh']");
+    private final SelenideElement viewHelloSignDocument = $x("//span[contains(@style, 'color: rgba(247, 251, 253, 1)')]");
 
     public String getMailHeader(){
         return mailHeader.getText();
@@ -20,7 +22,7 @@ public class YopmailIncomingMailPage {
         return mailSubject.getText();
     }
 
-    public YopmailIncomingMailPage switchIframe(){
+    public YopmailIncomingMailPage switchEmailIframe(){
         switchTo().frame(incomingMailIframe);
         return this;
     }
@@ -48,12 +50,6 @@ public class YopmailIncomingMailPage {
         return this;
     }
 
-//    public String getForgetPasswordToken(){
-//        String[] link = mailSubject.getText().split("https://")[1].split("Best");
-//        String output = link[0].replace("cabinet.legalnodes.com", "stag.cabinet.legalnodes.co");
-//        return "https://" + output;
-//    }
-
     public String getForgetPasswordTokenMinusOneSymbol(){
         return getForgetPasswordToken().substring(0, getForgetPasswordToken().length() - 2);
     }
@@ -62,5 +58,10 @@ public class YopmailIncomingMailPage {
         Random r = new Random();
         char c = (char)(r.nextInt(26) + 'a');
         return getForgetPasswordToken() + c;
+    }
+
+    public HelloSignOverlay clickViewHelloSignDocument(){
+        viewHelloSignDocument.click();
+        return new HelloSignOverlay();
     }
 }

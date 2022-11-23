@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class ViewClientPage {
     private final SelenideElement pageTitle = $x("//h1");
     private final SelenideElement statusState = $x("//th[contains(text(), 'Status')]/following-sibling::td");
+    private final SelenideElement onboardingUrl = $x("//th[contains(text(), 'Onboarding Url')]/following-sibling::td");
 
     public boolean isPageTitleShown(){
         return pageTitle.exists();
@@ -15,5 +16,9 @@ public class ViewClientPage {
 
     public String getStatusState(){
         return statusState.getText();
+    }
+
+    public String getOnboardingUrl(){
+        return onboardingUrl.getText();
     }
 }

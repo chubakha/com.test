@@ -1,7 +1,5 @@
 package com.test.kanban.manager_kanban;
 
-import com.test.cabinet.client_cabinet_page.ClientKanbanPage;
-import com.test.cabinet.manager_cabinet_page.ManagerKanbanPage;
 import com.test.kanban.PrepareKanbanTestData;
 import com.test.login.LoginCabinetPage;
 import org.junit.jupiter.api.Assertions;

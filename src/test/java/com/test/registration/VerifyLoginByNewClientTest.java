@@ -72,44 +72,6 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
         Assertions.assertTrue(welcomePopupOverlay.isPopupShown(),"Welcome popup should be shown");
     }
 
-    @Test
-    @Order(4)
-    @Description("Delete new client")
-    void deleteNewClient(){
-        MainClientPage mainClientPage = GenericPage
-                .openLoginAdminPage()
-                .setUsernameField(stageUsernameAdmin)
-                .setPasswordField(stagePasswordAdmin)
-                .loginAsAdmin()
-                .clickClientsLink()
-                .setClientSearchByEmailField(emailCurrent)
-                .focusOutSearchFields()
-                .clickDeleteButton()
-                .pressEnterKey()
-                .setClientSearchByEmailField(emailCurrent)
-                .focusOutSearchFields();
-        Assertions.assertTrue(mainClientPage.isNoResultMessageShown(), "'No results found.' should be shown");
-    }
-
-    @Test
-    @Order(5)
-    @Description("Delete new company")
-    void deleteNewCompany(){
-        MainCompaniesPage mainCompaniesPage = GenericPage
-                .openLoginAdminPage()
-                .setUsernameField(stageUsernameAdmin)
-                .setPasswordField(stagePasswordAdmin)
-                .loginAsAdmin()
-                .clickCompaniesLink()
-                .setClientSearchByCompanyField(companyCurrent)
-                .focusOutSearchFields()
-                .clickDeleteButton()
-                .pressEnterKey()
-                .setClientSearchByCompanyField(companyCurrent)
-                .focusOutSearchFields();
-        Assertions.assertTrue(mainCompaniesPage.isNoResultMessageShown(), "'No results found.' should be shown");
-    }
-
     @AfterEach
     void clearCookiesAndLocalStorage(){
         Selenide.clearBrowserCookies();
@@ -117,9 +79,8 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
     }
 
     @AfterAll
-    static void clearCookiesAndLocalStorage2(){
-        Selenide.clearBrowserCookies();
-        localStorage().clear();
+    static void deleteNewClientAndCompany(){
+        deleteNewClient(emailCurrent, companyCurrent);
     }
 
 }

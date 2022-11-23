@@ -23,4 +23,5 @@ public class YopmailMainPage {
         cookiesAcceptButton.click();
         return this;
     }
+
 }

@@ -13,6 +13,7 @@ public class MainClientPage {
     private final SelenideElement updateButton = $x("//a[contains(@title, 'Update')]");
     private final SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
     private final SelenideElement onboardingLink = $x("//span[contains(text(), 'Onboarding')]");
+    private final SelenideElement viewButton = $x("//a[@title = 'View']");
 
     public MainClientPage setClientSearchByEmailField(String searchRequest){
         clientSearchByEmailField.val(searchRequest);
@@ -46,5 +47,10 @@ public class MainClientPage {
     public MainOnboardingPage clickOnboardingLink(){
         onboardingLink.click();
         return new MainOnboardingPage();
+    }
+
+    public ViewClientPage clickViewButton(){
+        viewButton.click();
+        return new ViewClientPage();
     }
 }

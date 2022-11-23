@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.closeWindow;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class VerifyRedirectForgotPasswordLinkTest extends PrepareLoginTestData {
+public class VerifyRedirectForgotPasswordLinkTest extends PrepareForgotPasswordMailData {
 
     @Test
     void verifyRedirectForgotPasswordLink(){
@@ -25,8 +25,4 @@ public class VerifyRedirectForgotPasswordLinkTest extends PrepareLoginTestData {
                 new CreateNewPasswordOverlay().getOverlayTitle(), "'Reset Password' should be shown on overlay");
     }
 
-    @AfterAll
-    static void closeBrowser(){
-        closeWindow();
-    }
 }

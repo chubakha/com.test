@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.sleep;
 
-public class VerifyCloseCreateNewPasswordPopupBySendMeBackLinkTest extends PrepareLoginTestData {
+public class VerifyCloseCreateNewPasswordPopupBySendMeBackLinkTest extends PrepareCreateNewPasswordData {
 
     @Test
     void verifyCloseCreateNewPasswordPopupBySendMeBackLink(){
@@ -25,10 +25,5 @@ public class VerifyCloseCreateNewPasswordPopupBySendMeBackLinkTest extends Prepa
         sleep(2000);
         Assertions.assertFalse(loginCabinetPage.isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
-    }
-
-    @AfterAll
-    static void closeBrowser(){
-        closeWindow();
     }
 }

@@ -1,8 +1,8 @@
 package com.test.login;
 
 import com.codeborne.selenide.SelenideElement;
-import com.test.cabinet.client_cabinet_page.ClientKanbanPage;
-import com.test.cabinet.manager_cabinet_page.ManagerKanbanPage;
+import com.test.kanban.client_kanban.ClientKanbanPage;
+import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import com.test.onboarding.WelcomePopupOverlay;
 
 import static com.codeborne.selenide.Selenide.*;

@@ -33,27 +33,11 @@ public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestDat
                 loginCabinetPage.getValidationMessage(),
                 String.format("'%s' message should be shown next to password field",
                         ValidationErrorMessagesType.INVALID_USERNAME_AND_PASSWORD_COMBINATION.getValue()));
-        localStorage().clear();
     }
 
     @AfterAll
     static void resetPasswordToDefault(){
-        GenericPage
-                .openLoginAdminPage()
-                .setUsernameField(stageUsernameAdmin)
-                .setPasswordField(stagePasswordAdmin)
-                .loginAsAdmin()
-                .clickManagersLink()
-                .setManagerSearchByEmailField(managerEmail)
-                .focusOutSearchFields()
-                .clickUpdateButton()
-                .setPasswordField(managerPassword)
-                .setRepeatPasswordField(managerPassword)
-                .clickSaveButton();
-        sleep(2000);
-        new MainAdminPage().clickLogoutLink();
-        sleep(1000);
-        closeWindow();
+        resetDefaultManagerPassword(managerEmail);
     }
 
 }

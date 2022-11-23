@@ -1,9 +1,10 @@
 package com.test.login;
 
 import com.test.PrepareOverallTestData;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 
 public class PrepareLoginTestData extends PrepareOverallTestData {
@@ -11,12 +12,13 @@ public class PrepareLoginTestData extends PrepareOverallTestData {
     @BeforeEach
     void openPage() {
         //setUp();
-        open("https://stag.cabinet.legalnodes.co/");
+        open(domainCabinet);
     }
 
-    /*@AfterEach
-    static void closeBrowser(){
-        closeWindow();
-    }*/
+    @AfterEach
+    void closeBrowser(){
+        clearBrowserLocalStorage();
+        localStorage().clear();
+    }
 
 }

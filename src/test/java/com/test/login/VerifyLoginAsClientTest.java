@@ -1,7 +1,7 @@
 package com.test.login;
 
-import com.test.cabinet.client_cabinet_page.ClientKanbanPage;
-import com.test.cabinet.manager_cabinet_page.ManagerKanbanPage;
+import com.test.kanban.client_kanban.ClientKanbanPage;
+import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -23,12 +23,6 @@ public class VerifyLoginAsClientTest extends PrepareLoginTestData {
         sleep(3000);
         Assertions.assertTrue(clientKanbanPage.isTaskRequestButtonShown(),
                 String.format("'%s' button should be shown", clientKanbanPage.getTaskRequestButtonText()));
-    }
-
-    @AfterAll
-    static void logOutManagerCabinet(){
-        new ManagerKanbanPage()
-                .clickLogOutLink();
     }
 
 }

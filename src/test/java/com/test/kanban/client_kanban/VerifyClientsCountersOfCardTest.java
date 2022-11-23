@@ -1,6 +1,5 @@
 package com.test.kanban.client_kanban;
 
-import com.test.cabinet.client_cabinet_page.ClientKanbanPage;
 import com.test.kanban.PrepareKanbanTestData;
 import com.test.login.LoginCabinetPage;
 import org.junit.jupiter.api.Assertions;
@@ -12,10 +11,10 @@ public class VerifyClientsCountersOfCardTest extends PrepareKanbanTestData {
     @Test
     void verifyClientsCountersOfCard(){
         ClientKanbanPage clientKanbanPage = new LoginCabinetPage()
-                .setEmailField(clientEmailDataGeneration)
-                .setPasswordField(clientPasswordDataGeneration)
+                .setEmailField(dataGenerationClientEmail)
+                .setPasswordField(dataGenerationClientPassword)
                 .loginAsClient();
-        sleep(3000);
+        sleep(4000);
         Assertions.assertAll(
                 () -> Assertions.assertEquals("2", clientKanbanPage.getAmountOfRequest(),
                         "Amount of requests should be equal to '2'"),

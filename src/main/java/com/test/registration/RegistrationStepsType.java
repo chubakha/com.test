@@ -6,7 +6,7 @@ public enum RegistrationStepsType {
     REGISTRATION_STEP3("3/4"),
     REGISTRATION_STEP4("Registration");
 
-    private String value;
+    private final String value;
 
     RegistrationStepsType(String value) {
         this.value = value;

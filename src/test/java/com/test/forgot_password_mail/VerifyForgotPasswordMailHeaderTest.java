@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.WebDriverRunner.closeWindow;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
-public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
+public class VerifyForgotPasswordMailHeaderTest extends PrepareForgotPasswordMailData {
 
     @Test
     void verifyForgotPasswordMailHeader(){
@@ -22,10 +22,9 @@ public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
         if(isProd){
             YopmailIncomingMailPage yopmailIncomingMailPage = GenericPage
                     .openYopmailPage()
-                    .clickCookiesAcceptButton()
                     .setLoginField(clientEmail)
                     .clickLoginButton()
-                    .switchIframe();
+                    .switchEmailIframe();
             Assertions.assertEquals("Legal Nodes Password Reset", yopmailIncomingMailPage.getMailHeader(),
                         "'Legal Nodes Password Reset' should be shown");
         }
@@ -37,10 +36,5 @@ public class VerifyForgotPasswordMailHeaderTest extends PrepareLoginTestData {
                         "'Legal Nodes Password Reset' should be shown");
         }
 
-    }
-
-    @AfterAll
-    static void closeBrowser(){
-        closeWindow();
     }
 }

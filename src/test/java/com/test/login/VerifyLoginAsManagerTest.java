@@ -1,6 +1,6 @@
 package com.test.login;
 
-import com.test.cabinet.manager_cabinet_page.ManagerKanbanPage;
+import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import io.qameta.allure.Owner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -13,7 +13,7 @@ import static com.test.registration.PrepareRegistrationTestData.AUTHOR_ALEX_CHU;
 public class VerifyLoginAsManagerTest extends PrepareLoginTestData {
 
     @Test
-    void loginAsManagerPage() {
+    void loginAsManager() {
         ManagerKanbanPage managerKanbanPage = new LoginCabinetPage()
                 .setEmailField(managerEmail)
                 .setPasswordField(managerPassword)
@@ -22,13 +22,4 @@ public class VerifyLoginAsManagerTest extends PrepareLoginTestData {
         Assertions.assertTrue(managerKanbanPage.isNewOfferButtonShown(),
                 String.format("'%s' button should be shown", managerKanbanPage.getNewOfferButtonText()));
     }
-
-    @AfterAll
-    static void logOutManagerCabinet(){
-        new ManagerKanbanPage()
-                .clickLogOutLink();
-    }
-
-
-
 }

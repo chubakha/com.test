@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class VerifyPasswordHaveBeenSavedMessageTest extends PrepareLoginTestData {
+public class VerifyPasswordHaveBeenSavedMessageTest extends PrepareCreateNewPasswordData {
 
     @Test
     void verifyPasswordHaveBeenSavedMessage(){
@@ -27,27 +27,11 @@ public class VerifyPasswordHaveBeenSavedMessageTest extends PrepareLoginTestData
                 .clickSendButton();
         Assertions.assertEquals("Password have been saved", createNewPasswordOverlay.getPasswordHaveBeenSavedTitle(),
                 "'Password have been saved' should be shown");
-        localStorage().clear();
     }
 
     @AfterAll
     static void resetPasswordToDefault(){
-        GenericPage
-                .openLoginAdminPage()
-                .setUsernameField(stageUsernameAdmin)
-                .setPasswordField(stagePasswordAdmin)
-                .loginAsAdmin()
-                .clickClientsLink()
-                .setClientSearchByEmailField(clientEmail)
-                .focusOutSearchFields()
-                .clickUpdateButton()
-                .setPasswordField(clientPassword)
-                .setRepeatPasswordField(clientPassword)
-                .clickSaveButton();
-        sleep(2000);
-        new MainAdminPage().clickLogoutLink();
-        sleep(1000);
-        closeWindow();
+        resetDefaultClientPassword(clientEmail);
     }
 
 }
