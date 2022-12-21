@@ -3,6 +3,7 @@ package com.test.kanban.client_kanban;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.test.login.LoginCabinetPage;
+import com.test.setting.InvoicesListPage;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -14,6 +15,7 @@ public class ClientKanbanPage {
     private final SelenideElement amountOfTasksInProgress = $x("//*[contains(text(), 'Tasks in progress')]/following-sibling::span");
     private final SelenideElement amountOfTasksComplete = $x("//*[contains(text(), 'Tasks complete')]/following-sibling::span");
     private final SelenideElement legalBoardLink = $x("//a[contains(text(), 'Legal Board')]");
+    private final SelenideElement billingLink = $x("//a[contains(text(), 'Billing')]");
 
     public boolean isTaskRequestButtonShown(){
         return newRequestButton.shouldBe(Condition.enabled).isDisplayed();
@@ -46,6 +48,11 @@ public class ClientKanbanPage {
     public ClientKanbanPage clickLegalBoardLink(){
         legalBoardLink.click();
         return this;
+    }
+
+    public InvoicesListPage clickBillingLink(){
+        billingLink.click();
+        return new InvoicesListPage();
     }
 
     public String getAmountOfRequest(){

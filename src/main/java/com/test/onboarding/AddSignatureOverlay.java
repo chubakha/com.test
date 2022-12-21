@@ -8,7 +8,7 @@ public class AddSignatureOverlay {
 
     private final SelenideElement signByTypeButton = $x("//li[@data-qa-ref = 'signing-modal--T']");
     private final SelenideElement signNameField = $x("//input[@data-qa-ref = 'signing-modal--type-in-field']");
-    private final SelenideElement insertSignButton = $x("//button[@data-qa-ref = 'singing-modal--insert-btn']");
+    private final SelenideElement insertEverywhereSignButton = $x("//button[@data-qa-ref = 'singing-modal--insert-btn']/following-sibling::button");
 
     public AddSignatureOverlay clickSignByTypeButton(){
         signByTypeButton.click();
@@ -20,8 +20,8 @@ public class AddSignatureOverlay {
         return this;
     }
 
-    public HelloSignOverlay clickInsertSignButton(){
-        insertSignButton.click();
+    public HelloSignOverlay clickInsertEverywhereSignButton(){
+        insertEverywhereSignButton.click();
         return new HelloSignOverlay();
     }
 

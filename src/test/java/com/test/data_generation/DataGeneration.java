@@ -14,10 +14,7 @@ import com.test.kanban.client_kanban.ClientDetailOfferPage;
 import com.test.kanban.client_kanban.ClientDetailRequestPage;
 import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import com.test.kanban.manager_kanban.ManagerDetailOfferPage;
-import com.test.onboarding.HelloSignEmailPopupOverlay;
-import com.test.onboarding.HelloSignOverlay;
-import com.test.onboarding.OnboardingPage;
-import com.test.onboarding.WelcomePopupOverlay;
+import com.test.onboarding.*;
 import com.test.registration.fourth_registration_page.ConfirmYourAccountOverlay;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import io.qameta.allure.Description;
@@ -32,6 +29,13 @@ import static com.test.PrepareOverallTestData.AUTHOR_ALEX_CHU;
 @Owner(value = AUTHOR_ALEX_CHU)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class DataGeneration extends PrepareOverallTestData {
+
+    public static final String invoicingClientPassword = "12345678";//faker.internet().password(8, 15);
+    public static final String firstName = faker.name().firstName();
+    public static final String lastName = faker.name().lastName();
+    public static final String company = faker.company().name();
+    public static final String invoicingClientEmail = firstName + "testyop@yopmail.com";
+
 
     @BeforeAll
     static void openPage(){
@@ -365,24 +369,12 @@ public class DataGeneration extends PrepareOverallTestData {
                 OfferStatusesType.DONE.getValue()));
     }
 
-    private final String invoicingClientFirstName = "InvoicingFirstName";
-    private final String invoicingClientLastName = "InvoicingLastName";
-    private final String invoicingClientCompanyName = "InvoicingCompanyName";
-
-    @Test
-    @Order(16)
-    @Description("Registration new client for invoicing")
-    void verifyRegistrationNewClientForInvoicing(){
-        registrationNewClientAndCompany(invoicingClientFirstName,
-                invoicingClientLastName,
-                invoicingClientCompanyName,
-                invoicingClientEmail,
-                invoicingClientPassword);
-    }
-
     @Test
     @Order(17)
-    void verifyCreateInvoiceAfterPassHelloSign() {
+    @Description("Create a trial invoice after passing onboarding")
+    void verifyCreateTrialInvoiceAfterPassHelloSign() {
+        recordInvoiceCredentialToFile(invoicingClientEmail, invoicingClientPassword, company);
+        registrationNewClientAndCompany(firstName, lastName, company, invoicingClientEmail, invoicingClientPassword);
         GenericPage
                 .openLoginPage()
                 .setEmailField(invoicingClientEmail)
@@ -398,6 +390,7 @@ public class DataGeneration extends PrepareOverallTestData {
         new HelloSignEmailPopupOverlay()
                 .setEmailField(invoicingClientEmail)
                 .clickVerifyEmailField();
+        sleep(10000);
         GenericPage
                 .openYopmailPage()
                 .setLoginField(invoicingClientEmail)
@@ -408,21 +401,20 @@ public class DataGeneration extends PrepareOverallTestData {
         Selenide.switchTo().window(2);
         sleep(15000);
         new HelloSignOverlay()
-                .setFullNameField(invoicingClientFirstName + " " + invoicingClientLastName)
+                .setFullNameField(firstName + " " + lastName)
                 .clickFullNameField()
                 .clickSignatureField()
                 .clickSignByTypeButton()
-                .setSignField(invoicingClientFirstName)
-                .clickInsertSignButton()
+                .setSignField(firstName)
+                .clickInsertEverywhereSignButton()
                 .setAddressField(faker.address().streetAddress())
-                .setCompanyField(invoicingClientCompanyName)
+                .setCompanyField(company)
                 .setCompanyNumberField(faker.phoneNumber().cellPhone())
-                .clickSignatureTwoField()
                 .setPositionField(faker.job().position())
                 .clickNextStepButton()
                 .clickAgreeButton();
-        closeWindow();
         sleep(3000);
+        closeWindow();
         ViewInvoicesPage viewInvoicesPage = GenericPage
                 .openLoginAdminPage()
                 .setUsernameField(stageUsernameAdmin)
@@ -434,10 +426,14 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickSortByIdLink()
                 .clickViewButton();
         Assertions.assertAll(
-                () -> Assertions.assertEquals(invoicingClientCompanyName, viewInvoicesPage.getCompanyNameText(),
-                        String.format("'%s' should be shown next to 'Company name' label", invoicingClientCompanyName)),
-                () -> Assertions.assertEquals("retainer", viewInvoicesPage.getServiceText(),
-                        "'retainer' should be shown next to 'Service' label")
+                () -> Assertions.assertEquals(company, viewInvoicesPage.getCompanyNameText(),
+                        String.format("'%s' should be shown next to 'Company name' label", company)),
+                () -> Assertions.assertEquals("trial", viewInvoicesPage.getServiceText(),
+                        "'retainer' should be shown next to 'Service' label"),
+                () -> Assertions.assertEquals("UNPAID", viewInvoicesPage.getStatusText(),
+                        "'UNPAID' should be shown next to 'Status' label"),
+                () -> Assertions.assertEquals(299, viewInvoicesPage.getSumText(),
+                        "'299' should 50be shown next to 'Timestamp' label")
         );
     }
 }

@@ -12,7 +12,7 @@ public class YopmailIncomingMailPage {
     private final SelenideElement mailSubject = $x("//pre");
     private final SelenideElement incomingMailIframe = $x("//iframe[@id='ifmail']");
     private final SelenideElement refreshButton = $x("//button[@id='refresh']");
-    private final SelenideElement viewHelloSignDocument = $x("//span[contains(@style, 'color: rgba(247, 251, 253, 1)')]");
+    private final SelenideElement viewHelloSignDocument = $x("//a[contains(@style, 'margin: 0; border: 0 solid rgba(30, 180, 228, 1)')]");
 
     public String getMailHeader(){
         return mailHeader.getText();

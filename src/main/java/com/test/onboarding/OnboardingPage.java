@@ -1,7 +1,7 @@
 package com.test.onboarding;
 
 import com.codeborne.selenide.SelenideElement;
-import com.test.invoices.InvoicePage;
+//import com.test.invoices.InvoicePage;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -18,10 +18,10 @@ public class OnboardingPage {
         return new HelloSignEmailPopupOverlay();
     }
 
-    public InvoicePage clickPayDeposit() {
-        payDeposit.click();
-        return new InvoicePage();
-    }
+//    public InvoicePage clickPayDeposit() {
+//        payDeposit.click();
+//        return new InvoicePage();
+//    }
 
 
 }

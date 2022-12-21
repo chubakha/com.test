@@ -8,7 +8,7 @@ import com.test.forgot_password_mail.YopmailIncomingMailPage;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
 
-import java.io.FileInputStream;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -48,8 +48,16 @@ public class PrepareOverallTestData {
     protected static String mainManagerLastName = "Manager";
     protected static String invoicingClientEmail;
     protected static String invoicingClientPassword;
+    protected static String invoicingCompanyName;
+    protected static String testCreditCardNumber;
+    protected static String testCardExpiry;
+    protected static String testCardCvc;
+    protected static String testCardHolder;
 
     protected static int limitChatMessage = 2990;
+
+    protected static int trialInvoicePrice = 299;
+    protected static int retainerInvoicePrice = 499;
 
     protected static String staticUrl = "https://www.google.com/";
 
@@ -71,6 +79,11 @@ public class PrepareOverallTestData {
         dataGenerationClientPassword = PrepareOverallTestData.getDataGenerationClientPassword();
         invoicingClientEmail = PrepareOverallTestData.getInvoicingClientEmail();
         invoicingClientPassword = PrepareOverallTestData.getInvoicingClientPassword();
+        invoicingCompanyName = PrepareOverallTestData.getInvoicingCompanyName();
+        testCreditCardNumber = PrepareOverallTestData.getTestCreditCardNumber();
+        testCardExpiry = PrepareOverallTestData.getTestCardExpiry();
+        testCardCvc = PrepareOverallTestData.getTestCardCvc();
+        testCardHolder = PrepareOverallTestData.getTestCardHolder();
     }
 
     private static String getClientEmail() {
@@ -113,12 +126,32 @@ public class PrepareOverallTestData {
         return getPropertyFileData().getProperty("invoicing.client.password");
     }
 
+    private static String getInvoicingCompanyName(){
+        return getPropertyFileData().getProperty("invoicing.client.company.name");
+    }
+
     private static String getDataGenerationClientEmail(){
         return getPropertyFileData().getProperty("client.email.data-generation");
     }
 
     private static String getDataGenerationClientPassword(){
         return getPropertyFileData().getProperty("client.password.data-generation");
+    }
+
+    private static String getTestCreditCardNumber(){
+        return getPropertyFileData().getProperty("test.credit.card.number");
+    }
+
+    private static String getTestCardExpiry(){
+        return getPropertyFileData().getProperty("test.card.expiry");
+    }
+
+    private static String getTestCardCvc(){
+        return getPropertyFileData().getProperty("test.card.cvc");
+    }
+
+    private static String getTestCardHolder(){
+        return getPropertyFileData().getProperty("test.card.holder");
     }
 
     public static Properties getPropertyFileData(){
@@ -244,6 +277,28 @@ public class PrepareOverallTestData {
                 .clickSaveButton();
         sleep(500);
         clearBrowserCookies();
+    }
+
+    public static void recordInvoiceCredentialToFile(String invoicingClientEmail, String invoicingClientPassword,
+                                                     String invoicingCompanyName){
+        File file = new File("src/test/resources/credentials.properties");
+        Properties prop = new Properties();
+        try (InputStream in = new FileInputStream(file))
+        {
+            if (in == null) {
+                throw new FileNotFoundException();
+            }
+            prop.load(in);
+            prop.setProperty("invoicing.client.email", invoicingClientEmail);
+            prop.setProperty("invoicing.client.password", invoicingClientPassword);
+            prop.setProperty("invoicing.client.company.name", invoicingCompanyName);
+
+            OutputStream out = new FileOutputStream(file);
+            prop.store(out, "update date");
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

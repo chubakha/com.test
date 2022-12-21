@@ -7,6 +7,7 @@ import com.test.forgot_password_mail.MailHogMainPage;
 import com.test.forgot_password_mail.YopmailMainPage;
 import com.test.login.LoginCabinetPage;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
+import com.test.setting.InvoicesListPage;
 import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -48,5 +49,10 @@ public abstract class GenericPage extends PrepareOverallData {
     public static MainAdminPage openAdminPageWithoutAuthorization(){
         open(domainAdminPanel);
         return new MainAdminPage();
+    }
+
+    public static InvoicesListPage openClientInvoicesPage(){
+        open(domainCabinet + "/settings/history");
+        return new InvoicesListPage();
     }
 }

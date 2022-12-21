@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyEditMessageTest extends PrepareOfferTestData {
 
     @Test
-    void verifyDeleteMessage(){
+    void verifyEditMessage(){
 
         String oldManagerMessage = faker.lorem().sentence();
         String newManagerMessage = faker.lorem().sentence();
