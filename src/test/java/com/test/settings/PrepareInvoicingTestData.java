@@ -45,5 +45,6 @@ public class PrepareInvoicingTestData extends PrepareOverallTestData {
                 .switchStatusToUnpaid()
                 .clickSaveButton();
         sleep(2000);
+        clearBrowserCookies();
     }
 }

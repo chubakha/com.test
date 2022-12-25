@@ -432,8 +432,8 @@ public class DataGeneration extends PrepareOverallTestData {
                         "'retainer' should be shown next to 'Service' label"),
                 () -> Assertions.assertEquals("UNPAID", viewInvoicesPage.getStatusText(),
                         "'UNPAID' should be shown next to 'Status' label"),
-                () -> Assertions.assertEquals(299, viewInvoicesPage.getSumText(),
-                        "'299' should 50be shown next to 'Timestamp' label")
+                () -> Assertions.assertEquals(trialInvoicePrice, viewInvoicesPage.getSumText(),
+                        String.format("'%s' should be shown next to 'Sum' label", trialInvoicePrice))
         );
     }
 }

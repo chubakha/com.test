@@ -30,7 +30,7 @@ public class VerifyPaymentWithCorporateCardTest extends PrepareInvoicingTestData
                 .setZipField(faker.address().zipCode())
                 .clickCurrencyDropdown()
                 .selectCurrency(String.valueOf(InvoicesCurrencyType.values()[getRandomCurrency(5)]))
-                .clickConfirmButtonWithRedirection();
+                .clickConfirmButtonWithRedirectionToStripePage();
         sleep(2000);
         InvoicesListPage invoicesListPage = new StripePaymentPage()
                 .setCreditCardNumberField(testCreditCardNumber)

@@ -14,7 +14,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 public class VerifyInvoiceDueDateTest extends PrepareInvoicingTestData {
 
     @Test
-    void verifyDateCreatingInvoice() {
+    void verifyInvoiceDueDate() {
         ChoicePaymentMethodPage choicePaymentMethodPage = new LoginCabinetPage()
                 .setEmailField(invoicingClientEmail)
                 .setPasswordField(invoicingClientPassword)

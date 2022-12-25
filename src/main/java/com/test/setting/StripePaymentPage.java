@@ -6,10 +6,12 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class StripePaymentPage {
 
-    private final SelenideElement vatLabel = $x("//span[contains(@class,'subtotalItemLabel')]");
+    private final SelenideElement vatValue = $x("//span[contains(@class,'subtotalItemLabel')]");
     private final SelenideElement creditCardNumberField = $x("//input[contains(@id, 'cardNumber')]");
     private final SelenideElement cardExpiryField = $x("//input[contains(@id, 'cardExpiry')]");
     private final SelenideElement cardCvcField = $x("//input[contains(@id, 'cardCvc')]");
+    private final SelenideElement countryDropdown = $x("//select[contains(@id, 'billingCountry')]");
+    private final SelenideElement greatBritainOption = $x("//select[contains(@id, 'billingCountry')]/option[contains(@value, 'GB')]");
     private final SelenideElement cardHolderField = $x("//input[contains(@id, 'billingName')]");
     private final SelenideElement payButton = $x("//*[@class = 'SubmitButton-IconContainer']");
 
@@ -38,8 +40,18 @@ public class StripePaymentPage {
         return new InvoicesListPage();
     }
 
-    public String getVatLabel(){
-        return vatLabel.getText();
+    public String getVatValue(){
+        return vatValue.getText();
+    }
+
+    public StripePaymentPage clickCountryDropdown(){
+        countryDropdown.click();
+        return this;
+    }
+
+    public StripePaymentPage clickGBCountry(){
+        greatBritainOption.click();
+        return this;
     }
 
 
