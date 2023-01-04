@@ -18,7 +18,7 @@ public class VerifyInvoiceCreationDateTest extends PrepareInvoicingTestData {
                 .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton();
-        sleep(1000);
+        sleep(2000);
         Assertions.assertEquals(getTodayDateEuSlash(), choicePaymentMethodPage.getCreatedDateLabel(),
                 String.format("'%s' date should be shown", getTodayDateEuSlash())
                 );

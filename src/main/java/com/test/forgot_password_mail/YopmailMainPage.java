@@ -14,9 +14,9 @@ public class YopmailMainPage {
         return this;
     }
 
-    public YopmailIncomingMailPage clickLoginButton(){
+    public YopmailInboxMailPage clickLoginButton(){
         loginButton.click();
-        return new YopmailIncomingMailPage();
+        return new YopmailInboxMailPage();
     }
 
     public YopmailMainPage clickCookiesAcceptButton(){

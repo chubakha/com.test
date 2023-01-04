@@ -3,7 +3,6 @@ package com.test.data_generation;
 import com.codeborne.selenide.Selenide;
 import com.test.GenericPage;
 import com.test.PrepareOverallTestData;
-import com.test.admin_panel.MainAdminPage;
 import com.test.admin_panel.clients_section.ViewClientPage;
 import com.test.admin_panel.companies_section.invoices.ViewInvoicesPage;
 import com.test.admin_panel.onboarding_section.ViewOnboardingPage;
@@ -34,7 +33,7 @@ public class DataGeneration extends PrepareOverallTestData {
     public static final String firstName = faker.name().firstName();
     public static final String lastName = faker.name().lastName();
     public static final String company = faker.company().name();
-    public static final String invoicingClientEmail = firstName + "testyop@yopmail.com";
+    public static final String invoicingClientEmail = firstName.toLowerCase() + "testyop@yopmail.com";
 
 
     @BeforeAll
@@ -76,9 +75,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickSaveButton();
         sleep(500);
         Assertions.assertEquals("Active", viewClientPage.getStatusState(), "Page title should be shown");
-        sleep(500);
-        new MainAdminPage().clickLogoutLink();
-        sleep(500);
     }
 
     @Test
@@ -99,16 +95,13 @@ public class DataGeneration extends PrepareOverallTestData {
     @Description("Passing Step 1 of Onboarding")
     void verifyPassingStep1Onboarding(){
         ViewOnboardingPage viewOnboardingPage = GenericPage
-                .openLoginAdminPage()
-                .setUsernameField(stageUsernameAdmin)
-                .setPasswordField(stagePasswordAdmin)
-                .loginAsAdmin()
+                .openAdminPageWithoutAuthorization()
                 .clickClientsLink()
                 .clickOnboardingLink()
                 .clickUpdateButton(4, dataGenerationClientFirstName)
                 .switchStageResultToDone()
                 .clickSaveButton();
-        sleep(500);
+        sleep (500);
         Assertions.assertTrue(viewOnboardingPage.updateButtonIsShown(), "Update button should be shown");
     }
 
@@ -157,17 +150,29 @@ public class DataGeneration extends PrepareOverallTestData {
         Assertions.assertTrue(viewOnboardingPage.updateButtonIsShown(), "Update button should be shown");
     }
 
+    @Test
+    @Order(8)
+    @Description("Switch trial to none status of company")
+    void verifySwitchTrialToNoneStatusCompany(){
+        GenericPage
+                .openAdminPageWithoutAuthorization()
+                .clickCompaniesLink()
+                .setClientSearchByCompanyField(dataGenerationClientCompany)
+                .focusOutSearchFields()
+                .clickUpdateButton()
+                .clickDebtSelect()
+                .clickDebtNone()
+                .clickSaveButton();
+        sleep(1000);
+   }
+
     @ParameterizedTest(name = "{index} - request name is {0}")
     @ValueSource(strings = { "1", "2", "3", "4", "5", "6", "7" })
-    @Order(8)
+    @Order(9)
     @Description("Registration of 7 requests")
     void verifyRegistration7requests(String value){
-        clearBrowserLocalStorage();
         GenericPage
-                .openLoginPage()
-                .setEmailField(dataGenerationClientEmail)
-                .setPasswordField(dataGenerationClientPassword)
-                .loginAsClient();
+                .openLoginPage();
         sleep(2000);
         new ClientKanbanPage()
                 .clickNewRequestButton()
@@ -186,7 +191,7 @@ public class DataGeneration extends PrepareOverallTestData {
     }
 
     @Test
-    @Order(9)
+    @Order(10)
     @Description("Assign company to manager")
     void verifyAssignCompanyToManager(){
         clearBrowserLocalStorage();
@@ -208,16 +213,12 @@ public class DataGeneration extends PrepareOverallTestData {
 
     @ParameterizedTest(name = "{index} - request name is {0}")
     @ValueSource(strings = { "1", "2", "3", "4", "5", "6" })
-    @Order(10)
+    @Order(11)
     @Description("Move 6 requests to draft")
     void verifyMoveRequestsToOffer(String value){
-        clearBrowserLocalStorage();
         GenericPage
-                .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
-        sleep(3000);
+                .openLoginPage();
+        sleep(2000);
         new ManagerKanbanPage()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown("DataGenerationCompany");
@@ -239,15 +240,11 @@ public class DataGeneration extends PrepareOverallTestData {
 
     @ParameterizedTest(name = "{index} - request name is {0}")
     @ValueSource(strings = { "1", "2", "3", "4", "5" })
-    @Order(11)
+    @Order(12)
     @Description("Move 5 drafts to publish")
     void verifyMoveRequestsToPublish(String value){
-        clearBrowserLocalStorage();
         GenericPage
-                .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
+                .openLoginPage();
         sleep(2000);
         new ManagerKanbanPage()
                 .clickCompanyListDropdown()
@@ -267,19 +264,19 @@ public class DataGeneration extends PrepareOverallTestData {
         );
     }
 
+    @Test
+    @Order(13)
+    void loginAsClient(){
+        logoutAndLoginAsClient();
+    }
+
     @ParameterizedTest(name = "{index} - offer name is {0}")
     @ValueSource(strings = { "1", "2", "3", "4" })
-    @Order(12)
+    @Order(14)
     @Description("Move 4 offers to accepted status")
     void verifyMoveOfferToAccepted(String value){
-        clearBrowserLocalStorage();
-        GenericPage
-                .openLoginPage()
-                .setEmailField(dataGenerationClientEmail)
-                .setPasswordField(dataGenerationClientPassword)
-                .loginAsClient();
-        sleep(2000);
         ClientDetailOfferPage clientDetailOfferPage = new ClientKanbanPage()
+                .clickLegalBoardLink()
                 .clickOfferCard(value)
                 .clickAcceptButton();
         sleep(2000);
@@ -292,22 +289,22 @@ public class DataGeneration extends PrepareOverallTestData {
         );
     }
 
+    @Test
+    @Order(15)
+    void loginAsManager(){
+        logoutAndLoginAsManager();
+    }
+
     @ParameterizedTest(name = "{index} - offer name is {0}")
     @ValueSource(strings = { "1", "2", "3" })
-    @Order(13)
+    @Order(16)
     @Description("Move 3 offers to 'Move to payment'")
     void verifyMoveOfferToMoveToPayment(String value){
-        clearBrowserLocalStorage();
-        GenericPage
-                .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
-        sleep(3000);
         new ManagerKanbanPage()
+                .clickLegalBoardLink()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown("DataGenerationCompany");
-        sleep(3000);
+        sleep(2000);
         ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
@@ -320,17 +317,11 @@ public class DataGeneration extends PrepareOverallTestData {
 
     @ParameterizedTest(name = "{index} - offer name is {0}")
     @ValueSource(strings = { "1", "2" })
-    @Order(14)
+    @Order(17)
     @Description("Move 2 offers to 'Start Delivery'")
     void verifyMoveOfferToStartDelivery(String value){
-        clearBrowserLocalStorage();
-        GenericPage
-                .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
-        sleep(2000);
         new ManagerKanbanPage()
+                .clickLegalBoardLink()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown("DataGenerationCompany");
         sleep(2000);
@@ -346,14 +337,11 @@ public class DataGeneration extends PrepareOverallTestData {
 
     @ParameterizedTest(name = "{index} - offer name is {0}")
     @ValueSource(strings = { "1" })
-    @Order(15)
+    @Order(18)
     @Description("Move 1 offers to 'Done'")
     void verifyMoveOfferToDone(String value){
         GenericPage
-                .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
+                .openLoginPage();
         sleep(2000);
         new ManagerKanbanPage()
                 .clickCompanyListDropdown()
@@ -370,10 +358,13 @@ public class DataGeneration extends PrepareOverallTestData {
     }
 
     @Test
-    @Order(17)
+    @Order(19)
     @Description("Create a trial invoice after passing onboarding")
     void verifyCreateTrialInvoiceAfterPassHelloSign() {
         recordInvoiceCredentialToFile(invoicingClientEmail, invoicingClientPassword, company);
+        clearBrowserLocalStorage();
+        clearBrowserCookies();
+        open(domainCabinet + "/registration");
         registrationNewClientAndCompany(firstName, lastName, company, invoicingClientEmail, invoicingClientPassword);
         GenericPage
                 .openLoginPage()

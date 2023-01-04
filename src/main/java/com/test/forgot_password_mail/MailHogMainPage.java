@@ -4,8 +4,13 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class MailHogMainPage {
 
-    public MailHogIncomingPage clickIncomingEmail(String email){
+    public MailHogRecoveryPasswordMailPage clickRecoveryPasswordEmail(String email){
         $x("//div[contains(text(), '" + email + "')]").click();
-        return new MailHogIncomingPage();
+        return new MailHogRecoveryPasswordMailPage();
+    }
+
+    public MailHogInvoiceMailPage clickInvoiceEmail(String email){
+        $x("//div[contains(text(), '" + email + "')]").click();
+        return new MailHogInvoiceMailPage();
     }
 }

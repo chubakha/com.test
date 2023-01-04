@@ -14,7 +14,7 @@ public class MainInvoicesPage {
     private final SelenideElement updateButton = $x("//a[contains(@title, 'Update')]");
 
     public MainInvoicesPage clickSortByIdLink(){
-        sleep(5000);
+        sleep(7000);
         sortByIdLink.click();
         return this;
     }

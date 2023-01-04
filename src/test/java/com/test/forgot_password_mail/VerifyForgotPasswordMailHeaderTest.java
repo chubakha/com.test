@@ -11,25 +11,25 @@ public class VerifyForgotPasswordMailHeaderTest extends PrepareForgotPasswordMai
 
     @Test
     void verifyForgotPasswordMailHeader(){
-        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
+        boolean isProd = isProductionDomainShown(url());
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
         if(isProd){
-            YopmailIncomingMailPage yopmailIncomingMailPage = GenericPage
+            YopmailInboxMailPage yopmailInboxMailPage = GenericPage
                     .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton()
                     .switchEmailIframe();
-            Assertions.assertEquals("Legal Nodes Password Reset", yopmailIncomingMailPage.getMailHeader(),
+            Assertions.assertEquals("Legal Nodes Password Reset", yopmailInboxMailPage.getMailHeader(),
                         "'Legal Nodes Password Reset' should be shown");
         }
         else{
-            MailHogIncomingPage mailHogIncomingPage = GenericPage
+            MailHogRecoveryPasswordMailPage mailHogRecoveryPasswordMailPage = GenericPage
                     .openMailHogPage()
-                    .clickIncomingEmail(clientEmail);
-            Assertions.assertEquals("Legal Nodes Password Reset", mailHogIncomingPage.getMailHeader(),
+                    .clickRecoveryPasswordEmail(clientEmail);
+            Assertions.assertEquals("Legal Nodes Password Reset", mailHogRecoveryPasswordMailPage.getMailHeader(),
                         "'Legal Nodes Password Reset' should be shown");
         }
 

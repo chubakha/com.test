@@ -10,7 +10,7 @@ public class HelloSignOverlay {
     private final SelenideElement companyField = $x("//*[contains(@class, '')][2]/div/div/div/textarea");
     private final SelenideElement companyNumberField = $x("//*[@placeholder = 'Company Number']");
     private final SelenideElement addressField = $x("//*[@placeholder = 'Address']");
-    private final SelenideElement positionField = $x("//*[contains(@class, '')][9]/div/div/div/textarea");
+    private final SelenideElement positionField = $x("//textarea[contains(@placeholder, 'Title')]");
     private final SelenideElement signatureField = $x("//div[@tabindex = '0']");
     private final SelenideElement signatureTwoField = $x("//div[@data-field = 'Signature2']");
     private final SelenideElement nextStepButton = $x("//button[@data-qa-ref = 'button-next']");

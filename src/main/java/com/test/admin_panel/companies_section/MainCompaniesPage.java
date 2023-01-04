@@ -10,6 +10,7 @@ public class MainCompaniesPage {
     private final SelenideElement clientSearchByCompanyField = $x("//input[contains(@name, 'CompanySearch') and contains(@name, 'name')]");
     private final SelenideElement pageTitle = $x("//h1");
     private final SelenideElement deleteButton = $x("//a[contains(@title, 'Delete')]");
+    private final SelenideElement updateButton = $x("//a[contains(@title, 'Update')]");
     private final SelenideElement noResultMessage = $x("//*[contains(text(), 'No results found.')]");
     private final SelenideElement invoicesLink = $x("//span[contains(text(), 'Invoices')]");
 
@@ -26,6 +27,11 @@ public class MainCompaniesPage {
     public MainCompaniesPage clickDeleteButton(){
         deleteButton.click();
         return this;
+    }
+
+    public UpdateCompaniesPage clickUpdateButton(){
+        updateButton.click();
+        return new UpdateCompaniesPage();
     }
 
     public MainCompaniesPage pressEnterKey(){

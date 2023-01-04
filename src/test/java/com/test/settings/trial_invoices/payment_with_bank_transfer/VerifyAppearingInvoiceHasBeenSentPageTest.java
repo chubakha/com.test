@@ -31,7 +31,6 @@ public class VerifyAppearingInvoiceHasBeenSentPageTest extends PrepareInvoicingT
                 .clickIConfirmCheckbox()
                 .clickGetInvoiceButton();
         sleep(1000);
-
         Assertions.assertAll(
                 () -> Assertions.assertEquals("The Invoice has been sent to your email",
                         invoiceHasBeenSentPage.getTitlePage(),

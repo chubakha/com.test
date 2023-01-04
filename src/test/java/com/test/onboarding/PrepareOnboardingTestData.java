@@ -25,7 +25,7 @@ public class PrepareOnboardingTestData extends PrepareOverallTestData {
         clearBrowserCookies();
     }
 
-    protected int getRandomManager(int amount){
+    public int getRandomManager(int amount){
         return new Random().nextInt(amount);
     }
 

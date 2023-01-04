@@ -1,12 +1,10 @@
 package com.test.login;
 
 import com.test.GenericPage;
-import com.test.admin_panel.MainAdminPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
-import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.MailHogRecoveryPasswordMailPage;
+import com.test.forgot_password_mail.YopmailInboxMailPage;
 import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +20,7 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
+        boolean isProd = isProductionDomainShown(url());
         String oldLink;
         if(isProd){
             GenericPage
@@ -30,19 +28,19 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
                     .setLoginField(clientEmail)
                     .clickLoginButton();
             sleep(2000);
-            new YopmailIncomingMailPage()
+            new YopmailInboxMailPage()
                     .clickRefreshButton()
                     .switchEmailIframe();
             sleep(2000);
-            oldLink = new YopmailIncomingMailPage().getForgetPasswordToken();
-            GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
+            oldLink = new YopmailInboxMailPage().getForgetPasswordToken();
+            GenericPage.openAnyLink(new YopmailInboxMailPage().getForgetPasswordToken());
         }
         else {
             GenericPage
                     .openMailHogPage()
-                    .clickIncomingEmail(clientEmail);
-            oldLink = new MailHogIncomingPage().getForgetPasswordToken();
-            GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
+                    .clickRecoveryPasswordEmail(clientEmail);
+            oldLink = new MailHogRecoveryPasswordMailPage().getForgetPasswordToken();
+            GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getForgetPasswordToken());
         }
 
         sleep(2000);

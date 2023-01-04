@@ -1,9 +1,8 @@
 package com.test.login;
 
 import com.test.GenericPage;
-import com.test.admin_panel.MainAdminPage;
-import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.MailHogRecoveryPasswordMailPage;
+import com.test.forgot_password_mail.YopmailInboxMailPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -20,24 +19,24 @@ public class VerifyTokenPlusOneSymbolTest extends PrepareLoginTestData {
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
+        boolean isProd = isProductionDomainShown(url());
         if(isProd){
             GenericPage
                     .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
             sleep(2000);
-            new YopmailIncomingMailPage()
+            new YopmailInboxMailPage()
                     .clickRefreshButton()
                     .switchEmailIframe();
             sleep(2000);
-            GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordTokenPlusOneSymbol());
+            GenericPage.openAnyLink(new YopmailInboxMailPage().getForgetPasswordTokenPlusOneSymbol());
         }
         else {
             GenericPage
                     .openMailHogPage()
-                    .clickIncomingEmail(clientEmail);
-            GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordTokenPlusOneSymbol());
+                    .clickRecoveryPasswordEmail(clientEmail);
+            GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getForgetPasswordTokenPlusOneSymbol());
         }
         sleep(2000);
         Assertions.assertFalse(new LoginCabinetPage().isForgotPasswordPopupShown(),

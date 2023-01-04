@@ -3,8 +3,8 @@ package com.test;
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import com.test.admin_panel.MainAdminPage;
-import com.test.forgot_password_mail.MailHogIncomingPage;
-import com.test.forgot_password_mail.YopmailIncomingMailPage;
+import com.test.forgot_password_mail.MailHogRecoveryPasswordMailPage;
+import com.test.forgot_password_mail.YopmailInboxMailPage;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -63,7 +63,7 @@ public class PrepareOverallTestData {
 
     public static String managerParameter;
 
-    protected static String domainCabinet = "https://stag.cabinet.legalnodes.co";
+    protected static String domainCabinet = "https://cabinet.legalnodes.com";
 
     @BeforeAll
     static void generalLinksInitialization(){
@@ -165,25 +165,38 @@ public class PrepareOverallTestData {
         return prop;
     }
 
+    public static boolean isProd;
+
+    public static boolean isProductionDomainShown(String url){
+
+        if (url.equals("https://stag.cabinet.legalnodes.co/")){
+            isProd = false;
+        }
+        else{
+            isProd = true;
+        }
+        return isProd;
+    }
+
     public static void redirectToForgetPasswordToken(String email){
-        boolean isProd = new YopmailIncomingMailPage().isProductionDomainShown(url());
+        boolean isProd = isProductionDomainShown(url());
         if(isProd){
             GenericPage
                     .openYopmailPage()
                     .setLoginField(email)
                     .clickLoginButton();
             sleep(2000);
-            new YopmailIncomingMailPage()
+            new YopmailInboxMailPage()
                     .clickRefreshButton()
                     .switchEmailIframe();
             sleep(2000);
-            GenericPage.openAnyLink(new YopmailIncomingMailPage().getForgetPasswordToken());
+            GenericPage.openAnyLink(new YopmailInboxMailPage().getForgetPasswordToken());
         }
         else {
             GenericPage
                     .openMailHogPage()
-                    .clickIncomingEmail(email);
-            GenericPage.openAnyLink(new MailHogIncomingPage().getForgetPasswordToken());
+                    .clickRecoveryPasswordEmail(email);
+            GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getForgetPasswordToken());
         }
     }
 
@@ -299,6 +312,24 @@ public class PrepareOverallTestData {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void logoutAndLoginAsClient(){
+        clearBrowserLocalStorage();
+        GenericPage
+                .openLoginPage()
+                .setEmailField(dataGenerationClientEmail)
+                .setPasswordField(dataGenerationClientPassword)
+                .loginAsClient();
+    }
+
+    public static void logoutAndLoginAsManager(){
+        clearBrowserLocalStorage();
+        GenericPage
+                .openLoginPage()
+                .setEmailField(managerEmail)
+                .setPasswordField(managerPassword)
+                .loginAsManager();
     }
 
 }
