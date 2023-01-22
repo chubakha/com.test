@@ -3,6 +3,7 @@ package com.test.setting;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class StripePaymentPage {
 
@@ -41,6 +42,7 @@ public class StripePaymentPage {
     }
 
     public String getVatValue(){
+        sleep(8000);
         return vatValue.getText();
     }
 

@@ -2,8 +2,7 @@ package com.test.kanban.client_kanban;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CreateTaskRequestOverlay {
     private final SelenideElement overlayTitle = $x("//h2[contains(text(), 'Create Task Request')]");
@@ -18,6 +17,7 @@ public class CreateTaskRequestOverlay {
     }
 
     public CreateTaskRequestOverlay clickCreateNewRequestButton(){
+        sleep(1000);
         createNewRequestButton.click();
         return new CreateTaskRequestOverlay();
     }
@@ -28,6 +28,7 @@ public class CreateTaskRequestOverlay {
     }
 
     public CreateTaskRequestOverlay setTitleField(String title){
+        sleep(1500);
         titleField.val(title);
         return this;
     }

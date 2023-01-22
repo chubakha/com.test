@@ -18,7 +18,6 @@ public class VerifyCloseCreateNewPasswordPopupBySendMeBackLinkTest extends Prepa
                 .setEmailField(clientEmail)
                 .clickSendButton();
         redirectToForgetPasswordToken(clientEmail);
-        System.out.println("2");
         sleep(2000);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .clickSendMeBackLink();

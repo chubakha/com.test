@@ -63,7 +63,7 @@ public class PrepareOverallTestData {
 
     public static String managerParameter;
 
-    protected static String domainCabinet = "https://cabinet.legalnodes.com";
+    protected static String domainCabinet = "https://stag.cabinet.legalnodes.co";
 
     @BeforeAll
     static void generalLinksInitialization(){

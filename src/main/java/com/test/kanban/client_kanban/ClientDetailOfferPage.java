@@ -3,8 +3,7 @@ package com.test.kanban.client_kanban;
 import com.codeborne.selenide.SelenideElement;
 import com.test.login.LoginCabinetPage;
 
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ClientDetailOfferPage {
     private final SelenideElement legalBoardLink = $x("//a[contains(text(), 'Legal Board')]");
@@ -40,6 +39,7 @@ public class ClientDetailOfferPage {
     }
 
     public String getStatusOfferText(){
+        sleep(2000);
             return statusOfferText.getText();
     }
 

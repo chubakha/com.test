@@ -3,6 +3,7 @@ package com.test.forgot_password_mail;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class YopmailMainPage {
     private final SelenideElement loginField = $x("//input[@name='login']");
@@ -15,6 +16,7 @@ public class YopmailMainPage {
     }
 
     public YopmailInboxMailPage clickLoginButton(){
+        sleep(8000);
         loginButton.click();
         return new YopmailInboxMailPage();
     }

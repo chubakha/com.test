@@ -1,25 +1,27 @@
 package com.test.settings.trial_invoices.payment_with_corporate_card;
 
+import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.login.LoginCabinetPage;
 import com.test.setting.InvoicesCurrencyType;
 import com.test.setting.InvoicesListPage;
 import com.test.setting.InvoicesStatusesType;
 import com.test.setting.StripePaymentPage;
 import com.test.settings.PrepareInvoicingTestData;
+import org.junit.Ignore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.localStorage;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyPaymentWithCorporateCardTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyPaymentWithCorporateCard(){
-        new LoginCabinetPage()
-                .setEmailField(invoicingClientEmail)
-                .setPasswordField(invoicingClientPassword)
-                .loginAsClient()
+
+        new ClientKanbanPage()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickCorporateCardPaymentMethodOption()

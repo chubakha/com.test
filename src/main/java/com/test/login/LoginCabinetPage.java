@@ -19,6 +19,7 @@ public class LoginCabinetPage {
 
     private void clickSighInButton(){
         sighInButton.click();
+        sleep(5000);
     }
 
     public ManagerKanbanPage loginAsManager() {
@@ -42,6 +43,7 @@ public class LoginCabinetPage {
     }
 
     public LoginCabinetPage setEmailField(String email){
+        sleep(2000);
         emailField.val(email);
         return this;
     }

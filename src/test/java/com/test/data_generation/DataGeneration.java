@@ -8,7 +8,6 @@ import com.test.admin_panel.companies_section.invoices.ViewInvoicesPage;
 import com.test.admin_panel.onboarding_section.ViewOnboardingPage;
 import com.test.kanban.OfferStatusesType;
 import com.test.kanban.client_kanban.ClientKanbanPage;
-import com.test.kanban.client_kanban.CreateTaskRequestOverlay;
 import com.test.kanban.client_kanban.ClientDetailOfferPage;
 import com.test.kanban.client_kanban.ClientDetailRequestPage;
 import com.test.kanban.manager_kanban.ManagerKanbanPage;
@@ -73,7 +72,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickUpdateButton()
                 .switchStatusToActive()
                 .clickSaveButton();
-        sleep(500);
         Assertions.assertEquals("Active", viewClientPage.getStatusState(), "Page title should be shown");
     }
 
@@ -86,7 +84,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .setEmailField(dataGenerationClientEmail)
                 .setPasswordField(dataGenerationClientPassword)
                 .loginAsNewClient();
-        sleep(3000);
         Assertions.assertTrue(welcomePopupOverlay.isPopupShown(),"Welcome popup should be shown");
     }
 
@@ -101,7 +98,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickUpdateButton(4, dataGenerationClientFirstName)
                 .switchStageResultToDone()
                 .clickSaveButton();
-        sleep (500);
         Assertions.assertTrue(viewOnboardingPage.updateButtonIsShown(), "Update button should be shown");
     }
 
@@ -116,7 +112,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickUpdateButton(3, dataGenerationClientFirstName)
                 .switchStageResultToDone()
                 .clickSaveButton();
-        sleep(500);
         Assertions.assertTrue(viewOnboardingPage.updateButtonIsShown(), "Update button should be shown");
     }
 
@@ -131,7 +126,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickUpdateButton(2, dataGenerationClientFirstName)
                 .switchStageResultToDone()
                 .clickSaveButton();
-        sleep(500);
         Assertions.assertTrue(viewOnboardingPage.updateButtonIsShown(), "Update button should be shown");
     }
 
@@ -146,7 +140,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickUpdateButton(1, dataGenerationClientFirstName)
                 .switchStageResultToDone()
                 .clickSaveButton();
-        sleep(500);
         Assertions.assertTrue(viewOnboardingPage.updateButtonIsShown(), "Update button should be shown");
     }
 
@@ -163,7 +156,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickDebtSelect()
                 .clickDebtNone()
                 .clickSaveButton();
-        sleep(1000);
    }
 
     @ParameterizedTest(name = "{index} - request name is {0}")
@@ -171,21 +163,17 @@ public class DataGeneration extends PrepareOverallTestData {
     @Order(9)
     @Description("Registration of 7 requests")
     void verifyRegistration7requests(String value){
-        GenericPage
-                .openLoginPage();
-        sleep(2000);
-        new ClientKanbanPage()
+        ClientDetailRequestPage clientDetailRequestPage = GenericPage
+                .openClientKanban()
                 .clickNewRequestButton()
-                .clickCreateNewRequestButton();
-        sleep(1000);
-        ClientDetailRequestPage clientDetailRequestPage = new CreateTaskRequestOverlay()
+                .clickCreateNewRequestButton()
                 .setTitleField(value)
                 .switchToDescriptionIframe()
                 .setDescriptionField(value)
                 .switchFocusToOverlay()
                 .clickSubmitButton();
-        sleep(2000);
-        Assertions.assertEquals(OfferStatusesType.DISCUSS_WITH_VLO.getValue(), clientDetailRequestPage.getRequestStatus(),
+        Assertions.assertEquals(OfferStatusesType.DISCUSS_WITH_VLO.getValue(),
+                clientDetailRequestPage.getRequestStatus(),
                 String.format("'%s' status should be shown on a detail request page",
                         OfferStatusesType.DISCUSS_WITH_VLO.getValue()));
     }
@@ -195,18 +183,15 @@ public class DataGeneration extends PrepareOverallTestData {
     @Description("Assign company to manager")
     void verifyAssignCompanyToManager(){
         clearBrowserLocalStorage();
-        GenericPage
+        ManagerKanbanPage managerKanbanPage = GenericPage
                 .openLoginPage()
                 .setEmailField(managerEmail)
                 .setPasswordField(managerPassword)
-                .loginAsManager();
-        sleep(2000);
-        ManagerKanbanPage managerKanbanPage = new ManagerKanbanPage()
+                .loginAsManager()
                 .clickNewClientButton()
                 .setEnterClientEmailField(dataGenerationClientEmail)
                 .clickAddNewClientButton()
                 .clickSubmitButton();
-        sleep(2000);
         Assertions.assertEquals("DataGenerationCompany", managerKanbanPage.getSelectedCompany(),
                 "'DataGenerationCompany' should be as selected company");
     }
@@ -216,23 +201,20 @@ public class DataGeneration extends PrepareOverallTestData {
     @Order(11)
     @Description("Move 6 requests to draft")
     void verifyMoveRequestsToOffer(String value){
-        GenericPage
-                .openLoginPage();
-        sleep(2000);
-        new ManagerKanbanPage()
+        ManagerDetailOfferPage managerDetailOfferPage = GenericPage
+                .openManagerKanban()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany");
-                sleep(2000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickCompanyInDropdown("DataGenerationCompany")
                 .clickRequestCard(value)
                 .clickTurnIntoOfferButton()
                 .clickCreateOfferButton();
-        sleep(2000);
         Assertions.assertAll(
-                () -> Assertions.assertEquals(OfferStatusesType.DRAFT.getValue(), managerDetailOfferPage.getOfferStatusText(),
+                () -> Assertions.assertEquals(OfferStatusesType.DRAFT.getValue(),
+                        managerDetailOfferPage.getOfferStatusText(),
                         String.format("'%s' should not be shown on the top offer",
                                 OfferStatusesType.DRAFT.getValue())),
-                () -> Assertions.assertEquals(OfferStatusesType.PREPARING_OFFER.getValue(),managerDetailOfferPage.getNextStepText(),
+                () -> Assertions.assertEquals(OfferStatusesType.PREPARING_OFFER.getValue(),
+                        managerDetailOfferPage.getNextStepText(),
                         String.format("'%s' should not be shown on the top offer",
                                 OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue()))
         );
@@ -243,22 +225,19 @@ public class DataGeneration extends PrepareOverallTestData {
     @Order(12)
     @Description("Move 5 drafts to publish")
     void verifyMoveRequestsToPublish(String value){
-        GenericPage
-                .openLoginPage();
-        sleep(2000);
-        new ManagerKanbanPage()
+        ManagerDetailOfferPage managerDetailOfferPage = GenericPage
+                .openManagerKanban()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown(dataGenerationClientCompany);
-        sleep(2000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(value)
                 .clickPublishButton();
-        sleep(2000);
         Assertions.assertAll(
-                () -> Assertions.assertEquals(OfferStatusesType.OFFER.getValue(),managerDetailOfferPage.getOfferStatusText(),
+                () -> Assertions.assertEquals(OfferStatusesType.OFFER.getValue(),
+                        managerDetailOfferPage.getOfferStatusText(),
                         String.format("'%s' should not be shown on the top offer",
                                 OfferStatusesType.OFFER.getValue())),
-                () -> Assertions.assertEquals(OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue(),managerDetailOfferPage.getNextStepText(),
+                () -> Assertions.assertEquals(OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue(),
+                        managerDetailOfferPage.getNextStepText(),
                         String.format("'%s' should not be shown on the top offer",
                                 OfferStatusesType.OFFER_HAS_TO_BE_ACCEPTED.getValue()))
         );
@@ -279,13 +258,12 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickLegalBoardLink()
                 .clickOfferCard(value)
                 .clickAcceptButton();
-        sleep(2000);
         Assertions.assertAll(
-                () -> Assertions.assertFalse(clientDetailOfferPage.isAcceptButtonEnabled(),
-                        "Accepted button should be disabled"),
                 () -> Assertions.assertTrue(clientDetailOfferPage.getStatusOfferText().contains(OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue()),
                         String.format("'%s' should not be shown on the top offer",
-                        OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue()))
+                                OfferStatusesType.WAIT_FOR_VLO_RESPONSE.getValue())),
+                () -> Assertions.assertFalse(clientDetailOfferPage.isAcceptButtonEnabled(),
+                        "Accepted button should be disabled")
         );
     }
 
@@ -300,17 +278,15 @@ public class DataGeneration extends PrepareOverallTestData {
     @Order(16)
     @Description("Move 3 offers to 'Move to payment'")
     void verifyMoveOfferToMoveToPayment(String value){
-        new ManagerKanbanPage()
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
                 .clickLegalBoardLink()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany");
-        sleep(2000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickCompanyInDropdown("DataGenerationCompany")
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
                 .clickMoveToPaymentStatus();
-        sleep(2000);
-        Assertions.assertEquals(OfferStatusesType.AWAITING_PAYMENT.getValue(), managerDetailOfferPage.getNextStepText(),
+        Assertions.assertEquals(OfferStatusesType.AWAITING_PAYMENT.getValue(),
+                managerDetailOfferPage.getNextStepText(),
                 String.format("'%s' should not be shown on the top offer",
                 OfferStatusesType.AWAITING_PAYMENT.getValue()));
     }
@@ -320,17 +296,15 @@ public class DataGeneration extends PrepareOverallTestData {
     @Order(17)
     @Description("Move 2 offers to 'Start Delivery'")
     void verifyMoveOfferToStartDelivery(String value){
-        new ManagerKanbanPage()
+        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
                 .clickLegalBoardLink()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany");
-        sleep(2000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickCompanyInDropdown("DataGenerationCompany")
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
                 .clickStartDeliveryStatus();
-        sleep(2000);
-        Assertions.assertEquals(OfferStatusesType.PREPARING_DOCUMENT.getValue(), managerDetailOfferPage.getNextStepText(),
+        Assertions.assertEquals(OfferStatusesType.PREPARING_DOCUMENT.getValue(),
+                managerDetailOfferPage.getNextStepText(),
                 String.format("'%s' should not be shown on the top offer",
                 OfferStatusesType.PREPARING_DOCUMENT.getValue()));
     }
@@ -340,18 +314,13 @@ public class DataGeneration extends PrepareOverallTestData {
     @Order(18)
     @Description("Move 1 offers to 'Done'")
     void verifyMoveOfferToDone(String value){
-        GenericPage
-                .openLoginPage();
-        sleep(2000);
-        new ManagerKanbanPage()
+        ManagerDetailOfferPage managerDetailOfferPage = GenericPage
+                .openManagerKanban()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany");
-        sleep(2000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickCompanyInDropdown("DataGenerationCompany")
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
                 .clickMoveToDoneStatus();
-        sleep(2000);
         Assertions.assertEquals(OfferStatusesType.DONE.getValue(), managerDetailOfferPage.getOfferStatusText(),
                 String.format("'%s' should not be shown on the top offer",
                 OfferStatusesType.DONE.getValue()));
@@ -370,18 +339,14 @@ public class DataGeneration extends PrepareOverallTestData {
                 .openLoginPage()
                 .setEmailField(invoicingClientEmail)
                 .setPasswordField(invoicingClientPassword)
-                .loginAsNewClient();
-        sleep(2000);
-        new WelcomePopupOverlay()
-                .clickContinueButton();
-        sleep(2000);
-        new OnboardingPage()
+                .loginAsNewClient()
+                .clickContinueButton()
                 .clickSignLetterButton();
         Selenide.switchTo().window(1);
         new HelloSignEmailPopupOverlay()
                 .setEmailField(invoicingClientEmail)
                 .clickVerifyEmailField();
-        sleep(10000);
+        sleep(5000);
         GenericPage
                 .openYopmailPage()
                 .setLoginField(invoicingClientEmail)
@@ -390,7 +355,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .switchEmailIframe()
                 .clickViewHelloSignDocument();
         Selenide.switchTo().window(2);
-        sleep(15000);
         new HelloSignOverlay()
                 .setFullNameField(firstName + " " + lastName)
                 .clickFullNameField()
@@ -404,7 +368,7 @@ public class DataGeneration extends PrepareOverallTestData {
                 .setPositionField(faker.job().position())
                 .clickNextStepButton()
                 .clickAgreeButton();
-        sleep(3000);
+        sleep(15000);
         closeWindow();
         ViewInvoicesPage viewInvoicesPage = GenericPage
                 .openLoginAdminPage()

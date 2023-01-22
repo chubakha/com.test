@@ -5,19 +5,30 @@ import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.forgot_password_mail.MailHogMainPage;
 import com.test.forgot_password_mail.YopmailMainPage;
+import com.test.kanban.client_kanban.ClientKanbanPage;
+import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import com.test.login.LoginCabinetPage;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import com.test.setting.InvoicesListPage;
 import org.openqa.selenium.Cookie;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.refresh;
+import static com.codeborne.selenide.Selenide.*;
 
 public abstract class GenericPage extends PrepareOverallData {
 
     public static LoginCabinetPage openLoginPage(){
         open(domainCabinet);
         return new LoginCabinetPage();
+    }
+
+    public static ClientKanbanPage openClientKanban(){
+        open(domainCabinet);
+        return new ClientKanbanPage();
+    }
+
+    public static ManagerKanbanPage openManagerKanban(){
+        open(domainCabinet);
+        return new ManagerKanbanPage();
     }
 
     private static void setYopmailAcceptPolicyCookies(){
@@ -34,6 +45,7 @@ public abstract class GenericPage extends PrepareOverallData {
 
     public static MailHogMainPage openMailHogPage(){
         open("https://stag.mailer.legalnodes.co/");
+        sleep(4000);
         return new MailHogMainPage();
     }
 

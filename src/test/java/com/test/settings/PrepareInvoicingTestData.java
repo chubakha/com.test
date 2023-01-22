@@ -2,10 +2,10 @@ package com.test.settings;
 
 import com.test.GenericPage;
 import com.test.PrepareOverallTestData;
-import com.test.RegistrationParametersType;
-import com.test.onboarding.PrepareOnboardingTestData;
-import org.junit.jupiter.api.AfterEach;
+import com.test.login.LoginCabinetPage;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.testng.annotations.BeforeTest;
 
 import java.util.Random;
 
@@ -20,12 +20,19 @@ public class PrepareInvoicingTestData extends PrepareOverallTestData {
         open(domainCabinet);
     }
 
-    @AfterEach
-    void closeBrowser(){
-        clearBrowserLocalStorage();
-        localStorage().clear();
-        clearBrowserCookies();
+    @BeforeTest
+    public static void Login() {
+        new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient();
     }
+
+//    @AfterEach
+//    void clearCookiesAndLocalStorage(){
+//        Selenide.clearBrowserCookies();
+//        localStorage().clear();
+//    }
 
     protected int getRandomCurrency(int amount){
         return new Random().nextInt(amount);

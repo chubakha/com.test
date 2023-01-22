@@ -5,6 +5,7 @@ import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.login.LoginCabinetPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ManagerKanbanPage {
     private final SelenideElement legalBoardLink = $x("//a[contains(text(), 'Legal Board')]");
@@ -43,10 +44,12 @@ public class ManagerKanbanPage {
     }
 
     public String getSelectedCompany(){
+        sleep(3000);
         return selectedCompany.getText();
     }
 
     public ManagerDetailRequestPage clickRequestCard(String title){
+        sleep(2000);
         $x("//*[contains(@class, 'body-title')and text() = '" + title + "']").click();
         return new ManagerDetailRequestPage();
     }

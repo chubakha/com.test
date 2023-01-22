@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.admin_panel.LoginAdminPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ViewClientPage {
     private final SelenideElement pageTitle = $x("//h1");
@@ -15,6 +16,7 @@ public class ViewClientPage {
     }
 
     public String getStatusState(){
+        sleep(500);
         return statusState.getText();
     }
 

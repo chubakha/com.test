@@ -6,6 +6,7 @@ import com.test.login.LoginCabinetPage;
 import com.test.setting.InvoicesListPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ClientKanbanPage {
     private final SelenideElement newRequestButton = $x("//button[contains(text(), 'NEW REQUEST')]");
@@ -31,6 +32,7 @@ public class ClientKanbanPage {
     }
 
     public CreateTaskRequestOverlay clickNewRequestButton(){
+        sleep(2000);
         newRequestButton.click();
         return new CreateTaskRequestOverlay();
     }
@@ -51,6 +53,7 @@ public class ClientKanbanPage {
     }
 
     public InvoicesListPage clickBillingLink(){
+        sleep(2000);
         billingLink.click();
         return new InvoicesListPage();
     }

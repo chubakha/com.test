@@ -13,6 +13,7 @@ public class YopmailInboxMailPage {
     private final SelenideElement incomingMailIframe = $x("//iframe[@id='ifmail']");
     private final SelenideElement refreshButton = $x("//button[@id='refresh']");
     private final SelenideElement viewHelloSignDocument = $x("//a[contains(@style, 'margin: 0; border: 0 solid rgba(30, 180, 228, 1)')]");
+    private final SelenideElement invoiceMailSubject = $x("//table//table//table//p[2]");
 
     public String getMailHeader(){
         return mailHeader.getText();
@@ -53,8 +54,9 @@ public class YopmailInboxMailPage {
     }
 
     public String getInvoiceCurrency(){
-        int startCurrencyPosition = mailSubject.getOwnText().indexOf("for ") + 4;
-        return mailSubject.getOwnText().substring(startCurrencyPosition,
+        sleep(2000);
+        int startCurrencyPosition = invoiceMailSubject.getOwnText().indexOf("for ") + 4;
+        return invoiceMailSubject.getOwnText().substring(startCurrencyPosition,
                 startCurrencyPosition + 3);
     }
 }

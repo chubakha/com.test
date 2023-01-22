@@ -4,8 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.kanban.client_kanban.ClientDetailOfferPage;
 import com.test.login.LoginCabinetPage;
 
-import static com.codeborne.selenide.Selenide.$x;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ManagerDetailOfferPage {
     private final SelenideElement publishButton = $x("//button[contains(text(), 'PUBLISH')]");
@@ -62,10 +61,12 @@ public class ManagerDetailOfferPage {
     }
 
     public String getNextStepText(){
+        sleep(3000);
         return nextStepText.getText();
     }
 
     public String getOfferStatusText(){
+        sleep(3000);
         return offerStatusText.getText();
     }
 

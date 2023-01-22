@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.admin_panel.clients_section.ViewClientPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class UpdateCompaniesPage {
 
@@ -23,6 +24,7 @@ public class UpdateCompaniesPage {
 
     public ViewCompaniesPage clickSaveButton(){
         saveButton.click();
+        sleep(2000);
         return new ViewCompaniesPage();
     }
 }

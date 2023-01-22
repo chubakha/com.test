@@ -1,5 +1,6 @@
 package com.test.settings.trial_invoices.payment_with_bank_transfer;
 
+import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.login.LoginCabinetPage;
 import com.test.setting.BillingInfoOverlay;
 import com.test.setting.InvoiceDetailPage;
@@ -8,17 +9,14 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.localStorage;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyInvoiceBillingInfoTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyBillingInfo(){
-
-        BillingInfoOverlay billingInfoOverlay = new LoginCabinetPage()
-                .setEmailField(invoicingClientEmail)
-                .setPasswordField(invoicingClientPassword)
-                .loginAsClient()
+        BillingInfoOverlay billingInfoOverlay = new ClientKanbanPage()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()

@@ -2,7 +2,7 @@ package com.test.setting;
 
 import com.codeborne.selenide.SelenideElement;
 
-import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.*;
 
 public class BillingInfoOverlay {
 
@@ -81,11 +81,13 @@ public class BillingInfoOverlay {
 
     public StripePaymentPage clickConfirmButtonWithRedirectionToStripePage(){
         confirmButton.click();
+        sleep(1000);
         return new StripePaymentPage();
     }
 
     public InvoiceDetailPage clickConfirmButtonWithRedirectionToInvoiceDetailPage(){
         confirmButton.click();
+        sleep(4000);
         return new InvoiceDetailPage();
     }
 

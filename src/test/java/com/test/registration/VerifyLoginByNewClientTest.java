@@ -68,7 +68,6 @@ public class VerifyLoginByNewClientTest extends PrepareRegistrationTestData {
                 .setEmailField(emailCurrent)
                 .setPasswordField(passwordCurrent)
                 .loginAsNewClient();
-        sleep(5000);
         Assertions.assertTrue(welcomePopupOverlay.isPopupShown(),"Welcome popup should be shown");
     }
 

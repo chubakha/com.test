@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 //import com.test.invoices.InvoicePage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class OnboardingPage {
 
@@ -14,6 +15,7 @@ public class OnboardingPage {
 
 
     public HelloSignEmailPopupOverlay clickSignLetterButton() {
+        sleep(2000);
         signLetterButton.click();
         return new HelloSignEmailPopupOverlay();
     }
