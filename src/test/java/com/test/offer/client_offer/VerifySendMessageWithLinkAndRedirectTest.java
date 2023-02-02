@@ -3,11 +3,11 @@ package com.test.offer.client_offer;
 import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.login.LoginCabinetPage;
 import com.test.offer.PrepareOfferTestData;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifySendMessageWithLinkAndRedirectTest extends PrepareOfferTestData {
@@ -21,13 +21,12 @@ public class VerifySendMessageWithLinkAndRedirectTest extends PrepareOfferTestDa
         new LoginCabinetPage()
                 .setEmailField(dataGenerationClientEmail)
                 .setPasswordField(dataGenerationClientPassword)
-                .loginAsClient();
-        sleep(2000);
-        new ClientKanbanPage()
+                .loginAsClient()
                 .clickOfferCard(randomOfferOrRequest)
                 .switchToChatIframe()
                 .setCommentField(clientMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton()
                 .clickLastChatMessageText();
         switchTo().window(1);
@@ -35,5 +34,10 @@ public class VerifySendMessageWithLinkAndRedirectTest extends PrepareOfferTestDa
         Assertions.assertEquals(clientMessage, url(),
                         String.format("'%s' should be shown as current page url", "https://" + clientMessage));
 
+    }
+
+    @AfterAll
+    static void closeWindows(){
+        closeWindow();
     }
 }

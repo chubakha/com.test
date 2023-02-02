@@ -81,13 +81,13 @@ public class BillingInfoOverlay {
 
     public StripePaymentPage clickConfirmButtonWithRedirectionToStripePage(){
         confirmButton.click();
-        sleep(1000);
+        sleep(3000);
         return new StripePaymentPage();
     }
 
     public InvoiceDetailPage clickConfirmButtonWithRedirectionToInvoiceDetailPage(){
         confirmButton.click();
-        sleep(4000);
+        sleep(5000);
         return new InvoiceDetailPage();
     }
 

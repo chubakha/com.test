@@ -19,7 +19,7 @@ public class LoginCabinetPage {
 
     private void clickSighInButton(){
         sighInButton.click();
-        sleep(5000);
+        sleep(4000);
     }
 
     public ManagerKanbanPage loginAsManager() {
@@ -34,6 +34,7 @@ public class LoginCabinetPage {
 
     public WelcomePopupOverlay loginAsNewClient() {
         clickSighInButton();
+        sleep(4000);
         return new WelcomePopupOverlay();
     }
 

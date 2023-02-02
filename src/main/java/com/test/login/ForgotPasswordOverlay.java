@@ -3,6 +3,7 @@ package com.test.login;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ForgotPasswordOverlay {
     private final SelenideElement overlayTitle = $x("//h1[contains(text(), 'Forgot Password')]");
@@ -23,6 +24,7 @@ public class ForgotPasswordOverlay {
 
     public ForgotPasswordOverlay clickSendButton(){
         sendButton.click();
+        sleep(2000);
         return this;
     }
 
@@ -41,6 +43,7 @@ public class ForgotPasswordOverlay {
 
     public LoginCabinetPage clickSendMeBackButton(){
         sendMeBackButton.click();
+        sleep(3000);
         return new LoginCabinetPage();
     }
 

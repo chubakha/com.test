@@ -14,7 +14,6 @@ public class VerifyClientsCountersOfCardTest extends PrepareKanbanTestData {
                 .setEmailField(dataGenerationClientEmail)
                 .setPasswordField(dataGenerationClientPassword)
                 .loginAsClient();
-        sleep(4000);
         Assertions.assertAll(
                 () -> Assertions.assertEquals("2", clientKanbanPage.getAmountOfRequest(),
                         "Amount of requests should be equal to '2'"),

@@ -20,10 +20,8 @@ public class VerifySendEmptyMessageTest extends PrepareOfferTestData {
                 .setPasswordField(dataGenerationClientPassword)
                 .loginAsClient()
                 .clickOfferCard(randomOfferOrRequest);
-        sleep(3000);
         ClientDetailOfferPage currentLastMessage = new ClientDetailOfferPage()
                 .clickSendCommentButton();
-        sleep(3000);
         Assertions.assertEquals(lastMessage.getLastChatMessageText(), currentLastMessage.getLastChatMessageText(),
                 String.format("'%s' should be as last message", lastMessage.getLastChatMessageText()));
     }

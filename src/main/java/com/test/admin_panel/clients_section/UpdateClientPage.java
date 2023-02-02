@@ -3,6 +3,7 @@ package com.test.admin_panel.clients_section;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class UpdateClientPage {
     private final SelenideElement statusSelect = $x("//select[contains(@id, 'status')]");
@@ -27,6 +28,7 @@ public class UpdateClientPage {
 
     public ViewClientPage clickSaveButton(){
         saveButton.click();
+        sleep(4000);
         return new ViewClientPage();
     }
 }

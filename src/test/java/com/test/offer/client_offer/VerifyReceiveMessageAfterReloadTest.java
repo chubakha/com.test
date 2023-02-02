@@ -7,8 +7,6 @@ import com.test.offer.PrepareOfferTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyReceiveMessageAfterReloadTest extends PrepareOfferTestData {
 
     @Test
@@ -19,8 +17,8 @@ public class VerifyReceiveMessageAfterReloadTest extends PrepareOfferTestData {
         String todayDate = (new PrepareOverallTestData().getTodayDateEuSlash());
 
         ClientDetailOfferPage clientDetailOfferPage = new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown(dataGenerationClientCompany)
@@ -28,6 +26,7 @@ public class VerifyReceiveMessageAfterReloadTest extends PrepareOfferTestData {
                 .switchToChatIframe()
                 .setCommentField(managerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton()
                 .clickLogOutLink()
                 .setEmailField(dataGenerationClientEmail)
@@ -35,11 +34,10 @@ public class VerifyReceiveMessageAfterReloadTest extends PrepareOfferTestData {
                 .loginAsClient()
                 .clickLegalBoardLink()
                 .clickOfferCard(randomOfferOrRequest);
-        sleep(2000);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(managerMessage, clientDetailOfferPage.getLastChatMessageText(),
                         String.format("'%s' message should be shown as last", managerMessage)),
-                () -> Assertions.assertEquals(mainManagerFirstName + " " + mainManagerLastName,
+                () -> Assertions.assertEquals(mainDataGenerationManagerFirstName + " " + mainDataGenerationManagerLastName,
                         clientDetailOfferPage.getLastChatMessageAuthor(),
                         "'DataGenerationFirstName DataGenerationLastName' should be shown as author of last message"),
                 () -> Assertions.assertEquals(todayDate, clientDetailOfferPage.getLastChatMessageDate(),

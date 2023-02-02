@@ -4,6 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.login.LoginCabinetPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class CreateNewPasswordOverlay {
 
@@ -40,11 +41,13 @@ public class CreateNewPasswordOverlay {
 
     public LoginCabinetPage clickCloseButton(){
         closeButton.click();
+        sleep(1000);
         return new LoginCabinetPage();
     }
 
     public LoginCabinetPage clickSendMeBackLink(){
         cancelLink.click();
+        sleep(2000);
         return new LoginCabinetPage();
     }
 

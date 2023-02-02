@@ -9,15 +9,15 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyInvoiceDescriptionTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyInvoiceDescription(){
 
-        InvoiceDetailPage invoiceDetailPage = new ClientKanbanPage()
+        InvoiceDetailPage invoiceDetailPage = new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()
@@ -29,7 +29,6 @@ public class VerifyInvoiceDescriptionTest extends PrepareInvoicingTestData {
                 .clickCurrencyDropdown()
                 .selectCurrency(String.valueOf(InvoicesCurrencyType.values()[getRandomCurrency(5)]))
                 .clickConfirmButtonWithRedirectionToInvoiceDetailPage();
-        sleep(1000);
         Assertions.assertEquals(InvoicesDescriptionType.TRIAL.getValue(), invoiceDetailPage.getDescriptionText(),
                 String.format("'%s' should be shown as description of invoice",
                         InvoicesDescriptionType.TRIAL.getValue()));

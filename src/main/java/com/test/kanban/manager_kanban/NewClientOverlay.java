@@ -3,6 +3,7 @@ package com.test.kanban.manager_kanban;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class NewClientOverlay {
     private final SelenideElement enterClientEmailField = $x("//input[contains(@placeholder, 'email')]");
@@ -15,6 +16,7 @@ public class NewClientOverlay {
 
     public NewClientOverlay setEnterClientEmailField(String email){
         enterClientEmailField.val(email);
+        sleep(2000);
         return this;
     }
 
@@ -25,11 +27,13 @@ public class NewClientOverlay {
 
     public NewClientOverlay clickAddNewClientButton(){
         addNewClientButton.click();
+        sleep(4000);
         return this;
     }
 
     public ManagerKanbanPage clickSubmitButton(){
         submitButton.click();
+        sleep(2000);
         return new ManagerKanbanPage();
     }
 

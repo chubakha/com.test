@@ -1,6 +1,5 @@
 package com.test.offer.client_offer;
 
-import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.kanban.client_kanban.EditMessageOverlay;
 import com.test.login.LoginCabinetPage;
 import com.test.offer.PrepareOfferTestData;
@@ -17,19 +16,18 @@ public class VerifyAppearEditMessagePopupTest extends PrepareOfferTestData {
         String clientMessage = faker.lorem().sentence();
         String randomOfferOrRequest = String.valueOf((int) (Math.ceil(Math.random()*6)));
 
-        new LoginCabinetPage()
+        EditMessageOverlay editMessageOverlay = new LoginCabinetPage()
                 .setEmailField(dataGenerationClientEmail)
                 .setPasswordField(dataGenerationClientPassword)
-                .loginAsClient();
-        sleep(2000);
-        EditMessageOverlay editMessageOverlay = new ClientKanbanPage()
+                .loginAsClient()
                 .clickOfferCard(randomOfferOrRequest)
                 .switchToChatIframe()
                 .setCommentField(clientMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton()
                 .hoverEditMessageIcon();
-        sleep(2000);
-        Assertions.assertTrue(editMessageOverlay.isEditMessagePopupShown(), "Edit Message Popup should be shown");
+        Assertions.assertTrue(editMessageOverlay.isEditMessagePopupShown(),
+                "Edit Message Popup should be shown");
     }
 }

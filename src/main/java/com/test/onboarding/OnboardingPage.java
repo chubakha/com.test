@@ -17,6 +17,7 @@ public class OnboardingPage {
     public HelloSignEmailPopupOverlay clickSignLetterButton() {
         sleep(2000);
         signLetterButton.click();
+        sleep(1500);
         return new HelloSignEmailPopupOverlay();
     }
 

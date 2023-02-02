@@ -8,7 +8,6 @@ import com.test.forgot_password_mail.YopmailMainPage;
 import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import com.test.login.LoginCabinetPage;
-import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import com.test.setting.InvoicesListPage;
 import org.openqa.selenium.Cookie;
 
@@ -23,11 +22,13 @@ public abstract class GenericPage extends PrepareOverallData {
 
     public static ClientKanbanPage openClientKanban(){
         open(domainCabinet);
+        sleep(4000);
         return new ClientKanbanPage();
     }
 
     public static ManagerKanbanPage openManagerKanban(){
         open(domainCabinet);
+        sleep(4000);
         return new ManagerKanbanPage();
     }
 
@@ -51,6 +52,7 @@ public abstract class GenericPage extends PrepareOverallData {
 
     public static void openAnyLink(String link){
         open(link);
+        sleep(2000);
     }
 
     public static LoginAdminPage openLoginAdminPage(){

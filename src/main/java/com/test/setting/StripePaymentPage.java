@@ -17,6 +17,7 @@ public class StripePaymentPage {
     private final SelenideElement payButton = $x("//*[@class = 'SubmitButton-IconContainer']");
 
     public StripePaymentPage setCreditCardNumberField(String creditCardNumber){
+        sleep(6000);
         creditCardNumberField.val(creditCardNumber);
         return this;
     }
@@ -38,6 +39,7 @@ public class StripePaymentPage {
 
     public InvoicesListPage clickPayButton(){
         payButton.click();
+        sleep(8000);
         return new InvoicesListPage();
     }
 
@@ -53,6 +55,7 @@ public class StripePaymentPage {
 
     public StripePaymentPage clickGBCountry(){
         greatBritainOption.click();
+        sleep(2000);
         return this;
     }
 

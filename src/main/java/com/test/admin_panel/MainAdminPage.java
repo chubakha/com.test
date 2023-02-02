@@ -33,4 +33,8 @@ public class MainAdminPage {
         logoutLink.click();
         return new LoginAdminPage();
     }
+
+    public boolean isLogoutLinkShown(){
+        return logoutLink.exists();
+    }
 }

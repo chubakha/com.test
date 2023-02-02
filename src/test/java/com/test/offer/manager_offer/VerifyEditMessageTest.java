@@ -18,26 +18,23 @@ public class VerifyEditMessageTest extends PrepareOfferTestData {
         String newManagerMessage = faker.lorem().sentence();
         String randomOfferOrRequest = String.valueOf((int) (Math.ceil(Math.random()*6)));
 
-        new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
-        sleep(2000);
-        new ManagerKanbanPage()
+        ManagerDetailOfferPage managerDetailOfferPage = new LoginCabinetPage()
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
+                .loginAsManager()
                 .clickOfferCard(randomOfferOrRequest)
                 .switchToChatIframe()
                 .setCommentField(oldManagerMessage)
                 .switchToRootContainerPage()
-                .clickSendCommentButton();
-        sleep(1000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerDetailOfferPage()
+                .scrollToUpPage()
+                .clickSendCommentButton()
                 .hoverEditMessageIcon()
                 .clickEditMessageLink()
                 .switchToChatIframe()
                 .editCommentField(newManagerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton();
-        sleep(1000);
         Assertions.assertEquals(oldManagerMessage + newManagerMessage, managerDetailOfferPage.getLastChatMessageText(),  "Edit Message Popup should be shown");
     }
 }

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifyCurrencyInTetherInvoiceTest extends PrepareInvoicingTestData {
@@ -21,7 +20,10 @@ public class VerifyCurrencyInTetherInvoiceTest extends PrepareInvoicingTestData 
 
         boolean isProd = isProductionDomainShown(url());
 
-        new ClientKanbanPage()
+        new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()
@@ -35,7 +37,7 @@ public class VerifyCurrencyInTetherInvoiceTest extends PrepareInvoicingTestData 
                 .clickConfirmButtonWithRedirectionToInvoiceDetailPage()
                 .clickIConfirmCheckbox()
                 .clickGetInvoiceButton();
-
+        localStorage().clear();
         if (isProd) {
             YopmailInboxMailPage yopmailInboxMailPage = GenericPage
                     .openYopmailPage()
@@ -49,7 +51,6 @@ public class VerifyCurrencyInTetherInvoiceTest extends PrepareInvoicingTestData 
             MailHogInvoiceMailPage mailHogInvoiceMailPage = GenericPage
                     .openMailHogPage()
                     .clickInvoiceEmail(invoicingClientEmail);
-            sleep(1000);
             Assertions.assertEquals("USD", mailHogInvoiceMailPage.getInvoiceCurrency(),
                     "'USD' should be shown in email letter");
         }

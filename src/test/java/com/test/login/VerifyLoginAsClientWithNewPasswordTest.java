@@ -13,13 +13,12 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
     @Test
     void verifyLoginAsClientWithNewPassword(){
 
+        String password = faker.internet().password(8, 15);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        redirectToForgetPasswordToken(clientEmail);
-        sleep(2000);
-        String password = faker.internet().password(8, 15);
+        redirectToLinkFromEmail(clientEmail);
         ClientKanbanPage clientKanbanPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
@@ -28,7 +27,6 @@ public class VerifyLoginAsClientWithNewPasswordTest extends PrepareLoginTestData
                 .setEmailField(clientEmail)
                 .setPasswordField(password)
                 .loginAsClient();
-        sleep(3000);
         Assertions.assertTrue(clientKanbanPage.isTaskRequestButtonShown(),
                 String.format("'%s' button should be shown", clientKanbanPage.getTaskRequestButtonText()));
     }

@@ -16,6 +16,7 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
     @Test
     void verifyRecoveryPasswordWithInactiveToken(){
 
+        String password = faker.internet().password(8, 15);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
@@ -27,36 +28,30 @@ public class VerifyRecoveryPasswordWithInactiveTokenTest extends PrepareLoginTes
                     .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
-            sleep(2000);
             new YopmailInboxMailPage()
                     .clickRefreshButton()
                     .switchEmailIframe();
-            sleep(2000);
-            oldLink = new YopmailInboxMailPage().getForgetPasswordToken();
-            GenericPage.openAnyLink(new YopmailInboxMailPage().getForgetPasswordToken());
+            oldLink = new YopmailInboxMailPage().getLinkFromProdEmail();
+            GenericPage.openAnyLink(new YopmailInboxMailPage().getLinkFromProdEmail());
         }
         else {
             GenericPage
                     .openMailHogPage()
                     .clickRecoveryPasswordEmail(clientEmail);
-            oldLink = new MailHogRecoveryPasswordMailPage().getForgetPasswordToken();
-            GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getForgetPasswordToken());
+            oldLink = new MailHogRecoveryPasswordMailPage().getLinkFromStageEmail();
+            GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getLinkFromStageEmail());
         }
 
-        sleep(2000);
-        String password = faker.internet().password(8, 15);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
                 .clickSendButton()
                 .clickCloseButton();
-        sleep(3000);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
         GenericPage.openAnyLink(oldLink);
-        sleep(2000);
         Assertions.assertFalse(loginCabinetPage.isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
     }

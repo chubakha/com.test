@@ -15,10 +15,9 @@ public class VerifyLoginAsManagerTest extends PrepareLoginTestData {
     @Test
     void loginAsManager() {
         ManagerKanbanPage managerKanbanPage = new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager();
-        sleep(3000);
         Assertions.assertTrue(managerKanbanPage.isNewOfferButtonShown(),
                 String.format("'%s' button should be shown", managerKanbanPage.getNewOfferButtonText()));
     }

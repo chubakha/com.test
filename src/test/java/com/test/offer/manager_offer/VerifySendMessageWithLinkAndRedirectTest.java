@@ -20,14 +20,15 @@ public class VerifySendMessageWithLinkAndRedirectTest extends PrepareOfferTestDa
         String managerMessage = staticUrl;
         String randomOfferOrRequest = String.valueOf((int) (Math.ceil(Math.random()*6)));
 
-        ManagerDetailOfferPage managerDetailOfferPage = new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+        new LoginCabinetPage()
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickOfferCard(randomOfferOrRequest)
                 .switchToChatIframe()
                 .setCommentField(managerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton()
                 .clickLastChatMessageText();
         switchTo().window(1);

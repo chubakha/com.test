@@ -13,28 +13,26 @@ public class VerifyLoginAsManagerWithNewPasswordTest extends PrepareLoginTestDat
     @Test
     void verifyLoginAsManagerWithNewPassword(){
 
+        String password = faker.internet().password(8, 15);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
-                .setEmailField(managerEmail)
+                .setEmailField(dataGenerationManagerEmail)
                 .clickSendButton();
-        redirectToForgetPasswordToken(managerEmail);
-        sleep(2000);
-        String password = faker.internet().password(8, 15);
+        redirectToLinkFromEmail(dataGenerationManagerEmail);
         ManagerKanbanPage managerKanbanPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
                 .clickSendButton()
                 .clickCloseButton()
-                .setEmailField(managerEmail)
+                .setEmailField(dataGenerationManagerEmail)
                 .setPasswordField(password)
                 .loginAsManager();
-        sleep(3000);
         Assertions.assertTrue(managerKanbanPage.isNewOfferButtonShown(),
                 String.format("'%s' button should be shown", managerKanbanPage.getNewOfferButtonText()));
     }
 
     @AfterAll
     static void resetPasswordToDefault(){
-        resetDefaultManagerPassword(managerEmail);
+        resetDefaultManagerPassword(dataGenerationManagerEmail);
     }
 }

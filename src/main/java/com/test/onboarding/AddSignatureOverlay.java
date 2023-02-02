@@ -22,6 +22,7 @@ public class AddSignatureOverlay {
 
     public HelloSignOverlay clickInsertEverywhereSignButton(){
         insertEverywhereSignButton.click();
+        sleep(3000);
         return new HelloSignOverlay();
     }
 

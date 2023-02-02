@@ -3,6 +3,7 @@ package com.test.kanban.client_kanban;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class EditMessageOverlay {
 
@@ -11,6 +12,7 @@ public class EditMessageOverlay {
     private final SelenideElement editMessagePopup = $x("//div[contains(@class, 'messages')][1]/div[contains(@class, 'sending-time')]/div[contains(@class, 'messages__edit')]/div[contains(@class, 'edit-dropdown')]");
 
     public boolean isEditMessagePopupShown(){
+        sleep(2000);
         return editMessagePopup.isDisplayed();
     }
 
@@ -20,7 +22,9 @@ public class EditMessageOverlay {
     }
 
     public ClientDetailOfferPage clickDeleteMessageLink(){
+        sleep(1000);
         deleteMessageLink.click();
+        sleep(2000);
         return new ClientDetailOfferPage();
     }
 

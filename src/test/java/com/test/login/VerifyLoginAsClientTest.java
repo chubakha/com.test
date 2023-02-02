@@ -20,7 +20,6 @@ public class VerifyLoginAsClientTest extends PrepareLoginTestData {
                 .setEmailField(clientEmail)
                 .setPasswordField(clientPassword)
                 .loginAsClient();
-        sleep(3000);
         Assertions.assertTrue(clientKanbanPage.isTaskRequestButtonShown(),
                 String.format("'%s' button should be shown", clientKanbanPage.getTaskRequestButtonText()));
     }

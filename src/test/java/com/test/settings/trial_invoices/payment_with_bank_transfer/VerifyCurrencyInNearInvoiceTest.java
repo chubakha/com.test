@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifyCurrencyInNearInvoiceTest extends PrepareInvoicingTestData {
@@ -20,7 +19,10 @@ public class VerifyCurrencyInNearInvoiceTest extends PrepareInvoicingTestData {
     void verifyCurrencyInNearInvoice(){
 
         boolean isProd = isProductionDomainShown(url());
-        new ClientKanbanPage()
+        new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()
@@ -34,13 +36,13 @@ public class VerifyCurrencyInNearInvoiceTest extends PrepareInvoicingTestData {
                 .clickConfirmButtonWithRedirectionToInvoiceDetailPage()
                 .clickIConfirmCheckbox()
                 .clickGetInvoiceButton();
+        localStorage().clear();
         if (isProd) {
             YopmailInboxMailPage yopmailInboxMailPage = GenericPage
                     .openYopmailPage()
                     .setLoginField(invoicingClientEmail)
                     .clickLoginButton()
                     .switchEmailIframe();
-            sleep(1000);
             Assertions.assertEquals("USD", yopmailInboxMailPage.getInvoiceCurrency(),
                     "'USD' should be shown in email letter");
         }
@@ -48,7 +50,6 @@ public class VerifyCurrencyInNearInvoiceTest extends PrepareInvoicingTestData {
             MailHogInvoiceMailPage mailHogInvoiceMailPage = GenericPage
                     .openMailHogPage()
                     .clickInvoiceEmail(invoicingClientEmail);
-            sleep(1000);
             Assertions.assertEquals("USD", mailHogInvoiceMailPage.getInvoiceCurrency(),
                     "'USD' should be shown in email letter");
         }

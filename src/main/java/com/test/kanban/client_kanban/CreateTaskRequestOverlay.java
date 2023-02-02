@@ -17,18 +17,19 @@ public class CreateTaskRequestOverlay {
     }
 
     public CreateTaskRequestOverlay clickCreateNewRequestButton(){
-        sleep(1000);
+        sleep(2000);
         createNewRequestButton.click();
+        sleep(5000);
         return new CreateTaskRequestOverlay();
     }
 
     public ClientDetailRequestPage clickSubmitButton(){
         submitButton.click();
+        sleep(5000);
         return new ClientDetailRequestPage();
     }
 
     public CreateTaskRequestOverlay setTitleField(String title){
-        sleep(1500);
         titleField.val(title);
         return this;
     }

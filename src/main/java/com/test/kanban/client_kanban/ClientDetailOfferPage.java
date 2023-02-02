@@ -18,6 +18,7 @@ public class ClientDetailOfferPage {
     private final SelenideElement logOutLink = $x("//*[contains(text(), 'Log out')]");
     private final SelenideElement editMessageIcon = $x("//div[contains(@class, 'messages')][1]/div[contains(@class, 'sending-time')]/*[contains(@class, 'messages__edit')]");
     private final SelenideElement editMessagePopup = $x("//div[contains(@class, 'messages')][1]/div[contains(@class, 'sending-time')]/div[contains(@class, 'messages__edit')]/div[contains(@class, 'edit-dropdown')]");
+    private final SelenideElement header = $x("//div[@class='header__left']");
 
     public LoginCabinetPage clickLogOutLink(){
         logOutLink.click();
@@ -31,6 +32,7 @@ public class ClientDetailOfferPage {
 
     public ClientDetailOfferPage clickAcceptButton(){
         acceptButton.click();
+        sleep(4000);
         return new ClientDetailOfferPage();
     }
 
@@ -40,7 +42,12 @@ public class ClientDetailOfferPage {
 
     public String getStatusOfferText(){
         sleep(2000);
-            return statusOfferText.getText();
+        return statusOfferText.getText();
+    }
+
+    public ClientDetailOfferPage scrollToUpPage(){
+        header.scrollIntoView(false);
+        return this;
     }
 
     public ClientDetailOfferPage setCommentField(String value){
@@ -55,6 +62,7 @@ public class ClientDetailOfferPage {
 
     public ClientDetailOfferPage clickSendCommentButton(){
         sendCommentButton.click();
+        sleep(3000);
         return this;
     }
 

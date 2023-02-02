@@ -25,11 +25,9 @@ public class VerifyTokenWithoutLastSymbolTest extends PrepareLoginTestData {
                     .openYopmailPage()
                     .setLoginField(clientEmail)
                     .clickLoginButton();
-            sleep(3000);
             new YopmailInboxMailPage()
                     .clickRefreshButton()
                     .switchEmailIframe();
-            sleep(3000);
             GenericPage.openAnyLink(new YopmailInboxMailPage().getForgetPasswordTokenMinusOneSymbol());
         } else {
             GenericPage
@@ -37,7 +35,6 @@ public class VerifyTokenWithoutLastSymbolTest extends PrepareLoginTestData {
                     .clickRecoveryPasswordEmail(clientEmail);
             GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getForgetPasswordTokenMinusOneSymbol());
         }
-        sleep(2000);
         Assertions.assertFalse(new LoginCabinetPage().isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
     }

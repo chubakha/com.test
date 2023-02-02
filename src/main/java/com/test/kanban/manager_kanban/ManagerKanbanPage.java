@@ -1,6 +1,7 @@
 package com.test.kanban.manager_kanban;
 
 import com.codeborne.selenide.SelenideElement;
+import com.test.admin_panel.MainAdminPage;
 import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.login.LoginCabinetPage;
 
@@ -33,13 +34,20 @@ public class ManagerKanbanPage {
         return new LoginCabinetPage();
     }
 
+    public boolean isLogOutLinkShown(){
+        return logOutLink.exists();
+    }
+
     public NewClientOverlay clickNewClientButton(){
+        sleep(2000);
         newClientButton.click();
+        sleep(4000);
         return new NewClientOverlay();
     }
 
     public ManagerKanbanPage clickLegalBoardLink(){
         legalBoardLink.click();
+        sleep(2000);
         return this;
     }
 
@@ -49,13 +57,14 @@ public class ManagerKanbanPage {
     }
 
     public ManagerDetailRequestPage clickRequestCard(String title){
-        sleep(2000);
         $x("//*[contains(@class, 'body-title')and text() = '" + title + "']").click();
+        sleep(1500);
         return new ManagerDetailRequestPage();
     }
 
     public ManagerDetailOfferPage clickOfferCard(String title){
         $x("//*[contains(@class, 'body-title')and text() = '" + title + "']").click();
+        sleep(4000);
         return new ManagerDetailOfferPage();
     }
 
@@ -66,6 +75,7 @@ public class ManagerKanbanPage {
 
     public ManagerKanbanPage clickCompanyInDropdown(String company){
         $x("//*[@title = '" + company + "']").click();
+        sleep(4000);
         return this;
     }
 

@@ -15,25 +15,27 @@ public class VerifyDeleteMessageTest extends PrepareOfferTestData {
     @Test
     void verifyDeleteMessage(){
 
-        String clientMessage = faker.lorem().sentence();
+        String clientFirstMessage = faker.lorem().sentence();
+        String clientLastMessage = faker.lorem().sentence();
         String randomOfferOrRequest = String.valueOf((int) (Math.ceil(Math.random()*6)));
 
-        new LoginCabinetPage()
+        ClientDetailOfferPage clientDetailOfferPage = new LoginCabinetPage()
                 .setEmailField(dataGenerationClientEmail)
                 .setPasswordField(dataGenerationClientPassword)
-                .loginAsClient();
-        sleep(2000);
-        new ClientKanbanPage()
+                .loginAsClient()
                 .clickOfferCard(randomOfferOrRequest)
                 .switchToChatIframe()
-                .setCommentField(clientMessage)
+                .setCommentField(clientFirstMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton()
-                .hoverEditMessageIcon();
-        sleep(1000);
-        ClientDetailOfferPage clientDetailOfferPage = new EditMessageOverlay()
+                .switchToChatIframe()
+                .setCommentField(clientLastMessage)
+                .switchToRootContainerPage()
+                .scrollToUpPage()
+                .clickSendCommentButton()
+                .hoverEditMessageIcon()
                 .clickDeleteMessageLink();
-        sleep(1000);
-        Assertions.assertNotEquals(clientMessage, clientDetailOfferPage.getLastChatMessageText(),  "Edit Message Popup should be shown");
+        Assertions.assertEquals(clientFirstMessage, clientDetailOfferPage.getLastChatMessageText(),  "Edit Message Popup should be shown");
     }
 }

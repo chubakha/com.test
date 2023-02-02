@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.admin_panel.companies_section.invoices.MainInvoicesPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class MainCompaniesPage {
     private final SelenideElement clientSearchByCompanyField = $x("//input[contains(@name, 'CompanySearch') and contains(@name, 'name')]");
@@ -36,6 +37,7 @@ public class MainCompaniesPage {
 
     public MainCompaniesPage pressEnterKey(){
         Selenide.switchTo().alert().accept();
+        sleep(500);
         return this;
     }
 

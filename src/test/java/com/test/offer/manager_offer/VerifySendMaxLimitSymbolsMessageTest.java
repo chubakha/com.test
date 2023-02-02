@@ -17,20 +17,18 @@ public class VerifySendMaxLimitSymbolsMessageTest extends PrepareOfferTestData {
         String managerMessage = faker.lorem().fixedString(limitChatMessage);
         String randomOfferOrRequest = String.valueOf((int) (Math.ceil(Math.random()*6)));
 
-        new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+        ManagerDetailOfferPage managerDetailOfferPage = new LoginCabinetPage()
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown(dataGenerationClientCompany);
-        sleep(2000);
-        ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
+                .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(randomOfferOrRequest)
                 .switchToChatIframe()
                 .setCommentField(managerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton();
-        sleep(3000);
         Assertions.assertEquals(managerMessage, managerDetailOfferPage.getLastChatMessageText(),
                         String.format("'%s' message should be shown as last", managerMessage));
     }

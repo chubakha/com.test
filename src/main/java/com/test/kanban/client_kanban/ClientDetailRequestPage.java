@@ -11,7 +11,6 @@ public class ClientDetailRequestPage {
     private final SelenideElement logOutLink = $x("//*[contains(text(), 'Log out')]");
 
     public String getRequestStatus(){
-        sleep(3000);
         return requestStatus.getText();
     }
 

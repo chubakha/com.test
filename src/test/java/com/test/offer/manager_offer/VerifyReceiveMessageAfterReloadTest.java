@@ -28,14 +28,14 @@ public class VerifyReceiveMessageAfterReloadTest extends PrepareOfferTestData {
                 .switchToChatIframe()
                 .setCommentField(managerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton()
                 .clickLogOutLink()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickLegalBoardLink()
                 .clickOfferCard(randomOfferOrRequest);
-        sleep(2000);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(managerMessage, managerDetailOfferPage.getLastChatMessageText(),
                         String.format("'%s' message should be shown as last", managerMessage)),

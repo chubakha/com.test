@@ -1,7 +1,6 @@
 package com.test.offer.manager_offer;
 
 import com.test.kanban.manager_kanban.EditMessageOverlay;
-import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import com.test.login.LoginCabinetPage;
 import com.test.offer.PrepareOfferTestData;
 import org.junit.jupiter.api.Assertions;
@@ -17,19 +16,17 @@ public class VerifyAppearEditMessagePopupTest extends PrepareOfferTestData {
         String managerMessage = faker.lorem().sentence();
         String randomOfferOrRequest = String.valueOf((int) (Math.ceil(Math.random()*6)));
 
-        new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
-                .loginAsManager();
-        sleep(2000);
-        EditMessageOverlay editMessageOverlay = new ManagerKanbanPage()
+        EditMessageOverlay editMessageOverlay = new LoginCabinetPage()
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
+                .loginAsManager()
                 .clickOfferCard(randomOfferOrRequest)
                 .switchToChatIframe()
                 .setCommentField(managerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton()
                 .hoverEditMessageIcon();
-        sleep(2000);
         Assertions.assertTrue(editMessageOverlay.isEditMessagePopupShown(), "Edit Message Popup should be shown");
     }
 }

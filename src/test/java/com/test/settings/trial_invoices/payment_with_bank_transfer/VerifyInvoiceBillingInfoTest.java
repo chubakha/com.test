@@ -9,14 +9,14 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyInvoiceBillingInfoTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyBillingInfo(){
-        BillingInfoOverlay billingInfoOverlay = new ClientKanbanPage()
+        BillingInfoOverlay billingInfoOverlay = new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()
@@ -37,7 +37,6 @@ public class VerifyInvoiceBillingInfoTest extends PrepareInvoicingTestData {
 
         InvoiceDetailPage invoiceDetailPage = new BillingInfoOverlay()
                 .clickConfirmButtonWithRedirectionToInvoiceDetailPage();
-        sleep(2000);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(companyNumber,
                         invoiceDetailPage.getCompanyNumberText(),

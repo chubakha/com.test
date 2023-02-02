@@ -16,15 +16,14 @@ public class VerifySendEmptyMessageTest extends PrepareOfferTestData {
         String randomOfferOrRequest = String.valueOf((int) (Math.ceil(Math.random()*6)));
 
         ManagerDetailOfferPage lastMessage = new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(randomOfferOrRequest);
         ManagerDetailOfferPage currentLastMessage = new ManagerDetailOfferPage()
                 .clickSendCommentButton();
-        sleep(3000);
         Assertions.assertEquals(lastMessage.getLastChatMessageText(), currentLastMessage.getLastChatMessageText(),
                 String.format("'%s' should be as last message", lastMessage.getLastChatMessageText()));
     }

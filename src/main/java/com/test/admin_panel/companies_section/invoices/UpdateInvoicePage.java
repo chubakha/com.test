@@ -5,6 +5,7 @@ import com.test.admin_panel.clients_section.UpdateClientPage;
 import com.test.admin_panel.clients_section.ViewClientPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class UpdateInvoicePage {
 
@@ -18,6 +19,7 @@ public class UpdateInvoicePage {
 
     public ViewInvoicesPage clickSaveButton(){
         saveButton.click();
+        sleep(2000);
         return new ViewInvoicesPage();
     }
 }

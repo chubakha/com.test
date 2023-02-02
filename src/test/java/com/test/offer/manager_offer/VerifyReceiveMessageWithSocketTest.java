@@ -33,8 +33,8 @@ public class VerifyReceiveMessageWithSocketTest extends PrepareOfferTestData {
         setWebDriver(managerCabinetBrowserWindow);
         GenericPage.openLoginPage();
         ManagerDetailOfferPage managerDetailOfferPage = new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown(dataGenerationClientCompany)
@@ -50,8 +50,8 @@ public class VerifyReceiveMessageWithSocketTest extends PrepareOfferTestData {
                 .switchToChatIframe()
                 .setCommentField(managerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton();
-        sleep(2000);
         setWebDriver(managerCabinetBrowserWindow);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(managerMessage, managerDetailOfferPage.getLastChatMessageText(),

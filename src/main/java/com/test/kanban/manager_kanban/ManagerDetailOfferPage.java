@@ -24,6 +24,7 @@ public class ManagerDetailOfferPage {
     private final SelenideElement logOutLink = $x("//*[contains(text(), 'Log out')]");
     private final SelenideElement editMessageIcon = $x("//div[contains(@class, 'messages')][1]/div[contains(@class, 'sending-time')]/*[contains(@class, 'messages__edit')]");
     private final SelenideElement editMessagePopup = $x("//div[contains(@class, 'messages')][1]/div[contains(@class, 'sending-time')]/div[contains(@class, 'messages__edit')]/div[contains(@class, 'edit-dropdown')]");
+    private final SelenideElement header = $x("//div[@class='header__left']");
 
 
     public LoginCabinetPage clickLogOutLink(){
@@ -33,6 +34,7 @@ public class ManagerDetailOfferPage {
 
     public ManagerDetailOfferPage clickPublishButton(){
         publishButton.click();
+        sleep(3000);
         return this;
     }
 
@@ -47,16 +49,19 @@ public class ManagerDetailOfferPage {
 
     public ManagerDetailOfferPage clickMoveToPaymentStatus(){
         moveToPaymentStatus.click();
+        sleep(2000);
         return this;
     }
 
     public ManagerDetailOfferPage clickStartDeliveryStatus(){
         startDeliveryStatus.click();
+        sleep(2000);
         return this;
     }
 
     public ManagerDetailOfferPage clickMoveToDoneStatus(){
         moveToDoneStatus.click();
+        sleep(3000);
         return this;
     }
 
@@ -66,7 +71,7 @@ public class ManagerDetailOfferPage {
     }
 
     public String getOfferStatusText(){
-        sleep(3000);
+        sleep(2000);
         return offerStatusText.getText();
     }
 
@@ -82,6 +87,7 @@ public class ManagerDetailOfferPage {
 
     public ManagerDetailOfferPage clickSendCommentButton(){
         sendCommentButton.click();
+        sleep(2000);
         return this;
     }
 
@@ -92,6 +98,11 @@ public class ManagerDetailOfferPage {
 
     public ManagerDetailOfferPage switchToRootContainerPage(){
         switchTo().parentFrame();
+        return this;
+    }
+
+    public ManagerDetailOfferPage scrollToUpPage(){
+        header.scrollIntoView(false);
         return this;
     }
 

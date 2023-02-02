@@ -3,6 +3,7 @@ package com.test.registration.fourth_registration_page;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class FourthRegistrationPage {
     private final SelenideElement firstNameField = $x("//input[@placeholder='First name']");
@@ -165,6 +166,7 @@ public class FourthRegistrationPage {
 
     public ConfirmYourAccountOverlay clickActiveCreateAccountButton() {
         clickCreateAccountButton();
+        sleep(2000);
         return new ConfirmYourAccountOverlay();
     }
 

@@ -11,12 +11,11 @@ public class VerifyManagersCountersOfCardTest extends PrepareKanbanTestData {
     @Test
     void verifyManagersCountersOfCard(){
         ManagerKanbanPage managerKanbanPage = new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown("DataGenerationCompany");
-        sleep(3000);
         Assertions.assertAll(
                 () -> Assertions.assertEquals("1", managerKanbanPage.getAmountOfRequest(),
                         "Amount of requests should be equal to '1'"),

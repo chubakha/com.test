@@ -8,14 +8,14 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyVatForPersonalCardPaymentTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyVatForPersonalCardPayment(){
-        StripePaymentPage stripePaymentPage = new ClientKanbanPage()
+        StripePaymentPage stripePaymentPage = new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickPersonalCardPaymentMethodOption()

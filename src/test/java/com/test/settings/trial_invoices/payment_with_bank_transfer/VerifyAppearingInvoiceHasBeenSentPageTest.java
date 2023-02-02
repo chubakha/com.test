@@ -1,15 +1,11 @@
 package com.test.settings.trial_invoices.payment_with_bank_transfer;
 
-import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.login.LoginCabinetPage;
 import com.test.setting.InvoiceHasBeenSentPage;
 import com.test.setting.InvoicesCurrencyType;
 import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyAppearingInvoiceHasBeenSentPageTest extends PrepareInvoicingTestData {
 

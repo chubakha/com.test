@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import com.test.admin_panel.onboarding_section.MainOnboardingPage;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class MainClientPage {
     private final SelenideElement clientSearchByEmailField = $x("//input[contains(@name, 'UserClientSearch') and contains(@name, 'email')]");
@@ -37,6 +38,7 @@ public class MainClientPage {
 
     public MainClientPage pressEnterKey(){
         Selenide.switchTo().alert().accept();
+        sleep(500);
         return this;
     }
 

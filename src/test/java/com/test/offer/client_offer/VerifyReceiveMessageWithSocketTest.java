@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import static com.codeborne.selenide.Selenide.sleep;
 import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class VerifyReceiveMessageWithSocketTest extends PrepareOfferTestData {
@@ -40,8 +39,8 @@ public class VerifyReceiveMessageWithSocketTest extends PrepareOfferTestData {
         setWebDriver(managerCabinetBrowserWindow);
         GenericPage.openLoginPage();
         new LoginCabinetPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickCompanyListDropdown()
                 .clickCompanyInDropdown(dataGenerationClientCompany)
@@ -49,13 +48,13 @@ public class VerifyReceiveMessageWithSocketTest extends PrepareOfferTestData {
                 .switchToChatIframe()
                 .setCommentField(managerMessage)
                 .switchToRootContainerPage()
+                .scrollToUpPage()
                 .clickSendCommentButton();
-        sleep(2000);
         setWebDriver(clientCabinetBrowserWindow);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(managerMessage, clientDetailOfferPage.getLastChatMessageText(),
                         String.format("'%s' message should be shown as last", managerMessage)),
-                () -> Assertions.assertEquals(mainManagerFirstName + " " + mainManagerLastName,
+                () -> Assertions.assertEquals(mainDataGenerationManagerFirstName + " " + mainDataGenerationManagerLastName,
                         clientDetailOfferPage.getLastChatMessageAuthor(),
                         "'DataGenerationFirstName DataGenerationLastName' should be shown as author of last message"),
                 () -> Assertions.assertEquals(todayDate, clientDetailOfferPage.getLastChatMessageDate(),

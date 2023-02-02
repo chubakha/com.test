@@ -3,6 +3,7 @@ package com.test.admin_panel.onboarding_section;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class UpdateOnboardingPage {
 
@@ -16,6 +17,7 @@ public class UpdateOnboardingPage {
 
     public ViewOnboardingPage clickSaveButton(){
         saveButton.click();
+        sleep(1000);
         return new ViewOnboardingPage();
     }
 }

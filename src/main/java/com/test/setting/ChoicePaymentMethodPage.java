@@ -3,6 +3,7 @@ package com.test.setting;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Selenide.$x;
+import static com.codeborne.selenide.Selenide.sleep;
 
 public class ChoicePaymentMethodPage {
     private final SelenideElement numberLabel = $x("//*[contains(@class, 'checkout__header-name')]/h3");
@@ -20,6 +21,7 @@ public class ChoicePaymentMethodPage {
     }
 
     public String getDueDateLabel(){
+        sleep(1000);
         return dueDateLabel.getText();
     }
 
@@ -40,6 +42,7 @@ public class ChoicePaymentMethodPage {
 
     public BillingInfoOverlay clickGoToPaymentButton(){
         goToPaymentButton.click();
+        sleep(3000);
         return new BillingInfoOverlay();
     }
 

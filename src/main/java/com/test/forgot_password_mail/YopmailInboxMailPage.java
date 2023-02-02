@@ -25,10 +25,12 @@ public class YopmailInboxMailPage {
 
     public YopmailInboxMailPage switchEmailIframe(){
         switchTo().frame(incomingMailIframe);
+        sleep(2000);
         return this;
     }
 
-    public String getForgetPasswordToken(){
+    public String getLinkFromProdEmail(){
+        sleep(2000);
         String[] link = mailSubject.getText().split("https://")[1].split("\n");
         return "https://" + link[0];
     }
@@ -39,13 +41,13 @@ public class YopmailInboxMailPage {
     }
 
     public String getForgetPasswordTokenMinusOneSymbol(){
-        return getForgetPasswordToken().substring(0, getForgetPasswordToken().length() - 2);
+        return getLinkFromProdEmail().substring(0, getLinkFromProdEmail().length() - 2);
     }
 
     public String getForgetPasswordTokenPlusOneSymbol(){
         Random r = new Random();
         char c = (char)(r.nextInt(26) + 'a');
-        return getForgetPasswordToken() + c;
+        return getLinkFromProdEmail() + c;
     }
 
     public HelloSignOverlay clickViewHelloSignDocument(){
@@ -54,7 +56,7 @@ public class YopmailInboxMailPage {
     }
 
     public String getInvoiceCurrency(){
-        sleep(2000);
+        sleep(1000);
         int startCurrencyPosition = invoiceMailSubject.getOwnText().indexOf("for ") + 4;
         return invoiceMailSubject.getOwnText().substring(startCurrencyPosition,
                 startCurrencyPosition + 3);

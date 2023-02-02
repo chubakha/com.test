@@ -185,8 +185,8 @@ public class DataGeneration extends PrepareOverallTestData {
         clearBrowserLocalStorage();
         ManagerKanbanPage managerKanbanPage = GenericPage
                 .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager()
                 .clickNewClientButton()
                 .setEnterClientEmailField(dataGenerationClientEmail)
@@ -281,7 +281,7 @@ public class DataGeneration extends PrepareOverallTestData {
         ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
                 .clickLegalBoardLink()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany")
+                .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
                 .clickMoveToPaymentStatus();
@@ -299,7 +299,7 @@ public class DataGeneration extends PrepareOverallTestData {
         ManagerDetailOfferPage managerDetailOfferPage = new ManagerKanbanPage()
                 .clickLegalBoardLink()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany")
+                .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
                 .clickStartDeliveryStatus();
@@ -317,7 +317,7 @@ public class DataGeneration extends PrepareOverallTestData {
         ManagerDetailOfferPage managerDetailOfferPage = GenericPage
                 .openManagerKanban()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany")
+                .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
                 .clickMoveToDoneStatus();
@@ -331,8 +331,6 @@ public class DataGeneration extends PrepareOverallTestData {
     @Description("Create a trial invoice after passing onboarding")
     void verifyCreateTrialInvoiceAfterPassHelloSign() {
         recordInvoiceCredentialToFile(invoicingClientEmail, invoicingClientPassword, company);
-        clearBrowserLocalStorage();
-        clearBrowserCookies();
         open(domainCabinet + "/registration");
         registrationNewClientAndCompany(firstName, lastName, company, invoicingClientEmail, invoicingClientPassword);
         GenericPage
@@ -346,7 +344,6 @@ public class DataGeneration extends PrepareOverallTestData {
         new HelloSignEmailPopupOverlay()
                 .setEmailField(invoicingClientEmail)
                 .clickVerifyEmailField();
-        sleep(5000);
         GenericPage
                 .openYopmailPage()
                 .setLoginField(invoicingClientEmail)
@@ -368,7 +365,6 @@ public class DataGeneration extends PrepareOverallTestData {
                 .setPositionField(faker.job().position())
                 .clickNextStepButton()
                 .clickAgreeButton();
-        sleep(15000);
         closeWindow();
         ViewInvoicesPage viewInvoicesPage = GenericPage
                 .openLoginAdminPage()
@@ -391,4 +387,22 @@ public class DataGeneration extends PrepareOverallTestData {
                         String.format("'%s' should be shown next to 'Sum' label", trialInvoicePrice))
         );
     }
+
+    //@Test
+    @Order(20)
+    void deleteDataGeneration(){
+        GenericPage
+                .openAdminPageWithoutAuthorization()
+                .clickCompaniesLink()
+                .setClientSearchByCompanyField(dataGenerationClientCompany)
+                .clickDeleteButton()
+                .pressEnterKey();
+        GenericPage
+                .openAdminPageWithoutAuthorization()
+                .clickClientsLink()
+                .setClientSearchByEmailField(dataGenerationClientEmail)
+                .clickDeleteButton()
+                .pressEnterKey();
+    }
+
 }

@@ -2,9 +2,11 @@ package com.test;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
+import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
 import com.test.forgot_password_mail.MailHogRecoveryPasswordMailPage;
 import com.test.forgot_password_mail.YopmailInboxMailPage;
+import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -44,8 +46,10 @@ public class PrepareOverallTestData {
     protected static String dataGenerationClientFirstName = "DataGenerationFirstName";
     protected static String dataGenerationClientLastName = "DataGenerationLastName";
     protected static String dataGenerationClientCompany = "DataGenerationCompany";
-    protected static String mainManagerFirstName = "Alex";
-    protected static String mainManagerLastName = "Manager";
+    protected static String dataGenerationManagerEmail;
+    protected static String dataGenerationManagerPassword;
+    protected static String mainDataGenerationManagerFirstName = "Alex";
+    protected static String mainDataGenerationManagerLastName = "ManagerDataGeneration";
     protected static String invoicingClientEmail;
     protected static String invoicingClientPassword;
     protected static String invoicingCompanyName;
@@ -77,6 +81,8 @@ public class PrepareOverallTestData {
         prodPasswordAdmin = PrepareOverallTestData.getProdPasswordAdmin();
         dataGenerationClientEmail = PrepareOverallTestData.getDataGenerationClientEmail();
         dataGenerationClientPassword = PrepareOverallTestData.getDataGenerationClientPassword();
+        dataGenerationManagerEmail = PrepareOverallTestData.getDataGenerationManagerEmail();
+        dataGenerationManagerPassword = PrepareOverallTestData.getDataGenerationManagerPassword();
         invoicingClientEmail = PrepareOverallTestData.getInvoicingClientEmail();
         invoicingClientPassword = PrepareOverallTestData.getInvoicingClientPassword();
         invoicingCompanyName = PrepareOverallTestData.getInvoicingCompanyName();
@@ -138,6 +144,14 @@ public class PrepareOverallTestData {
         return getPropertyFileData().getProperty("client.password.data-generation");
     }
 
+    private static String getDataGenerationManagerEmail(){
+        return getPropertyFileData().getProperty("manager.email.data-generation");
+    }
+
+    private static String getDataGenerationManagerPassword(){
+        return getPropertyFileData().getProperty("manager.password.data-generation");
+    }
+
     private static String getTestCreditCardNumber(){
         return getPropertyFileData().getProperty("test.credit.card.number");
     }
@@ -178,25 +192,25 @@ public class PrepareOverallTestData {
         return isProd;
     }
 
-    public static void redirectToForgetPasswordToken(String email){
+    public static void redirectToLinkFromEmail(String email){
         boolean isProd = isProductionDomainShown(url());
         if(isProd){
             GenericPage
                     .openYopmailPage()
                     .setLoginField(email)
                     .clickLoginButton();
-            sleep(2000);
             new YopmailInboxMailPage()
                     .clickRefreshButton()
                     .switchEmailIframe();
+            GenericPage.openAnyLink(new YopmailInboxMailPage().getLinkFromProdEmail());
             sleep(2000);
-            GenericPage.openAnyLink(new YopmailInboxMailPage().getForgetPasswordToken());
         }
         else {
             GenericPage
                     .openMailHogPage()
                     .clickRecoveryPasswordEmail(email);
-            GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getForgetPasswordToken());
+            GenericPage.openAnyLink(new MailHogRecoveryPasswordMailPage().getLinkFromStageEmail());
+            sleep(2000);
         }
     }
 
@@ -214,6 +228,9 @@ public class PrepareOverallTestData {
 
     public static void registrationNewClientAndCompany(String firstName, String lastName, String company, String email, String password) {
         managerParameter = url().substring(url().indexOf("=") + 1);
+        if(new ManagerKanbanPage().isLogOutLinkShown()){
+            new ManagerKanbanPage().clickLogOutLink();
+        }
         new FourthRegistrationPage()
                 .setFirstNameField(firstName)
                 .setLastNameField(lastName)
@@ -224,7 +241,11 @@ public class PrepareOverallTestData {
                 .clickInactiveIveReadAndAcceptedTermsConditionsAndPrivacyPolicy()
                 .clickActiveCreateAccountButton();
         GenericPage
-                .openLoginAdminPage()
+                .openLoginAdminPage();
+        if(new MainAdminPage().isLogoutLinkShown()){
+            new MainAdminPage().clickLogoutLink();
+        }
+        new LoginAdminPage()
                 .setUsernameField(stageUsernameAdmin)
                 .setPasswordField(stagePasswordAdmin)
                 .loginAsAdmin()
@@ -234,7 +255,6 @@ public class PrepareOverallTestData {
                 .clickUpdateButton()
                 .switchStatusToActive()
                 .clickSaveButton();
-        sleep(1000);
     }
 
 
@@ -271,7 +291,6 @@ public class PrepareOverallTestData {
                 .setPasswordField(managerPassword)
                 .setRepeatPasswordField(managerPassword)
                 .clickSaveButton();
-        sleep(500);
         clearBrowserCookies();
     }
 
@@ -288,7 +307,6 @@ public class PrepareOverallTestData {
                 .setPasswordField(managerPassword)
                 .setRepeatPasswordField(managerPassword)
                 .clickSaveButton();
-        sleep(500);
         clearBrowserCookies();
     }
 
@@ -327,9 +345,15 @@ public class PrepareOverallTestData {
         clearBrowserLocalStorage();
         GenericPage
                 .openLoginPage()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .loginAsManager();
+    }
+
+    public void refreshPage(){
+        sleep(2000);
+        refresh();
+        sleep(2000);
     }
 
 }

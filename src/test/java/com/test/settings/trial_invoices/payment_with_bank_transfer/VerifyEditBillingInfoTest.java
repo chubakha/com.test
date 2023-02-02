@@ -9,15 +9,15 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyEditBillingInfoTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyEditBillingInfo(){
 
-        new ClientKanbanPage()
+        new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()

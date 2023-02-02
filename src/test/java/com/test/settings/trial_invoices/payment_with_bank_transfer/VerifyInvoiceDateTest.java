@@ -8,15 +8,15 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyInvoiceDateTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyInvoiceDate(){
 
-        InvoiceDetailPage invoiceDetailPage = new ClientKanbanPage()
+        InvoiceDetailPage invoiceDetailPage = new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()
@@ -28,7 +28,6 @@ public class VerifyInvoiceDateTest extends PrepareInvoicingTestData {
                 .clickCurrencyDropdown()
                 .selectCurrency(String.valueOf(InvoicesCurrencyType.values()[getRandomCurrency(5)]))
                 .clickConfirmButtonWithRedirectionToInvoiceDetailPage();
-        sleep(1000);
         Assertions.assertEquals(getTodayDateEuSlash(), invoiceDetailPage.getDateText(),
                 String.format("'%s' should be shown next to date label",
                         getTodayDateEuSlash()));

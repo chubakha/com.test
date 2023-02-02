@@ -32,7 +32,6 @@ public class ClientKanbanPage {
     }
 
     public CreateTaskRequestOverlay clickNewRequestButton(){
-        sleep(2000);
         newRequestButton.click();
         return new CreateTaskRequestOverlay();
     }
@@ -44,11 +43,13 @@ public class ClientKanbanPage {
 
     public ClientDetailOfferPage clickOfferCard(String title){
         $x("//*[contains(@class, 'body-title')and text() = '" + title + "']").click();
+        sleep(2000);
         return new ClientDetailOfferPage();
     }
 
     public ClientKanbanPage clickLegalBoardLink(){
         legalBoardLink.click();
+        sleep(2000);
         return this;
     }
 

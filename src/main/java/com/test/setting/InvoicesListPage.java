@@ -10,8 +10,9 @@ public class InvoicesListPage {
     private final SelenideElement statusInvoiceLabel = $x("//td[4]");
 
     public ChoicePaymentMethodPage clickViewButton(){
-        sleep(1000);
+        sleep(2000);
         viewButton.click();
+        sleep(2000);
         return new ChoicePaymentMethodPage();
     }
 

@@ -50,6 +50,7 @@ public class HelloSignOverlay {
 
     public AddSignatureOverlay clickSignatureField(){
         signatureField.click();
+        sleep(2000);
         return new AddSignatureOverlay();
     }
 
@@ -59,13 +60,15 @@ public class HelloSignOverlay {
     }
 
     public HelloSignOverlay clickNextStepButton(){
+        sleep(1000);
         nextStepButton.click();
         return this;
     }
 
     public HelloSignOverlay clickAgreeButton(){
-        sleep(1000);
+        sleep(2000);
         agreeButton.click();
+        sleep(15000);
         return this;
     }
 

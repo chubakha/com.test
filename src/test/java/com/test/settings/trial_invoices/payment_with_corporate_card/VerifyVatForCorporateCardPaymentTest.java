@@ -8,15 +8,15 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyVatForCorporateCardPaymentTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyVatForCorporateCardPayment(){
 
-        StripePaymentPage stripePaymentPage = new ClientKanbanPage()
+        StripePaymentPage stripePaymentPage = new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickCorporateCardPaymentMethodOption()
@@ -30,7 +30,6 @@ public class VerifyVatForCorporateCardPaymentTest extends PrepareInvoicingTestDa
                 .clickConfirmButtonWithRedirectionToStripePage()
                 .clickCountryDropdown()
                 .clickGBCountry();
-        sleep(2000);
         Assertions.assertEquals("VAT (20 %)", stripePaymentPage.getVatValue(),
                         "'VAT (20 %)' should be shown as VAT value");
 

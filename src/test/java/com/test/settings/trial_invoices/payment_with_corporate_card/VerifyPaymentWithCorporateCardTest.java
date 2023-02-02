@@ -1,5 +1,6 @@
 package com.test.settings.trial_invoices.payment_with_corporate_card;
 
+import com.test.GenericPage;
 import com.test.kanban.client_kanban.ClientKanbanPage;
 import com.test.login.LoginCabinetPage;
 import com.test.setting.InvoicesCurrencyType;
@@ -8,20 +9,27 @@ import com.test.setting.InvoicesStatusesType;
 import com.test.setting.StripePaymentPage;
 import com.test.settings.PrepareInvoicingTestData;
 import org.junit.Ignore;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class VerifyPaymentWithCorporateCardTest extends PrepareInvoicingTestData {
 
-    @Test
-    void verifyPaymentWithCorporateCard(){
+    @BeforeAll
+    static void login(){
+        GenericPage.openLoginPage();
+        new LoginCabinetPage()
+                        .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient();
+    }
 
-        new ClientKanbanPage()
+    //@ParameterizedTest(name = "{index} - request name is {0}")
+    @ValueSource(strings = { "111", "222", "333", "444", "555", "666", "777", "888", "999", "101",
+            "102", "103", "104", "105", "106", "107", "108", "109", "110", "112" })
+    void verifyPaymentWithCorporateCard(String value){
+
+        InvoicesListPage invoicesListPage = new ClientKanbanPage()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickCorporateCardPaymentMethodOption()
@@ -32,15 +40,12 @@ public class VerifyPaymentWithCorporateCardTest extends PrepareInvoicingTestData
                 .setZipField(faker.address().zipCode())
                 .clickCurrencyDropdown()
                 .selectCurrency(String.valueOf(InvoicesCurrencyType.values()[getRandomCurrency(5)]))
-                .clickConfirmButtonWithRedirectionToStripePage();
-        sleep(2000);
-        InvoicesListPage invoicesListPage = new StripePaymentPage()
+                .clickConfirmButtonWithRedirectionToStripePage()
                 .setCreditCardNumberField(testCreditCardNumber)
                 .setCardExpiryField(testCardExpiry)
-                .setCardCvcField(testCardCvc)
+                .setCardCvcField(value)
                 .setCardHolderField(testCardHolder)
                 .clickPayButton();
-        sleep(8000);
         Assertions.assertAll(
                 () -> Assertions.assertEquals(InvoicesStatusesType.CLOSED.getValue(), invoicesListPage.getStatusInvoiceLabel(),
                         String.format("'%s' should be as invoice status", InvoicesStatusesType.CLOSED.getValue())),
@@ -50,8 +55,8 @@ public class VerifyPaymentWithCorporateCardTest extends PrepareInvoicingTestData
 
     }
 
-    @AfterAll
-    static void changeTrialInvoiceToUnpaidTest(){
+    @AfterEach
+    void changeTrialInvoiceToUnpaidTest(){
         changeTrialInvoiceToUnpaid();
     }
 }

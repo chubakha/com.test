@@ -1,12 +1,9 @@
 package com.test.create_new_password;
 
 import com.test.login.LoginCabinetPage;
-import com.test.login.PrepareLoginTestData;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.closeWindow;
 import static com.codeborne.selenide.Selenide.sleep;
 
 public class VerifyCloseCreateNewPasswordPopupBySendMeBackLinkTest extends PrepareCreateNewPasswordData {
@@ -17,11 +14,9 @@ public class VerifyCloseCreateNewPasswordPopupBySendMeBackLinkTest extends Prepa
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        redirectToForgetPasswordToken(clientEmail);
-        sleep(2000);
+        redirectToLinkFromEmail(clientEmail);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .clickSendMeBackLink();
-        sleep(2000);
         Assertions.assertFalse(loginCabinetPage.isForgotPasswordPopupShown(),
                 "Create new password popup should not be displayed");
     }

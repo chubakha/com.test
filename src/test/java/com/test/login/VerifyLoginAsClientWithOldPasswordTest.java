@@ -1,7 +1,5 @@
 package com.test.login;
 
-import com.test.GenericPage;
-import com.test.admin_panel.MainAdminPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
@@ -14,20 +12,18 @@ public class VerifyLoginAsClientWithOldPasswordTest extends PrepareLoginTestData
     @Test
     void verifyLoginAsClientWithOldPassword(){
 
+        String password = faker.internet().password(8, 15);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .setEmailField(clientEmail)
                 .clickSendButton();
-        redirectToForgetPasswordToken(clientEmail);
-        sleep(3000);
-        String password = faker.internet().password(8, 15);
-        new CreateNewPasswordOverlay()
+        redirectToLinkFromEmail(clientEmail);
+        LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
                 .clickSendButton()
-                .clickCloseButton();
-        sleep(2000);
-        LoginCabinetPage loginCabinetPage = new LoginCabinetPage().setEmailField(clientEmail)
+                .clickCloseButton()
+                .setEmailField(clientEmail)
                 .setPasswordField(clientPassword)
                 .clickInactiveSignUpButton();
         Assertions.assertEquals(ValidationErrorMessagesType.INVALID_USERNAME_AND_PASSWORD_COMBINATION.getValue(),

@@ -1,11 +1,10 @@
 package com.test.settings;
 
+import com.codeborne.selenide.Selenide;
 import com.test.GenericPage;
 import com.test.PrepareOverallTestData;
-import com.test.login.LoginCabinetPage;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.testng.annotations.BeforeTest;
 
 import java.util.Random;
 
@@ -20,19 +19,11 @@ public class PrepareInvoicingTestData extends PrepareOverallTestData {
         open(domainCabinet);
     }
 
-    @BeforeTest
-    public static void Login() {
-        new LoginCabinetPage()
-                .setEmailField(invoicingClientEmail)
-                .setPasswordField(invoicingClientPassword)
-                .loginAsClient();
+    @AfterEach
+    void clearCookiesAndLocalStorage(){
+        Selenide.clearBrowserCookies();
+        localStorage().clear();
     }
-
-//    @AfterEach
-//    void clearCookiesAndLocalStorage(){
-//        Selenide.clearBrowserCookies();
-//        localStorage().clear();
-//    }
 
     protected int getRandomCurrency(int amount){
         return new Random().nextInt(amount);
@@ -51,7 +42,6 @@ public class PrepareInvoicingTestData extends PrepareOverallTestData {
                 .clickUpdateButton()
                 .switchStatusToUnpaid()
                 .clickSaveButton();
-        sleep(2000);
         clearBrowserCookies();
     }
 }

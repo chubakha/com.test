@@ -12,7 +12,6 @@ public class VerifyCloseForgotPasswordPopupTest extends PrepareLoginTestData{
         LoginCabinetPage loginCabinetPage = new LoginCabinetPage()
                 .clickForgotPasswordLink()
                 .clickSendMeBackButton();
-        sleep(3000);
         Assertions.assertFalse(loginCabinetPage.isForgotPasswordPopupShown(),
                 "'Forgot Password' popup should not be shown");
     }

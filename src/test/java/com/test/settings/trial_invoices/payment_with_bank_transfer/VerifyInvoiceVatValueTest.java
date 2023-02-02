@@ -8,14 +8,14 @@ import com.test.settings.PrepareInvoicingTestData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.localStorage;
-import static com.codeborne.selenide.Selenide.sleep;
-
 public class VerifyInvoiceVatValueTest extends PrepareInvoicingTestData {
 
     @Test
     void verifyInvoiceVatValue(){
-        InvoiceDetailPage invoiceDetailPage = new ClientKanbanPage()
+        InvoiceDetailPage invoiceDetailPage = new LoginCabinetPage()
+                .setEmailField(invoicingClientEmail)
+                .setPasswordField(invoicingClientPassword)
+                .loginAsClient()
                 .clickBillingLink()
                 .clickViewButton()
                 .clickBankTransferMethodPaymentMethodOption()
@@ -27,7 +27,6 @@ public class VerifyInvoiceVatValueTest extends PrepareInvoicingTestData {
                 .clickCurrencyDropdown()
                 .selectCurrency(String.valueOf(InvoicesCurrencyType.values()[getRandomCurrency(5)]))
                 .clickConfirmButtonWithRedirectionToInvoiceDetailPage();
-        sleep(4000);
         Assertions.assertEquals("20%", invoiceDetailPage.getVatValueText(),
                 "'20%' should be next to VAT label");
 

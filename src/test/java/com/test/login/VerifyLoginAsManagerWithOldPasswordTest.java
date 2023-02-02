@@ -1,33 +1,28 @@
 package com.test.login;
 
-import com.test.GenericPage;
-import com.test.admin_panel.MainAdminPage;
 import com.test.create_new_password.CreateNewPasswordOverlay;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Selenide.*;
 
 public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestData {
 
     @Test
     void verifyLoginAsManagerWithOldPassword(){
 
+        String password = faker.internet().password(8, 15);
         new LoginCabinetPage()
                 .clickForgotPasswordLink()
-                .setEmailField(managerEmail)
+                .setEmailField(dataGenerationManagerEmail)
                 .clickSendButton();
-        redirectToForgetPasswordToken(managerEmail);
-        sleep(2000);
-        String password = faker.internet().password(8, 15);
+        redirectToLinkFromEmail(dataGenerationManagerEmail);
         LoginCabinetPage loginCabinetPage = new CreateNewPasswordOverlay()
                 .setPasswordField(password)
                 .setRetypePasswordField(password)
                 .clickSendButton()
                 .clickCloseButton()
-                .setEmailField(managerEmail)
-                .setPasswordField(managerPassword)
+                .setEmailField(dataGenerationManagerEmail)
+                .setPasswordField(dataGenerationManagerPassword)
                 .clickInactiveSignUpButton();
         Assertions.assertEquals(ValidationErrorMessagesType.INVALID_USERNAME_AND_PASSWORD_COMBINATION.getValue(),
                 loginCabinetPage.getValidationMessage(),
@@ -37,7 +32,7 @@ public class VerifyLoginAsManagerWithOldPasswordTest extends PrepareLoginTestDat
 
     @AfterAll
     static void resetPasswordToDefault(){
-        resetDefaultManagerPassword(managerEmail);
+        resetDefaultManagerPassword(dataGenerationManagerEmail);
     }
 
 }
