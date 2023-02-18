@@ -1,7 +1,8 @@
 package com.test.notifications;
 
 import com.test.PrepareOverallTestData;
-import org.junit.jupiter.api.AfterEach;
+
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -14,8 +15,8 @@ public class PrepareClientNotificationsData extends PrepareOverallTestData {
         open(domainCabinet);
     }
 
-    @AfterEach
-    void closeBrowser(){
+    @AfterAll
+    static void closeBrowser(){
         clearBrowserLocalStorage();
         localStorage().clear();
         clearBrowserCookies();
