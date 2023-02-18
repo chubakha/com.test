@@ -27,7 +27,7 @@ public class NewClientOverlay {
 
     public NewClientOverlay clickAddNewClientButton(){
         addNewClientButton.click();
-        sleep(4000);
+        sleep(3000);
         return this;
     }
 

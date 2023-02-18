@@ -19,6 +19,7 @@ public class ClientDetailOfferPage {
     private final SelenideElement editMessageIcon = $x("//div[contains(@class, 'messages')][1]/div[contains(@class, 'sending-time')]/*[contains(@class, 'messages__edit')]");
     private final SelenideElement editMessagePopup = $x("//div[contains(@class, 'messages')][1]/div[contains(@class, 'sending-time')]/div[contains(@class, 'messages__edit')]/div[contains(@class, 'edit-dropdown')]");
     private final SelenideElement header = $x("//div[@class='header__left']");
+    private final SelenideElement offerTitle = $x("//h2[contains(@class, 'heading')]");
 
     public LoginCabinetPage clickLogOutLink(){
         logOutLink.click();
@@ -98,7 +99,9 @@ public class ClientDetailOfferPage {
         return new EditMessageOverlay();
     }
 
-
+    public String getOfferTitle(){
+        return offerTitle.getText();
+    }
 
 
 

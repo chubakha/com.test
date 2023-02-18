@@ -2,6 +2,8 @@ package com.test.kanban.client_kanban;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.test.kanban.manager_kanban.ManagerDetailOfferPage;
+import com.test.kanban.notifications.MainNotificationsOverlay;
 import com.test.login.LoginCabinetPage;
 import com.test.setting.InvoicesListPage;
 
@@ -17,6 +19,9 @@ public class ClientKanbanPage {
     private final SelenideElement amountOfTasksComplete = $x("//*[contains(text(), 'Tasks complete')]/following-sibling::span");
     private final SelenideElement legalBoardLink = $x("//a[contains(text(), 'Legal Board')]");
     private final SelenideElement billingLink = $x("//a[contains(text(), 'Billing')]");
+    private final SelenideElement notificationsIcon = $x("//a[contains(@class, 'header__right-link')]");
+    private final SelenideElement firstForAcceptOfferCard = $x("//span[text() = 'Please accept the offer']");
+
 
     public boolean isTaskRequestButtonShown(){
         return newRequestButton.shouldBe(Condition.enabled).isDisplayed();
@@ -31,9 +36,9 @@ public class ClientKanbanPage {
         return new LoginCabinetPage();
     }
 
-    public CreateTaskRequestOverlay clickNewRequestButton(){
+    public CreateRequestOverlay clickNewRequestButton(){
         newRequestButton.click();
-        return new CreateTaskRequestOverlay();
+        return new CreateRequestOverlay();
     }
 
     public ClientDetailRequestPage clickRequestCard(String title){
@@ -73,6 +78,19 @@ public class ClientKanbanPage {
 
     public String getAmountOfTasksComplete(){
         return amountOfTasksComplete.getText();
+    }
+
+    public MainNotificationsOverlay clickNotificationsIcon(){
+        sleep(1000);
+        notificationsIcon.click();
+        sleep(2000);
+        return new MainNotificationsOverlay();
+    }
+
+    public ClientDetailOfferPage clickFirstForAcceptOfferCard(){
+        firstForAcceptOfferCard.click();
+        sleep(4000);
+        return new ClientDetailOfferPage();
     }
 
 }

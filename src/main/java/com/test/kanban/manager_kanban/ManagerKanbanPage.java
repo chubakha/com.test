@@ -1,8 +1,7 @@
 package com.test.kanban.manager_kanban;
 
 import com.codeborne.selenide.SelenideElement;
-import com.test.admin_panel.MainAdminPage;
-import com.test.kanban.client_kanban.ClientKanbanPage;
+import com.test.kanban.notifications.MainNotificationsOverlay;
 import com.test.login.LoginCabinetPage;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -19,6 +18,15 @@ public class ManagerKanbanPage {
     private final SelenideElement amountOfNewOffers = $x("//*[contains(text(), 'New offers from VLO')]/following-sibling::span");
     private final SelenideElement amountOfTasksInProgress = $x("//*[contains(text(), 'Tasks in progress')]/following-sibling::span");
     private final SelenideElement amountOfTasksComplete = $x("//*[contains(text(), 'Tasks complete')]/following-sibling::span");
+    private final SelenideElement firstRequestCard = $x("//div[text() = 'REQUEST']");
+    private final SelenideElement firstOfferCard = $x("//div[text() = 'OFFER']");
+    private final SelenideElement firstDraftCard = $x("//div[text() = 'DRAFT']");
+    private final SelenideElement firstProjectCard = $x("//div[text() = 'Tasks Assigned']");
+    private final SelenideElement firstDoneProjectCard = $x("//div[text() = 'DONE']");
+    private final SelenideElement firstAwaitingPaymentNextStepCard = $x("//*[text() = 'Awaiting payment']");
+    private final SelenideElement firstAwaitingVloNextStepCard = $x("//*[contains(text(), 'Awaiting VLO')]");
+    private final SelenideElement firstOfferHasToBeAcceptedNextStepCard = $x("//*[text() = 'Offer has to be accepted']");
+    private final SelenideElement notificationsIcon = $x("//a[contains(@class, 'header__right-link')]");
 
 
     public boolean isNewOfferButtonShown(){
@@ -31,6 +39,7 @@ public class ManagerKanbanPage {
 
     public LoginCabinetPage clickLogOutLink(){
         logOutLink.click();
+        sleep(2000);
         return new LoginCabinetPage();
     }
 
@@ -39,9 +48,9 @@ public class ManagerKanbanPage {
     }
 
     public NewClientOverlay clickNewClientButton(){
-        sleep(2000);
+        sleep(1000);
         newClientButton.click();
-        sleep(4000);
+        sleep(2000);
         return new NewClientOverlay();
     }
 
@@ -95,6 +104,57 @@ public class ManagerKanbanPage {
         return amountOfTasksComplete.getText();
     }
 
+    public ManagerDetailRequestPage clickFirstRequestCard(){
+        firstRequestCard.click();
+        return new ManagerDetailRequestPage();
+    }
 
+    public ManagerDetailOfferPage clickFirstOfferCard(){
+        firstOfferCard.click();
+        sleep(4000);
+        return new ManagerDetailOfferPage();
+    }
+
+    public ManagerDetailOfferPage clickFirstDraftCard(){
+        firstDraftCard.click();
+        return new ManagerDetailOfferPage();
+    }
+
+    public ManagerDetailOfferPage clickFirstProjectCard(){
+        firstProjectCard.click();
+        sleep(4000);
+        return new ManagerDetailOfferPage();
+    }
+
+    public ManagerDetailOfferPage clickFirstAwaitingPaymentNextStepCard(){
+        firstAwaitingPaymentNextStepCard.click();
+        sleep(4000);
+        return new ManagerDetailOfferPage();
+    }
+
+    public ManagerDetailOfferPage clickFirstAwaitingVloNextStepCard(){
+        firstAwaitingVloNextStepCard.click();
+        sleep(4000);
+        return new ManagerDetailOfferPage();
+    }
+
+    public ManagerDetailOfferPage clickFirstOfferHasToBeAcceptedNextStepCard(){
+        firstOfferHasToBeAcceptedNextStepCard.click();
+        sleep(4000);
+        return new ManagerDetailOfferPage();
+    }
+
+    public ManagerDetailOfferPage clickFirstDoneProjectCard(){
+        firstDoneProjectCard.click();
+        sleep(4000);
+        return new ManagerDetailOfferPage();
+    }
+
+    public MainNotificationsOverlay clickNotificationsIcon(){
+        sleep(1000);
+        notificationsIcon.click();
+        sleep(2000);
+        return new MainNotificationsOverlay();
+    }
 
 }

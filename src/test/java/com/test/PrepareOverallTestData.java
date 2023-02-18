@@ -43,13 +43,18 @@ public class PrepareOverallTestData {
     protected static String prodPasswordAdmin;
     protected static String dataGenerationClientEmail;
     protected static String dataGenerationClientPassword;
+    protected static String dataGenerationClientNotificationsEmail;
+    protected static String dataGenerationClientNotificationsPassword;
     protected static String dataGenerationClientFirstName = "DataGenerationFirstName";
     protected static String dataGenerationClientLastName = "DataGenerationLastName";
     protected static String dataGenerationClientCompany = "DataGenerationCompany";
+    protected static String dataGenerationClientNotificationsFirstName = "DataGenerationNotificationsFirstName";
+    protected static String dataGenerationClientNotificationsLastName = "DataGenerationNotificationsLastName";
+    protected static String dataGenerationClientNotificationsCompany = "DataGenerationNotificationsCompany";
     protected static String dataGenerationManagerEmail;
     protected static String dataGenerationManagerPassword;
-    protected static String mainDataGenerationManagerFirstName = "Alex";
-    protected static String mainDataGenerationManagerLastName = "ManagerDataGeneration";
+    protected static String dataGenerationManagerFirstName = "Alex";
+    protected static String dataGenerationManagerLastName = "ManagerDataGeneration";
     protected static String invoicingClientEmail;
     protected static String invoicingClientPassword;
     protected static String invoicingCompanyName;
@@ -63,7 +68,7 @@ public class PrepareOverallTestData {
     protected static int trialInvoicePrice = 299;
     protected static int retainerInvoicePrice = 499;
 
-    protected static String staticUrl = "https://www.google.com/";
+    protected static String staticUrl = "https://www.legalnodes.com/";
 
     public static String managerParameter;
 
@@ -81,6 +86,8 @@ public class PrepareOverallTestData {
         prodPasswordAdmin = PrepareOverallTestData.getProdPasswordAdmin();
         dataGenerationClientEmail = PrepareOverallTestData.getDataGenerationClientEmail();
         dataGenerationClientPassword = PrepareOverallTestData.getDataGenerationClientPassword();
+        dataGenerationClientNotificationsEmail = PrepareOverallTestData.getDataGenerationClientNotificationsEmail();
+        dataGenerationClientNotificationsPassword = PrepareOverallTestData.getDataGenerationClientNotificationsPassword();
         dataGenerationManagerEmail = PrepareOverallTestData.getDataGenerationManagerEmail();
         dataGenerationManagerPassword = PrepareOverallTestData.getDataGenerationManagerPassword();
         invoicingClientEmail = PrepareOverallTestData.getInvoicingClientEmail();
@@ -142,6 +149,14 @@ public class PrepareOverallTestData {
 
     private static String getDataGenerationClientPassword(){
         return getPropertyFileData().getProperty("client.password.data-generation");
+    }
+
+    private static String getDataGenerationClientNotificationsEmail(){
+        return getPropertyFileData().getProperty("client.email.data-generation.notifications");
+    }
+
+    private static String getDataGenerationClientNotificationsPassword(){
+        return getPropertyFileData().getProperty("client.password.data-generation.notifications");
     }
 
     private static String getDataGenerationManagerEmail(){
@@ -332,12 +347,12 @@ public class PrepareOverallTestData {
         }
     }
 
-    public static void logoutAndLoginAsClient(){
+    public static void logoutAndLoginAsClient(String email, String password){
         clearBrowserLocalStorage();
         GenericPage
                 .openLoginPage()
-                .setEmailField(dataGenerationClientEmail)
-                .setPasswordField(dataGenerationClientPassword)
+                .setEmailField(email)
+                .setPasswordField(password)
                 .loginAsClient();
     }
 

@@ -32,7 +32,7 @@ public class VerifySendMessageWithLinkAfterReloadTest extends PrepareOfferTestDa
         Assertions.assertAll(
                 () -> Assertions.assertEquals(managerMessage, managerDetailOfferPage.getLastChatMessageText(),
                         String.format("'%s' message should be shown as last", managerMessage)),
-                () -> Assertions.assertEquals(mainDataGenerationManagerFirstName + " " + mainDataGenerationManagerLastName,
+                () -> Assertions.assertEquals(dataGenerationManagerFirstName + " " + dataGenerationManagerLastName,
                         managerDetailOfferPage.getLastChatMessageAuthor(),
                         "'DataGenerationFirstName DataGenerationLastName' should be shown as author of last message"),
                 () -> Assertions.assertEquals(todayDate, managerDetailOfferPage.getLastChatMessageDate(),

@@ -192,8 +192,8 @@ public class DataGeneration extends PrepareOverallTestData {
                 .setEnterClientEmailField(dataGenerationClientEmail)
                 .clickAddNewClientButton()
                 .clickSubmitButton();
-        Assertions.assertEquals("DataGenerationCompany", managerKanbanPage.getSelectedCompany(),
-                "'DataGenerationCompany' should be as selected company");
+        Assertions.assertEquals(dataGenerationClientCompany, managerKanbanPage.getSelectedCompany(),
+                String.format("'%s' should be as selected company", dataGenerationClientCompany));
     }
 
     @ParameterizedTest(name = "{index} - request name is {0}")
@@ -204,7 +204,7 @@ public class DataGeneration extends PrepareOverallTestData {
         ManagerDetailOfferPage managerDetailOfferPage = GenericPage
                 .openManagerKanban()
                 .clickCompanyListDropdown()
-                .clickCompanyInDropdown("DataGenerationCompany")
+                .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickRequestCard(value)
                 .clickTurnIntoOfferButton()
                 .clickCreateOfferButton();
@@ -246,7 +246,7 @@ public class DataGeneration extends PrepareOverallTestData {
     @Test
     @Order(13)
     void loginAsClient(){
-        logoutAndLoginAsClient();
+        logoutAndLoginAsClient(dataGenerationClientEmail, dataGenerationClientPassword);
     }
 
     @ParameterizedTest(name = "{index} - offer name is {0}")
@@ -284,7 +284,7 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
-                .clickMoveToPaymentStatus();
+                .clickMoveToPaymentStatusButton();
         Assertions.assertEquals(OfferStatusesType.AWAITING_PAYMENT.getValue(),
                 managerDetailOfferPage.getNextStepText(),
                 String.format("'%s' should not be shown on the top offer",
@@ -302,7 +302,7 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
-                .clickStartDeliveryStatus();
+                .clickStartDeliveryStatusButton();
         Assertions.assertEquals(OfferStatusesType.PREPARING_DOCUMENT.getValue(),
                 managerDetailOfferPage.getNextStepText(),
                 String.format("'%s' should not be shown on the top offer",
@@ -320,7 +320,7 @@ public class DataGeneration extends PrepareOverallTestData {
                 .clickCompanyInDropdown(dataGenerationClientCompany)
                 .clickOfferCard(value)
                 .clickStatusesDropDown()
-                .clickMoveToDoneStatus();
+                .clickMoveToDoneStatusButton();
         Assertions.assertEquals(OfferStatusesType.DONE.getValue(), managerDetailOfferPage.getOfferStatusText(),
                 String.format("'%s' should not be shown on the top offer",
                 OfferStatusesType.DONE.getValue()));

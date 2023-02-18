@@ -166,7 +166,7 @@ public class FourthRegistrationPage {
 
     public ConfirmYourAccountOverlay clickActiveCreateAccountButton() {
         clickCreateAccountButton();
-        sleep(2000);
+        sleep(3000);
         return new ConfirmYourAccountOverlay();
     }
 

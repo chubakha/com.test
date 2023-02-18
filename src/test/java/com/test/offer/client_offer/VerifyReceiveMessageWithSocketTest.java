@@ -54,7 +54,7 @@ public class VerifyReceiveMessageWithSocketTest extends PrepareOfferTestData {
         Assertions.assertAll(
                 () -> Assertions.assertEquals(managerMessage, clientDetailOfferPage.getLastChatMessageText(),
                         String.format("'%s' message should be shown as last", managerMessage)),
-                () -> Assertions.assertEquals(mainDataGenerationManagerFirstName + " " + mainDataGenerationManagerLastName,
+                () -> Assertions.assertEquals(dataGenerationManagerFirstName + " " + dataGenerationManagerLastName,
                         clientDetailOfferPage.getLastChatMessageAuthor(),
                         "'DataGenerationFirstName DataGenerationLastName' should be shown as author of last message"),
                 () -> Assertions.assertEquals(todayDate, clientDetailOfferPage.getLastChatMessageDate(),

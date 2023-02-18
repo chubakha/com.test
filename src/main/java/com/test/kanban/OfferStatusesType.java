@@ -9,6 +9,10 @@ public enum OfferStatusesType {
     DONE("DONE"),
     DRAFT("DRAFT"),
     OFFER("OFFER"),
+    ACCEPTED("ACCEPTED"),
+    PREPARED("PREPARED"),
+    TASKS_ASSIGNED("TASKS ASSIGNED"),
+    IN_PROGRESS("In Progress"),
     WAIT_FOR_VLO_RESPONSE("WAIT FOR VLO");
 
     private final String value;
