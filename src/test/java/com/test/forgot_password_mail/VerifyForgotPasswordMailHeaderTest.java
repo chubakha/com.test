@@ -2,6 +2,8 @@ package com.test.forgot_password_mail;
 
 import com.test.GenericPage;
 import com.test.login.LoginCabinetPage;
+import com.test.mailers.MailHogRecoveryPasswordMailPage;
+import com.test.mailers.YopmailInboxMailPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

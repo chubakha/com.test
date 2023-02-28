@@ -4,8 +4,8 @@ import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import com.test.admin_panel.LoginAdminPage;
 import com.test.admin_panel.MainAdminPage;
-import com.test.forgot_password_mail.MailHogRecoveryPasswordMailPage;
-import com.test.forgot_password_mail.YopmailInboxMailPage;
+import com.test.mailers.MailHogRecoveryPasswordMailPage;
+import com.test.mailers.YopmailInboxMailPage;
 import com.test.kanban.manager_kanban.ManagerKanbanPage;
 import com.test.registration.fourth_registration_page.FourthRegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
@@ -369,6 +369,11 @@ public class PrepareOverallTestData {
         sleep(2000);
         refresh();
         sleep(2000);
+    }
+
+    public String getEntityId(){
+        int lastSlashIndex = url().lastIndexOf("/");
+        return url().substring(lastSlashIndex + 1);
     }
 
 }

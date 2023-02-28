@@ -2,7 +2,6 @@ package com.test.kanban.client_kanban;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.test.kanban.manager_kanban.ManagerDetailOfferPage;
 import com.test.kanban.notifications.MainNotificationsOverlay;
 import com.test.login.LoginCabinetPage;
 import com.test.setting.InvoicesListPage;
@@ -20,7 +19,8 @@ public class ClientKanbanPage {
     private final SelenideElement legalBoardLink = $x("//a[contains(text(), 'Legal Board')]");
     private final SelenideElement billingLink = $x("//a[contains(text(), 'Billing')]");
     private final SelenideElement notificationsIcon = $x("//a[contains(@class, 'header__right-link')]");
-    private final SelenideElement firstForAcceptOfferCard = $x("//span[text() = 'Please accept the offer']");
+    private final SelenideElement firstPleaseAcceptOfferCard = $x("//span[text() = 'Please accept the offer']");
+    private final SelenideElement firstRequestCard = $x("//div[text() = 'Discuss with VLO']");
 
 
     public boolean isTaskRequestButtonShown(){
@@ -87,10 +87,15 @@ public class ClientKanbanPage {
         return new MainNotificationsOverlay();
     }
 
-    public ClientDetailOfferPage clickFirstForAcceptOfferCard(){
-        firstForAcceptOfferCard.click();
+    public ClientDetailOfferPage clickFirstPleaseAcceptOfferCard(){
+        firstPleaseAcceptOfferCard.click();
         sleep(4000);
         return new ClientDetailOfferPage();
+    }
+
+    public ClientDetailRequestPage clickFirstRequestCard(){
+        firstRequestCard.click();
+        return new ClientDetailRequestPage();
     }
 
 }

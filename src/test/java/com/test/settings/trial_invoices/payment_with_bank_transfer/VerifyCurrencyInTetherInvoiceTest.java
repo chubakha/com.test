@@ -1,9 +1,8 @@
 package com.test.settings.trial_invoices.payment_with_bank_transfer;
 
 import com.test.GenericPage;
-import com.test.forgot_password_mail.MailHogInvoiceMailPage;
-import com.test.forgot_password_mail.YopmailInboxMailPage;
-import com.test.kanban.client_kanban.ClientKanbanPage;
+import com.test.mailers.MailHogInvoiceMailPage;
+import com.test.mailers.YopmailInboxMailPage;
 import com.test.login.LoginCabinetPage;
 import com.test.setting.InvoicesCurrencyType;
 import com.test.settings.PrepareInvoicingTestData;

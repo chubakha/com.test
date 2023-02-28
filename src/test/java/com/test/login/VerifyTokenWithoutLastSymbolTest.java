@@ -1,13 +1,12 @@
 package com.test.login;
 
 import com.test.GenericPage;
-import com.test.forgot_password_mail.MailHogRecoveryPasswordMailPage;
-import com.test.forgot_password_mail.YopmailInboxMailPage;
+import com.test.mailers.MailHogRecoveryPasswordMailPage;
+import com.test.mailers.YopmailInboxMailPage;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class VerifyTokenWithoutLastSymbolTest extends PrepareLoginTestData {

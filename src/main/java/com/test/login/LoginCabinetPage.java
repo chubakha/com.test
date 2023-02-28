@@ -19,7 +19,7 @@ public class LoginCabinetPage {
 
     private void clickSighInButton(){
         sighInButton.click();
-        sleep(4000);
+        sleep(5000);
     }
 
     public ManagerKanbanPage loginAsManager() {
